@@ -1,37 +1,8 @@
-import { useState } from "react";
-
-const pastelColors = [
-  "bg-pink-100", "bg-blue-100", "bg-green-100",
-  "bg-yellow-100", "bg-purple-100", "bg-orange-100", "bg-indigo-100"
-];
-
-function FlashCard({ card, index }) {
-  const [flip, setFlip] = useState(false);
-
-  return (
-    <div className="perspective cursor-pointer h-56" onClick={() => setFlip(!flip)}>
-      <div className={`relative w-full h-full transition-transform duration-500 transform-style preserve-3d ${flip ? "rotate-y-180" : ""}`}>
-        {/* FRONT */}
-        <div className={`absolute w-full h-full backface-hidden rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col justify-center items-center text-center ${pastelColors[index % pastelColors.length]}`}>
-          <span className="text-xs font-bold uppercase tracking-wider opacity-50 mb-2">{card.category || "General"}</span>
-          <p className="text-lg font-medium leading-tight">{card.front}</p>
-          <span className="text-[10px] mt-4 opacity-40 uppercase">Click to Reveal</span>
-        </div>
-
-        {/* BACK */}
-        <div className={`absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl shadow-md p-5 flex flex-col justify-center items-center text-center bg-white border-2 border-indigo-200`}>
-          <p className="text-md font-bold text-indigo-900 whitespace-pre-line leading-snug">
-            {card.back}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+import FlashCard from "./FlashCard";
 
 export default function App() {
   const sections = [
-    // ===================== 1. THE 4 NATIONS (EXPANDED) =====================
+    // ===================== 1. THE 4 NATIONS =====================
     {
       title: "🌍 1. The 4 Nations",
       cards: [
@@ -48,7 +19,7 @@ export default function App() {
         { front: "Highest mountain in the UK ⛰️", back: "Ben Nevis (located in Scotland)" }
       ],
     },
-    // ===================== 2. EARLY HISTORY (EXPANDED) =====================
+    // ===================== 2. EARLY HISTORY =====================
     {
       title: "🛡️ 2. Early History",
       cards: [
@@ -68,7 +39,7 @@ export default function App() {
         { front: "The Gentry", back: "A new social class of landowners that appeared after the Black Death" }
       ],
     },
-    // ===================== 3. MIDDLE AGES & RIGHTS (EXPANDED) =====================
+    // ===================== 3. MIDDLE AGES & RIGHTS =====================
     {
       title: "📜 3. Middle Ages & Rights",
       cards: [
@@ -81,7 +52,7 @@ export default function App() {
         { front: "The Glorious Revolution (1688)", back: "Guaranteed the power of Parliament over the King" }
       ],
     },
-    // ===================== 4. TUDORS & STUARTS (EXPANDED) =====================
+    // ===================== 4. TUDORS & STUARTS =====================
     {
       title: "⛪ 4. Tudors & Stuarts",
       cards: [
@@ -95,7 +66,7 @@ export default function App() {
         { front: "The Great Fire of London (1666) 🔥", back: "Destroyed 13,000 houses, rebuilt by Christopher Wren" }
       ],
     },
-    // ===================== 5. ENLIGHTENMENT & EMPIRE (EXPANDED) =====================
+    // ===================== 5. ENLIGHTENMENT & EMPIRE =====================
     {
       title: "🚂 5. Enlightenment & Empire",
       cards: [
@@ -110,7 +81,7 @@ export default function App() {
         { front: "Slave trade: Where did slaves come from?", back: "Primarily from West Africa" }
       ],
     },
-    // ===================== 6. THE 20TH CENTURY (EXPANDED) =====================
+    // ===================== 6. THE 20TH CENTURY =====================
     {
       title: "🕊️ 6. The 20th Century",
       cards: [
@@ -123,7 +94,7 @@ export default function App() {
         { front: "The Falklands War (1982) ⚓", back: "Argentina invaded Falklands; UK reclaimed territory" }
       ],
     },
-    // ===================== 7. GOVERNMENT & LAW (EXPANDED) =====================
+    // ===================== 7. GOVERNMENT & LAW =====================
     {
       title: "⚖️ 7. Government & Law",
       cards: [
@@ -148,7 +119,7 @@ export default function App() {
         { front: "How to register to vote", back: "You must register at your local council electoral registration office" }
       ],
     },
-    // ===================== 8. SYMBOLS & SAINTS (EXPANDED) =====================
+    // ===================== 8. SYMBOLS & SAINTS =====================
     {
       title: "🌸 8. Symbols & Saints",
       cards: [
@@ -160,7 +131,7 @@ export default function App() {
         { front: "Prince William's current title", back: "The Prince of Wales" }
       ],
     },
-    // ===================== 9. TRADITIONS & HOLIDAYS (EXPANDED) =====================
+    // ===================== 9. TRADITIONS & HOLIDAYS =====================
     {
       title: "🎉 9. Traditions & Holidays",
       cards: [
@@ -174,7 +145,7 @@ export default function App() {
         { front: "TV Licence concessions", back: "Free for those over 75; 50% discount for blind people" }
       ],
     },
-    // ===================== 10. ARTS & SCIENCE (EXPANDED) =====================
+    // ===================== 10. ARTS & SCIENCE =====================
     {
       title: "💡 10. Arts & Science",
       cards: [
@@ -191,7 +162,7 @@ export default function App() {
         { front: "The Bayeux Tapestry", back: "Commemorates the Battle of Hastings (1066) and is located in France" }
       ],
     },
-    // ===================== 11. BRITISH VALUES & SOCIETY (EXPANDED) =====================
+    // ===================== 11. BRITISH VALUES & SOCIETY =====================
     {
       title: "🏅 11. British Values",
       cards: [
@@ -272,7 +243,7 @@ export default function App() {
         { front: "Who wrote 'The Hobbit'?", back: "J.R.R. Tolkien (Oxford academic)" }
       ],
     },
-    // ===================== 18. SPORTS & ICONS (EXPANDED) =====================
+    // ===================== 18. SPORTS & ICONS =====================
     {
       title: "⚽ 18. Sports & Icons",
       cards: [
@@ -287,7 +258,7 @@ export default function App() {
         { front: "Formula 1 stars from the UK", back: "Lewis Hamilton, Jenson Button, Damon Hill" }
       ],
     },
-    // ===================== 19. EVERYDAY LIFE & SERVICES (EXPANDED) =====================
+    // ===================== 19. EVERYDAY LIFE & SERVICES =====================
     {
       title: "🏡 19. Everyday Life",
       cards: [
@@ -321,7 +292,7 @@ export default function App() {
         { front: "How long to qualify for citizenship?", back: "Usually 5 years residence + 12 months with ILR" }
       ],
     },
-    // ===================== 22. KEY DATES & QUICK FACTS (NEW) =====================
+    // ===================== 22. KEY DATES & QUICK FACTS =====================
     {
       title: "📅 22. Key Dates & Quick Facts",
       cards: [
@@ -343,6 +314,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
+      {/* Add custom CSS for 3D flip */}
       <style>{`
         .perspective { perspective: 1000px; }
         .transform-style { transform-style: preserve-3d; }
@@ -352,7 +324,7 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK • Duolingo-style</h1>
+          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK </h1>
           <p className="text-slate-500 font-medium">Master the official test, one flip at a time.</p>
           <div className="mt-4 flex justify-center gap-2 flex-wrap">
             <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">{totalCards} Flashcards</span>
