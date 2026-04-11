@@ -10,8 +10,8 @@ const triggerConfetti = () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 };
 
-// ===================== MODAL COMPONENTS (defined outside to prevent focus loss) =====================
-const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError, onRedeem, onSubscribe }) => {
+// Premium Modal (Subscribe button shows alert, redeem code remains)
+const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError, onRedeem }) => {
     if (!isOpen) return null;
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -24,16 +24,19 @@ const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError,
                     <li>✓ <strong>Detailed performance analytics</strong> – topic‑wise breakdown</li>
                     <li>✓ <strong>Priority support & offline PDF guides</strong></li>
                 </ul>
-                <button onClick={onSubscribe} className="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition">
-                    Subscribe Now – £4.99
+                <button
+                    onClick={() => alert("📧 Contact us to unlock premium – we'll send you a code after payment.")}
+                    className="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition"
+                >
+                    Contact Us to Unlock Premium
                 </button>
                 <div className="relative my-4">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-300"></div></div>
-                    <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-gray-500">Or enter a code</span></div>
+                    <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-gray-500">Already have a code?</span></div>
                 </div>
                 <input
                     type="text"
-                    placeholder="Redeem code"
+                    placeholder="Enter your premium code"
                     value={redeemCode}
                     onChange={(e) => setRedeemCode(e.target.value)}
                     className="w-full border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -47,6 +50,7 @@ const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError,
     );
 };
 
+// Contact Modal (unchanged)
 const ContactModal = ({ isOpen, onClose, contactForm, setContactForm, contactStatus, onSubmit }) => {
     if (!isOpen) return null;
     return (
@@ -83,7 +87,6 @@ const SubmitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
     );
 };
 
-// ===================== MAIN COMPONENT =====================
 export default function MockExam({ onBack }) {
     const [selectedExam, setSelectedExam] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -120,7 +123,7 @@ export default function MockExam({ onBack }) {
         }
     }, []);
 
-    // Load previous results from localStorage
+    // Load previous results
     useEffect(() => {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) setAllResults(JSON.parse(stored));
@@ -275,7 +278,7 @@ export default function MockExam({ onBack }) {
             triggerConfetti();
             alert('Premium unlocked! You can now access advanced insights.');
         } else {
-            setRedeemError('Invalid code. Please try again or purchase premium.');
+            setRedeemError('Invalid code. Please contact us to get a valid code.');
         }
     };
 
@@ -300,7 +303,7 @@ export default function MockExam({ onBack }) {
         }
     };
 
-    // Dashboard render (unchanged)
+    // Dashboard render (gated)
     const renderDashboard = () => {
         if (!isPremium) {
             return (
@@ -308,7 +311,12 @@ export default function MockExam({ onBack }) {
                     <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 max-w-md mx-auto shadow-md">
                         <p className="text-gray-600 mb-2">🔒 Your performance dashboard is locked</p>
                         <p className="text-gray-500 text-sm mb-4">Upgrade to Premium to see your strengths, weaknesses, and a personalised 7‑day study plan.</p>
-                        <button onClick={() => setShowPremiumModal(true)} className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg transition">Unlock Premium Insights (£7.99)</button>
+                        <button
+                            onClick={() => alert("📧 Contact us to unlock premium – we'll send you a code after payment.")}
+                            className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg transition"
+                        >
+                            Unlock Premium Insights (£7.99)
+                        </button>
                     </div>
                 </div>
             );
@@ -356,17 +364,21 @@ export default function MockExam({ onBack }) {
             <button onClick={onBack} className="text-gray-500 hover:text-gray-700 transition">← Back to Flashcards</button>
             <div className="flex gap-3">
                 <button onClick={() => setShowContactModal(true)} className="text-sm text-gray-500 hover:text-indigo-600 transition">📧 Contact</button>
-                <button onClick={() => setShowPremiumModal(true)} className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition">⭐ Unlock Premium</button>
+                <button
+                    onClick={() => alert("📧 Contact us to unlock premium – we'll send you a code after to discover full insights of your test")}
+                    className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition"
+                >
+                    ⭐ Unlock Premium
+                </button>
             </div>
         </div>
     );
 
-    // Screens
     if (showDashboard) {
         return (
             <>
                 <div className="p-6 max-w-4xl mx-auto"><TopBar />{renderDashboard()}</div>
-                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} onSubscribe={() => window.location.href = 'https://buy.stripe.com/your-link-here'} />
+                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} />
                 <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} contactForm={contactForm} setContactForm={setContactForm} contactStatus={contactStatus} onSubmit={handleContactSubmit} />
             </>
         );
@@ -387,7 +399,7 @@ export default function MockExam({ onBack }) {
                     ))}
                 </div>
                 {allResults.length > 0 && (<div className="mt-8 text-center"><button onClick={() => setShowDashboard(true)} className="text-indigo-600 underline hover:text-indigo-800">View Your Performance Dashboard</button></div>)}
-                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} onSubscribe={() => window.location.href = 'https://buy.stripe.com/your-link-here'} />
+                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} />
                 <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} contactForm={contactForm} setContactForm={setContactForm} contactStatus={contactStatus} onSubmit={handleContactSubmit} />
             </div>
         );
@@ -403,17 +415,21 @@ export default function MockExam({ onBack }) {
                     {score >= 75 ? <div className="mt-4 bg-green-100 text-green-800 p-3 rounded-lg">🎉 Well done! You passed the mock test.</div> : <div className="mt-4 bg-yellow-100 text-yellow-800 p-3 rounded-lg">📚 Review the flashcards below to improve.</div>}
                     <div className="mt-4 flex justify-center gap-3">
                         <button onClick={resetExam} className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Take Another Exam</button>
-                        <button onClick={() => setShowPremiumModal(true)} className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg transition">Unlock Premium Insights (£7.99)</button>
+                        <button
+                            onClick={() => alert("📧 Contact us to unlock premium – we'll send you a code after payment.")}
+                            className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg transition"
+                        >
+                            Unlock Premium Insights (£7.99)
+                        </button>
                     </div>
                 </div>
                 <div className="space-y-4"><h3 className="text-xl font-bold">Detailed Answers</h3>{detailedResults.map((res, idx) => (<div key={idx} className={`border-l-4 p-4 rounded-r-lg ${res.isCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'}`}><p className="font-medium">{idx + 1}. {res.question}</p><p className="text-sm mt-1"><span className="font-semibold">Your answer:</span> {res.multiple ? (Array.isArray(res.userAnswer) ? res.userAnswer.map(i => res.choices[i]).join(', ') : 'Not answered') : (res.userAnswer !== undefined ? res.choices[res.userAnswer] : 'Not answered')}</p>{!res.isCorrect && (<p className="text-sm mt-1"><span className="font-semibold">Correct answer:</span> {res.multiple ? res.correct.map(i => res.choices[i]).join(', ') : res.choices[res.correct]}</p>)}<p className="text-sm mt-2 text-gray-600">{res.explanation}</p></div>))}</div>
-                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} onSubscribe={() => window.location.href = 'https://buy.stripe.com/your-link-here'} />
+                <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} />
                 <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} contactForm={contactForm} setContactForm={setContactForm} contactStatus={contactStatus} onSubmit={handleContactSubmit} />
             </div>
         );
     }
 
-    // Active exam
     const currentQ = selectedExam.questions[currentQuestionIndex];
     const currentAnswer = answers[currentQuestionIndex];
     const progress = ((currentQuestionIndex + 1) / selectedExam.questions.length) * 100;
@@ -436,7 +452,7 @@ export default function MockExam({ onBack }) {
                 <button onClick={goToNext} className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition shadow-md">{currentQuestionIndex === selectedExam.questions.length - 1 ? 'Submit Exam' : 'Next Question'}</button>
             </div>
             <SubmitConfirmModal isOpen={showSubmitConfirm} onConfirm={() => { setShowSubmitConfirm(false); handleSubmit(); }} onCancel={() => setShowSubmitConfirm(false)} />
-            <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} onSubscribe={() => window.location.href = 'https://buy.stripe.com/your-link-here'} />
+            <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} redeemCode={redeemCode} setRedeemCode={setRedeemCode} redeemError={redeemError} onRedeem={handleRedeemCode} />
             <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} contactForm={contactForm} setContactForm={setContactForm} contactStatus={contactStatus} onSubmit={handleContactSubmit} />
         </div>
     );
