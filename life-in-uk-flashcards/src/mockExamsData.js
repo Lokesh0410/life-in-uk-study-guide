@@ -1,0 +1,95 @@
+// mockExamsData.js
+// Based on Life in the UK Practice Tests #1, #2, #3 (provided PDFs)
+
+export const mockExams = [
+    {
+        id: 1,
+        title: "Mock Exam #1 (Full Test)",
+        questions: [
+            { text: "What is known as Lent?", choices: ["The 40 days before Easter", "The 40 days after Christmas", "The 40 days before Christmas", "The 40 days after Easter"], correct: 0, explanation: "The 40 days before Easter are known as Lent." },
+            { text: "Which country's flag is not part of the Union Flag?", choices: ["Wales", "Ireland", "Scotland", "England"], correct: 0, explanation: "The Welsh dragon is not part of the Union Flag." },
+            { text: "What is the judiciary responsible for?", choices: ["Deciding whether a person is guilty", "Looking after a jury", "Putting people in prison", "Interpreting the law"], correct: 3, explanation: "Judges (the judiciary) are responsible for interpreting the law and ensuring that trials are conducted fairly." },
+            { text: "When did the Habeas Corpus Act become law?", choices: ["1685", "1687", "1679", "1683"], correct: 2, explanation: "The Habeas Corpus Act became law in 1679. It guaranteed that no one could be held prisoner unlawfully." },
+            { text: "Which of the events is the bombing of English cities by the Germans?", choices: ["The Blitz", "The Dunkirk spirit", "D-Day", "The Battle of Britain"], correct: 0, explanation: "The Blitz was the German air force bombing London and other British cities at night-time." },
+            { text: "Why is it called 'The Glorious Revolution'?", choices: ["Women were given the right to vote", "Because of new technological advances", "Because there was no fighting", "Because of new achievements"], correct: 2, explanation: "There was no fighting in England and it guaranteed the power of Parliament." },
+            { text: "Which of these venues is located in Greenwich?", choices: ["The SECC", "The O2", "Auditorio de Tenerife", "The Copenhagen Concert Hall"], correct: 1, explanation: "The O2 in Greenwich is a large music venue." },
+            { text: "When did the UK leave the EU following the Brexit Vote?", choices: ["1957", "2020", "1987", "1973"], correct: 1, explanation: "The UK left the EU in 2020 after the Brexit vote." },
+            { text: "When was The First British Prime minister (Sir Robert Walpole) in power?", choices: ["1742-1746", "1714-1721", "1707-1714", "1721-1742"], correct: 3, explanation: "Sir Robert Walpole was Prime Minister from 1721 to 1742." },
+            { text: "Which country's national flower is a thistle?", choices: ["Northern Ireland", "England", "Scotland", "Wales"], correct: 2, explanation: "A thistle is the national flower of Scotland." },
+            { text: "Who developed ideas about economics during the Enlightenment period which are still referred to today?", choices: ["David Hume", "Adam Smith", "James Watt", "Isaac Newton"], correct: 1, explanation: "Adam Smith developed ideas about economics which are still referred to today." },
+            { text: "One TV licence covers all of the equipment at one address, but people who rent different rooms in a shared house must buy a separate TV licence", choices: ["False", "True"], correct: 1, explanation: "One TV licence covers all equipment at one address. People renting different rooms in a shared house must buy separate licences." },
+            { text: "Magistrates and Justices of the Peace (JPs) are members of what?", choices: ["Law Society", "Local Community", "Ruling Party", "Police Force"], correct: 1, explanation: "Magistrates and JPs are members of the local community." },
+            { text: "A 2 minutes silence is observed on Easter to commemorate the death of Jesus Christ", choices: ["True", "False"], correct: 1, explanation: "False – the two‑minute silence is on Remembrance Day (11 November), not Easter." },
+            { text: "Peers nominated by the Prime Minister can only serve for their lifetime", choices: ["True", "False"], correct: 0, explanation: "Life peers are nominated by the PM and serve for their lifetime." },
+            { text: "Which TWO countries took part in the Battle of Agincourt?", choices: ["France", "Scotland", "Wales", "England"], correct: [0, 3], explanation: "The Battle of Agincourt (1415) was fought between England and France.", multiple: true },
+            { text: "Who is credited with the introduction of the National Health Service (NHS) in 1948?", choices: ["David Hume", "Florence Nightingale", "Aneurin Bevan", "Winston Churchill"], correct: 2, explanation: "Aneurin (Nye) Bevan led the establishment of the NHS in 1948." },
+            { text: "The Speaker is an MP, he/she represents a constituency and deals with constituents' problems like any other MP", choices: ["True", "False"], correct: 0, explanation: "True – the Speaker is an MP and deals with constituency matters, but remains neutral in debates." },
+            { text: "What religion were Puritans?", choices: ["Jews", "Buddhists", "Catholics", "Protestants"], correct: 3, explanation: "Puritans were a group of Protestants who advocated strict religious doctrine." },
+            { text: "Who can nominate life peers? (Select TWO)", choices: ["The Prime Minister", "The Monarchy", "The Speaker", "Leaders of other main political parties"], correct: [0, 3], explanation: "Life peers are nominated by the Prime Minister and by leaders of other main political parties.", multiple: true },
+            { text: "What country did Hitler invade in 1939?", choices: ["The USA", "Poland", "Italy", "USSR"], correct: 1, explanation: "Hitler invaded Poland in 1939, leading Britain and France to declare war." },
+            { text: "Name the most famous cricket competition, which is a series of Test matches played between England and Australia", choices: ["Lords", "Ashes", "Classics", "Masters"], correct: 1, explanation: "The Ashes is the famous Test cricket series between England and Australia." },
+            { text: "In England & Wales, the small claims procedure is an informal way of helping people to settle minor disputes claims of less than?", choices: ["2,000", "10,000", "4,000", "3,000"], correct: 1, explanation: "The small claims limit in England & Wales is £10,000." },
+            { text: "Which tribes invaded Britain after the Romans had left?", choices: ["The Vikings", "The Jutes and the Anglo-Saxons", "The Celtics", "The Normans"], correct: 1, explanation: "After the Romans left, Britain was invaded by the Jutes, Angles and Saxons." }
+        ]
+    },
+    {
+        id: 2,
+        title: "Mock Exam #2 (Full Test)",
+        questions: [
+            { text: "Roast beef is a traditional food of which country?", choices: ["England", "Northern Ireland", "Wales", "Scotland"], correct: 0, explanation: "Roast beef is an English traditional food." },
+            { text: "Who can get a 50% discount on their TV licence?", choices: ["Blind people", "Students", "Army Officers", "Deaf people"], correct: 0, explanation: "Blind people can get a 50% discount on a TV licence." },
+            { text: "Which languages were the basis of modern English?", choices: ["Norman French and Anglo Saxon", "Gaelic and Celtic", "Norman French and Celtic", "Celtic and Anglo Saxon"], correct: 0, explanation: "Norman French and Anglo‑Saxon combined to become English." },
+            { text: "How many members does The Northern Ireland Assembly have?", choices: ["90", "129", "119", "110"], correct: 0, explanation: "The Northern Ireland Assembly has 90 elected members (MLAs)." },
+            { text: "When did the first farmers arrive in Britain?", choices: ["6,000 years ago", "8,000 years ago", "4,000 years ago", "10,000 years ago"], correct: 0, explanation: "The first farmers arrived about 6,000 years ago from south‑east Europe." },
+            { text: "Who was the 'Iron Duke' that defeated the Emperor Napoleon?", choices: ["Churchill", "Sir Christopher Wren", "Wellington", "Admiral Nelson"], correct: 2, explanation: "The Duke of Wellington (the Iron Duke) defeated Napoleon at Waterloo." },
+            { text: "When did the Irish Free State become a republic?", choices: ["1922", "1931", "1937", "1949"], correct: 3, explanation: "The Irish Free State became a republic in 1949." },
+            { text: "Ulster fry is a traditional food of which country?", choices: ["Northern Ireland", "Wales", "Scotland", "England"], correct: 0, explanation: "Ulster fry is a traditional Northern Irish fried meal." },
+            { text: "Who tells visitors about the history of the Tower of London?", choices: ["Instructors", "London Guides", "Beefeaters", "History graduates"], correct: 2, explanation: "Yeoman Warders (Beefeaters) give tours of the Tower of London." },
+            { text: "Which TWO wives of Henry VIII were executed?", choices: ["Jayne Seymour", "Catherine Howard", "Anne Boleyn", "Anne of Cleves"], correct: [1, 2], explanation: "Anne Boleyn and Catherine Howard were executed.", multiple: true },
+            { text: "When did Ireland split into two countries?", choices: ["1916", "1922", "1959", "1921"], correct: 1, explanation: "In 1922 Ireland split into Northern Ireland and the Irish Free State." },
+            { text: "Volunteering is compulsory in the UK", choices: ["True", "False"], correct: 1, explanation: "Volunteering is not compulsory." },
+            { text: "Nowadays, the House of Commons has more power than the House of Lords", choices: ["False", "True"], correct: 1, explanation: "The House of Commons has more power and can overrule the Lords." },
+            { text: "Select TWO popular social networking websites", choices: ["Telephone", "E-mail", "Twitter", "Facebook"], correct: [2, 3], explanation: "Twitter and Facebook are popular social networking websites.", multiple: true },
+            { text: "What can 'Carry on' be associated with?", choices: ["Art", "Novels", "Music", "Films"], correct: 3, explanation: "The Carry On films are British comedies from the 1950s–60s." },
+            { text: "How can you make a complaint about the Police? (Choose TWO)", choices: ["Going to a police station", "Writing to the Chief Constable of the police force involved", "Visiting a council office", "Visiting the local polling places"], correct: [0, 1], explanation: "Complaints can be made at a police station or in writing to the Chief Constable.", multiple: true },
+            { text: "Sir Edward Elgar is known for his famous music work - 'The Planets'", choices: ["True", "False"], correct: 1, explanation: "False – 'The Planets' was composed by Gustav Holst." },
+            { text: "What were the first Women's Social and Political Union group members called?", choices: ["House of Lords", "Rotten boroughs", "Slaves", "Suffragettes"], correct: 3, explanation: "They were called suffragettes." },
+            { text: "What was the system of land ownership used by the Normans known as?", choices: ["The Magna Carta", "Noble land", "Feudalism", "Democracy"], correct: 2, explanation: "The Normans used feudalism." },
+            { text: "Who can only give 'advice, warn and encourage' about government matters?", choices: ["The Speaker", "The Monarch", "Prime Minister", "Members of the police"], correct: 1, explanation: "The monarch can advise, warn and encourage, but does not make policy decisions." },
+            { text: "What awards event celebrates British theatre?", choices: ["The Turner Prize", "The Mercury Prize", "The Brit Awards", "The Laurence Olivier Awards"], correct: 3, explanation: "The Laurence Olivier Awards celebrate British theatre." },
+            { text: "It is a legal requirement that men and women should not be discriminated against due to their gender or marital status", choices: ["False", "True"], correct: 1, explanation: "UK law prohibits discrimination on grounds of gender or marital status." },
+            { text: "Catherine Howard was Anne Boleyn's cousin", choices: ["False", "True"], correct: 1, explanation: "Catherine Howard was Anne Boleyn's cousin." },
+            { text: "Who is known as William the Conqueror?", choices: ["William, the Duke of Normandy", "William, the Duke of France", "William, the Duke of Edinburgh", "William, the Duke of Lion"], correct: 0, explanation: "William, Duke of Normandy, conquered England in 1066." }
+        ]
+    },
+    {
+        id: 3,
+        title: "Mock Exam #3 (Full Test)",
+        questions: [
+            { text: "What did Henry VII do?", choices: ["Restricted King's power", "Broke away from the Church of Rome", "Increased the power of the nobles", "Reduced the power of the nobles"], correct: 3, explanation: "Henry VII reduced the power of the nobles." },
+            { text: "Which of these is not a music festival?", choices: ["Glastonbury", "Creamfields", "The Fringe", "V festival"], correct: 2, explanation: "The Fringe is a theatre and comedy festival, not a music festival." },
+            { text: "Who is responsible for crime and immigration?", choices: ["Chancellor of the Exchequer", "Secretary of State", "Home Secretary", "Foreign Secretary"], correct: 2, explanation: "The Home Secretary is responsible for crime, policing and immigration." },
+            { text: "When did the English civil war begin?", choices: ["1646", "1641", "1642", "1640"], correct: 2, explanation: "The English Civil War began in 1642." },
+            { text: "In 1284 King Edward I of England introduced the Statute of Rhuddlan, which annexed Wales to the Crown of England.", choices: ["True", "False"], correct: 0, explanation: "True – the Statute of Rhuddlan annexed Wales to England." },
+            { text: "When were the Anglo-Saxon kingdoms established in England?", choices: ["By AD 500", "By AD 600", "By AD 550", "By AD 410"], correct: 1, explanation: "By about AD 600, Anglo-Saxon kingdoms were established." },
+            { text: "The Scottish Parliament (after the Magna Carta was established in England) was split into two estates: the Lords and the Commons", choices: ["True", "False"], correct: 1, explanation: "False – the Scottish Parliament had three estates: Lords, Commons and Clergy." },
+            { text: "What is the Shadow Cabinet?", choices: ["The cabinet that is in trouble", "The name of the office of the Leader of the Opposition in the Parliament", "Senior members of the main opposition party who 'shadow' Government ministers in different departments", "The cabinet where the Prime Minister had to resign"], correct: 2, explanation: "The Shadow Cabinet consists of senior opposition MPs who shadow government ministers." },
+            { text: "Who wrote about their experiences in the First World War?", choices: ["Lord Byron and John Masefield", "Wilfred Owen and William Blake", "Wilfred Owen and Siegfried Sassoon", "Elizabeth and Robert Browning"], correct: 2, explanation: "Wilfred Owen and Siegfried Sassoon wrote about their WWI experiences." },
+            { text: "Discrimination in the workplace is a criminal offence", choices: ["False", "True"], correct: 0, explanation: "Discrimination in the workplace is a civil offence, not criminal." },
+            { text: "What is the Giant's Causeway made of?", choices: ["Iron", "Bronze", "Volcanic Lava", "Stone"], correct: 2, explanation: "The Giant's Causeway is made of volcanic lava." },
+            { text: "Conditions in Ireland in the 19th century were much better than in the rest of the UK", choices: ["False", "True"], correct: 0, explanation: "Conditions in Ireland were worse; a famine killed 1 million people." },
+            { text: "Radar was developed by Scotsman Sir Robert Watson-Watt", choices: ["False", "True"], correct: 1, explanation: "True – Sir Robert Watson-Watt developed radar." },
+            { text: "When did the BBC begin the world's first regular TV service?", choices: ["1922", "1938", "1936", "1921"], correct: 2, explanation: "The BBC began the world's first regular TV service in 1936." },
+            { text: "Satirical magazines began to be published in the 19th century. When was 'Punch' first published?", choices: ["1890s", "1810s", "1870s", "1840s"], correct: 3, explanation: "'Punch' was first published in the 1840s." },
+            { text: "What destroyed London in year 1666?", choices: ["Nuclear Plant", "Fire", "Water", "Plague"], correct: 1, explanation: "The Great Fire of London destroyed much of the city in 1666." },
+            { text: "Other than London universities, which university was credited with the discovery of the DNA molecule in 1953?", choices: ["Cambridge", "Edinburgh", "Oxford", "Aberdeen"], correct: 0, explanation: "The structure of DNA was discovered at Cambridge University." },
+            { text: "During the reigns of Elizabeth I and James I, where did the English government encourage Scottish and English Protestants to settle?", choices: ["Ulster", "Edinburgh", "East London", "Cardiff"], correct: 0, explanation: "Protestants were encouraged to settle in Ulster (Northern Ireland)." },
+            { text: "Which architectural style are the famous London buildings of the 19th century, such as the House of Parliament and St Pancras Station, associated with?", choices: ["Roman", "Gothic", "Indian", "Catholic"], correct: 1, explanation: "Gothic style became popular again in the 19th century." },
+            { text: "What can the Laws made by the EU also be called?", choices: ["Framework Decisions", "All of these", "Directives", "Regulations"], correct: 1, explanation: "EU laws can be called directives, regulations or framework decisions." },
+            { text: "Which TWO things happened when Mary Stuart's husband got murdered?", choices: ["She fled to France", "She gave her throne to Elizabeth I", "She was suspected of involvement in the murder", "She asked Elizabeth I for help"], correct: [2, 3], explanation: "Mary was suspected of involvement and fled to England, asking Elizabeth I for help.", multiple: true },
+            { text: "Whom did the serfs serve?", choices: ["Knights", "Lords", "Peasants", "Slaves"], correct: 1, explanation: "Serfs served the lords in the feudal system." },
+            { text: "The Victoria Cross medal was introduced during which war?", choices: ["The Crimean War", "The First World War", "The Second World War", "The Hundred Years War"], correct: 0, explanation: "Queen Victoria introduced the Victoria Cross during the Crimean War." },
+            { text: "What is the 'Divine Right of Kings'?", choices: ["Increased power of the parliament", "Reduced the power of the nobles", "The King was Appointed by God", "Reduced the power of the King"], correct: 2, explanation: "Divine Right means the king is appointed by God and does not need Parliament's approval." }
+        ]
+    }
+];

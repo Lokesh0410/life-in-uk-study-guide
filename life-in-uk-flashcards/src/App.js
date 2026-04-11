@@ -1,6 +1,11 @@
+import { useState } from "react";
 import FlashCard from "./FlashCard";
+import MockExam from "./MockExam";
+
 
 export default function App() {
+  const [view, setView] = useState("flashcards"); // "flashcards" or "mockExam"
+
   const sections = [
     // ===================== 1. THE 4 NATIONS =====================
     {
@@ -314,7 +319,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
-      {/* Add custom CSS for 3D flip */}
       <style>{`
         .perspective { perspective: 1000px; }
         .transform-style { transform-style: preserve-3d; }
@@ -324,31 +328,50 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK </h1>
+          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK</h1>
           <p className="text-slate-500 font-medium">Master the official test, one flip at a time.</p>
-          <div className="mt-4 flex justify-center gap-2 flex-wrap">
-            <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">{totalCards} Flashcards</span>
-            <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">45 minutes test</span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">75% to pass (18/24)</span>
+          <div className="mt-4 flex justify-center gap-4">
+            <button
+              onClick={() => setView("flashcards")}
+              className={`px-4 py-2 rounded-full font-medium transition ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                }`}
+            >
+              📚 Flashcards
+            </button>
+            <button
+              onClick={() => setView("mockExam")}
+              className={`px-4 py-2 rounded-full font-medium transition ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                }`}
+            >
+              📝 Mock Exams
+            </button>
           </div>
         </header>
 
-        {sections.map((section, i) => (
-          <section key={i} className="mb-12">
-            <h2 className="text-xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">
-              {section.title}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {section.cards.map((card, idx) => (
-                <FlashCard key={idx} card={card} index={idx + i * 100} />
-              ))}
+        {view === "flashcards" ? (
+          <>
+            <div className="mb-4 text-center text-sm text-gray-500">
+              {totalCards} flashcards • Click any card to flip
             </div>
-          </section>
-        ))}
-
-        <footer className="text-center py-10 border-t border-slate-200 text-slate-400 text-sm">
-          🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Keep flipping until it's second nature. Good luck! 🇬🇧
-        </footer>
+            {sections.map((section, i) => (
+              <section key={i} className="mb-12">
+                <h2 className="text-xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">
+                  {section.title}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {section.cards.map((card, idx) => (
+                    <FlashCard key={idx} card={card} index={idx + i * 100} />
+                  ))}
+                </div>
+              </section>
+            ))}
+            <footer className="text-center py-10 border-t border-slate-200 text-slate-400 text-sm">
+              🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Keep flipping until it's second nature. Good luck! 🇬🇧
+            </footer>
+          </>
+        ) : (
+          <MockExam onBack={() => setView("flashcards")} />
+        )}
       </div>
     </div>
   );
