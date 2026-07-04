@@ -7,7 +7,6 @@ import { sections } from './studyGuideData';
 
 
 const STORAGE_KEY = 'lifeInUkMockResults';
-const PREMIUM_KEY = 'lifeInUkPremium';
 
 // Helper to trigger confetti
 const triggerConfetti = () => {
