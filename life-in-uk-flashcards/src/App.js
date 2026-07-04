@@ -1,319 +1,196 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlashCard from "./FlashCard";
 import MockExam from "./MockExam";
+import { sections } from "./studyGuideData";
+import PremiumModal from "./PremiumModal";
+import TestimonialsCarousel from "./TestimonialsCarousel";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import confetti from "canvas-confetti";
 
+const PREMIUM_KEY = 'lifeInUkPremium';
+
+// Success dialog shown after redeem code / payment
+const PremiumSuccessModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-xl text-center">
+        <div className="text-5xl mb-4">🎉</div>
+        <h3 className="text-2xl font-bold text-indigo-800 mb-2">Premium Unlocked!</h3>
+        <p className="text-gray-600 mb-2">You now have full access to:</p>
+        <ul className="text-sm text-gray-700 mb-6 space-y-1 text-left mx-auto inline-block">
+          <li>✅ All 45 Mock Exams</li>
+          <li>✅ Performance Dashboard & Analytics</li>
+          <li>✅ Downloadable Offline Cheat Sheet</li>
+          <li>✅ 5-Day Guaranteed Pass Path</li>
+        </ul>
+        <button
+          onClick={onClose}
+          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold transition shadow-md"
+        >
+          Start Studying 🚀
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Privacy Policy modal
+const PrivacyModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl max-h-[85vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-slate-800">Privacy Policy</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+        </div>
+        <div className="text-sm text-gray-600 space-y-4">
+          <p><strong>Last updated: July 2026</strong></p>
+          <p>This Privacy Policy explains how <strong>Life in the UK Study Guide</strong> ("we", "us") handles your information when you use our website.</p>
+          <h4 className="font-semibold text-gray-800">What we collect</h4>
+          <ul className="list-disc pl-5 space-y-1">
+            <li><strong>Payment information:</strong> When you purchase Premium, your payment is processed securely by <strong>Stripe</strong>. We do not store your card details. Stripe stores your email address to process the transaction.</li>
+            <li><strong>Local data:</strong> Your exam results and premium status are stored in your browser's localStorage only — we do not store this on any server.</li>
+            <li><strong>Contact form:</strong> If you contact us via the in-app form, your name, email, and message are sent to us via Formspree.</li>
+          </ul>
+          <h4 className="font-semibold text-gray-800">How we use it</h4>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>To process and verify your Premium purchase</li>
+            <li>To respond to support enquiries</li>
+            <li>We do not sell, share, or use your data for advertising</li>
+          </ul>
+          <h4 className="font-semibold text-gray-800">Your rights (GDPR)</h4>
+          <p>You have the right to request deletion of any personal data we hold. Email us at <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a> and we will respond within 30 days.</p>
+          <h4 className="font-semibold text-gray-800">Cookies</h4>
+          <p>We use only essential browser localStorage. No tracking cookies or third-party analytics scripts are used beyond standard Netlify and Stripe integrations.</p>
+          <p className="text-xs text-gray-400 pt-2">Questions? Contact us at <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a></p>
+        </div>
+        <button onClick={onClose} className="mt-6 w-full bg-slate-100 text-slate-700 py-2 rounded-lg hover:bg-slate-200 transition font-medium">Close</button>
+      </div>
+    </div>
+  );
+};
 
 export default function App() {
   const [view, setView] = useState("flashcards"); // "flashcards" or "mockExam"
+  const [isPremium, setIsPremium] = useState(() => localStorage.getItem(PREMIUM_KEY) === "true");
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showPremiumSuccess, setShowPremiumSuccess] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [redeemCode, setRedeemCode] = useState("");
+  const [redeemError, setRedeemError] = useState("");
 
-  const sections = [
-    // ===================== 1. THE 4 NATIONS =====================
-    {
-      title: "🌍 1. The 4 Nations",
-      cards: [
-        { front: "Match the Capitals 🏛️", back: "England: London\nScotland: Edinburgh\nWales: Cardiff\nNI: Belfast" },
-        { front: "Population Percentages 📊", back: "England: 84%\nScotland: 8%\nWales: 5%\nNI: 3%" },
-        { front: "Crown Dependencies? 🇮🇲", back: "Isle of Man & Channel Islands\n(Not part of the UK or EU)" },
-        { front: "Which UK nation has its own legal system?", back: "Scotland (Scots law) and Northern Ireland have separate legal systems from England & Wales." },
-        { front: "Largest city in Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿", back: "Glasgow (approx 600k people)" },
-        { front: "National Day of Wales 🏴󠁧󠁢󠁷󠁬󠁳󠁿", back: "St David's Day (March 1st)" },
-        { front: "UK population (approx 2024)", back: "Around 67 million" },
-        { front: "Largest Channel Island", back: "Jersey (population ~100k)" },
-        { front: "Flag of St Patrick", back: "Diagonal red cross on a white background" },
-        { front: "Flag of St Andrew", back: "Diagonal white cross on a blue background" },
-        { front: "Highest mountain in the UK ⛰️", back: "Ben Nevis (located in Scotland)" }
-      ],
-    },
-    // ===================== 2. EARLY HISTORY =====================
-    {
-      title: "🛡️ 2. Early History",
-      cards: [
-        { front: "The Roman Legacy 🏛️", back: "43 CE invasion\nLeft in 410 CE\nBuilt Hadrian's Wall" },
-        { front: "The Vikings 🪓", back: "From Denmark/Norway\nSettled in 'Danelaw'\nDefeated by Alfred the Great" },
-        { front: "1066: The Turning Point 👑", back: "Battle of Hastings\nWilliam the Conqueror (Norman)\nLast successful invasion" },
-        { front: "Domesday Book (1086) 📖", back: "Commissioned by William I\nRecord of landholdings and resources in England" },
-        { front: "Battle of Bannockburn (1314) ⚔️", back: "Robert the Bruce defeated English army\nSecured Scottish independence" },
-        { front: "The Peasants' Revolt (1381) 🌾", back: "Led by Wat Tyler\nProtest against poll tax\nBurned down Savoy Palace" },
-        { front: "The Wars of the Roses 🌹", back: "Civil war: Lancaster (red rose) vs York (white rose)\nEnded at Bosworth (1485)" },
-        { front: "Who was Alfred the Great?", back: "King of Wessex (871-899)\nDefeated Vikings, promoted education & law" },
-        { front: "English Civil War (1642) ⚔️", back: "Cavaliers (King) vs Roundheads (Parliament)" },
-        { front: "The Huguenots 🕊️", back: "Protestant refugees from France who came to Britain between 1680–1720" },
-        { front: "Roman Britain: How many years?", back: "The Romans remained in Britain for 400 years (not 500)" },
-        { front: "The 100 Years War", back: "Actually lasted 116 years (England vs France)" },
-        { front: "Scottish Clans: The Glencoe Massacre", back: "MacDonalds of Glencoe were massacred for being late to take an oath to King William" },
-        { front: "The Gentry", back: "A new social class of landowners that appeared after the Black Death" }
-      ],
-    },
-    // ===================== 3. MIDDLE AGES & RIGHTS =====================
-    {
-      title: "📜 3. Middle Ages & Rights",
-      cards: [
-        { front: "Magna Carta (1215) 📜", back: "King John forced to sign\nLimited King's power\nBasis of 'Rule of Law'" },
-        { front: "The Black Death (1348) ☠️", back: "Killed 1/3 of population\nLed to higher wages &\nend of serfdom" },
-        { front: "First Printing Press 🖨️", back: "William Caxton\nIntroduced to England\nin the 1470s" },
-        { front: "The Habeas Corpus Act (1679) ⛓️", back: "Protected individuals from unlawful imprisonment" },
-        { front: "The Bill of Rights (1689) 📜", back: "Limited monarch's power, established parliamentary authority" },
-        { front: "Who was Wat Tyler?", back: "Leader of the Peasants' Revolt (1381), killed at Smithfield" },
-        { front: "The Glorious Revolution (1688)", back: "Guaranteed the power of Parliament over the King" }
-      ],
-    },
-    // ===================== 4. TUDORS & STUARTS =====================
-    {
-      title: "⛪ 4. Tudors & Stuarts",
-      cards: [
-        { front: "Henry VIII ⛪", back: "Six wives\nCreated Church of England\nBroke from Rome (Catholicism)" },
-        { front: "Elizabeth I ⚓", back: "The 'Golden Age'\nDefeated Spanish Armada (1588)" },
-        { front: "The Civil War (1642) ⚔️", back: "Cavaliers (King) vs\nRoundheads (Parliament)\nCharles I executed 1649" },
-        { front: "The Gunpowder Plot 🎆", back: "1605: Guy Fawkes\nTried to blow up Parliament\nCommemorated Nov 5th" },
-        { front: "Lady Jane Grey 👑", back: "Reigned for 9 days in 1553, executed by Mary I" },
-        { front: "Mary I (Bloody Mary)", back: "Restored Catholicism, burned 300 Protestants" },
-        { front: "The Union of the Crowns (1603) 👑", back: "James VI of Scotland became James I of England – united crowns" },
-        { front: "The Great Fire of London (1666) 🔥", back: "Destroyed 13,000 houses, rebuilt by Christopher Wren" }
-      ],
-    },
-    // ===================== 5. ENLIGHTENMENT & EMPIRE =====================
-    {
-      title: "🚂 5. Enlightenment & Empire",
-      cards: [
-        { front: "Slavery Abolition Dates ⛓️", back: "1807: Slave Trade banned\n1833: Slavery abolished\nin all UK territories" },
-        { front: "Isaac Newton 🍎", back: "Discovered Gravity\nPublished 'Principia'\nShowed gravity applies to the whole universe" },
-        { front: "Battle of Trafalgar (1805) ⛵", back: "Admiral Nelson defeated\nNapoleon's fleet\nNelson died in battle" },
-        { front: "Battle of Waterloo (1815)", back: "Duke of Wellington defeated Napoleon" },
-        { front: "The Industrial Revolution 🏭", back: "Began in mid-18th century\nUK was major producer of coal, iron, cotton cloth" },
-        { front: "The East India Company 🏢", back: "Traded with India, ruled Indian subcontinent until 1858" },
-        { front: "The Chartists (1838-48) 📋", back: "Campaign for working-class votes and secret ballots" },
-        { front: "Florence Nightingale 🏥", back: "Founder of modern nursing, famous for Crimean War work" },
-        { front: "Slave trade: Where did slaves come from?", back: "Primarily from West Africa" }
-      ],
-    },
-    // ===================== 6. THE 20TH CENTURY =====================
-    {
-      title: "🕊️ 6. The 20th Century",
-      cards: [
-        { front: "Women's Suffrage 🗳️", back: "1918: Women 30+ vote\n1928: Equal voting age (21)\nfor men and women" },
-        { front: "Winston Churchill 💂", back: "Prime Minister in 1940\nLed UK through WW2\nFamous for 'speech' morale" },
-        { front: "The NHS (1948) 🏥", back: "Founded by Aneurin Bevan\nHealthcare free at the\npoint of delivery" },
-        { front: "The Battle of Britain (1940) ✈️", back: "RAF defeated Luftwaffe, prevented German invasion" },
-        { front: "The Good Friday Agreement (1998) ☘️", back: "Peace deal for Northern Ireland – power-sharing government" },
-        { front: "Margaret Thatcher (1979-1990)", back: "First female PM, 'Iron Lady', privatisation policies" },
-        { front: "The Falklands War (1982) ⚓", back: "Argentina invaded Falklands; UK reclaimed territory" }
-      ],
-    },
-    // ===================== 7. GOVERNMENT & LAW =====================
-    {
-      title: "⚖️ 7. Government & Law",
-      cards: [
-        { front: "The UK Constitution 📖", back: "Unwritten\nBased on statutes,\nconventions & documents" },
-        { front: "Minor Crimes in Scotland? ⚖️", back: "Justice of the Peace Court\n(Magistrates' equivalent)" },
-        { front: "The Speaker 🎤", back: "Neutral MP who\nmanages debates in the\nHouse of Commons" },
-        { front: "What is the House of Lords?", back: "Reviews bills, proposes amendments; includes life peers and bishops" },
-        { front: "Who is the head of state?", back: "The Monarch (currently King Charles III)" },
-        { front: "Minimum age to become an MP", back: "18 years old" },
-        { front: "What is a 'hung Parliament'?", back: "No party has majority; can form coalition or minority government" },
-        { front: "Magistrates' Court", back: "Deals with minor crimes (unpaid)" },
-        { front: "Crown Court", back: "Deals with serious crimes (with a Jury)" },
-        { front: "Youth Court", back: "For children aged 10 to 17" },
-        { front: "Small Claims limit in England/Wales", back: "Up to £10,000" },
-        { front: "What is Hansard?", back: "The official written record of what is said in Parliament" },
-        { front: "Jury Service eligibility", back: "You are eligible at 18; it is a duty of citizenship" },
-        { front: "MOT Certificate requirement", back: "Required for vehicles more than 3 years old (not 2)" },
-        { front: "'R' Plates in Northern Ireland", back: "New drivers must display an 'R' plate for 1 year" },
-        { front: "3 key roles of School Governors", back: "Strategic direction, Accountability, Monitoring performance" },
-        { front: "Examples of Criminal Offences", back: "Selling tobacco to under-18s, smoking in public, drinking in public" },
-        { front: "Examples of Civil Offences", back: "Unfair dismissal, discrimination, faulty goods disputes" },
-        { front: "How to register to vote", back: "You must register at your local council electoral registration office" }
-      ],
-    },
-    // ===================== 8. SYMBOLS & SAINTS =====================
-    {
-      title: "🌸 8. Symbols & Saints",
-      cards: [
-        { front: "Flowers & Nations 🌼", back: "ENG: Rose | SCO: Thistle\nWAL: Daffodil | NI: Shamrock" },
-        { front: "Patron Saint Dates 📅", back: "Mar 1: David | Mar 17: Patrick\nApr 23: George | Nov 30: Andrew" },
-        { front: "The Union Flag 🇬🇧", back: "Crosses of St George,\nSt Andrew, and St Patrick\n(Wales is NOT on the flag)" },
-        { front: "National Anthem of the UK", back: "'God Save the King'" },
-        { front: "Official animal of Scotland", back: "The Unicorn (symbol of purity and power)" },
-        { front: "Prince William's current title", back: "The Prince of Wales" }
-      ],
-    },
-    // ===================== 9. TRADITIONS & HOLIDAYS =====================
-    {
-      title: "🎉 9. Traditions & Holidays",
-      cards: [
-        { front: "Hogmanay 🎆", back: "Scottish New Year's Eve\nBigger than Christmas\nin Scotland traditionally" },
-        { front: "Diwali 🪔", back: "Festival of Lights\nCelebrated by Hindus/Sikhs\nOct/Nov (Victory of Light)" },
-        { front: "Remembrance Day 🌹", back: "Nov 11th at 11am\nCommemorates WW1 end\n2-minute silence" },
-        { front: "Boxing Day (Dec 26) 📦", back: "Traditionally gave gifts to servants; now football & shopping" },
-        { front: "Bonfire Night (Guy Fawkes Night)", back: "Nov 5th – fireworks & bonfires to mark failed 1605 plot" },
-        { front: "What is 'Shrove Tuesday'?", back: "Pancake Day, day before Lent starts" },
-        { front: "Lent", back: "Begins on Ash Wednesday (40 days before Easter)" },
-        { front: "TV Licence concessions", back: "Free for those over 75; 50% discount for blind people" }
-      ],
-    },
-    // ===================== 10. ARTS & SCIENCE =====================
-    {
-      title: "💡 10. Arts & Science",
-      cards: [
-        { front: "The Proms 🎻", back: "8-week summer concert\nseries at Royal Albert Hall\nMainly classical music" },
-        { front: "Alexander Fleming 💊", back: "Scottish scientist\nDiscovered Penicillin (1928)" },
-        { front: "The Turner Prize 🎨", back: "Established in 1984\nCelebrates contemporary art" },
-        { front: "William Shakespeare ✍️", back: "Playwright, 'Hamlet', 'Romeo and Juliet', 'Macbeth'" },
-        { front: "Charles Darwin 🌿", back: "Theory of evolution, 'On the Origin of Species' (1859)" },
-        { front: "The Beatles 🎸", back: "Rock band from Liverpool (1960s), global music icons" },
-        { front: "George Frideric Handel", back: "Composed Water Music for George I and Royal Fireworks for George II" },
-        { front: "Tim Berners-Lee", back: "Invented the World Wide Web" },
-        { front: "Alan Turing", back: "Invented the Turing Machine – a major British innovation" },
-        { front: "Sake Dean Mahomet", back: "Introduced the art of shampooing (head massage) to Britain" },
-        { front: "The Bayeux Tapestry", back: "Commemorates the Battle of Hastings (1066) and is located in France" }
-      ],
-    },
-    // ===================== 11. BRITISH VALUES & SOCIETY =====================
-    {
-      title: "🏅 11. British Values",
-      cards: [
-        { front: "What are the 5 fundamental British values?", back: "Democracy, Rule of law, Individual liberty, Mutual respect, Tolerance of different faiths" },
-        { front: "What is the official religion?", back: "Christianity (Church of England is established in England)" },
-        { front: "What does 'Rule of Law' mean?", back: "No one is above the law; laws apply equally to all" },
-        { front: "Tolerance in the UK", back: "Respect for different religions, beliefs, and lifestyles" },
-        { front: "Commonwealth: Can it suspend members?", back: "Yes, it can suspend membership but has no power over members" },
-        { front: "EU Referendum date", back: "Held on 23 June 2016" },
-        { front: "EU Exit date", back: "The UK formally left on 31 January 2020" },
-        { front: "Recycling: Why important?", back: "Uses less energy than raw materials and reduces landfill" }
-      ],
-    },
-    // ===================== 12. THE MONARCHY & ROYAL FAMILY =====================
-    {
-      title: "👑 12. The Monarchy",
-      cards: [
-        { front: "Who is the current monarch?", back: "King Charles III (since 8 September 2022)" },
-        { front: "What is the role of the monarch?", back: "Head of state, appoints PM, opens Parliament, royal assent to laws" },
-        { front: "Who is the heir to the throne?", back: "Prince William, Duke of Cornwall and Cambridge (eldest son of Charles III)" },
-        { front: "What is the 'Privy Council'?", back: "Advises the monarch; includes senior politicians and judges" },
-        { front: "The Queen's official birthday", back: "Celebrated in June with Trooping the Colour (actual birthday 21 April)" }
-      ],
-    },
-    // ===================== 13. ELECTIONS & VOTING =====================
-    {
-      title: "🗳️ 13. Elections & Voting",
-      cards: [
-        { front: "How often are general elections?", back: "At least every 5 years (Fixed-term Parliaments Act)" },
-        { front: "Voting age in the UK", back: "18 years old (16 in Scottish local elections)" },
-        { front: "What is 'First Past the Post'?", back: "Voting system for UK general elections – candidate with most votes wins constituency" },
-        { front: "Who can stand as an MP?", back: "British/Commonwealth/Irish citizen aged 18+, not disqualified (e.g., undischarged bankrupt)" },
-        { front: "What is a constituency?", back: "Geographical area represented by one MP" },
-        { front: "Who runs the election count?", back: "Returning Officer (local council official)" }
-      ],
-    },
-    // ===================== 14. UK PARLIAMENT & GOVERNMENT =====================
-    {
-      title: "🏛️ 14. Parliament & Government",
-      cards: [
-        { front: "What are the three parts of Parliament?", back: "The Sovereign (King), House of Lords, House of Commons" },
-        { front: "How many MPs in the House of Commons?", back: "650 (as of 2024)" },
-        { front: "What is the role of the Prime Minister?", back: "Head of government, appoints ministers, leads Cabinet" },
-        { front: "What is 'Question Time'?", back: "Hour where MPs question ministers on policies (Mon-Wed)" },
-        { front: "What is the 'Official Opposition'?", back: "Largest party not in government; led by Leader of the Opposition" }
-      ],
-    },
-    // ===================== 15. JUSTICE SYSTEM & POLICE =====================
-    {
-      title: "⚖️ 15. Justice System",
-      cards: [
-        { front: "What are the two types of law?", back: "Criminal law (punish offenders) and Civil law (disputes between individuals)" },
-        { front: "Highest court in the UK", back: "Supreme Court (since 2009, replaced House of Lords)" },
-        { front: "What is a magistrate?", back: "Volunteer judge (no legal qualification) hears minor criminal cases" },
-        { front: "Scottish courts unique feature", back: "Three possible verdicts: guilty, not guilty, not proven" },
-        { front: "Role of the police", back: "Maintain public order, prevent and investigate crime" }
-      ],
-    },
-    // ===================== 16. BRITAIN & THE WORLD =====================
-    {
-      title: "🌐 16. Britain & the World",
-      cards: [
-        { front: "What is the Commonwealth?", back: "56 independent countries (mostly former British territories), voluntary association" },
-        { front: "When did the UK join the EU?", back: "1973 (then EEC) – left on 31 Jan 2020 (Brexit)" },
-        { front: "UK's permanent seat at?", back: "UN Security Council (one of five veto powers)" },
-        { front: "What is NATO?", back: "North Atlantic Treaty Organization – military alliance, UK founding member 1949" },
-        { front: "The 'Special Relationship'", back: "Close political & military ties between UK and USA" }
-      ],
-    },
-    // ===================== 17. LITERATURE & FAMOUS WRITERS =====================
-    {
-      title: "📖 17. Literature & Writers",
-      cards: [
-        { front: "Jane Austen 📚", back: "Novels: 'Pride and Prejudice', 'Sense and Sensibility'" },
-        { front: "Charles Dickens 🎩", back: "'Oliver Twist', 'Great Expectations', highlighted social inequality" },
-        { front: "Robert Burns 🏴󠁧󠁢󠁳󠁣󠁴󠁿", back: "Scottish poet, 'Auld Lang Syne', Burns Night Jan 25" },
-        { front: "J.K. Rowling ⚡", back: "'Harry Potter' series, one of best-selling authors" },
-        { front: "Who wrote 'The Hobbit'?", back: "J.R.R. Tolkien (Oxford academic)" }
-      ],
-    },
-    // ===================== 18. SPORTS & ICONS =====================
-    {
-      title: "⚽ 18. Sports & Icons",
-      cards: [
-        { front: "Where was football (soccer) codified?", back: "England (Football Association founded 1863)" },
-        { front: "The Wimbledon Championships 🎾", back: "Oldest tennis tournament, held in London since 1877" },
-        { front: "Who is Sir Andy Murray?", back: "Scottish tennis player, won Wimbledon 2013 & 2016" },
-        { front: "The Ashes 🏏", back: "Cricket series between England and Australia" },
-        { front: "The London Marathon 🏃", back: "Annual race since 1981, famous charity event" },
-        { front: "Sir Steve Redgrave", back: "Won 5 consecutive gold medals in Rowing" },
-        { front: "Dame Kelly Holmes", back: "Won 2 gold medals in Running (2004)" },
-        { front: "Rugby origins", back: "Originated in England in the early 19th century" },
-        { front: "Formula 1 stars from the UK", back: "Lewis Hamilton, Jenson Button, Damon Hill" }
-      ],
-    },
-    // ===================== 19. EVERYDAY LIFE & SERVICES =====================
-    {
-      title: "🏡 19. Everyday Life",
-      cards: [
-        { front: "What is the national currency?", back: "Pound sterling (£), divided into 100 pence" },
-        { front: "Typical TV licence fee (colour TV)", back: "£159 per year (funds the BBC, no ads)" },
-        { front: "What is the NHS?", back: "National Health Service – publicly funded healthcare, founded 1948" },
-        { front: "What is the driving age?", back: "17 (16 for mopeds in some areas)" },
-        { front: "The London Eye", back: "Built as part of the UK's celebration of the New Millennium" },
-        { front: "Millennium Projects", back: "The O2 and the London Eye were both Millennium landmarks" }
-      ],
-    },
-    // ===================== 20. LOCAL GOVERNMENT & DEVOLUTION =====================
-    {
-      title: "🏛️ 20. Local Government",
-      cards: [
-        { front: "What is a council?", back: "Local authority responsible for schools, rubbish, housing, planning" },
-        { front: "What is the 'Mayor of London'?", back: "Elected leader of Greater London Authority (since 2000)" },
-        { front: "Which UK nations have devolved parliaments?", back: "Scotland (Scottish Parliament), Wales (Senedd), Northern Ireland (Assembly)" },
-        { front: "What powers does the Scottish Parliament have?", back: "Education, health, justice, some tax powers" },
-        { front: "Number of members in Scottish Parliament", back: "129" },
-        { front: "Number of members in Welsh Senedd", back: "60" }
-      ],
-    },
-    // ===================== 21. MIGRATION & CITIZENSHIP =====================
-    {
-      title: "🛂 21. Migration & Citizenship",
-      cards: [
-        { front: "Life in the UK Test required for?", back: "Indefinite leave to remain or naturalisation as British citizen" },
-        { front: "Passing score for Life in the UK test", back: "75% (18 out of 24 questions correct)" },
-        { front: "What is the 'Indefinite Leave to Remain' (ILR)?", back: "Permanent residence, allows work without visa restrictions" },
-        { front: "How long to qualify for citizenship?", back: "Usually 5 years residence + 12 months with ILR" }
-      ],
-    },
-    // ===================== 22. KEY DATES & QUICK FACTS =====================
-    {
-      title: "📅 22. Key Dates & Quick Facts",
-      cards: [
-        { front: "1066", back: "Battle of Hastings (William the Conqueror)" },
-        { front: "1215", back: "Magna Carta – established that even the King is subject to the law" },
-        { front: "1588", back: "Defeat of the Spanish Armada (Elizabeth I)" },
-        { front: "1688", back: "The Glorious Revolution – guaranteed the power of Parliament over the King" },
-        { front: "1805", back: "Battle of Trafalgar (Admiral Nelson died; statue in Trafalgar Square)" },
-        { front: "1815", back: "Battle of Waterloo (Duke of Wellington defeated Napoleon)" },
-        { front: "1918 & 1928", back: "1918: Women over 30 got the vote\n1928: Women got equal voting rights at 21" },
-        { front: "Skara Brae", back: "Best-preserved prehistoric village in Northern Europe (Orkney, Scotland)" },
-        { front: "Sutton Hoo", back: "Famous Anglo-Saxon burial site (Suffolk, England)" },
-        { front: "National Trust founded", back: "1895" }
-      ],
-    },
-  ];
+  const triggerConfetti = () => {
+    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('premium') === 'true') {
+      localStorage.setItem(PREMIUM_KEY, 'true');
+      setIsPremium(true);
+      triggerConfetti();
+      setTimeout(triggerConfetti, 600);
+      setShowPremiumSuccess(true);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+
+  const handleSubscribe = async () => {
+    try {
+      const response = await fetch('/.netlify/functions/createCheckout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        console.error('Checkout error response:', err);
+        alert(err.error || 'Error starting checkout. Please try again.');
+        return;
+      }
+      const session = await response.json();
+      if (session.url) {
+        window.location.href = session.url;
+      } else {
+        alert('Error starting checkout. Please try again.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Sorry, there was an error. Please contact support.');
+    }
+  };
+
+  const handleRedeemCode = () => {
+    if (redeemCode.trim().toLowerCase() === 'premium2026') {
+      localStorage.setItem(PREMIUM_KEY, 'true');
+      setIsPremium(true);
+      setRedeemError('');
+      setShowPremiumModal(false);
+      triggerConfetti();
+      setTimeout(triggerConfetti, 600);
+      setShowPremiumSuccess(true);
+    } else {
+      setRedeemError('Invalid code. Please contact us to get a valid code.');
+    }
+  };
+
+  // Called by PremiumModal after a successful Stripe email verification
+  const handleRestoreAccess = () => {
+    localStorage.setItem(PREMIUM_KEY, 'true');
+    setIsPremium(true);
+    setShowPremiumModal(false);
+    triggerConfetti();
+    setTimeout(triggerConfetti, 600);
+    setShowPremiumSuccess(true);
+  };
+
+  const handleDownloadCheatSheet = () => {
+    if (!isPremium) {
+      setShowPremiumModal(true);
+      return;
+    }
+
+    const doc = new jsPDF();
+    doc.setFontSize(22);
+    doc.setTextColor(63, 81, 181);
+    doc.text("Life in the UK 2026 - Premium Study Guide", 14, 20);
+    doc.setFontSize(11);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Exclusive offline review material for premium users.", 14, 28);
+    let startY = 35;
+
+    sections.forEach((section, index) => {
+      doc.setFontSize(14);
+      doc.setTextColor(33, 33, 33);
+      doc.text(section.title.replace(/[^\x20-\x7E\n\r]/g, "").trim(), 14, startY);
+      startY += 6;
+      const tableData = section.cards.map(card => [
+        card.front.replace(/[^\x20-\x7E\n\r]/g, "").trim(),
+        card.back.replace(/[^\x20-\x7E\n\r]/g, "").trim()
+      ]);
+      autoTable(doc, {
+        startY: startY,
+        head: [['Topic / Question', 'Answer / Details']],
+        body: tableData,
+        theme: 'striped',
+        headStyles: { fillColor: [63, 81, 181] },
+        styles: { fontSize: 10, cellPadding: 3 },
+        columnStyles: {
+          0: { cellWidth: 70 },
+          1: { cellWidth: 'auto' }
+        },
+        margin: { top: 10 }
+      });
+      startY = doc.lastAutoTable.finalY + 15;
+      if (startY > 260 && index < sections.length - 1) {
+        doc.addPage();
+        startY = 20;
+      }
+    });
+    doc.save("Life_in_the_UK_Cheat_Sheet_2026.pdf");
+  };
 
   const totalCards = sections.reduce((sum, section) => sum + section.cards.length, 0);
 
@@ -330,7 +207,8 @@ export default function App() {
         <header className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK</h1>
           <p className="text-slate-500 font-medium">Master the official test, one flip at a time.</p>
-          <div className="mt-4 flex justify-center gap-4">
+          <p className="text-xs text-slate-400 mt-1">The ultimate study guide for your British Citizenship and ILR 2026 preparation.</p>
+          <div className="mt-4 flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setView("flashcards")}
               className={`px-4 py-2 rounded-full font-medium transition ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
@@ -345,7 +223,30 @@ export default function App() {
             >
               📝 Mock Exams
             </button>
+            <button
+              onClick={handleDownloadCheatSheet}
+              className="px-4 py-2 rounded-full font-medium transition bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
+            >
+              {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
+            </button>
           </div>
+
+          {!isPremium && (
+            <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
+              <p className="text-sm text-slate-700 font-medium mb-1">
+                🚀 Want to pass in 5 days?
+              </p>
+              <p className="text-xs text-slate-500 mb-3">
+                Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
+              </p>
+              <button
+                onClick={() => setShowPremiumModal(true)}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+              >
+                Get 5-Day Guaranteed Path (£7.99)
+              </button>
+            </div>
+          )}
         </header>
 
         {view === "flashcards" ? (
@@ -366,13 +267,47 @@ export default function App() {
               </section>
             ))}
             <footer className="text-center py-10 border-t border-slate-200 text-slate-400 text-sm">
-              🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Keep flipping until it's second nature. Good luck! 🇬🇧
+              🎓 Based on official Life in the UK Handbook (3rd edition) &amp; mock test patterns. Good luck! 🇬🇧
+              <div className="mt-3 flex justify-center gap-4 text-xs">
+                <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-400 hover:text-indigo-600 transition">✉️ Contact Us</a>
+                <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-400 hover:text-indigo-600 transition">🔒 Privacy Policy</button>
+                <button onClick={() => setShowPremiumModal(true)} className="text-indigo-400 hover:text-indigo-600 transition">⭐ Restore Premium</button>
+              </div>
             </footer>
           </>
         ) : (
-          <MockExam onBack={() => setView("flashcards")} />
+          <MockExam
+            onBack={() => setView("flashcards")}
+            isPremium={isPremium}
+            setIsPremium={setIsPremium}
+            onUnlockPremium={() => setShowPremiumModal(true)}
+          />
         )}
+
+        {/* Testimonials shown to everyone at the bottom */}
+        <TestimonialsCarousel />
       </div>
+
+      <PremiumModal
+        isOpen={showPremiumModal}
+        onClose={() => setShowPremiumModal(false)}
+        redeemCode={redeemCode}
+        setRedeemCode={setRedeemCode}
+        redeemError={redeemError}
+        onRedeem={handleRedeemCode}
+        onSubscribe={handleSubscribe}
+        onRestoreAccess={handleRestoreAccess}
+      />
+
+      <PremiumSuccessModal
+        isOpen={showPremiumSuccess}
+        onClose={() => setShowPremiumSuccess(false)}
+      />
+
+      <PrivacyModal
+        isOpen={showPrivacyModal}
+        onClose={() => setShowPrivacyModal(false)}
+      />
     </div>
   );
 }
