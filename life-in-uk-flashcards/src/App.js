@@ -4,6 +4,7 @@ import MockExam from "./MockExam";
 import { sections } from "./studyGuideData";
 import PremiumModal from "./PremiumModal";
 import TestimonialsCarousel from "./TestimonialsCarousel";
+import LazyCardWrapper from "./LazyCardWrapper";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
@@ -259,9 +260,11 @@ export default function App() {
                 <h2 className="text-xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">
                   {section.title}
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {section.cards.map((card, idx) => (
-                    <FlashCard key={idx} card={card} index={idx + i * 100} />
+                    <LazyCardWrapper key={idx}>
+                      <FlashCard card={card} index={idx + i * 100} />
+                    </LazyCardWrapper>
                   ))}
                 </div>
               </section>
