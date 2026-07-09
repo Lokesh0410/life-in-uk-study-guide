@@ -5,6 +5,10 @@ import { sections } from "./studyGuideData";
 import PremiumModal from "./PremiumModal";
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import LazyCardWrapper from "./LazyCardWrapper";
+import Pricing from "./pages/Pricing"; // Import the new Pricing component
+import BritishHistory from "./pages/BritishHistory"; // Import British History landing page
+import GovernmentAndLaw from "./pages/GovernmentAndLaw"; // Import Government and Law landing page
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Import react-router-dom components
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
@@ -120,23 +124,23 @@ const DisclaimerModal = ({ isOpen, onClose }) => {
         </div>
         <div className="text-sm text-gray-600 space-y-4">
           <p>
-            <strong>lifeinukcoach.co.uk</strong> is an independent educational platform 
-            privately owned and operated. This website is <strong>not affiliated with, 
-            endorsed by, or connected to the UK Home Office or the UK Government</strong>.
+            <strong>lifeinukcoach.co.uk</strong> is an independent educational platform
+            privately owned and operated. This website is <strong>not affiliated with,
+              endorsed by, or connected to the UK Home Office or the UK Government</strong>.
           </p>
           <p>
-            The practice questions, study guides, and mock exams provided on this platform 
-            are intended solely for educational preparation purposes. While we strive to 
-            replicate authentic exam conditions, passing these mock exams does not guarantee 
+            The practice questions, study guides, and mock exams provided on this platform
+            are intended solely for educational preparation purposes. While we strive to
+            replicate authentic exam conditions, passing these mock exams does not guarantee
             success on the official Life in the UK test.
           </p>
           <p>
-            <strong>Public Sector Information:</strong> Materials on this website contain 
-            public sector information licensed under the 
+            <strong>Public Sector Information:</strong> Materials on this website contain
+            public sector information licensed under the
             <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">
               Open Government Licence v3.0
-            </a>. 
-            Official test guidelines and registration should always be verified via the official 
+            </a>.
+            Official test guidelines and registration should always be verified via the official
             <a href="https://www.gov.uk" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">GOV.UK portal</a>.
           </p>
           <p className="text-xs text-gray-400 pt-2">Questions? Contact us at <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a></p>
@@ -341,182 +345,201 @@ export default function App() {
   const totalCards = sections.reduce((sum, section) => sum + section.cards.length, 0);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
-      <style>{`
-        .perspective { perspective: 1000px; }
-        .transform-style { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
-      `}</style>
+    <Router>
+      <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
+        <style>{`
+          .perspective { perspective: 1000px; }
+          .transform-style { transform-style: preserve-3d; }
+          .backface-hidden { backface-visibility: hidden; }
+          .rotate-y-180 { transform: rotateY(180deg); }
+        `}</style>
 
-      <div className="max-w-6xl mx-auto">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-2">🇬🇧 Life in the UK</h1>
-          <p className="text-slate-500 font-medium">Master the official test, one flip at a time.</p>
-          <p className="text-xs text-slate-400 mt-1">The ultimate study guide for your British Citizenship and ILR 2026 preparation.</p>
-          <div className="mt-4 flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => setView("flashcards")}
-              className={`px-4 py-2 rounded-full font-medium transition ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
-                }`}
-            >
-              📚 Flashcards
-            </button>
-            <button
-              onClick={() => setView("mockExam")}
-              className={`px-4 py-2 rounded-full font-medium transition ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
-                }`}
-            >
-              📝 Mock Exams
-            </button>
-            <button
-              onClick={handleDownloadCheatSheet}
-              className="px-4 py-2 rounded-full font-medium transition bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
-            >
-              {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
-            </button>
-          </div>
-
-          {!isPremium && (
-            <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
-              <p className="text-sm text-slate-700 font-medium mb-1">
-                🚀 Want to pass in 5 days?
-              </p>
-              <p className="text-xs text-slate-500 mb-3">
-                Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
-              </p>
-              <button
-                onClick={() => setShowPremiumModal(true)}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold text-slate-900 mb-2">✅ Pass Your Life in the UK Test First Time!</h1>
+            <p className="text-slate-700 font-medium">
+              Access 45 realistic mock exams, instant feedback, and a structured study approach.
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              The ultimate online platform for your British Citizenship and ILR 2026 preparation.
+            </p>
+            <nav className="mt-4 flex flex-wrap justify-center gap-4">
+              <Link
+                to="/"
+                className={`px-4 py-2 rounded-full font-medium transition ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                  }`}
+                onClick={() => setView("flashcards")}
               >
-                Get 5-Day Guaranteed Path (£7.99)
+                📚 Flashcards
+              </Link>
+              <Link
+                to="/mock-exams"
+                className={`px-4 py-2 rounded-full font-medium transition ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                  }`}
+                onClick={() => setView("mockExam")}
+              >
+                📝 Mock Exams
+              </Link>
+              <Link
+                to="/pricing"
+                className={`px-4 py-2 rounded-full font-medium transition ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                  }`}
+                onClick={() => setView("pricing")}
+              >
+                ⭐ Pricing
+              </Link>
+              <button
+                onClick={handleDownloadCheatSheet}
+                className="px-4 py-2 rounded-full font-medium transition bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
+              >
+                {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
               </button>
+            </nav>
+
+            {!isPremium && (
+              <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
+                <p className="text-sm text-slate-700 font-medium mb-1">
+                  🚀 Want to pass in 5 days?
+                </p>
+                <p className="text-xs text-slate-500 mb-3">
+                  Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
+                </p>
+                <button
+                  onClick={() => setShowPremiumModal(true)}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+                >
+                  Get 5-Day Guaranteed Path (£7.99)
+                </button>
+              </div>
+            )}
+          </header>
+
+          <Routes>
+            <Route path="/" element={(
+              <>
+                <div className="mb-4 text-center text-sm text-gray-500">
+                  {totalCards} flashcards • Click any card to flip
+                </div>
+                {sections.map((section, i) => {
+                  const readCount = getReadCount(section, i);
+                  const totalCount = section.cards.length;
+                  const isAllRead = readCount === totalCount;
+                  const isCollapsed = !!collapsedSections[i];
+
+                  return (
+                    <section key={i} className="mb-12 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                      <div
+                        onClick={() => handleToggleCollapse(i)}
+                        className="flex justify-between items-center cursor-pointer pb-2 border-b-2 border-slate-100 mb-6 select-none"
+                      >
+                        <div className="flex items-center gap-3">
+                          <h2 className="text-xl font-bold text-slate-800">
+                            {section.title}
+                          </h2>
+                          <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold transition ${isAllRead
+                            ? 'bg-green-100 text-green-800 border border-green-200'
+                            : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
+                            }`}>
+                            {readCount} / {totalCount} read {isAllRead && "🎉"}
+                          </span>
+                        </div>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleCollapse(i);
+                          }}
+                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg border border-indigo-100 shadow-sm"
+                        >
+                          {isCollapsed ? "Expand 📂" : "Collapse 📁"}
+                        </button>
+                      </div>
+
+                      {!isCollapsed && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {section.cards.map((card, idx) => {
+                            const isRead = !!readCards[`${i}-${idx}`];
+                            return (
+                              <LazyCardWrapper key={idx}>
+                                <FlashCard
+                                  card={card}
+                                  index={idx + i * 100}
+                                  isRead={isRead}
+                                  onToggleRead={(isReadVal) => handleToggleRead(i, idx, isReadVal)}
+                                />
+                              </LazyCardWrapper>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </section>
+                  );
+                })}
+              </>
+            )} />
+            <Route path="/mock-exams" element={(
+              <MockExam
+                onBack={() => setView("flashcards")}
+                isPremium={isPremium}
+                setIsPremium={setIsPremium}
+                onUnlockPremium={() => setShowPremiumModal(true)}
+              />
+            )} />
+            <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} />} />
+          </Routes>
+
+          {/* Testimonials shown to everyone at the bottom */}
+          <TestimonialsCarousel />
+
+          {/* Global Footer (shows on all views) */}
+          <footer className="text-center py-10 mt-12 border-t border-slate-200 text-slate-400 text-sm space-y-4">
+            <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Good luck! 🇬🇧</p>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
+              <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help & Support (help@lifeinukcoach.co.uk)</a>
+              <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service & Refund Guarantee</button>
+              <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
+              <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>
+              <button onClick={() => setShowPremiumModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⭐ Restore Premium</button>
             </div>
-          )}
-        </header>
-
-        {view === "flashcards" ? (
-          <>
-            <div className="mb-4 text-center text-sm text-gray-500">
-              {totalCards} flashcards • Click any card to flip
+            <div className="text-[11px] text-slate-400 max-w-2xl mx-auto space-y-2 pt-2 border-t border-slate-100">
+              <p>This website is an independent educational platform. It is <strong>not affiliated with, endorsed by, or connected to the UK Home Office or the UK Government</strong>.</p>
+              <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-500 transition">Open Government Licence v3.0</a>.</p>
             </div>
-            {sections.map((section, i) => {
-              const readCount = getReadCount(section, i);
-              const totalCount = section.cards.length;
-              const isAllRead = readCount === totalCount;
-              const isCollapsed = !!collapsedSections[i];
+          </footer>
+        </div>
 
-              return (
-                <section key={i} className="mb-12 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                  <div 
-                    onClick={() => handleToggleCollapse(i)} 
-                    className="flex justify-between items-center cursor-pointer pb-2 border-b-2 border-slate-100 mb-6 select-none"
-                  >
-                    <div className="flex items-center gap-3">
-                      <h2 className="text-xl font-bold text-slate-800">
-                        {section.title}
-                      </h2>
-                      <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold transition ${
-                        isAllRead 
-                          ? 'bg-green-100 text-green-800 border border-green-200' 
-                          : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
-                      }`}>
-                        {readCount} / {totalCount} read {isAllRead && "🎉"}
-                      </span>
-                    </div>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleToggleCollapse(i);
-                      }}
-                      className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg border border-indigo-100 shadow-sm"
-                    >
-                      {isCollapsed ? "Expand 📂" : "Collapse 📁"}
-                    </button>
-                  </div>
-                  
-                  {!isCollapsed && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {section.cards.map((card, idx) => {
-                        const isRead = !!readCards[`${i}-${idx}`];
-                        return (
-                          <LazyCardWrapper key={idx}>
-                            <FlashCard 
-                              card={card} 
-                              index={idx + i * 100} 
-                              isRead={isRead} 
-                              onToggleRead={(isReadVal) => handleToggleRead(i, idx, isReadVal)}
-                            />
-                          </LazyCardWrapper>
-                        );
-                      })}
-                    </div>
-                  )}
-                </section>
-              );
-            })}
-          </>
-        ) : (
-          <MockExam
-            onBack={() => setView("flashcards")}
-            isPremium={isPremium}
-            setIsPremium={setIsPremium}
-            onUnlockPremium={() => setShowPremiumModal(true)}
-          />
-        )}
+        <PremiumModal
+          isOpen={showPremiumModal}
+          onClose={() => setShowPremiumModal(false)}
+          redeemCode={redeemCode}
+          setRedeemCode={setRedeemCode}
+          redeemError={redeemError}
+          onRedeem={handleRedeemCode}
+          onSubscribe={handleSubscribe}
+          onRestoreAccess={handleRestoreAccess}
+        />
 
-        {/* Testimonials shown to everyone at the bottom */}
-        <TestimonialsCarousel />
+        <PremiumSuccessModal
+          isOpen={showPremiumSuccess}
+          onClose={() => setShowPremiumSuccess(false)}
+        />
 
-        {/* Global Footer (shows on all views) */}
-        <footer className="text-center py-10 mt-12 border-t border-slate-200 text-slate-400 text-sm space-y-4">
-          <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) &amp; mock test patterns. Good luck! 🇬🇧</p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
-            <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help &amp; Support (help@lifeinukcoach.co.uk)</a>
-            <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service &amp; Refund Guarantee</button>
-            <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
-            <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>
-            <button onClick={() => setShowPremiumModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⭐ Restore Premium</button>
-          </div>
-          <div className="text-[11px] text-slate-400 max-w-2xl mx-auto space-y-2 pt-2 border-t border-slate-100">
-            <p>This website is an independent educational platform. It is <strong>not affiliated with, endorsed by, or connected to the UK Home Office or the UK Government</strong>.</p>
-            <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-500 transition">Open Government Licence v3.0</a>.</p>
-          </div>
-        </footer>
+        <PrivacyModal
+          isOpen={showPrivacyModal}
+          onClose={() => setShowPrivacyModal(false)}
+        />
+
+        <TermsModal
+          isOpen={showTermsModal}
+          onClose={() => setShowTermsModal(false)}
+        />
+
+        <DisclaimerModal
+          isOpen={showDisclaimerModal}
+          onClose={() => setShowDisclaimerModal(false)}
+        />
+
+        <CookieBanner />
       </div>
-
-      <PremiumModal
-        isOpen={showPremiumModal}
-        onClose={() => setShowPremiumModal(false)}
-        redeemCode={redeemCode}
-        setRedeemCode={setRedeemCode}
-        redeemError={redeemError}
-        onRedeem={handleRedeemCode}
-        onSubscribe={handleSubscribe}
-        onRestoreAccess={handleRestoreAccess}
-      />
-
-      <PremiumSuccessModal
-        isOpen={showPremiumSuccess}
-        onClose={() => setShowPremiumSuccess(false)}
-      />
-
-      <PrivacyModal
-        isOpen={showPrivacyModal}
-        onClose={() => setShowPrivacyModal(false)}
-      />
-
-      <TermsModal
-        isOpen={showTermsModal}
-        onClose={() => setShowTermsModal(false)}
-      />
-
-      <DisclaimerModal
-        isOpen={showDisclaimerModal}
-        onClose={() => setShowDisclaimerModal(false)}
-      />
-
-      <CookieBanner />
-    </div>
+    </Router>
   );
 }

@@ -15,10 +15,10 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
             onToggleRead(!isRead);
             return;
         }
-        
+
         const newFlip = !flip;
         setFlip(newFlip);
-        
+
         // Auto-mark as read when flipped to show answer
         if (newFlip && !isRead) {
             onToggleRead(true);
@@ -31,7 +31,7 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
                 {/* FRONT */}
                 <div className={`absolute w-full h-full backface-hidden rounded-2xl shadow-sm border border-slate-200/60 p-5 flex flex-col justify-center items-center text-center ${pastelColors[index % pastelColors.length]}`}>
                     {/* Read Checkbox (Front) */}
-                    <button 
+                    <button
                         type="button"
                         className="read-toggle absolute top-3 right-3 text-slate-500 hover:text-indigo-600 transition p-1"
                         title={isRead ? "Mark as unread" : "Mark as read"}
@@ -50,7 +50,7 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
                 {/* BACK */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl shadow-md p-5 flex flex-col justify-between items-center text-center bg-white border-2 border-indigo-200">
                     {/* Read Checkbox (Back) */}
-                    <button 
+                    <button
                         type="button"
                         className="read-toggle absolute top-3 right-3 text-slate-500 hover:text-indigo-600 transition p-1"
                         title={isRead ? "Mark as unread" : "Mark as read"}
@@ -73,6 +73,14 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
                         <p className="text-sm font-bold text-indigo-950 whitespace-pre-line leading-snug">
                             {card.back}
                         </p>
+                        {card.image && (
+                            <img
+                                src={process.env.PUBLIC_URL + card.image}
+                                alt={card.imageAlt || ""}
+                                loading="lazy"
+                                className="w-12 h-12 mx-auto mt-4"
+                            />
+                        )}
                     </div>
 
                     <span className="text-[9px] opacity-35 uppercase tracking-wider font-semibold">Click to Flip Back</span>
