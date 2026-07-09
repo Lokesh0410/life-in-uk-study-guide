@@ -485,6 +485,8 @@ export default function App() {
               />
             )} />
             <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} />} />
+            <Route path="/study-guide/british-history" element={<BritishHistory />} />
+            <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
           </Routes>
 
           {/* Testimonials shown to everyone at the bottom */}

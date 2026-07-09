@@ -165,7 +165,7 @@ export const sections = [
     cards: [
       { front: "Flowers & Nations 🌼", back: "ENG: Rose | SCO: Thistle\nWAL: Daffodil | NI: Shamrock" },
       { front: "Patron Saint Dates 📅", back: "Mar 1: David | Mar 17: Patrick\nApr 23: George | Nov 30: Andrew" },
-      { front: "The Union Flag 🇬🇧", back: "Crosses of St George,\nSt Andrew, and St Patrick\n(Wales is NOT on the flag)" },
+      { front: "The Union Flag 🇬🇧", back: "Crosses of St George,\nSt Andrew, and St Patrick\n(Wales is NOT on the flag)", image: "/flags/union-flag.svg", imageAlt: "The Union Flag showing crosses of St George, St Andrew and St Patrick" },
       { front: "National Anthem of the UK", back: "'God Save the King'" },
       { front: "Official animal of Scotland", back: "The Unicorn (symbol of purity and power)" },
       { front: "Prince William's current title", back: "The Prince of Wales" }
