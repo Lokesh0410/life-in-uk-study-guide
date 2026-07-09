@@ -22,7 +22,7 @@ const Pricing = ({ onUnlockPremium }) => {
                         </div>
                         <ul className="text-left text-slate-700 space-y-3 flex-grow mb-8">
                             <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> Access to all Study Flashcards</li>
-                            <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> 1 Free Mock Exam</li>
+                            <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> 3 Free Mock Exam</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No Performance Dashboard</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No Downloadable Cheat Sheet</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No 5-Day Guaranteed Pass Path</li>
