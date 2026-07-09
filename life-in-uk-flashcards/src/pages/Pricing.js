@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Pricing = ({ onUnlockPremium }) => {
+const Pricing = ({ onUnlockPremium, isPremium }) => {
     return (
         <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
@@ -11,6 +11,22 @@ const Pricing = ({ onUnlockPremium }) => {
                 <p className="text-xl text-slate-600 mb-12">
                     Choose the plan that's right for your Life in the UK test preparation.
                 </p>
+
+                {isPremium && (
+                    <div className="mb-8 bg-green-50 border-2 border-green-200 rounded-2xl p-6 max-w-lg mx-auto">
+                        <div className="text-4xl mb-2">🎉</div>
+                        <h3 className="text-xl font-bold text-green-800 mb-1">You're a Premium Member!</h3>
+                        <p className="text-green-700 text-sm">
+                            You have full access to all 45 mock exams, performance dashboard, and the offline cheat sheet.
+                        </p>
+                        <Link
+                            to="/mock-exams"
+                            className="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-sm"
+                        >
+                            Go to Mock Exams 🚀
+                        </Link>
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Free Tier */}
@@ -36,7 +52,7 @@ const Pricing = ({ onUnlockPremium }) => {
                     </div>
 
                     {/* Premium Tier */}
-                    <div className="bg-indigo-700 text-white rounded-2xl shadow-xl p-8 flex flex-col transform scale-105 border-2 border-indigo-400">
+                    <div className={`rounded-2xl shadow-xl p-8 flex flex-col border-2 ${isPremium ? 'bg-green-700 text-white border-green-400 transform scale-105' : 'bg-indigo-700 text-white border-indigo-400 transform scale-105'}`}>
                         <h3 className="text-2xl font-bold mb-4">Premium Tier</h3>
                         <p className="text-indigo-200 mb-6">Unlock everything you need to pass first time.</p>
                         <div className="text-5xl font-extrabold mb-6">
@@ -49,12 +65,18 @@ const Pricing = ({ onUnlockPremium }) => {
                             <li className="flex items-center"><span className="text-green-300 mr-2">✔</span> Downloadable Offline Cheat Sheet</li>
                             <li className="flex items-center"><span className="text-green-300 mr-2">✔</span> 5-Day Guaranteed Pass Path</li>
                         </ul>
-                        <button
-                            onClick={onUnlockPremium}
-                            className="w-full bg-yellow-400 text-indigo-900 py-3 rounded-xl font-bold transition hover:bg-yellow-300 shadow-lg"
-                        >
-                            Get Premium Access Now
-                        </button>
+                        {isPremium ? (
+                            <div className="w-full bg-green-500 text-white py-3 rounded-xl font-bold text-center shadow-lg cursor-default">
+                                ✅ Already Unlocked
+                            </div>
+                        ) : (
+                            <button
+                                onClick={onUnlockPremium}
+                                className="w-full bg-yellow-400 text-indigo-900 py-3 rounded-xl font-bold transition hover:bg-yellow-300 shadow-lg"
+                            >
+                                Get Premium Access Now
+                            </button>
+                        )}
                     </div>
                 </div>
 

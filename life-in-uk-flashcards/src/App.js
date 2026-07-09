@@ -484,7 +484,7 @@ export default function App() {
                 onUnlockPremium={() => setShowPremiumModal(true)}
               />
             )} />
-            <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} />} />
+            <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
             <Route path="/study-guide/british-history" element={<BritishHistory />} />
             <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
           </Routes>
