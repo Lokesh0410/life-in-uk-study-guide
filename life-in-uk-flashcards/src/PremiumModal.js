@@ -59,6 +59,10 @@ const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError,
                     </li>
                     <li className="flex items-start">
                         <span className="text-green-500 mr-2">✓</span>
+                        <span><strong>100% Pass Guarantee</strong> – Pass your exam, or get a 100% refund (qualify by passing all 45 mock tests)</span>
+                    </li>
+                    <li className="flex items-start">
+                        <span className="text-green-500 mr-2">✓</span>
                         <span><strong>Priority support & offline PDF guides</strong></span>
                     </li>
                 </ul>

@@ -74,12 +74,113 @@ const PrivacyModal = ({ isOpen, onClose }) => {
   );
 };
 
+// Terms of Service modal
+const TermsModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl max-h-[85vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-slate-800">Terms of Service & Refund Policy</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+        </div>
+        <div className="text-sm text-gray-600 space-y-4">
+          <p><strong>Last updated: July 2026</strong></p>
+          <p>Welcome to <strong>Life in the UK Test Coach</strong> ("we", "us", "our"). By purchasing or using our services, you agree to these terms.</p>
+          <h4 className="font-semibold text-gray-800">1. Digital Content & Access</h4>
+          <p>Upon payment of the £7.99 premium fee, you are granted immediate, non-transferable access to advanced mock exams, offline cheat sheets, and personal metrics. This is a one-time charge with no recurring fees.</p>
+          <h4 className="font-semibold text-gray-800">2. Refund & Pass Guarantee Policy</h4>
+          <p>We stand by our material. We offer a <strong>100% Pass Guarantee</strong> under the following conditions:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>You must have completed and passed all 45 mock tests available on our platform prior to your official test date.</li>
+            <li>If you still fail the official Life in the UK test, we will issue a full refund of your £7.99 purchase fee.</li>
+            <li>To claim, email a copy of your official Home Office fail notification along with your purchase email address to <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a> within 90 days of purchase.</li>
+          </ul>
+          <h4 className="font-semibold text-gray-800">3. Intellectual Property & License Limitation</h4>
+          <p>All test questions, system scripts, design assets, and compiled PDFs are intellectual property of our platform. Users may download files solely for personal educational use. Commercial redistribution or sharing account access is prohibited.</p>
+          <h4 className="font-semibold text-gray-800">4. Limitation of Liability</h4>
+          <p>We provide prep resources. Passing our mock exams does not guarantee passing the official Government test. We are not responsible for any official exam rescheduling fees or application costs.</p>
+          <p className="text-xs text-gray-400 pt-2">Questions? Contact us at <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a></p>
+        </div>
+        <button onClick={onClose} className="mt-6 w-full bg-slate-100 text-slate-700 py-2 rounded-lg hover:bg-slate-200 transition font-medium">Close</button>
+      </div>
+    </div>
+  );
+};
+
+// Legal Disclaimer modal
+const DisclaimerModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl max-h-[85vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-slate-800">Legal Disclaimer & Copyright Notice</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+        </div>
+        <div className="text-sm text-gray-600 space-y-4">
+          <p>
+            <strong>lifeinukcoach.co.uk</strong> is an independent educational platform 
+            privately owned and operated. This website is <strong>not affiliated with, 
+            endorsed by, or connected to the UK Home Office or the UK Government</strong>.
+          </p>
+          <p>
+            The practice questions, study guides, and mock exams provided on this platform 
+            are intended solely for educational preparation purposes. While we strive to 
+            replicate authentic exam conditions, passing these mock exams does not guarantee 
+            success on the official Life in the UK test.
+          </p>
+          <p>
+            <strong>Public Sector Information:</strong> Materials on this website contain 
+            public sector information licensed under the 
+            <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">
+              Open Government Licence v3.0
+            </a>. 
+            Official test guidelines and registration should always be verified via the official 
+            <a href="https://www.gov.uk" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">GOV.UK portal</a>.
+          </p>
+          <p className="text-xs text-gray-400 pt-2">Questions? Contact us at <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline">help@lifeinukcoach.co.uk</a></p>
+        </div>
+        <button onClick={onClose} className="mt-6 w-full bg-slate-100 text-slate-700 py-2 rounded-lg hover:bg-slate-200 transition font-medium">Close</button>
+      </div>
+    </div>
+  );
+};
+
+// Cookie Notice Banner
+const CookieBanner = () => {
+  const [visible, setVisible] = useState(() => !localStorage.getItem("lifeInUkCookieAccepted"));
+
+  if (!visible) return null;
+
+  const accept = () => {
+    localStorage.setItem("lifeInUkCookieAccepted", "true");
+    setVisible(false);
+  };
+
+  return (
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md bg-slate-900 text-white p-4 rounded-xl shadow-2xl z-50 border border-slate-800 flex flex-col gap-3">
+      <p className="text-xs leading-relaxed text-slate-300">
+        🍪 We use essential browser local storage to save your flashcard learning status, completed mock exam history, and premium license activation. No tracking cookies are used.
+      </p>
+      <div className="flex justify-end">
+        <button onClick={accept} className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition">
+          Accept &amp; Continue
+        </button>
+      </div>
+    </div>
+  );
+};
+
+
 export default function App() {
   const [view, setView] = useState("flashcards"); // "flashcards" or "mockExam"
   const [isPremium, setIsPremium] = useState(() => localStorage.getItem(PREMIUM_KEY) === "true");
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showPremiumSuccess, setShowPremiumSuccess] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
   const [redeemCode, setRedeemCode] = useState("");
   const [redeemError, setRedeemError] = useState("");
 
@@ -354,14 +455,6 @@ export default function App() {
                 </section>
               );
             })}
-            <footer className="text-center py-10 border-t border-slate-200 text-slate-400 text-sm">
-              🎓 Based on official Life in the UK Handbook (3rd edition) &amp; mock test patterns. Good luck! 🇬🇧
-              <div className="mt-3 flex justify-center gap-4 text-xs">
-                <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-400 hover:text-indigo-600 transition">✉️ Contact Us</a>
-                <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-400 hover:text-indigo-600 transition">🔒 Privacy Policy</button>
-                <button onClick={() => setShowPremiumModal(true)} className="text-indigo-400 hover:text-indigo-600 transition">⭐ Restore Premium</button>
-              </div>
-            </footer>
           </>
         ) : (
           <MockExam
@@ -374,6 +467,22 @@ export default function App() {
 
         {/* Testimonials shown to everyone at the bottom */}
         <TestimonialsCarousel />
+
+        {/* Global Footer (shows on all views) */}
+        <footer className="text-center py-10 mt-12 border-t border-slate-200 text-slate-400 text-sm space-y-4">
+          <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) &amp; mock test patterns. Good luck! 🇬🇧</p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
+            <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help &amp; Support (help@lifeinukcoach.co.uk)</a>
+            <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service &amp; Refund Guarantee</button>
+            <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
+            <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>
+            <button onClick={() => setShowPremiumModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⭐ Restore Premium</button>
+          </div>
+          <div className="text-[11px] text-slate-400 max-w-2xl mx-auto space-y-2 pt-2 border-t border-slate-100">
+            <p>This website is an independent educational platform. It is <strong>not affiliated with, endorsed by, or connected to the UK Home Office or the UK Government</strong>.</p>
+            <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-500 transition">Open Government Licence v3.0</a>.</p>
+          </div>
+        </footer>
       </div>
 
       <PremiumModal
@@ -396,6 +505,18 @@ export default function App() {
         isOpen={showPrivacyModal}
         onClose={() => setShowPrivacyModal(false)}
       />
+
+      <TermsModal
+        isOpen={showTermsModal}
+        onClose={() => setShowTermsModal(false)}
+      />
+
+      <DisclaimerModal
+        isOpen={showDisclaimerModal}
+        onClose={() => setShowDisclaimerModal(false)}
+      />
+
+      <CookieBanner />
     </div>
   );
 }

@@ -1,3 +1,23 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Allow all standard search engines
 User-agent: *
 Disallow:
+
+# Explicitly allow AI crawlers for Generative Engine Optimisation (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://lifeinukcoach.co.uk/sitemap.xml
