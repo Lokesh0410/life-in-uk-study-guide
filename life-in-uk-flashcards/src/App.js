@@ -83,6 +83,50 @@ export default function App() {
   const [redeemCode, setRedeemCode] = useState("");
   const [redeemError, setRedeemError] = useState("");
 
+  // Tracking read flashcards (key: 'sectionIndex-cardIndex')
+  const [readCards, setReadCards] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("lifeInUkReadCards") || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  // Tracking collapsed flashcard categories
+  const [collapsedSections, setCollapsedSections] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("lifeInUkCollapsedSections") || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  const handleToggleRead = (sectionIdx, cardIdx, isReadVal) => {
+    const key = `${sectionIdx}-${cardIdx}`;
+    const newReadCards = { ...readCards };
+    if (isReadVal) {
+      newReadCards[key] = true;
+    } else {
+      delete newReadCards[key];
+    }
+    setReadCards(newReadCards);
+    localStorage.setItem("lifeInUkReadCards", JSON.stringify(newReadCards));
+  };
+
+  const handleToggleCollapse = (sectionIdx) => {
+    const newCollapsed = { ...collapsedSections };
+    newCollapsed[sectionIdx] = !newCollapsed[sectionIdx];
+    setCollapsedSections(newCollapsed);
+    localStorage.setItem("lifeInUkCollapsedSections", JSON.stringify(newCollapsed));
+  };
+
+  const getReadCount = (section, sectionIdx) => {
+    return section.cards.reduce((sum, _, cardIdx) => {
+      return sum + (readCards[`${sectionIdx}-${cardIdx}`] ? 1 : 0);
+    }, 0);
+  };
+
+
   const triggerConfetti = () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
   };
@@ -255,20 +299,61 @@ export default function App() {
             <div className="mb-4 text-center text-sm text-gray-500">
               {totalCards} flashcards • Click any card to flip
             </div>
-            {sections.map((section, i) => (
-              <section key={i} className="mb-12">
-                <h2 className="text-xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">
-                  {section.title}
-                </h2>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {section.cards.map((card, idx) => (
-                    <LazyCardWrapper key={idx}>
-                      <FlashCard card={card} index={idx + i * 100} />
-                    </LazyCardWrapper>
-                  ))}
-                </div>
-              </section>
-            ))}
+            {sections.map((section, i) => {
+              const readCount = getReadCount(section, i);
+              const totalCount = section.cards.length;
+              const isAllRead = readCount === totalCount;
+              const isCollapsed = !!collapsedSections[i];
+
+              return (
+                <section key={i} className="mb-12 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                  <div 
+                    onClick={() => handleToggleCollapse(i)} 
+                    className="flex justify-between items-center cursor-pointer pb-2 border-b-2 border-slate-100 mb-6 select-none"
+                  >
+                    <div className="flex items-center gap-3">
+                      <h2 className="text-xl font-bold text-slate-800">
+                        {section.title}
+                      </h2>
+                      <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold transition ${
+                        isAllRead 
+                          ? 'bg-green-100 text-green-800 border border-green-200' 
+                          : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
+                      }`}>
+                        {readCount} / {totalCount} read {isAllRead && "🎉"}
+                      </span>
+                    </div>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleToggleCollapse(i);
+                      }}
+                      className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg border border-indigo-100 shadow-sm"
+                    >
+                      {isCollapsed ? "Expand 📂" : "Collapse 📁"}
+                    </button>
+                  </div>
+                  
+                  {!isCollapsed && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {section.cards.map((card, idx) => {
+                        const isRead = !!readCards[`${i}-${idx}`];
+                        return (
+                          <LazyCardWrapper key={idx}>
+                            <FlashCard 
+                              card={card} 
+                              index={idx + i * 100} 
+                              isRead={isRead} 
+                              onToggleRead={(isReadVal) => handleToggleRead(i, idx, isReadVal)}
+                            />
+                          </LazyCardWrapper>
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
+              );
+            })}
             <footer className="text-center py-10 border-t border-slate-200 text-slate-400 text-sm">
               🎓 Based on official Life in the UK Handbook (3rd edition) &amp; mock test patterns. Good luck! 🇬🇧
               <div className="mt-3 flex justify-center gap-4 text-xs">

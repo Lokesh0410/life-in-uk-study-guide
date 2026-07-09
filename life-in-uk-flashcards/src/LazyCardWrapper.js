@@ -7,14 +7,10 @@ export default function LazyCardWrapper({ children }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Once loaded, we can disconnect to avoid re-triggering overhead
-          observer.disconnect();
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
-        rootMargin: "300px 0px", // Load card 300px before it enters the viewport
+        rootMargin: "400px 0px", // Load card before it enters the viewport
       }
     );
 
@@ -28,15 +24,14 @@ export default function LazyCardWrapper({ children }) {
     };
   }, []);
 
-  if (!isVisible) {
-    // Render a lightweight, blank placeholder card of the same height (h-56)
-    return (
-      <div 
-        ref={placeholderRef} 
-        className="h-56 rounded-2xl bg-gray-100/50 border border-gray-100 animate-pulse"
-      />
-    );
-  }
-
-  return children;
+  // We always render the outer div with placeholderRef so that the observer can track it
+  return (
+    <div ref={placeholderRef} className="h-56">
+      {isVisible ? (
+        children
+      ) : (
+        <div className="w-full h-full rounded-2xl bg-slate-100/50 border border-slate-100 animate-pulse" />
+      )}
+    </div>
+  );
 }
