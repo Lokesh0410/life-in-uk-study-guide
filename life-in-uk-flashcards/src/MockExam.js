@@ -93,7 +93,7 @@ const ExitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
 //     return Math.min(100, Math.round(rawScore));
 // };
 
-export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium }) {
+export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium, onResultsUpdate }) {
     const [showExitModal, setShowExitModal] = useState(false);
     const exitCallbackRef = React.useRef(null);
     const [selectedExam, setSelectedExam] = useState(null);
@@ -207,7 +207,9 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
         const updatedResults = [...allResults, newResult];
         setAllResults(updatedResults);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedResults));
-    }, [submitted, selectedExam, answers, allResults, confettiTriggered]);
+        // Notify parent component (App.js) so ProgressGraph updates
+        if (onResultsUpdate) onResultsUpdate(updatedResults);
+    }, [submitted, selectedExam, answers, allResults, confettiTriggered, onResultsUpdate]);
 
     useEffect(() => {
         if (!timerActive || submitted || examFinished) return;
@@ -508,14 +510,28 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
                     {Array.from({ length: 45 }).map((_, index) => {
                         const exam = mockExams[index];
                         const isLocked = !isPremium && index >= 3;
+                        // Check if this exam has been completed before
+                        const completedResult = allResults.find(r => r.examId === (exam ? exam.id : index));
                         return (
                             <div key={index} className={`bg-white rounded-xl shadow-md p-6 border border-gray-200 transition ${isLocked ? 'opacity-75 bg-gray-50' : 'hover:shadow-lg'}`}>
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="text-xl font-bold">{exam ? exam.title : `Practice Exam ${index + 1}`}</h3>
-                                    {isLocked && <span className="text-gray-400 text-xl" title="Premium Required">🔒</span>}
+                                    <div className="flex items-center gap-2">
+                                        {completedResult && (
+                                            <span className={`text-xs font-bold px-2 py-1 rounded-full ${completedResult.score >= 75 ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+                                                {completedResult.score}%
+                                            </span>
+                                        )}
+                                        {isLocked && <span className="text-gray-400 text-xl" title="Premium Required">🔒</span>}
+                                    </div>
                                 </div>
                                 <p className="text-gray-500 mb-4">24 questions • 45 minutes</p>
-                                <button 
+                                {completedResult && (
+                                    <p className="text-xs text-gray-400 mb-2">
+                                        ✅ Completed {new Date(completedResult.date).toLocaleDateString('en-GB')} • {completedResult.correctCount}/{completedResult.totalQuestions} correct
+                                    </p>
+                                )}
+                                <button
                                     onClick={() => {
                                         if (isLocked) {
                                             onUnlockPremium();
@@ -524,10 +540,10 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
                                         } else {
                                             alert("This exam is coming soon! Our team is adding it shortly.");
                                         }
-                                    }} 
-                                    className={`w-full px-4 py-2 rounded-lg transition font-medium ${isLocked ? 'bg-gray-200 text-gray-700 hover:bg-gray-300' : 'bg-indigo-600 text-white hover:bg-indigo-700'}`}
+                                    }}
+                                    className={`w-full px-4 py-2 rounded-lg transition font-medium ${isLocked ? 'bg-gray-200 text-gray-700 hover:bg-gray-300' : completedResult ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-indigo-600 text-white hover:bg-indigo-700'}`}
                                 >
-                                    {isLocked ? 'Unlock Premium' : 'Start Exam'}
+                                    {isLocked ? 'Unlock Premium' : completedResult ? '🔄 Retake Exam' : 'Start Exam'}
                                 </button>
                             </div>
                         );

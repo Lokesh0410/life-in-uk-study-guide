@@ -5,9 +5,12 @@ import { sections } from "./studyGuideData";
 import PremiumModal from "./PremiumModal";
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import LazyCardWrapper from "./LazyCardWrapper";
-import Pricing from "./pages/Pricing"; // Import the new Pricing component
-import BritishHistory from "./pages/BritishHistory"; // Import British History landing page
-import GovernmentAndLaw from "./pages/GovernmentAndLaw"; // Import Government and Law landing page
+import Pricing from "./pages/Pricing";
+import BritishHistory from "./pages/BritishHistory";
+import GovernmentAndLaw from "./pages/GovernmentAndLaw";
+import QuickFireChallenge from "./QuickFireChallenge";
+import TestDatePicker from "./TestDatePicker";
+import ProgressGraph from "./ProgressGraph";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Import react-router-dom components
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -187,6 +190,14 @@ export default function App() {
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false);
   const [redeemCode, setRedeemCode] = useState("");
   const [redeemError, setRedeemError] = useState("");
+  const [showQuickFire, setShowQuickFire] = useState(false);
+  const [mockResults, setMockResults] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("lifeInUkMockResults") || "[]");
+    } catch {
+      return [];
+    }
+  });
 
   // Tracking read flashcards (key: 'sectionIndex-cardIndex')
   const [readCards, setReadCards] = useState(() => {
@@ -389,12 +400,22 @@ export default function App() {
                 ⭐ Pricing
               </Link>
               <button
+                onClick={() => setShowQuickFire(true)}
+                className="px-4 py-2 rounded-full font-medium transition bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
+              >
+                ⚡ Quick-Fire
+              </button>
+              <button
                 onClick={handleDownloadCheatSheet}
                 className="px-4 py-2 rounded-full font-medium transition bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
               >
                 {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
               </button>
             </nav>
+
+            <div className="mt-4 flex flex-wrap justify-center gap-3 items-center">
+              <TestDatePicker />
+            </div>
 
             {!isPremium && (
               <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
@@ -417,10 +438,41 @@ export default function App() {
           <Routes>
             <Route path="/" element={(
               <>
+                {/* Progress Graph for free users (sneak peek) */}
+                {mockResults.length >= 2 && (
+                  <div className="mb-8 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-bold text-slate-800">📈 Your Progress</h3>
+                      {!isPremium && (
+                        <button
+                          onClick={() => setShowPremiumModal(true)}
+                          className="text-xs text-indigo-600 hover:text-indigo-800 font-medium underline"
+                        >
+                          Unlock full analytics 🔒
+                        </button>
+                      )}
+                    </div>
+                    <div className="flex flex-col md:flex-row items-center gap-4">
+                      <div className="w-full max-w-xs">
+                        <ProgressGraph results={mockResults} maxResults={5} />
+                      </div>
+                      <div className="text-sm text-slate-600 space-y-1">
+                        <p>📊 Last {Math.min(mockResults.length, 5)} exams</p>
+                        <p>🏆 Best: <strong>{Math.max(...mockResults.map(r => r.score))}%</strong></p>
+                        <p>📈 Average: <strong>{(mockResults.reduce((s, r) => s + r.score, 0) / mockResults.length).toFixed(1)}%</strong></p>
+                        {!isPremium && (
+                          <p className="text-xs text-amber-600 mt-2">⭐ Premium unlocks detailed analytics, confidence score & study plan</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="mb-4 text-center text-sm text-gray-500">
-                  {totalCards} flashcards • Click any card to flip
+                  📚 Browse all flashcards by topic below • Click any card to flip
                 </div>
                 {sections.map((section, i) => {
+
                   const readCount = getReadCount(section, i);
                   const totalCount = section.cards.length;
                   const isAllRead = readCount === totalCount;
@@ -482,6 +534,7 @@ export default function App() {
                 isPremium={isPremium}
                 setIsPremium={setIsPremium}
                 onUnlockPremium={() => setShowPremiumModal(true)}
+                onResultsUpdate={(results) => setMockResults(results)}
               />
             )} />
             <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
@@ -541,6 +594,10 @@ export default function App() {
         />
 
         <CookieBanner />
+
+        {showQuickFire && (
+          <QuickFireChallenge onClose={() => setShowQuickFire(false)} />
+        )}
       </div>
     </Router>
   );
