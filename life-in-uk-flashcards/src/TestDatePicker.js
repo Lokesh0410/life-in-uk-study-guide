@@ -7,8 +7,9 @@ const TestDatePicker = () => {
     const [showModal, setShowModal] = useState(false);
     const [hasDate, setHasDate] = useState(() => !!localStorage.getItem(STORAGE_KEY));
     const [testDate, setTestDate] = useState(() => localStorage.getItem(STORAGE_KEY) || '');
-    const [step, setStep] = useState('ask'); // 'ask' | 'pick' | 'done' | 'notYet'
+    const [step, setStep] = useState('ask'); // 'ask' | 'pick' | 'done' | 'notYet' | 'warning'
     const [daysLeft, setDaysLeft] = useState(0);
+    const [warningMessage, setWarningMessage] = useState('');
 
     // Recalculate days left
     useEffect(() => {
@@ -22,11 +23,13 @@ const TestDatePicker = () => {
         if (!testDate) return;
         const diff = Math.ceil((new Date(testDate) - new Date()) / (1000 * 60 * 60 * 24));
         if (diff < 0) {
-            alert('Test date cannot be in the past. Please select a future date.');
+            setWarningMessage('Test date cannot be in the past. Please select a future date.');
+            setStep('warning');
             return;
         }
         if (diff > 365) {
-            alert('You have selected a date more than 1 year away. Please check if this is correct, or select a closer date.');
+            setWarningMessage('You have selected a date more than 1 year away. Please check if this is correct, or select a closer date.');
+            setStep('warning');
             return;
         }
         localStorage.setItem(STORAGE_KEY, testDate);
@@ -186,6 +189,28 @@ const TestDatePicker = () => {
                                         className={`flex-1 py-3 rounded-xl font-bold transition shadow-md ${testDate ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
                                     >
                                         Save Date
+                                    </button>
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {step === 'warning' && (
+                            <div className="text-center">
+                                <div className="text-4xl mb-3">⚠️</div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-2">Please Check Your Date</h3>
+                                <p className="text-slate-600 mb-6">{warningMessage}</p>
+                                <div className="flex gap-3">
+                                    <button
+                                        onClick={() => setStep('pick')}
+                                        className="flex-1 bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-md"
+                                    >
+                                        Go Back & Fix
                                     </button>
                                     <button
                                         onClick={() => setShowModal(false)}

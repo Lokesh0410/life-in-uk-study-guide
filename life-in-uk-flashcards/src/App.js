@@ -353,8 +353,6 @@ export default function App() {
     doc.save("Life_in_the_UK_Cheat_Sheet_2026.pdf");
   };
 
-  const totalCards = sections.reduce((sum, section) => sum + section.cards.length, 0);
-
   return (
     <Router>
       <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">

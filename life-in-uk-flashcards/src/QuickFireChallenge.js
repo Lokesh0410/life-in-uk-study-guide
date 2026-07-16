@@ -129,8 +129,16 @@ const QuickFireChallenge = ({ onClose }) => {
         const prevEntry = history[history.length - 1];
         setHistory(prev => prev.slice(0, -1));
         setCurrentIndex(prev => prev - 1);
-        setAnswered(null);
-        setIsCorrect(null);
+        // Restore the previous question's answer state from history
+        // The previous entry in history (if any) tells us what was answered before
+        if (history.length >= 2) {
+            const prevPrevEntry = history[history.length - 2];
+            setAnswered(prevPrevEntry.chosen);
+            setIsCorrect(prevPrevEntry.isCorrect);
+        } else {
+            setAnswered(null);
+            setIsCorrect(null);
+        }
         // Undo score if it was correct
         if (prevEntry.isCorrect) {
             setScore(prev => Math.max(0, prev - 1));
@@ -245,39 +253,55 @@ const QuickFireChallenge = ({ onClose }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden">
-                {/* Top bar: timer + score + streak */}
-                <div className="bg-slate-900 text-white px-5 py-3 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <svg width="44" height="44" className="transform -rotate-90">
-                            <circle cx="22" cy="22" r={ringRadius} fill="none" stroke="#374151" strokeWidth="5" />
-                            <circle cx="22" cy="22" r={ringRadius} fill="none" stroke={ringColor} strokeWidth="5"
+                {/* Top bar: timer + score + streak - better spaced */}
+                <div className="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <svg width="52" height="52" className="transform -rotate-90">
+                            <circle cx="26" cy="26" r={ringRadius} fill="none" stroke="#374151" strokeWidth="5" />
+                            <circle cx="26" cy="26" r={ringRadius} fill="none" stroke={ringColor} strokeWidth="5"
                                 strokeDasharray={ringCircumference}
                                 strokeDashoffset={ringCircumference - ringProgress}
                                 strokeLinecap="round"
                                 className="transition-all duration-1000 ease-linear"
                             />
-                            <text x="22" y="22" textAnchor="middle" dominantBaseline="central" fill="white" fontSize="14" fontWeight="bold">
+                            <text x="26" y="26" textAnchor="middle" dominantBaseline="central" fill="white" fontSize="15" fontWeight="bold">
                                 {formatTime(timeLeft)}
                             </text>
                         </svg>
+                        <div className="text-left">
+                            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Question</p>
+                            <p className="text-lg font-bold">{currentIndex + 1}/{Math.min(questions.length, 50)}</p>
+                        </div>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-6">
                         <div className="text-center">
-                            <p className="text-xs text-slate-400">Score</p>
+                            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Score</p>
                             <p className="text-xl font-bold">{score}</p>
                         </div>
                         <div className="text-center">
-                            <p className="text-xs text-slate-400">Streak</p>
+                            <p className="text-[10px] text-slate-400 uppercase tracking-wider">Streak</p>
                             <p className="text-xl font-bold">{streak > 0 ? `🔥${streak}` : '-'}</p>
                         </div>
                     </div>
-                    <button onClick={() => setPhase('finished')} className="text-slate-400 hover:text-white text-sm transition">✕</button>
+                    <button onClick={() => setPhase('finished')} className="text-slate-400 hover:text-white text-sm transition p-1">✕</button>
                 </div>
 
                 {/* Question area */}
                 <div className="p-6">
+                    {/* Back button - always visible at top when not on first question */}
+                    {currentIndex > 0 && (
+                        <button
+                            onClick={goBack}
+                            className="mb-3 text-xs text-indigo-600 hover:text-indigo-800 font-medium transition flex items-center gap-1"
+                        >
+                            ← Back to previous question
+                        </button>
+                    )}
+
                     <div className="flex items-center justify-between mb-1">
-                        <p className="text-xs text-slate-400">Question {currentIndex + 1}</p>
+                        <p className="text-xs text-slate-400">
+                            {answered !== null ? 'Answered' : 'Select an answer'}
+                        </p>
                         {hasMultipleCorrect && (
                             <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-medium">
                                 Select all correct answers
@@ -343,16 +367,6 @@ const QuickFireChallenge = ({ onClose }) => {
                             )}
                             {q.explanation && <p className="text-xs mt-1 opacity-80">{q.explanation}</p>}
                         </div>
-                    )}
-
-                    {/* Back button */}
-                    {answered !== null && currentIndex > 0 && (
-                        <button
-                            onClick={goBack}
-                            className="mt-3 text-xs text-indigo-600 hover:text-indigo-800 font-medium transition flex items-center gap-1"
-                        >
-                            ← Back to previous question
-                        </button>
                     )}
                 </div>
 
