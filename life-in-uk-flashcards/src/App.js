@@ -8,6 +8,7 @@ import LazyCardWrapper from "./LazyCardWrapper";
 import Pricing from "./pages/Pricing";
 import BritishHistory from "./pages/BritishHistory";
 import GovernmentAndLaw from "./pages/GovernmentAndLaw";
+import ILRGuide from "./pages/ILRGuide"; // Import the new ILRGuide component
 import QuickFireChallenge from "./QuickFireChallenge";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
@@ -538,6 +539,7 @@ export default function App() {
             <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
             <Route path="/study-guide/british-history" element={<BritishHistory />} />
             <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
+            <Route path="/ilr-guide" element={<ILRGuide />} />
           </Routes>
 
           {/* Testimonials shown to everyone at the bottom */}

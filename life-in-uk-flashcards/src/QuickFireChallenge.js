@@ -9,7 +9,8 @@ const QuickFireChallenge = ({ onClose }) => {
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
-    const [answered, setAnswered] = useState(null); // index of chosen answer or null
+    const [selectedAnswers, setSelectedAnswers] = useState({}); // {questionIndex: [chosenIdx1, chosenIdx2]}
+    const [answered, setAnswered] = useState(null); // Used for single-choice questions to mark selection
     const [isCorrect, setIsCorrect] = useState(null);
     const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
     const [streak, setStreak] = useState(0);
@@ -46,6 +47,7 @@ const QuickFireChallenge = ({ onClose }) => {
         setQuestions(shuffled);
         setCurrentIndex(0);
         setScore(0);
+        setSelectedAnswers({});
         setAnswered(null);
         setIsCorrect(null);
         setTimeLeft(TOTAL_TIME);
@@ -74,78 +76,146 @@ const QuickFireChallenge = ({ onClose }) => {
 
     // Auto-advance after answering (3s delay)
     useEffect(() => {
-        if (answered !== null && phase === 'playing') {
+        if (answered !== null && phase === 'playing' && !questions[currentIndex]?.multiple) { // Only auto-advance for single choice
             advanceRef.current = setTimeout(() => {
                 if (currentIndex < questions.length - 1) {
                     setCurrentIndex(prev => prev + 1);
                     setAnswered(null);
                     setIsCorrect(null);
+                    setSelectedAnswers({}); // Clear selected answers for next question
                 } else {
                     setPhase('finished');
                 }
             }, AUTO_ADVANCE_DELAY);
             return () => clearTimeout(advanceRef.current);
         }
-    }, [answered, currentIndex, questions.length, phase]);
+    }, [answered, currentIndex, questions.length, phase, questions]);
+
+    const evaluateAnswer = useCallback((q, chosenIndices) => {
+        if (q.multiple) {
+            const correctAnswers = Array.isArray(q.correct) ? q.correct.sort() : [q.correct].sort();
+            const sortedChosen = chosenIndices.sort();
+            return JSON.stringify(correctAnswers) === JSON.stringify(sortedChosen);
+        } else {
+            return chosenIndices[0] === q.correct;
+        }
+    }, []);
 
     const handleAnswer = (choiceIndex) => {
-        if (answered !== null) return; // already answered this question
         const q = questions[currentIndex];
         if (!q) return;
 
-        let correct = false;
+        if (history.some(entry => entry.question === q)) return; // Already answered this question via history
+
         if (q.multiple) {
-            // For multiple-answer questions, check if the selected choice is in the correct array
-            correct = Array.isArray(q.correct) && q.correct.includes(choiceIndex);
+            const currentSelections = selectedAnswers[currentIndex] || [];
+            let newSelections;
+            if (currentSelections.includes(choiceIndex)) {
+                newSelections = currentSelections.filter(idx => idx !== choiceIndex);
+            } else {
+                newSelections = [...currentSelections, choiceIndex];
+            }
+            setSelectedAnswers(prev => ({ ...prev, [currentIndex]: newSelections }));
+
+            // Only evaluate and set 'answered' state when user clicks 'Submit' (or all answers selected if single choice)
+            // For multiple choice, we need a separate submit button or similar to finalize.
+            // For now, let's keep it simple and just allow selection, and user navigates forward/back
+            // The actual score update will happen when moving to the next question or finishing
+            setAnswered(choiceIndex); // Still track last interaction for styling if needed
+            // Don't set isCorrect here directly for multiple choice, it's evaluated on submit/advance
         } else {
-            correct = choiceIndex === q.correct;
-        }
+            if (answered !== null) return; // already answered this single-choice question
+            const correct = choiceIndex === q.correct;
+            setAnswered(choiceIndex);
+            setIsCorrect(correct);
+            setTotalAnswered(prev => prev + 1);
 
-        setAnswered(choiceIndex);
-        setIsCorrect(correct);
-        setTotalAnswered(prev => prev + 1);
+            setHistory(prev => [...prev, {
+                question: q,
+                chosen: [choiceIndex],
+                correct: q.correct,
+                isCorrect: correct
+            }]);
 
-        // Save to history for back navigation
-        setHistory(prev => [...prev, {
-            question: q,
-            chosen: choiceIndex,
-            correct: q.multiple ? (Array.isArray(q.correct) ? q.correct : [q.correct]) : q.correct,
-            isCorrect: correct
-        }]);
-
-        if (correct) {
-            setScore(prev => prev + 1);
-            const newStreak = streak + 1;
-            setStreak(newStreak);
-            if (newStreak > bestStreak) setBestStreak(newStreak);
-        } else {
-            setStreak(0);
+            if (correct) {
+                setScore(prev => prev + 1);
+                const newStreak = streak + 1;
+                setStreak(newStreak);
+                if (newStreak > bestStreak) setBestStreak(newStreak);
+            } else {
+                setStreak(0);
+            }
         }
     };
 
+    const handleAdvance = () => {
+        const q = questions[currentIndex];
+        if (!q) return;
+
+        if (q.multiple) {
+            // Evaluate multiple choice answer on explicit advance
+            const chosenIndices = selectedAnswers[currentIndex] || [];
+            const correct = evaluateAnswer(q, chosenIndices);
+            setIsCorrect(correct);
+            setTotalAnswered(prev => prev + 1);
+
+            setHistory(prev => [...prev, {
+                question: q,
+                chosen: chosenIndices,
+                correct: q.correct,
+                isCorrect: correct
+            }]);
+
+            if (correct) {
+                setScore(prev => prev + 1);
+                const newStreak = streak + 1;
+                setStreak(newStreak);
+                if (newStreak > bestStreak) setBestStreak(newStreak);
+            } else {
+                setStreak(0);
+            }
+            setAnswered(chosenIndices[0] || null); // Keep first chosen as 'answered' for styling
+        }
+
+        // Proceed to next question after a short delay for feedback
+        clearTimeout(advanceRef.current);
+        advanceRef.current = setTimeout(() => {
+            if (currentIndex < questions.length - 1) {
+                setCurrentIndex(prev => prev + 1);
+                setAnswered(null);
+                setIsCorrect(null);
+                setSelectedAnswers({}); // Clear selected answers for next question
+            } else {
+                setPhase('finished');
+            }
+        }, AUTO_ADVANCE_DELAY);
+    };
+
     const goBack = () => {
-        if (currentIndex <= 0 || history.length === 0) return;
-        // Remove last history entry
-        const prevEntry = history[history.length - 1];
-        setHistory(prev => prev.slice(0, -1));
+        if (currentIndex <= 0) return;
+        // If currently on an answered question, remove it from history
+        if (history.length > currentIndex) {
+            const currentEntry = history[currentIndex];
+            if (currentEntry.isCorrect) {
+                setScore(prev => Math.max(0, prev - 1));
+            }
+            setTotalAnswered(prev => Math.max(0, prev - 1));
+            setHistory(prev => prev.slice(0, currentIndex));
+        }
+
         setCurrentIndex(prev => prev - 1);
-        // Restore the previous question's answer state from history
-        // The previous entry in history (if any) tells us what was answered before
-        if (history.length >= 2) {
-            const prevPrevEntry = history[history.length - 2];
-            setAnswered(prevPrevEntry.chosen);
-            setIsCorrect(prevPrevEntry.isCorrect);
+        const prevQuestionData = history[currentIndex - 1];
+        if (prevQuestionData) {
+            // Restore the state for the previous question from history
+            setAnswered(prevQuestionData.chosen[0] || null); // Assuming single choice for `answered` state
+            setIsCorrect(prevQuestionData.isCorrect);
+            setSelectedAnswers(prev => ({ ...prev, [currentIndex - 1]: prevQuestionData.chosen }));
         } else {
             setAnswered(null);
             setIsCorrect(null);
+            setSelectedAnswers({});
         }
-        // Undo score if it was correct
-        if (prevEntry.isCorrect) {
-            setScore(prev => Math.max(0, prev - 1));
-        }
-        setTotalAnswered(prev => Math.max(0, prev - 1));
-        // Reset streak to previous state (approximate)
-        setStreak(0);
+        setStreak(0); // Reset streak when going back
     };
 
     const formatTime = (seconds) => {
@@ -159,6 +229,9 @@ const QuickFireChallenge = ({ onClose }) => {
     const ringProgress = (timeLeft / TOTAL_TIME) * ringCircumference;
     const ringColor = timeLeft > 30 ? '#22c55e' : timeLeft > 15 ? '#eab308' : '#ef4444';
 
+    const currentQuestionData = history[currentIndex];
+    const hasAnsweredCurrent = currentQuestionData !== undefined;
+
     if (phase === 'intro') {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
@@ -168,7 +241,7 @@ const QuickFireChallenge = ({ onClose }) => {
                     <p className="text-slate-600 mb-6">60 seconds of rapid-fire questions. Answer as many as you can!</p>
                     <div className="bg-indigo-50 rounded-xl p-4 mb-6 text-left text-sm text-slate-700 space-y-2">
                         <p>⏱️ <strong>60 seconds</strong> on the clock</p>
-                        <p>⚡ Answer fast — questions auto-advance after 3s</p>
+                        <p>⚡ Answer fast — questions auto-advance after 3s (single choice)</p>
                         <p>🔥 Build streaks for bonus points</p>
                         <p>🎯 Questions from all topics</p>
                         <p>🔙 You can go back to review previous questions</p>
@@ -249,6 +322,8 @@ const QuickFireChallenge = ({ onClose }) => {
 
     // Determine if current question has multiple correct answers
     const hasMultipleCorrect = q.multiple && Array.isArray(q.correct) && q.correct.length > 1;
+    const isCurrentQuestionAnswered = hasAnsweredCurrent || (answered !== null && !q.multiple);
+    const currentSelections = selectedAnswers[currentIndex] || [];
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
@@ -256,7 +331,7 @@ const QuickFireChallenge = ({ onClose }) => {
                 {/* Top bar: timer + score + streak - better spaced */}
                 <div className="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <svg width="52" height="52" className="transform -rotate-90">
+                        <svg width="52" height="52" className="rotate-90 transform origin-center">
                             <circle cx="26" cy="26" r={ringRadius} fill="none" stroke="#374151" strokeWidth="5" />
                             <circle cx="26" cy="26" r={ringRadius} fill="none" stroke={ringColor} strokeWidth="5"
                                 strokeDasharray={ringCircumference}
@@ -300,9 +375,9 @@ const QuickFireChallenge = ({ onClose }) => {
 
                     <div className="flex items-center justify-between mb-1">
                         <p className="text-xs text-slate-400">
-                            {answered !== null ? 'Answered' : 'Select an answer'}
+                            {isCurrentQuestionAnswered ? 'Answered' : (q.multiple ? 'Select all correct answers' : 'Select an answer')}
                         </p>
-                        {hasMultipleCorrect && (
+                        {hasMultipleCorrect && !isCurrentQuestionAnswered && (
                             <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-medium">
                                 Select all correct answers
                             </span>
@@ -314,9 +389,9 @@ const QuickFireChallenge = ({ onClose }) => {
                         {q.choices.map((choice, idx) => {
                             let bg = 'bg-slate-50 hover:bg-slate-100 border-slate-200';
                             let textColor = 'text-slate-800';
+                            const isSelected = currentSelections.includes(idx);
 
-                            if (answered !== null) {
-                                const isSelected = answered === idx;
+                            if (isCurrentQuestionAnswered) {
                                 const isChoiceCorrect = q.multiple
                                     ? (Array.isArray(q.correct) && q.correct.includes(idx))
                                     : idx === q.correct;
@@ -324,27 +399,30 @@ const QuickFireChallenge = ({ onClose }) => {
                                 if (isChoiceCorrect) {
                                     bg = 'bg-green-100 border-green-500';
                                     textColor = 'text-green-800';
-                                } else if (isSelected) {
+                                } else if (isSelected && !isChoiceCorrect) {
                                     bg = 'bg-red-100 border-red-500';
                                     textColor = 'text-red-800';
                                 } else {
                                     bg = 'bg-slate-50 border-slate-200 opacity-60';
                                 }
+                            } else if (isSelected) {
+                                bg = 'bg-indigo-100 border-indigo-500';
+                                textColor = 'text-indigo-800';
                             }
 
                             return (
                                 <button
                                     key={idx}
                                     onClick={() => handleAnswer(idx)}
-                                    disabled={answered !== null}
-                                    className={`w-full text-left p-3.5 rounded-xl border-2 transition-all ${bg} ${textColor} ${answered === null ? 'cursor-pointer' : 'cursor-default'}`}
+                                    disabled={isCurrentQuestionAnswered}
+                                    className={`w-full text-left p-3.5 rounded-xl border-2 transition-all ${bg} ${textColor} ${!isCurrentQuestionAnswered ? 'cursor-pointer' : 'cursor-default'}`}
                                 >
                                     <span className="font-semibold mr-2">{String.fromCharCode(65 + idx)}.</span>
                                     {choice}
-                                    {answered !== null && (
+                                    {isCurrentQuestionAnswered && (
                                         <span className="float-right">
                                             {q.multiple
-                                                ? (Array.isArray(q.correct) && q.correct.includes(idx) ? '✅' : (answered === idx ? '❌' : ''))
+                                                ? (Array.isArray(q.correct) && q.correct.includes(idx) ? '✅' : (isSelected ? '❌' : ''))
                                                 : (idx === q.correct ? '✅' : (answered === idx ? '❌' : ''))
                                             }
                                         </span>
@@ -354,19 +432,38 @@ const QuickFireChallenge = ({ onClose }) => {
                         })}
                     </div>
 
+                    {q.multiple && !isCurrentQuestionAnswered && ( // Submit button for multiple choice
+                        <button
+                            onClick={handleAdvance}
+                            disabled={!(currentSelections && currentSelections.length > 0)}
+                            className="mt-4 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-md"
+                        >
+                            Submit Answer & Next
+                        </button>
+                    )}
+
                     {/* Feedback bar */}
-                    {answered !== null && (
-                        <div className={`mt-4 p-3 rounded-xl text-sm ${isCorrect ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-                            <p className="font-semibold">{isCorrect ? '✅ Correct!' : '❌ Incorrect'}</p>
-                            {hasMultipleCorrect && (
+                    {isCurrentQuestionAnswered && (
+                        <div className={`mt-4 p-3 rounded-xl text-sm ${currentQuestionData?.isCorrect ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                            <p className="font-semibold">{currentQuestionData?.isCorrect ? '✅ Correct!' : '❌ Incorrect'}</p>
+                            {(q.multiple && Array.isArray(q.correct) && q.correct.length > 0) ? (
                                 <p className="text-xs mt-1">
                                     Correct answer{q.multiple && Array.isArray(q.correct) && q.correct.length > 1 ? 's' : ''}: {q.multiple && Array.isArray(q.correct)
                                         ? q.correct.map(i => `${String.fromCharCode(65 + i)}`).join(', ')
                                         : String.fromCharCode(65 + q.correct)}
                                 </p>
-                            )}
+                            ) : null}
                             {q.explanation && <p className="text-xs mt-1 opacity-80">{q.explanation}</p>}
                         </div>
+                    )}
+
+                    {!q.multiple && !isCurrentQuestionAnswered && ( // Auto-advance for single choice if not answered yet
+                        <button
+                            onClick={handleAdvance} // This will trigger auto-advance without scoring if no answer selected
+                            className="mt-4 w-full bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                        >
+                            Skip & Next
+                        </button>
                     )}
                 </div>
 
