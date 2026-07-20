@@ -11,7 +11,6 @@ const QuickFireChallenge = ({ onClose }) => {
     const [score, setScore] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({}); // {questionIndex: [chosenIdx1, chosenIdx2]}
     const [answered, setAnswered] = useState(null); // Used for single-choice questions to mark selection
-    const [isCorrectState, setIsCorrectState] = useState(null); // Renamed to avoid conflict
     const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
     const [streak, setStreak] = useState(0);
     const [bestStreak, setBestStreak] = useState(0);
@@ -49,7 +48,6 @@ const QuickFireChallenge = ({ onClose }) => {
         setScore(0);
         setSelectedAnswers({});
         setAnswered(null);
-        setIsCorrectState(null);
         setTimeLeft(TOTAL_TIME);
         setStreak(0);
         setBestStreak(0);
@@ -81,7 +79,6 @@ const QuickFireChallenge = ({ onClose }) => {
                 if (currentIndex < questions.length - 1) {
                     setCurrentIndex(prev => prev + 1);
                     setAnswered(null);
-                    setIsCorrectState(null);
                     setSelectedAnswers({}); // Clear selected answers for next question
                 } else {
                     setPhase('finished');
@@ -127,7 +124,6 @@ const QuickFireChallenge = ({ onClose }) => {
             if (answered !== null) return; // already answered this single-choice question
             const correct = choiceIndex === q.correct;
             setAnswered(choiceIndex);
-            setIsCorrectState(correct);
             setTotalAnswered(prev => prev + 1);
 
             setHistory(prev => [...prev, {
@@ -156,7 +152,6 @@ const QuickFireChallenge = ({ onClose }) => {
             // Evaluate multiple choice answer on explicit advance
             const chosenIndices = selectedAnswers[currentIndex] || [];
             const correct = evaluateAnswer(q, chosenIndices);
-            setIsCorrectState(correct);
             setTotalAnswered(prev => prev + 1);
 
             setHistory(prev => [...prev, {
@@ -183,7 +178,6 @@ const QuickFireChallenge = ({ onClose }) => {
             if (currentIndex < questions.length - 1) {
                 setCurrentIndex(prev => prev + 1);
                 setAnswered(null);
-                setIsCorrectState(null);
                 setSelectedAnswers({}); // Clear selected answers for next question
             } else {
                 setPhase('finished');
@@ -208,11 +202,9 @@ const QuickFireChallenge = ({ onClose }) => {
         if (prevQuestionData) {
             // Restore the state for the previous question from history
             setAnswered(prevQuestionData.chosen[0] || null); // Assuming single choice for `answered` state (for styling)
-            setIsCorrectState(prevQuestionData.isCorrect); // Restore isCorrectState
             setSelectedAnswers(prev => ({ ...prev, [currentIndex - 1]: prevQuestionData.chosen }));
         } else {
             setAnswered(null);
-            setIsCorrectState(null);
             setSelectedAnswers({});
         }
         setStreak(0); // Reset streak when going back
