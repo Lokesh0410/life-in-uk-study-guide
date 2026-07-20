@@ -20,6 +20,14 @@
     content="45 mock exams, 220+ flashcards, and a 5-day guaranteed pass path for British Citizenship and ILR 2026." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lifeinukcoach.co.uk/" />
+  <meta property="og:site_name" content="Life in the UK Test Coach" />
+  <meta property="og:locale" content="en_GB" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Life in the UK Test Coach 2026 | Pass Guaranteed" />
+  <meta name="twitter:description"
+    content="45 mock exams, 220+ flashcards, and a 5-day guaranteed pass path for British Citizenship and ILR 2026." />
 
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -56,7 +64,24 @@
     }
     </script>
 
-  <!-- JSON-LD Schema: WebSite -->
+  <!-- JSON-LD Schema: Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Life in the UK Test Coach",
+      "url": "https://lifeinukcoach.co.uk",
+      "logo": "https://lifeinukcoach.co.uk/logo192.png",
+      "description": "Premium preparation platform for the Life in the UK Test, British Citizenship, and ILR.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "help@lifeinukcoach.co.uk",
+        "contactType": "customer support"
+      }
+    }
+    </script>
+
+  <!-- JSON-LD Schema: WebSite with SearchAction -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,7 +89,15 @@
       "name": "Life in the UK Test Coach 2026",
       "url": "https://lifeinukcoach.co.uk",
       "description": "Prepare for the Life in the UK Test with 45 realistic mock exams, interactive flashcards, performance tracking, and an offline cheat sheet.",
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://lifeinukcoach.co.uk/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
 

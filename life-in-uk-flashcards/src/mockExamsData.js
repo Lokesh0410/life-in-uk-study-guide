@@ -248,7 +248,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In Wales, many people speak Welsh - a completely dif ferent language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a dif ferent language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
+            "explanation": "In Wales, many people speak Welsh - a completely different language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a different language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
         },
         {
             "text": "What party won the General Election in 2010?",
@@ -294,7 +294,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Conditions in Ireland were not as good as in the rest of the UK. Two-thirds of the population still depended on farming to make their living, often on very small plots of land. Many depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suf fered a famine. A million people died from disease and starvation."
+            "explanation": "Conditions in Ireland were not as good as in the rest of the UK. Two-thirds of the population still depended on farming to make their living, often on very small plots of land. Many depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suffered a famine. A million people died from disease and starvation."
         },
         {
             "text": "In what year did the first farmers arrive in Britain?",
@@ -326,7 +326,7 @@ export const mockExams = [
                 "May pass legislation on anything not specifically reserved to the UK Parliament",
                 "May pass laws on anything in Scotland",
                 "May pass laws on general economic policy",
-                "May pass laws on foreign and defence af fairs"
+                "May pass laws on foreign and defence affairs"
             ],
             "multiple": false,
             "correct": 0,
@@ -369,7 +369,7 @@ export const mockExams = [
                 1,
                 3
             ],
-            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are dif ferent stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
+            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are different stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
         },
         {
             "text": "Who can only give 'advice, warn and encourage' about government matters?",
@@ -399,7 +399,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 3,
-            "explanation": "The Laurence Olivier Awards take place annually at dif ferent venues in London. There are a variety of categories, including best director , best actor and best actress. The awards are named after the British actor Sir Laurence Olivier , later Lord Olivier , who was best known for his roles in various Shakespeare plays."
+            "explanation": "The Laurence Olivier Awards take place annually at different venues in London. There are a variety of categories, including best director , best actor and best actress. The awards are named after the British actor Sir Laurence Olivier , later Lord Olivier , who was best known for his roles in various Shakespeare plays."
         },
         {
             "text": "Which person is responsible for crime and immigration?",
@@ -493,7 +493,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "One TV licence covers all of the equipment at one address, but people who rent dif ferent rooms in a shared house must buy a separate TV licence"
+            "explanation": "One TV licence covers all of the equipment at one address, but people who rent different rooms in a shared house must buy a separate TV licence"
         },
         {
             "text": "The London Eye is situated on the southern bank of which river?",
@@ -544,7 +544,7 @@ export const mockExams = [
                 2,
                 3
             ],
-            "explanation": "The queen of Scotland, Mary Stuart (often now called 'Mary , Queen of Scots') was a Catholic. She was only a week old when her father died and she became queen. Much of her childhood was spent in France. When she returned to Scotland, she was the centre of a power struggle between dif ferent groups. When her husband was murdered, Mary was suspected of involvement and fled to England. She gave her throne to her Protestant son, James VI of Scotland. Mary was Elizabeth I's cousin and hoped that Elizabeth might help her, but Elizabeth suspected Mary of wanting to take over the English throne, and kept her a prisoner for 20 years. Mary was eventually executed, accused of plotting against Elizabeth I."
+            "explanation": "The queen of Scotland, Mary Stuart (often now called 'Mary , Queen of Scots') was a Catholic. She was only a week old when her father died and she became queen. Much of her childhood was spent in France. When she returned to Scotland, she was the centre of a power struggle between different groups. When her husband was murdered, Mary was suspected of involvement and fled to England. She gave her throne to her Protestant son, James VI of Scotland. Mary was Elizabeth I's cousin and hoped that Elizabeth might help her, but Elizabeth suspected Mary of wanting to take over the English throne, and kept her a prisoner for 20 years. Mary was eventually executed, accused of plotting against Elizabeth I."
         },
         {
             "text": "Catherine Howard was Anne Boleyn's cousin",
@@ -590,7 +590,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 3,
-            "explanation": "The Open Championship is the only 'Major' golf tournament held outside the United States. It is hosted by a dif ferent golf course every year ."
+            "explanation": "The Open Championship is the only 'Major' golf tournament held outside the United States. It is hosted by a different golf course every year ."
         },
         {
             "text": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint",
@@ -1033,7 +1033,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'. Some areas have both district and county councils, which have dif ferent functions. Most large towns and cities have a single local authority ."
+            "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'. Some areas have both district and county councils, which have different functions. Most large towns and cities have a single local authority ."
         },
         {
             "text": "People living and working in towns after Black Death led to the development of what?",
@@ -1189,7 +1189,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In Northern Ireland a dif ferent system operates. This is called 'individual registration' and all those entitled to vote must complete their own registration form. Once registered, people stay on the register provided their personal details do not change."
+            "explanation": "In Northern Ireland a different system operates. This is called 'individual registration' and all those entitled to vote must complete their own registration form. Once registered, people stay on the register provided their personal details do not change."
         },
         {
             "text": "Magna Carta is Latin for what?",
@@ -1731,7 +1731,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an of fence. Northern Ireland has a system of youth conferencing to consider how a child should be dealt with when they have committed an offence."
+            "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an offence. Northern Ireland has a system of youth conferencing to consider how a child should be dealt with when they have committed an offence."
         },
         {
             "text": "Volunteering is compulsory in the UK",
@@ -2031,7 +2031,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an of fence not to have an MOT certificate if your vehicle is more than three years old."
+            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an offence not to have an MOT certificate if your vehicle is more than three years old."
         },
         {
             "text": "Which country's national flower is a thistle?",
@@ -2350,7 +2350,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "In England, judges developed 'common law' by a process of precedence (that is, following previous decisions) and tradition. In Scotland, the legal system developed slightly dif ferently and laws were 'codified' (that is, written down)."
+            "explanation": "In England, judges developed 'common law' by a process of precedence (that is, following previous decisions) and tradition. In Scotland, the legal system developed slightly differently and laws were 'codified' (that is, written down)."
         },
         {
             "text": "What destroyed London in year 1666?",
@@ -2859,7 +2859,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In Wales, many people speak Welsh - a completely dif ferent language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a dif ferent language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
+            "explanation": "In Wales, many people speak Welsh - a completely different language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a different language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
         },
         {
             "text": "What party won the General Election in 2010?",
@@ -2905,7 +2905,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Conditions in Ireland were not as good as in the rest of the UK. Two-thirds of the population still depended on farming to make their living, often on very small plots of land. Many depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suf fered a famine. A million people died from disease and starvation."
+            "explanation": "Conditions in Ireland were not as good as in the rest of the UK. Two-thirds of the population still depended on farming to make their living, often on very small plots of land. Many depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suffered a famine. A million people died from disease and starvation."
         },
         {
             "text": "In what year did the first farmers arrive in Britain?",
@@ -2937,7 +2937,7 @@ export const mockExams = [
                 "May pass legislation on anything not specifically reserved to the UK Parliament",
                 "May pass laws on anything in Scotland",
                 "May pass laws on general economic policy",
-                "May pass laws on foreign and defence af fairs"
+                "May pass laws on foreign and defence affairs"
             ],
             "multiple": false,
             "correct": 0,
@@ -2980,7 +2980,7 @@ export const mockExams = [
                 1,
                 3
             ],
-            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are dif ferent stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
+            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are different stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
         },
         {
             "text": "Who can only give 'advice, warn and encourage' about government matters?",
@@ -3115,7 +3115,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In return, the UK of fers: freedom of belief and religion, freedom of speech, freedom from unfair discrimination, a right to a fair trial, a right to join in the election of a government."
+            "explanation": "In return, the UK offers: freedom of belief and religion, freedom of speech, freedom from unfair discrimination, a right to a fair trial, a right to join in the election of a government."
         },
         {
             "text": "When was the Parliament of Northern Ireland first established?",
@@ -3139,7 +3139,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Films were first shown publicly in the UK in 1896 and film screenings very quickly became popular . From the beginning, film makers became famous for clever special ef fects and this continues to be an area of British expertise."
+            "explanation": "Films were first shown publicly in the UK in 1896 and film screenings very quickly became popular . From the beginning, film makers became famous for clever special effects and this continues to be an area of British expertise."
         },
         {
             "text": "Where did the people of the Bronze Age bury their dead?",
@@ -3322,7 +3322,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an of fence not to have an MOT certificate if your vehicle is more than three years old."
+            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an offence not to have an MOT certificate if your vehicle is more than three years old."
         },
         {
             "text": "Who sat in the House of Lords in the middle ages?",
@@ -3414,7 +3414,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In the 19th century , many people in Ireland depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suf fered a famine. A million people died from disease and starvation."
+            "explanation": "In the 19th century , many people in Ireland depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suffered a famine. A million people died from disease and starvation."
         },
         {
             "text": "Which of the following is the most famous competition which is a series of Test matches played between England and Australia?",
@@ -3880,7 +3880,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal of fences go to a Justice of the Peace Court."
+            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal offences go to a Justice of the Peace Court."
         },
         {
             "text": "Who led the invasion of England in 1066?",
@@ -3940,7 +3940,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an of fence."
+            "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an offence."
         },
         {
             "text": "What did R. A. Butler introduce?",
@@ -4312,7 +4312,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Policy and laws governing defence, foreign af fairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
+            "explanation": "Policy and laws governing defence, foreign affairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
         },
         {
             "text": "What is the total number of members does the UN Security Council have?",
@@ -4511,7 +4511,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "Britain continues to be particularly strong in special ef fects and animation. One example is the work of Nick Park, who has won four Oscars for his animated films, including three for films featuring Wallace and Gromit."
+            "explanation": "Britain continues to be particularly strong in special effects and animation. One example is the work of Nick Park, who has won four Oscars for his animated films, including three for films featuring Wallace and Gromit."
         },
         {
             "text": "In what year did the Vikings first attack Britain?",
@@ -4565,7 +4565,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Forced marriage is where one or both parties do not or cannot give their consent to enter into the partnership. Forcing another person to marry is a criminal of fence."
+            "explanation": "Forced marriage is where one or both parties do not or cannot give their consent to enter into the partnership. Forcing another person to marry is a criminal offence."
         },
         {
             "text": "Which film or film franchise produced in UK has been the biggest gross earner?",
@@ -4634,7 +4634,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "It is a criminal of fence to carry a weapon."
+            "explanation": "It is a criminal offence to carry a weapon."
         },
         {
             "text": "Which individual was Catherine of Aragon (the first of Henry VIII's six wives)?",
@@ -5453,7 +5453,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 3,
-            "explanation": "The Laurence Olivier Awards take place annually at dif ferent venues in London. There are a variety of categories, including best director , best actor and best actress. The awards are named after the British actor Sir Laurence Olivier , later Lord Olivier , who was best known for his roles in various Shakespeare plays."
+            "explanation": "The Laurence Olivier Awards take place annually at different venues in London. There are a variety of categories, including best director , best actor and best actress. The awards are named after the British actor Sir Laurence Olivier , later Lord Olivier , who was best known for his roles in various Shakespeare plays."
         },
         {
             "text": "What was the 'Black Death'?",
@@ -5513,7 +5513,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Since 1997, some powers have been devolved from the central government to give people in Wales, Scotland and Northern Ireland more control over matters that directly af fect them. Policy and laws governing defence, foreign af fairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
+            "explanation": "Since 1997, some powers have been devolved from the central government to give people in Wales, Scotland and Northern Ireland more control over matters that directly af fect them. Policy and laws governing defence, foreign affairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
         },
         {
             "text": "What prehistoric village (off the north coast of Scotland) has helped archaeologists to understand more about how people lived near the end of the Stone Age?",
@@ -5844,7 +5844,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are dif ferent stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
+            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are different stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
         },
         {
             "text": "What exactly does the 'R' Plate stand for?",
@@ -6384,7 +6384,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for Public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal of fences."
+            "explanation": "Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for Public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal offences."
         },
         {
             "text": "Identify which of these was a British plane in WWII?",
@@ -6689,7 +6689,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "All 4 options are poems, but all written by dif ferent poets.(Robert Browning, 1812-89 'Home Thoughts from Abroad'), (Lord Byron, 1788-1824 'She Walks in Beauty'), (William Blake, 1757-1827 'The Tyger'), (William Wordsworth, 1770-1850 'The Daf fodils' - 'I wander'd lonely as a cloud, That floats on high o'er vales and hills, When all at once I saw a crowd, A host of golden daf fodils')."
+            "explanation": "All 4 options are poems, but all written by different poets.(Robert Browning, 1812-89 'Home Thoughts from Abroad'), (Lord Byron, 1788-1824 'She Walks in Beauty'), (William Blake, 1757-1827 'The Tyger'), (William Wordsworth, 1770-1850 'The Daf fodils' - 'I wander'd lonely as a cloud, That floats on high o'er vales and hills, When all at once I saw a crowd, A host of golden daffodils')."
         },
         {
             "text": "Areas of Which of the following is now Scotland were never conquered by the Romans",
@@ -6711,7 +6711,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are dif ferent stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
+            "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are different stories about how the festival came about. There is a famous celebration of Diwali in Leicester ."
         },
         {
             "text": "How is the Church of England often called?",
@@ -6870,7 +6870,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal of fences go to a Justice of the Peace Court."
+            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal offences go to a Justice of the Peace Court."
         },
         {
             "text": "How is the New Year often called in Scotland?",
@@ -6990,7 +6990,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "The English language has many accents and dialects. In Wales, many people speak Welsh - a completely dif ferent language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a dif ferent language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
+            "explanation": "The English language has many accents and dialects. In Wales, many people speak Welsh - a completely different language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a different language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic."
         },
         {
             "text": "How can you contact your MP?",
@@ -7089,7 +7089,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal of fences go to a Justice of the Peace Court. In Northern Ireland, cases are heard by a District Judge or Deputy District Judge, who is legally qualified and paid."
+            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal offences go to a Justice of the Peace Court. In Northern Ireland, cases are heard by a District Judge or Deputy District Judge, who is legally qualified and paid."
         },
         {
             "text": "Which of the following is the maximum fine if you watch TV without a valid TV licence?",
@@ -7344,7 +7344,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "The ef fects of the depression of the 1930s were felt dif ferently in dif ferent parts of the UK. The traditional heavy industries such as shipbuilding were badly af fected but new industries - including the automobile and aviation industries - developed."
+            "explanation": "The effects of the depression of the 1930s were felt differently in different parts of the UK. The traditional heavy industries such as shipbuilding were badly af fected but new industries - including the automobile and aviation industries - developed."
         }
     ]
 },
@@ -7967,14 +7967,14 @@ export const mockExams = [
         {
             "text": "Identify which of these statements is incorrect?",
             "choices": [
-                "It's a criminal of fence to of fend one's religion or ethnic origin",
-                "It's a criminal of fence to owe someone money",
+                "It's a criminal offence to offend one's religion or ethnic origin",
+                "It's a criminal offence to owe someone money",
                 "Selling or buying drugs such as heroin is illegal in the UK",
-                "It's a criminal of fence to carry a weapon of any kind"
+                "It's a criminal offence to carry a weapon of any kind"
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Owing money is a civil of fence"
+            "explanation": "Owing money is a civil offence"
         },
         {
             "text": "What is the total number of ski centres are there in Scotland?",
@@ -8118,7 +8118,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 2,
-            "explanation": "In 1918, women over the age of 30 were given voting rights and the right to stand for Parliament, partly in recognition of the contribution women made to the war ef fort during the First World War. Shortly before Emmeline's death in 1928, women were given the right to vote at the age of 21, the same as men."
+            "explanation": "In 1918, women over the age of 30 were given voting rights and the right to stand for Parliament, partly in recognition of the contribution women made to the war effort during the First World War. Shortly before Emmeline's death in 1928, women were given the right to vote at the age of 21, the same as men."
         },
         {
             "text": "Which TWO of these are core values and responsibilities of the British society?",
@@ -8277,12 +8277,12 @@ export const mockExams = [
         {
             "text": "Identify which of these statements is correct?",
             "choices": [
-                "People found guilty of certain criminal of fences cannot stand for Public Office",
-                "People found guilty of all criminal of fences cannot stand for Public Office"
+                "People found guilty of certain criminal offences cannot stand for Public Office",
+                "People found guilty of all criminal offences cannot stand for Public Office"
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Office Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for Public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal of fences."
+            "explanation": "Office Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for Public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal offences."
         },
         {
             "text": "Identify which of these international events was held in London in 2012?",
@@ -8316,7 +8316,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Policy and laws governing defence, foreign af fairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
+            "explanation": "Policy and laws governing defence, foreign affairs, immigration, taxation and social security all remain under central UK government control. However , many other public services, such as education, are controlled by the devolved administrations."
         },
         {
             "text": "Pakistan is part of the Commonwealth",
@@ -8515,7 +8515,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal of fences go to a Justice of the Peace Court. In Northern Ireland, cases are heard by a District Judge or Deputy District Judge, who is legally qualified and paid."
+            "explanation": "In England, Wales and Northern Ireland, most minor criminal cases are dealt with in a Magistrates' Court. In Scotland, minor criminal offences go to a Justice of the Peace Court. In Northern Ireland, cases are heard by a District Judge or Deputy District Judge, who is legally qualified and paid."
         }
     ]
 },
@@ -8548,7 +8548,7 @@ export const mockExams = [
                 0,
                 2
             ],
-            "explanation": "In November 2012, the public elected Police and Crime Commissioners (PCCs) in England and Wales. These are directly elected individuals who are responsible for the delivery of an efficient and ef fective police force that reflects the needs of their local communities. PCCs set local police priorities and the local policing budget. They also appoint the Chief Constable."
+            "explanation": "In November 2012, the public elected Police and Crime Commissioners (PCCs) in England and Wales. These are directly elected individuals who are responsible for the delivery of an efficient and effective police force that reflects the needs of their local communities. PCCs set local police priorities and the local policing budget. They also appoint the Chief Constable."
         },
         {
             "text": "Who won two gold medals for running in the 2004 Olympic Games?",
@@ -8597,7 +8597,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "In England, judges developed 'common law' by a process of precedence (that is, following previous decisions) and tradition. In Scotland, the legal system developed slightly dif ferently and laws were 'codified' (that is, written down)."
+            "explanation": "In England, judges developed 'common law' by a process of precedence (that is, following previous decisions) and tradition. In Scotland, the legal system developed slightly differently and laws were 'codified' (that is, written down)."
         },
         {
             "text": "You must treat everyone equally , regardless of sex, race, age, religion, disability , class or sexual orientation",
@@ -9065,7 +9065,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal of fences."
+            "explanation": "Most citizens of the UK, the Irish Republic or the Commonwealth aged 18 or over can stand for public Office. There are some exceptions, including: members of the armed forces; civil servants; people found guilty of certain criminal offences."
         },
         {
             "text": "Eid ul Adha remembers that the prophet Ibrahim was willing to sacrifice his son when God ordered him to",
@@ -9448,7 +9448,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In 1918, women over the age of 30 were given voting rights and the right to stand for Parliament, partly in recognition of the contribution women made to the war ef fort during the First World War. Shortly before Emmeline's death in 1928, women were given the right to vote at the age of 21, the same as men."
+            "explanation": "In 1918, women over the age of 30 were given voting rights and the right to stand for Parliament, partly in recognition of the contribution women made to the war effort during the First World War. Shortly before Emmeline's death in 1928, women were given the right to vote at the age of 21, the same as men."
         },
         {
             "text": "Arranged marriages are allowed in the UK",
@@ -9528,7 +9528,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "In the middle of the 19th century the potato crop failed, and Ireland suf fered a famine. A million people died from disease and starvation. Another million and a half left Ireland."
+            "explanation": "In the middle of the 19th century the potato crop failed, and Ireland suffered a famine. A million people died from disease and starvation. Another million and a half left Ireland."
         },
         {
             "text": "Which TWO are 20th century British inventions?",
@@ -10229,7 +10229,7 @@ export const mockExams = [
                 0,
                 3
             ],
-            "explanation": "In the UK, there are several dif ferent parts of government. The main ones are: the monarchy , Parliament (the House of Commons and the House of Lords), the Prime Minister , the cabinet, the judiciary (courts) ,the police, the civil service, local government."
+            "explanation": "In the UK, there are several different parts of government. The main ones are: the monarchy , Parliament (the House of Commons and the House of Lords), the Prime Minister , the cabinet, the judiciary (courts) ,the police, the civil service, local government."
         },
         {
             "text": "Where in Scotland is known as the home of golf?",
@@ -10932,7 +10932,7 @@ export const mockExams = [
                 1,
                 2
             ],
-            "explanation": "MPs have a number of dif ferent responsibilities. They:; represent everyone in their constituency; ; help to create new laws; ; scrutinise and comment on what the government is doing; ; debate important national issues;"
+            "explanation": "MPs have a number of different responsibilities. They:; represent everyone in their constituency; ; help to create new laws; ; scrutinise and comment on what the government is doing; ; debate important national issues;"
         },
         {
             "text": "Who set up the first formal anti-slavery campaigns?",
@@ -11115,7 +11115,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "Owing money is a civil of fence"
+            "explanation": "Owing money is a civil offence"
         },
         {
             "text": "What kind of battle was the Battle of Britain (1940)?",
@@ -11227,7 +11227,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 3,
-            "explanation": "By the 1760s, there were substantial British colonies in North America. The colonies were wealthy and largely in control of their own af fairs. Many of the colonist families had originally gone to North America in order to have religious freedom. They were well educated and interested in ideas of liberty . The British government wanted to tax the colonies."
+            "explanation": "By the 1760s, there were substantial British colonies in North America. The colonies were wealthy and largely in control of their own affairs. Many of the colonist families had originally gone to North America in order to have religious freedom. They were well educated and interested in ideas of liberty . The British government wanted to tax the colonies."
         },
         {
             "text": "The people of which age made the first coins to be minted in Britain?",
@@ -11618,7 +11618,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an of fence not to have an MOT certificate if your vehicle is more than three years old."
+            "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year . It is an offence not to have an MOT certificate if your vehicle is more than three years old."
         },
         {
             "text": "The Prime Minister is the head of the Commonwealth",
@@ -11885,7 +11885,7 @@ export const mockExams = [
                 0,
                 3
             ],
-            "explanation": "The queen of Scotland, Mary Stuart (often now called 'Mary , Queen of Scots') was a Catholic. She was only a week old when her father died and she became queen. Much of her childhood was spent in France. When she returned to Scotland, she was the centre of a power struggle between dif ferent groups. When her husband was murdered, Mary was suspected of involvement and fled to England. She gave her throne to her Protestant son, James VI of Scotland. Mary was Elizabeth I's cousin and hoped that Elizabeth might help her, but Elizabeth suspected Mary of wanting to take over the English throne, and kept her a prisoner for 20 years. Mary was eventually executed, accused of plotting against Elizabeth I."
+            "explanation": "The queen of Scotland, Mary Stuart (often now called 'Mary , Queen of Scots') was a Catholic. She was only a week old when her father died and she became queen. Much of her childhood was spent in France. When she returned to Scotland, she was the centre of a power struggle between different groups. When her husband was murdered, Mary was suspected of involvement and fled to England. She gave her throne to her Protestant son, James VI of Scotland. Mary was Elizabeth I's cousin and hoped that Elizabeth might help her, but Elizabeth suspected Mary of wanting to take over the English throne, and kept her a prisoner for 20 years. Mary was eventually executed, accused of plotting against Elizabeth I."
         },
         {
             "text": "Which TWO are famous British fashion designers?",
@@ -12021,7 +12021,7 @@ export const mockExams = [
                 1,
                 2
             ],
-            "explanation": "It is an of fence not to have an MOT certificate if your vehicle is more than three years old or without car insurance."
+            "explanation": "It is an offence not to have an MOT certificate if your vehicle is more than three years old or without car insurance."
         },
         {
             "text": "What was the longest British War with France called?",
@@ -12109,7 +12109,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 0,
-            "explanation": "MPs have a number of dif ferent responsibilities. They: represent everyone in their constituency , help to create new laws, scrutinise and comment on what the government is doing, debate important national issues."
+            "explanation": "MPs have a number of different responsibilities. They: represent everyone in their constituency , help to create new laws, scrutinise and comment on what the government is doing, debate important national issues."
         },
         {
             "text": "What is the total number of volunteers is The National Trust run by?",
@@ -12251,7 +12251,7 @@ export const mockExams = [
             ],
             "multiple": false,
             "correct": 1,
-            "explanation": "The fundamental principles of British life include: Democracy; The rule of law; Individual liberty; Tolerance of those with dif ferent faiths and beliefs; Participation in community life."
+            "explanation": "The fundamental principles of British life include: Democracy; The rule of law; Individual liberty; Tolerance of those with different faiths and beliefs; Participation in community life."
         },
         {
             "text": "Identify which of these gardens is located in Wales?",

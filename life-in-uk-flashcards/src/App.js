@@ -373,10 +373,10 @@ export default function App() {
             <p className="text-xs text-slate-500 mt-1">
               The ultimate online platform for your British Citizenship and ILR 2026 preparation.
             </p>
-            <nav className="mt-4 flex flex-wrap justify-center gap-4">
+            <nav className="mt-4 flex flex-wrap justify-center gap-2 md:gap-4">
               <Link
                 to="/"
-                className={`px-4 py-2 rounded-full font-medium transition ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
                   }`}
                 onClick={() => setView("flashcards")}
               >
@@ -384,7 +384,7 @@ export default function App() {
               </Link>
               <Link
                 to="/mock-exams"
-                className={`px-4 py-2 rounded-full font-medium transition ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
                   }`}
                 onClick={() => setView("mockExam")}
               >
@@ -392,21 +392,27 @@ export default function App() {
               </Link>
               <Link
                 to="/pricing"
-                className={`px-4 py-2 rounded-full font-medium transition ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
                   }`}
                 onClick={() => setView("pricing")}
               >
                 ⭐ Pricing
               </Link>
+              <Link
+                to="/ilr-guide"
+                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50"
+              >
+                🇬🇧 ILR & Citizenship Guide
+              </Link>
               <button
                 onClick={() => setShowQuickFire(true)}
-                className="px-4 py-2 rounded-full font-medium transition bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
+                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
               >
                 ⚡ Quick-Fire
               </button>
               <button
                 onClick={handleDownloadCheatSheet}
-                className="px-4 py-2 rounded-full font-medium transition bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
+                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
               >
                 {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
               </button>
@@ -542,6 +548,33 @@ export default function App() {
             <Route path="/ilr-guide" element={<ILRGuide />} />
           </Routes>
 
+          {/* Latest Guides section - shown on homepage only */}
+          <div className="mb-8 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+            <h2 className="text-xl font-bold text-slate-800 mb-4">📖 Latest Guides</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link to="/ilr-guide" className="block p-4 bg-indigo-50 rounded-xl hover:bg-indigo-100 transition border border-indigo-100">
+                <div className="text-2xl mb-2">🇬🇧</div>
+                <h3 className="font-bold text-slate-800 text-sm">ILR Guide</h3>
+                <p className="text-xs text-slate-600 mt-1">Everything about Indefinite Leave to Remain</p>
+              </Link>
+              <Link to="/study-guide/british-history" className="block p-4 bg-amber-50 rounded-xl hover:bg-amber-100 transition border border-amber-100">
+                <div className="text-2xl mb-2">🏰</div>
+                <h3 className="font-bold text-slate-800 text-sm">British History</h3>
+                <p className="text-xs text-slate-600 mt-1">Key historical events & timelines</p>
+              </Link>
+              <Link to="/study-guide/government-and-law" className="block p-4 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition border border-emerald-100">
+                <div className="text-2xl mb-2">⚖️</div>
+                <h3 className="font-bold text-slate-800 text-sm">Law & Government</h3>
+                <p className="text-xs text-slate-600 mt-1">UK constitution, parliament & legal system</p>
+              </Link>
+              <a href="https://www.gov.uk/life-in-the-uk-test/book-life-in-uk-test" target="_blank" rel="noopener noreferrer" className="block p-4 bg-rose-50 rounded-xl hover:bg-rose-100 transition border border-rose-100">
+                <div className="text-2xl mb-2">📅</div>
+                <h3 className="font-bold text-slate-800 text-sm">Book Your Test</h3>
+                <p className="text-xs text-slate-600 mt-1">Find test centres & book on GOV.UK</p>
+              </a>
+            </div>
+          </div>
+
           {/* Testimonials shown to everyone at the bottom */}
           <TestimonialsCarousel />
 
@@ -550,6 +583,7 @@ export default function App() {
             <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Good luck! 🇬🇧</p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
               <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help & Support (help@lifeinukcoach.co.uk)</a>
+              <Link to="/ilr-guide" className="text-indigo-500 hover:text-indigo-700 transition">🇬🇧 ILR & Citizenship Guide</Link>
               <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service & Refund Guarantee</button>
               <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
               <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>

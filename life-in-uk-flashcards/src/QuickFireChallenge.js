@@ -323,18 +323,18 @@ const QuickFireChallenge = ({ onClose }) => {
                 {/* Top bar: timer + score + streak - better spaced */}
                 <div className="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <svg width="52" height="52" className="rotate-90 transform origin-center">
-                            <circle cx="26" cy="26" r={ringRadius} fill="none" stroke="#374151" strokeWidth="5" />
-                            <circle cx="26" cy="26" r={ringRadius} fill="none" stroke={ringColor} strokeWidth="5"
-                                strokeDasharray={ringCircumference}
-                                strokeDashoffset={ringCircumference - ringProgress}
-                                strokeLinecap="round"
-                                className="transition-all duration-1000 ease-linear"
-                            />
-                            <text x="26" y="26" textAnchor="middle" dominantBaseline="central" fill="white" fontSize="15" fontWeight="bold">
-                                {formatTime(timeLeft)}
-                            </text>
-                        </svg>
+                        <div className="relative w-[52px] h-[52px] flex items-center justify-center">
+                            <svg width="52" height="52" className="transform -rotate-90">
+                                <circle cx="26" cy="26" r={ringRadius} fill="none" stroke="#374151" strokeWidth="5" />
+                                <circle cx="26" cy="26" r={ringRadius} fill="none" stroke={ringColor} strokeWidth="5"
+                                    strokeDasharray={ringCircumference}
+                                    strokeDashoffset={ringCircumference - ringProgress}
+                                    strokeLinecap="round"
+                                    className="transition-all duration-1000 ease-linear"
+                                />
+                            </svg>
+                            <span className="absolute text-white text-[15px] font-bold">{formatTime(timeLeft)}</span>
+                        </div>
                         <div className="text-left">
                             <p className="text-[10px] text-slate-400 uppercase tracking-wider">Question</p>
                             <p className="text-lg font-bold">{currentIndex + 1}/{Math.min(questions.length, 50)}</p>
@@ -425,13 +425,22 @@ const QuickFireChallenge = ({ onClose }) => {
                     </div>
 
                     {q.multiple && !isCurrentQuestionAnswered && ( // Submit button for multiple choice
-                        <button
-                            onClick={handleAdvance}
-                            disabled={!(currentSelections && currentSelections.length > 0)}
-                            className="mt-4 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-md"
-                        >
-                            Submit Answer & Next
-                        </button>
+                        <div className="mt-4">
+                            <p className="text-xs text-slate-500 mb-2 text-center">
+                                Select exactly {Array.isArray(q.correct) ? q.correct.length : 1} answer(s)
+                                {currentSelections.length > 0 && ` (${currentSelections.length} selected)`}
+                            </p>
+                            <button
+                                onClick={handleAdvance}
+                                disabled={!currentSelections || currentSelections.length !== (Array.isArray(q.correct) ? q.correct.length : 1)}
+                                className={`w-full py-3 rounded-xl font-bold transition shadow-md ${currentSelections && currentSelections.length === (Array.isArray(q.correct) ? q.correct.length : 1)
+                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                        : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                                    }`}
+                            >
+                                Submit Answer & Next
+                            </button>
+                        </div>
                     )}
 
                     {/* Feedback bar */}
