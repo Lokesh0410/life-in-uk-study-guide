@@ -8,7 +8,9 @@ import LazyCardWrapper from "./LazyCardWrapper";
 import Pricing from "./pages/Pricing";
 import BritishHistory from "./pages/BritishHistory";
 import GovernmentAndLaw from "./pages/GovernmentAndLaw";
-import ILRGuide from "./pages/ILRGuide"; // Import the new ILRGuide component
+import ILRGuide from "./pages/ILRGuide";
+import GuidePage from "./pages/GuidePage";
+import { guideBySlug } from "./pages/immigrationGuides/index";
 import QuickFireChallenge from "./QuickFireChallenge";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
@@ -192,6 +194,7 @@ export default function App() {
   const [redeemCode, setRedeemCode] = useState("");
   const [redeemError, setRedeemError] = useState("");
   const [showQuickFire, setShowQuickFire] = useState(false);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [mockResults, setMockResults] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("lifeInUkMockResults") || "[]");
@@ -374,6 +377,7 @@ export default function App() {
               The ultimate online platform for your British Citizenship and ILR 2026 preparation.
             </p>
             <nav className="mt-4 flex flex-wrap justify-center gap-2 md:gap-4">
+              {/* Primary CTAs - always visible */}
               <Link
                 to="/"
                 className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
@@ -398,29 +402,47 @@ export default function App() {
               >
                 ⭐ Pricing
               </Link>
-              <Link
-                to="/ilr-guide"
-                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50"
-              >
-                🇬🇧 ILR & Citizenship Guide
-              </Link>
               <button
                 onClick={() => setShowQuickFire(true)}
                 className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
               >
                 ⚡ Quick-Fire
               </button>
-              <button
-                onClick={handleDownloadCheatSheet}
-                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50 shadow-sm"
-              >
-                {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
-              </button>
-            </nav>
 
-            <div className="mt-4 flex flex-wrap justify-center gap-3 items-center">
-              <TestDatePicker />
-            </div>
+              {/* More menu - tucks away secondary items on mobile, visible inline on desktop */}
+              <div className="relative inline-block">
+                <button
+                  onClick={() => setShowMoreMenu(!showMoreMenu)}
+                  className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-slate-500 border border-slate-300 hover:bg-slate-50"
+                >
+                  ☰ More
+                </button>
+                {showMoreMenu && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setShowMoreMenu(false)} />
+                    <div className="absolute right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[220px] space-y-1">
+                      <Link
+                        to="/ilr-guide"
+                        onClick={() => setShowMoreMenu(false)}
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
+                      >
+                        🇬🇧 ILR & Citizenship Guide
+                      </Link>
+                      <button
+                        onClick={() => { setShowMoreMenu(false); handleDownloadCheatSheet(); }}
+                        className="flex items-center gap-2 w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
+                      >
+                        {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
+                      </button>
+                      <div className="border-t border-slate-100 my-1" />
+                      <div className="px-4 py-2">
+                        <TestDatePicker />
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </nav>
 
             {!isPremium && (
               <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
@@ -546,34 +568,19 @@ export default function App() {
             <Route path="/study-guide/british-history" element={<BritishHistory />} />
             <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
             <Route path="/ilr-guide" element={<ILRGuide />} />
+            {/* Dynamic immigration guide routes */}
+            <Route path="/british-citizenship-guide" element={<GuidePage guide={guideBySlug["british-citizenship-guide"]} />} />
+            <Route path="/skilled-worker-ilr" element={<GuidePage guide={guideBySlug["skilled-worker-ilr"]} />} />
+            <Route path="/spouse-visa-ilr" element={<GuidePage guide={guideBySlug["spouse-visa-ilr"]} />} />
+            <Route path="/global-talent-ilr" element={<GuidePage guide={guideBySlug["global-talent-ilr"]} />} />
+            <Route path="/long-residence-ilr" element={<GuidePage guide={guideBySlug["long-residence-ilr"]} />} />
+            <Route path="/english-requirement" element={<GuidePage guide={guideBySlug["english-requirement"]} />} />
+            <Route path="/life-in-uk-requirement" element={<GuidePage guide={guideBySlug["life-in-uk-requirement"]} />} />
+            <Route path="/ukvcas-appointment" element={<GuidePage guide={guideBySlug["ukvcas-appointment"]} />} />
+            <Route path="/evisa-explained" element={<GuidePage guide={guideBySlug["evisa-explained"]} />} />
+            <Route path="/citizenship-ceremony" element={<GuidePage guide={guideBySlug["citizenship-ceremony"]} />} />
+            <Route path="/british-passport-application" element={<GuidePage guide={guideBySlug["british-passport-application"]} />} />
           </Routes>
-
-          {/* Latest Guides section - shown on homepage only */}
-          <div className="mb-8 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-slate-800 mb-4">📖 Latest Guides</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link to="/ilr-guide" className="block p-4 bg-indigo-50 rounded-xl hover:bg-indigo-100 transition border border-indigo-100">
-                <div className="text-2xl mb-2">🇬🇧</div>
-                <h3 className="font-bold text-slate-800 text-sm">ILR Guide</h3>
-                <p className="text-xs text-slate-600 mt-1">Everything about Indefinite Leave to Remain</p>
-              </Link>
-              <Link to="/study-guide/british-history" className="block p-4 bg-amber-50 rounded-xl hover:bg-amber-100 transition border border-amber-100">
-                <div className="text-2xl mb-2">🏰</div>
-                <h3 className="font-bold text-slate-800 text-sm">British History</h3>
-                <p className="text-xs text-slate-600 mt-1">Key historical events & timelines</p>
-              </Link>
-              <Link to="/study-guide/government-and-law" className="block p-4 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition border border-emerald-100">
-                <div className="text-2xl mb-2">⚖️</div>
-                <h3 className="font-bold text-slate-800 text-sm">Law & Government</h3>
-                <p className="text-xs text-slate-600 mt-1">UK constitution, parliament & legal system</p>
-              </Link>
-              <a href="https://www.gov.uk/life-in-the-uk-test/book-life-in-uk-test" target="_blank" rel="noopener noreferrer" className="block p-4 bg-rose-50 rounded-xl hover:bg-rose-100 transition border border-rose-100">
-                <div className="text-2xl mb-2">📅</div>
-                <h3 className="font-bold text-slate-800 text-sm">Book Your Test</h3>
-                <p className="text-xs text-slate-600 mt-1">Find test centres & book on GOV.UK</p>
-              </a>
-            </div>
-          </div>
 
           {/* Testimonials shown to everyone at the bottom */}
           <TestimonialsCarousel />
@@ -633,6 +640,6 @@ export default function App() {
           <QuickFireChallenge onClose={() => setShowQuickFire(false)} />
         )}
       </div>
-    </Router>
+    </Router >
   );
 }

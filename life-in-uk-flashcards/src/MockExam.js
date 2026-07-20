@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { mockExams } from './mockExamsData';
 import confetti from 'canvas-confetti';
 import jsPDF from 'jspdf';
@@ -94,6 +95,7 @@ const ExitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
 // };
 
 export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium, onResultsUpdate }) {
+    const navigate = useNavigate();
     const [showExitModal, setShowExitModal] = useState(false);
     const exitCallbackRef = React.useRef(null);
     const [selectedExam, setSelectedExam] = useState(null);
@@ -280,6 +282,10 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
         setShowDashboard(false);
         setShowSubmitConfirm(false);
         setValidationError('');
+    };
+
+    const goHome = () => {
+        navigate('/');
     };
 
     const confirmExit = (callback) => {
@@ -473,7 +479,7 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
 
     const TopBar = () => (
         <div className="flex justify-between items-center mb-6">
-            <button onClick={() => confirmExit(onBack)} className="text-gray-500 hover:text-gray-700 transition">← Back to Flashcards</button>
+            <button onClick={() => confirmExit(goHome)} className="text-gray-500 hover:text-gray-700 transition">← Back to Flashcards</button>
             <div className="flex gap-3">
                 <button onClick={() => setShowContactModal(true)} className="text-sm text-gray-500 hover:text-indigo-600 transition">📧 Contact</button>
                 {!isPremium ? (
@@ -604,7 +610,7 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
     return (
         <div className="p-6 max-w-3xl mx-auto">
             <TopBar />
-            <div className="flex justify-between items-center mb-4"><button onClick={() => confirmExit(resetExam)} className="text-gray-500 hover:text-gray-700">← Exit Exam</button><div className={`text-xl font-mono ${warning}`}>⏱️ {formatTime(timeLeft)}</div></div>
+            <div className="flex justify-between items-center mb-4"><button onClick={() => confirmExit(goHome)} className="text-gray-500 hover:text-gray-700">← Exit Exam</button><div className={`text-xl font-mono ${warning}`}>⏱️ {formatTime(timeLeft)}</div></div>
             <div className="bg-gray-200 rounded-full h-2 mb-6"><div className="bg-indigo-600 h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div></div>
             <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
                 <div className="flex justify-between text-sm text-gray-500 mb-4"><span>Question {currentQuestionIndex + 1} of {selectedExam.questions.length}</span><span>{Math.round(progress)}% complete</span></div>
