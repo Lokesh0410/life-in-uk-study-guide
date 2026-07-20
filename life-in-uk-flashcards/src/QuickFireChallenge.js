@@ -11,7 +11,7 @@ const QuickFireChallenge = ({ onClose }) => {
     const [score, setScore] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({}); // {questionIndex: [chosenIdx1, chosenIdx2]}
     const [answered, setAnswered] = useState(null); // Used for single-choice questions to mark selection
-    const [isCorrect, setIsCorrect] = useState(null);
+    const [isCorrectState, setIsCorrectState] = useState(null); // Renamed to avoid conflict
     const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
     const [streak, setStreak] = useState(0);
     const [bestStreak, setBestStreak] = useState(0);
@@ -49,7 +49,7 @@ const QuickFireChallenge = ({ onClose }) => {
         setScore(0);
         setSelectedAnswers({});
         setAnswered(null);
-        setIsCorrect(null);
+        setIsCorrectState(null);
         setTimeLeft(TOTAL_TIME);
         setStreak(0);
         setBestStreak(0);
@@ -81,7 +81,7 @@ const QuickFireChallenge = ({ onClose }) => {
                 if (currentIndex < questions.length - 1) {
                     setCurrentIndex(prev => prev + 1);
                     setAnswered(null);
-                    setIsCorrect(null);
+                    setIsCorrectState(null);
                     setSelectedAnswers({}); // Clear selected answers for next question
                 } else {
                     setPhase('finished');
@@ -122,12 +122,12 @@ const QuickFireChallenge = ({ onClose }) => {
             // For now, let's keep it simple and just allow selection, and user navigates forward/back
             // The actual score update will happen when moving to the next question or finishing
             setAnswered(choiceIndex); // Still track last interaction for styling if needed
-            // Don't set isCorrect here directly for multiple choice, it's evaluated on submit/advance
+            // Don\"t set isCorrectState here directly for multiple choice, it\"s evaluated on submit/advance
         } else {
             if (answered !== null) return; // already answered this single-choice question
             const correct = choiceIndex === q.correct;
             setAnswered(choiceIndex);
-            setIsCorrect(correct);
+            setIsCorrectState(correct);
             setTotalAnswered(prev => prev + 1);
 
             setHistory(prev => [...prev, {
@@ -156,7 +156,7 @@ const QuickFireChallenge = ({ onClose }) => {
             // Evaluate multiple choice answer on explicit advance
             const chosenIndices = selectedAnswers[currentIndex] || [];
             const correct = evaluateAnswer(q, chosenIndices);
-            setIsCorrect(correct);
+            setIsCorrectState(correct);
             setTotalAnswered(prev => prev + 1);
 
             setHistory(prev => [...prev, {
@@ -183,7 +183,7 @@ const QuickFireChallenge = ({ onClose }) => {
             if (currentIndex < questions.length - 1) {
                 setCurrentIndex(prev => prev + 1);
                 setAnswered(null);
-                setIsCorrect(null);
+                setIsCorrectState(null);
                 setSelectedAnswers({}); // Clear selected answers for next question
             } else {
                 setPhase('finished');
@@ -207,12 +207,12 @@ const QuickFireChallenge = ({ onClose }) => {
         const prevQuestionData = history[currentIndex - 1];
         if (prevQuestionData) {
             // Restore the state for the previous question from history
-            setAnswered(prevQuestionData.chosen[0] || null); // Assuming single choice for `answered` state
-            setIsCorrect(prevQuestionData.isCorrect);
+            setAnswered(prevQuestionData.chosen[0] || null); // Assuming single choice for `answered` state (for styling)
+            setIsCorrectState(prevQuestionData.isCorrect); // Restore isCorrectState
             setSelectedAnswers(prev => ({ ...prev, [currentIndex - 1]: prevQuestionData.chosen }));
         } else {
             setAnswered(null);
-            setIsCorrect(null);
+            setIsCorrectState(null);
             setSelectedAnswers({});
         }
         setStreak(0); // Reset streak when going back
@@ -422,8 +422,8 @@ const QuickFireChallenge = ({ onClose }) => {
                                     {isCurrentQuestionAnswered && (
                                         <span className="float-right">
                                             {q.multiple
-                                                ? (Array.isArray(q.correct) && q.correct.includes(idx) ? '✅' : (isSelected ? '❌' : ''))
-                                                : (idx === q.correct ? '✅' : (answered === idx ? '❌' : ''))
+                                                ? (Array.isArray(q.correct) && q.correct.includes(idx) ? "✅" : (isSelected ? "❌" : ""))
+                                                : (idx === q.correct ? "✅" : (answered === idx ? "❌" : ""))
                                             }
                                         </span>
                                     )}
@@ -444,12 +444,12 @@ const QuickFireChallenge = ({ onClose }) => {
 
                     {/* Feedback bar */}
                     {isCurrentQuestionAnswered && (
-                        <div className={`mt-4 p-3 rounded-xl text-sm ${currentQuestionData?.isCorrect ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-                            <p className="font-semibold">{currentQuestionData?.isCorrect ? '✅ Correct!' : '❌ Incorrect'}</p>
+                        <div className={`mt-4 p-3 rounded-xl text-sm ${currentQuestionData?.isCorrect ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
+                            <p className="font-semibold">{currentQuestionData?.isCorrect ? "✅ Correct!" : "❌ Incorrect"}</p>
                             {(q.multiple && Array.isArray(q.correct) && q.correct.length > 0) ? (
                                 <p className="text-xs mt-1">
-                                    Correct answer{q.multiple && Array.isArray(q.correct) && q.correct.length > 1 ? 's' : ''}: {q.multiple && Array.isArray(q.correct)
-                                        ? q.correct.map(i => `${String.fromCharCode(65 + i)}`).join(', ')
+                                    Correct answer{q.multiple && Array.isArray(q.correct) && q.correct.length > 1 ? "s" : ""}: {q.multiple && Array.isArray(q.correct)
+                                        ? q.correct.map(i => `${String.fromCharCode(65 + i)}`).join(", ")
                                         : String.fromCharCode(65 + q.correct)}
                                 </p>
                             ) : null}
