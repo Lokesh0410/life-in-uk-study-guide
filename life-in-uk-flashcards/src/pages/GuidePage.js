@@ -3,6 +3,7 @@
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import allGuides from "./immigrationGuides/index";
 
 export default function GuidePage({ guide }) {
     useEffect(() => {
@@ -204,6 +205,24 @@ export default function GuidePage({ guide }) {
                     </p>
                 </div>
             )}
+
+            {/* All Immigration Guides - discoverability section */}
+            <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm mb-8">
+                <h2 className="text-2xl font-bold text-slate-800 mb-4">📖 All Immigration & Citizenship Guides</h2>
+                <p className="text-slate-600 mb-4">Browse our complete library of guides to help you through every step of your UK immigration journey:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {allGuides.filter(g => g.slug !== guide.slug).map((g) => (
+                        <Link
+                            key={g.slug}
+                            to={g.slug === "ilr-guide" ? "/ilr-guide" : `/${g.slug}`}
+                            className="block bg-slate-50 border border-slate-100 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md hover:bg-white transition"
+                        >
+                            <h3 className="font-bold text-slate-800 text-sm">{g.title}</h3>
+                            <p className="text-xs text-slate-500 mt-1 line-clamp-2">{g.introduction?.substring(0, 100)}</p>
+                        </Link>
+                    ))}
+                </div>
+            </div>
 
             {/* Back to home */}
             <div className="text-center mt-8 mb-12">

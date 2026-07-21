@@ -389,6 +389,67 @@ const ILRGuide = () => {
                 />
             </div>
 
+            {/* ===== RELATED IMMIGRATION GUIDES ===== */}
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 mt-8">📖 Related Immigration Guides</h2>
+            <p className="text-slate-600 mb-4">Explore our detailed guides for specific visa routes and requirements:</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link to="/british-citizenship-guide" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🇬🇧</div>
+                    <h3 className="font-bold text-slate-800 text-sm">British Citizenship Guide</h3>
+                    <p className="text-xs text-slate-500 mt-1">Naturalisation requirements, residency, good character</p>
+                </Link>
+                <Link to="/skilled-worker-ilr" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">💼</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Skilled Worker ILR</h3>
+                    <p className="text-xs text-slate-500 mt-1">Settlement after 5 years on work visa</p>
+                </Link>
+                <Link to="/spouse-visa-ilr" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">❤️</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Spouse Visa ILR</h3>
+                    <p className="text-xs text-slate-500 mt-1">Partner settlement requirements</p>
+                </Link>
+                <Link to="/global-talent-ilr" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🌟</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Global Talent ILR</h3>
+                    <p className="text-xs text-slate-500 mt-1">3 or 5 year settlement route</p>
+                </Link>
+                <Link to="/long-residence-ilr" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">📅</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Long Residence ILR</h3>
+                    <p className="text-xs text-slate-500 mt-1">10 year lawful residence route</p>
+                </Link>
+                <Link to="/english-requirement" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">📝</div>
+                    <h3 className="font-bold text-slate-800 text-sm">English Language Requirement</h3>
+                    <p className="text-xs text-slate-500 mt-1">SELT, degree exemptions, approved tests</p>
+                </Link>
+                <Link to="/life-in-uk-requirement" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🇬🇧</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Life in the UK Test Requirement</h3>
+                    <p className="text-xs text-slate-500 mt-1">Test format, topics, preparation tips</p>
+                </Link>
+                <Link to="/ukvcas-appointment" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🖐️</div>
+                    <h3 className="font-bold text-slate-800 text-sm">UKVCAS Appointment Guide</h3>
+                    <p className="text-xs text-slate-500 mt-1">Biometrics, documents, booking process</p>
+                </Link>
+                <Link to="/evisa-explained" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">📱</div>
+                    <h3 className="font-bold text-slate-800 text-sm">eVisa Explained</h3>
+                    <p className="text-xs text-slate-500 mt-1">Digital immigration status, UKVI account</p>
+                </Link>
+                <Link to="/citizenship-ceremony" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🎓</div>
+                    <h3 className="font-bold text-slate-800 text-sm">Citizenship Ceremony</h3>
+                    <p className="text-xs text-slate-500 mt-1">What to expect, oath, certificate</p>
+                </Link>
+                <Link to="/british-passport-application" className="block bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition">
+                    <div className="text-2xl mb-2">🛂</div>
+                    <h3 className="font-bold text-slate-800 text-sm">British Passport Application</h3>
+                    <p className="text-xs text-slate-500 mt-1">Apply after citizenship ceremony</p>
+                </Link>
+            </div>
+
             {/* ===== SOLICITOR CTA ===== */}
             <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-5 mt-8 text-center">
                 <h3 className="text-xl font-bold text-indigo-800 mb-3">Need further assistance?</h3>

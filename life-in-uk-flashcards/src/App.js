@@ -14,7 +14,7 @@ import { guideBySlug } from "./pages/immigrationGuides/index";
 import QuickFireChallenge from "./QuickFireChallenge";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Import react-router-dom components
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"; // Import react-router-dom components
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
@@ -182,6 +182,15 @@ const CookieBanner = () => {
   );
 };
 
+
+// Scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   const [view, setView] = useState("flashcards"); // "flashcards" or "mockExam"
@@ -359,6 +368,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
         <style>{`
           .perspective { perspective: 1000px; }
