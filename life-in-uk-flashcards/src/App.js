@@ -19,7 +19,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
-import { safeGetItem, safeSetItem } from "./safeStorage";
+// safeStorage is available for use when migrating localStorage calls
+// import { safeGetItem, safeSetItem } from "./safeStorage";
 
 const PREMIUM_KEY = 'lifeInUkPremium';
 
