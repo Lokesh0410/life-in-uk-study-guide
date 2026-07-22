@@ -14,10 +14,12 @@ import { guideBySlug } from "./pages/immigrationGuides/index";
 import QuickFireChallenge from "./QuickFireChallenge";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
+import ErrorBoundary from "./ErrorBoundary";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"; // Import react-router-dom components
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
+import { safeGetItem, safeSetItem } from "./safeStorage";
 
 const PREMIUM_KEY = 'lifeInUkPremium';
 
@@ -369,287 +371,305 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
-        <style>{`
+      <ErrorBoundary>
+        <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans">
+          <style>{`
           .perspective { perspective: 1000px; }
           .transform-style { transform-style: preserve-3d; }
           .backface-hidden { backface-visibility: hidden; }
           .rotate-y-180 { transform: rotateY(180deg); }
         `}</style>
 
-        <div className="max-w-6xl mx-auto">
-          <header className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-slate-900 mb-2">✅ Pass Your Life in the UK Test First Time!</h1>
-            <p className="text-slate-700 font-medium">
-              Access 45 realistic mock exams, instant feedback, and a structured study approach.
-            </p>
-            <p className="text-xs text-slate-500 mt-1">
-              The ultimate online platform for your British Citizenship and ILR 2026 preparation.
-            </p>
-            <nav className="mt-4 flex flex-wrap justify-center gap-2 md:gap-4">
-              {/* Primary CTAs - always visible */}
-              <Link
-                to="/"
-                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
-                  }`}
-                onClick={() => setView("flashcards")}
-              >
-                📚 Flashcards
-              </Link>
-              <Link
-                to="/mock-exams"
-                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
-                  }`}
-                onClick={() => setView("mockExam")}
-              >
-                📝 Mock Exams
-              </Link>
-              <Link
-                to="/pricing"
-                className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
-                  }`}
-                onClick={() => setView("pricing")}
-              >
-                ⭐ Pricing
-              </Link>
-              <button
-                onClick={() => setShowQuickFire(true)}
-                className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
-              >
-                ⚡ Quick-Fire
-              </button>
-
-              {/* More menu - tucks away secondary items on mobile, visible inline on desktop */}
-              <div className="relative inline-block">
-                <button
-                  onClick={() => setShowMoreMenu(!showMoreMenu)}
-                  className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-slate-500 border border-slate-300 hover:bg-slate-50"
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-12">
+              <h1 className="text-4xl font-extrabold text-slate-900 mb-2">✅ Pass Your Life in the UK Test First Time!</h1>
+              <p className="text-slate-700 font-medium">
+                Access 45 realistic mock exams, instant feedback, and a structured study approach.
+              </p>
+              <p className="text-xs text-slate-500 mt-1">
+                The ultimate online platform for your British Citizenship and ILR 2026 preparation.
+              </p>
+              <nav className="mt-4 flex flex-wrap justify-center gap-2 md:gap-4">
+                {/* Primary CTAs - always visible */}
+                <Link
+                  to="/"
+                  className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                    }`}
+                  onClick={() => setView("flashcards")}
                 >
-                  ☰ More
-                </button>
-                {showMoreMenu && (
-                  <>
-                    <div className="fixed inset-0 z-40" onClick={() => setShowMoreMenu(false)} />
-                    <div className="absolute right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[220px] space-y-1">
-                      <Link
-                        to="/ilr-guide"
-                        onClick={() => setShowMoreMenu(false)}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
-                      >
-                        🇬🇧 ILR & Citizenship Guide
-                      </Link>
-                      <button
-                        onClick={() => { setShowMoreMenu(false); handleDownloadCheatSheet(); }}
-                        className="flex items-center gap-2 w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
-                      >
-                        {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
-                      </button>
-                      <div className="border-t border-slate-100 my-1" />
-                      <div className="px-4 py-2">
-                        <TestDatePicker />
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            </nav>
-
-            {!isPremium && (
-              <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
-                <p className="text-sm text-slate-700 font-medium mb-1">
-                  🚀 Want to pass in 5 days?
-                </p>
-                <p className="text-xs text-slate-500 mb-3">
-                  Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
-                </p>
-                <button
-                  onClick={() => setShowPremiumModal(true)}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+                  📚 Flashcards
+                </Link>
+                <Link
+                  to="/mock-exams"
+                  className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                    }`}
+                  onClick={() => setView("mockExam")}
                 >
-                  Get 5-Day Guaranteed Path (£7.99)
+                  📝 Mock Exams
+                </Link>
+                <Link
+                  to="/pricing"
+                  className={`px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white text-indigo-600 border border-indigo-300"
+                    }`}
+                  onClick={() => setView("pricing")}
+                >
+                  ⭐ Pricing
+                </Link>
+                <button
+                  onClick={() => setShowQuickFire(true)}
+                  className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
+                >
+                  ⚡ Quick-Fire
                 </button>
-              </div>
-            )}
-          </header>
 
-          <Routes>
-            <Route path="/" element={(
-              <>
-                {/* Progress Graph for free users (sneak peek) */}
-                {mockResults.length >= 2 && (
-                  <div className="mb-8 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-lg font-bold text-slate-800">📈 Your Progress</h3>
-                      {!isPremium && (
-                        <button
-                          onClick={() => setShowPremiumModal(true)}
-                          className="text-xs text-indigo-600 hover:text-indigo-800 font-medium underline"
+                {/* More menu - tucks away secondary items on mobile, visible inline on desktop */}
+                <div className="relative inline-block">
+                  <button
+                    onClick={() => setShowMoreMenu(!showMoreMenu)}
+                    className="px-3 md:px-4 py-2 rounded-full font-medium transition text-sm md:text-base bg-white text-slate-500 border border-slate-300 hover:bg-slate-50"
+                  >
+                    ☰ More
+                  </button>
+                  {showMoreMenu && (
+                    <>
+                      <div className="fixed inset-0 z-40" onClick={() => setShowMoreMenu(false)} />
+                      <div className="absolute right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 min-w-[220px] space-y-1">
+                        <Link
+                          to="/ilr-guide"
+                          onClick={() => setShowMoreMenu(false)}
+                          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
                         >
-                          Unlock full analytics 🔒
+                          🇬🇧 ILR & Citizenship Guide
+                        </Link>
+                        <button
+                          onClick={() => { setShowMoreMenu(false); handleDownloadCheatSheet(); }}
+                          className="flex items-center gap-2 w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition"
+                        >
+                          {isPremium ? "📥 Download Cheat Sheet" : "✨ Unlock Cheat Sheet"}
                         </button>
-                      )}
-                    </div>
-                    <div className="flex flex-col md:flex-row items-center gap-4">
-                      <div className="w-full max-w-xs">
-                        <ProgressGraph results={mockResults} maxResults={5} />
+                        <div className="border-t border-slate-100 my-1" />
+                        <div className="px-4 py-2">
+                          <TestDatePicker />
+                        </div>
                       </div>
-                      <div className="text-sm text-slate-600 space-y-1">
-                        <p>📊 Last {Math.min(mockResults.length, 5)} exams</p>
-                        <p>🏆 Best: <strong>{Math.max(...mockResults.map(r => r.score))}%</strong></p>
-                        <p>📈 Average: <strong>{(mockResults.reduce((s, r) => s + r.score, 0) / mockResults.length).toFixed(1)}%</strong></p>
+                    </>
+                  )}
+                </div>
+              </nav>
+
+              {!isPremium && (
+                <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
+                  <p className="text-sm text-slate-700 font-medium mb-1">
+                    🚀 Want to pass in 5 days?
+                  </p>
+                  <p className="text-xs text-slate-500 mb-3">
+                    Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
+                  </p>
+                  <button
+                    onClick={() => setShowPremiumModal(true)}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+                  >
+                    Get 5-Day Guaranteed Path (£7.99)
+                  </button>
+                </div>
+              )}
+            </header>
+
+            <Routes>
+              <Route path="/" element={(
+                <>
+                  {/* Progress Graph for free users (sneak peek) */}
+                  {mockResults.length >= 2 && (
+                    <div className="mb-8 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-lg font-bold text-slate-800">📈 Your Progress</h3>
                         {!isPremium && (
-                          <p className="text-xs text-amber-600 mt-2">⭐ Premium unlocks detailed analytics, confidence score & study plan</p>
+                          <button
+                            onClick={() => setShowPremiumModal(true)}
+                            className="text-xs text-indigo-600 hover:text-indigo-800 font-medium underline"
+                          >
+                            Unlock full analytics 🔒
+                          </button>
                         )}
                       </div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="mb-4 text-center text-sm text-gray-500">
-                  📚 Browse all flashcards by topic below • Click any card to flip
-                </div>
-                {sections.map((section, i) => {
-
-                  const readCount = getReadCount(section, i);
-                  const totalCount = section.cards.length;
-                  const isAllRead = readCount === totalCount;
-                  const isCollapsed = !!collapsedSections[i];
-
-                  return (
-                    <section key={i} className="mb-12 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                      <div
-                        onClick={() => handleToggleCollapse(i)}
-                        className="flex justify-between items-center cursor-pointer pb-2 border-b-2 border-slate-100 mb-6 select-none"
-                      >
-                        <div className="flex items-center gap-3">
-                          <h2 className="text-xl font-bold text-slate-800">
-                            {section.title}
-                          </h2>
-                          <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold transition ${isAllRead
-                            ? 'bg-green-100 text-green-800 border border-green-200'
-                            : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
-                            }`}>
-                            {readCount} / {totalCount} read {isAllRead && "🎉"}
-                          </span>
+                      <div className="flex flex-col md:flex-row items-center gap-4">
+                        <div className="w-full max-w-xs">
+                          <ProgressGraph results={mockResults} maxResults={5} />
                         </div>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleToggleCollapse(i);
-                          }}
-                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg border border-indigo-100 shadow-sm"
-                        >
-                          {isCollapsed ? "Expand 📂" : "Collapse 📁"}
-                        </button>
+                        <div className="text-sm text-slate-600 space-y-1">
+                          <p>📊 Last {Math.min(mockResults.length, 5)} exams</p>
+                          <p>🏆 Best: <strong>{Math.max(...mockResults.map(r => r.score))}%</strong></p>
+                          <p>📈 Average: <strong>{(mockResults.reduce((s, r) => s + r.score, 0) / mockResults.length).toFixed(1)}%</strong></p>
+                          {!isPremium && (
+                            <p className="text-xs text-amber-600 mt-2">⭐ Premium unlocks detailed analytics, confidence score & study plan</p>
+                          )}
+                        </div>
                       </div>
+                    </div>
+                  )}
 
-                      {!isCollapsed && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {section.cards.map((card, idx) => {
-                            const isRead = !!readCards[`${i}-${idx}`];
-                            return (
-                              <LazyCardWrapper key={idx}>
-                                <FlashCard
-                                  card={card}
-                                  index={idx + i * 100}
-                                  isRead={isRead}
-                                  onToggleRead={(isReadVal) => handleToggleRead(i, idx, isReadVal)}
-                                />
-                              </LazyCardWrapper>
-                            );
-                          })}
+                  <div className="mb-4 text-center text-sm text-gray-500">
+                    📚 Browse all flashcards by topic below • Click any card to flip
+                  </div>
+                  {sections.map((section, i) => {
+
+                    const readCount = getReadCount(section, i);
+                    const totalCount = section.cards.length;
+                    const isAllRead = readCount === totalCount;
+                    const isCollapsed = !!collapsedSections[i];
+
+                    return (
+                      <section key={i} className="mb-12 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div
+                          onClick={() => handleToggleCollapse(i)}
+                          className="flex justify-between items-center cursor-pointer pb-2 border-b-2 border-slate-100 mb-6 select-none"
+                        >
+                          <div className="flex items-center gap-3">
+                            <h2 className="text-xl font-bold text-slate-800">
+                              {section.title}
+                            </h2>
+                            <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold transition ${isAllRead
+                              ? 'bg-green-100 text-green-800 border border-green-200'
+                              : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
+                              }`}>
+                              {readCount} / {totalCount} read {isAllRead && "🎉"}
+                            </span>
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleToggleCollapse(i);
+                            }}
+                            className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg border border-indigo-100 shadow-sm"
+                          >
+                            {isCollapsed ? "Expand 📂" : "Collapse 📁"}
+                          </button>
                         </div>
-                      )}
-                    </section>
-                  );
-                })}
-              </>
-            )} />
-            <Route path="/mock-exams" element={(
-              <MockExam
-                onBack={() => setView("flashcards")}
-                isPremium={isPremium}
-                setIsPremium={setIsPremium}
-                onUnlockPremium={() => setShowPremiumModal(true)}
-                onResultsUpdate={(results) => setMockResults(results)}
-              />
-            )} />
-            <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
-            <Route path="/study-guide/british-history" element={<BritishHistory />} />
-            <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
-            <Route path="/ilr-guide" element={<ILRGuide />} />
-            {/* Dynamic immigration guide routes */}
-            <Route path="/british-citizenship-guide" element={<GuidePage guide={guideBySlug["british-citizenship-guide"]} />} />
-            <Route path="/skilled-worker-ilr" element={<GuidePage guide={guideBySlug["skilled-worker-ilr"]} />} />
-            <Route path="/spouse-visa-ilr" element={<GuidePage guide={guideBySlug["spouse-visa-ilr"]} />} />
-            <Route path="/global-talent-ilr" element={<GuidePage guide={guideBySlug["global-talent-ilr"]} />} />
-            <Route path="/long-residence-ilr" element={<GuidePage guide={guideBySlug["long-residence-ilr"]} />} />
-            <Route path="/english-requirement" element={<GuidePage guide={guideBySlug["english-requirement"]} />} />
-            <Route path="/life-in-uk-requirement" element={<GuidePage guide={guideBySlug["life-in-uk-requirement"]} />} />
-            <Route path="/ukvcas-appointment" element={<GuidePage guide={guideBySlug["ukvcas-appointment"]} />} />
-            <Route path="/evisa-explained" element={<GuidePage guide={guideBySlug["evisa-explained"]} />} />
-            <Route path="/citizenship-ceremony" element={<GuidePage guide={guideBySlug["citizenship-ceremony"]} />} />
-            <Route path="/british-passport-application" element={<GuidePage guide={guideBySlug["british-passport-application"]} />} />
-          </Routes>
 
-          {/* Testimonials shown to everyone at the bottom */}
-          <TestimonialsCarousel />
+                        {!isCollapsed && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {section.cards.map((card, idx) => {
+                              const isRead = !!readCards[`${i}-${idx}`];
+                              return (
+                                <LazyCardWrapper key={idx}>
+                                  <FlashCard
+                                    card={card}
+                                    index={idx + i * 100}
+                                    isRead={isRead}
+                                    onToggleRead={(isReadVal) => handleToggleRead(i, idx, isReadVal)}
+                                  />
+                                </LazyCardWrapper>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </section>
+                    );
+                  })}
+                </>
+              )} />
+              <Route path="/mock-exams" element={(
+                <MockExam
+                  onBack={() => setView("flashcards")}
+                  isPremium={isPremium}
+                  setIsPremium={setIsPremium}
+                  onUnlockPremium={() => setShowPremiumModal(true)}
+                  onResultsUpdate={(results) => setMockResults(results)}
+                />
+              )} />
+              <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
+              <Route path="/study-guide/british-history" element={<BritishHistory />} />
+              <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
+              <Route path="/ilr-guide" element={<ILRGuide />} />
+              {/* Dynamic immigration guide routes */}
+              <Route path="/british-citizenship-guide" element={<GuidePage guide={guideBySlug["british-citizenship-guide"]} />} />
+              <Route path="/skilled-worker-ilr" element={<GuidePage guide={guideBySlug["skilled-worker-ilr"]} />} />
+              <Route path="/spouse-visa-ilr" element={<GuidePage guide={guideBySlug["spouse-visa-ilr"]} />} />
+              <Route path="/global-talent-ilr" element={<GuidePage guide={guideBySlug["global-talent-ilr"]} />} />
+              <Route path="/long-residence-ilr" element={<GuidePage guide={guideBySlug["long-residence-ilr"]} />} />
+              <Route path="/english-requirement" element={<GuidePage guide={guideBySlug["english-requirement"]} />} />
+              <Route path="/life-in-uk-requirement" element={<GuidePage guide={guideBySlug["life-in-uk-requirement"]} />} />
+              <Route path="/ukvcas-appointment" element={<GuidePage guide={guideBySlug["ukvcas-appointment"]} />} />
+              <Route path="/evisa-explained" element={<GuidePage guide={guideBySlug["evisa-explained"]} />} />
+              <Route path="/citizenship-ceremony" element={<GuidePage guide={guideBySlug["citizenship-ceremony"]} />} />
+              <Route path="/british-passport-application" element={<GuidePage guide={guideBySlug["british-passport-application"]} />} />
+              {/* 404 catch-all route */}
+              <Route path="*" element={(
+                <div className="text-center py-20">
+                  <div className="text-7xl mb-4">🔍</div>
+                  <h2 className="text-3xl font-bold text-slate-800 mb-2">Page Not Found</h2>
+                  <p className="text-slate-500 mb-6 max-w-md mx-auto">
+                    The page you're looking for doesn't exist or has been moved.
+                  </p>
+                  <Link
+                    to="/"
+                    className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-md"
+                  >
+                    ← Back to Home
+                  </Link>
+                </div>
+              )} />
+            </Routes>
 
-          {/* Global Footer (shows on all views) */}
-          <footer className="text-center py-10 mt-12 border-t border-slate-200 text-slate-400 text-sm space-y-4">
-            <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Good luck! 🇬🇧</p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
-              <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help & Support (help@lifeinukcoach.co.uk)</a>
-              <Link to="/ilr-guide" className="text-indigo-500 hover:text-indigo-700 transition">🇬🇧 ILR & Citizenship Guide</Link>
-              <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service & Refund Guarantee</button>
-              <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
-              <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>
-              <button onClick={() => setShowPremiumModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⭐ Restore Premium</button>
-            </div>
-            <div className="text-[11px] text-slate-400 max-w-2xl mx-auto space-y-2 pt-2 border-t border-slate-100">
-              <p>This website is an independent educational platform. It is <strong>not affiliated with, endorsed by, or connected to the UK Home Office or the UK Government</strong>.</p>
-              <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-500 transition">Open Government Licence v3.0</a>.</p>
-            </div>
-          </footer>
+            {/* Testimonials shown to everyone at the bottom */}
+            <TestimonialsCarousel />
+
+            {/* Global Footer (shows on all views) */}
+            <footer className="text-center py-10 mt-12 border-t border-slate-200 text-slate-400 text-sm space-y-4">
+              <p className="font-semibold text-slate-500">🎓 Based on official Life in the UK Handbook (3rd edition) & mock test patterns. Good luck! 🇬🇧</p>
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-medium">
+                <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-500 hover:text-indigo-700 transition">✉️ Help & Support (help@lifeinukcoach.co.uk)</a>
+                <Link to="/ilr-guide" className="text-indigo-500 hover:text-indigo-700 transition">🇬🇧 ILR & Citizenship Guide</Link>
+                <button onClick={() => setShowTermsModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">📜 Terms of Service & Refund Guarantee</button>
+                <button onClick={() => setShowPrivacyModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">🔒 Privacy Policy</button>
+                <button onClick={() => setShowDisclaimerModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⚖️ Legal Disclaimer</button>
+                <button onClick={() => setShowPremiumModal(true)} className="text-indigo-500 hover:text-indigo-700 transition">⭐ Restore Premium</button>
+              </div>
+              <div className="text-[11px] text-slate-400 max-w-2xl mx-auto space-y-2 pt-2 border-t border-slate-100">
+                <p>This website is an independent educational platform. It is <strong>not affiliated with, endorsed by, or connected to the UK Home Office or the UK Government</strong>.</p>
+                <p>Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-500 transition">Open Government Licence v3.0</a>.</p>
+              </div>
+            </footer>
+          </div>
+
+          <PremiumModal
+            isOpen={showPremiumModal}
+            onClose={() => setShowPremiumModal(false)}
+            redeemCode={redeemCode}
+            setRedeemCode={setRedeemCode}
+            redeemError={redeemError}
+            onRedeem={handleRedeemCode}
+            onSubscribe={handleSubscribe}
+            onRestoreAccess={handleRestoreAccess}
+          />
+
+          <PremiumSuccessModal
+            isOpen={showPremiumSuccess}
+            onClose={() => setShowPremiumSuccess(false)}
+          />
+
+          <PrivacyModal
+            isOpen={showPrivacyModal}
+            onClose={() => setShowPrivacyModal(false)}
+          />
+
+          <TermsModal
+            isOpen={showTermsModal}
+            onClose={() => setShowTermsModal(false)}
+          />
+
+          <DisclaimerModal
+            isOpen={showDisclaimerModal}
+            onClose={() => setShowDisclaimerModal(false)}
+          />
+
+          <CookieBanner />
+
+          {showQuickFire && (
+            <QuickFireChallenge onClose={() => setShowQuickFire(false)} />
+          )}
         </div>
-
-        <PremiumModal
-          isOpen={showPremiumModal}
-          onClose={() => setShowPremiumModal(false)}
-          redeemCode={redeemCode}
-          setRedeemCode={setRedeemCode}
-          redeemError={redeemError}
-          onRedeem={handleRedeemCode}
-          onSubscribe={handleSubscribe}
-          onRestoreAccess={handleRestoreAccess}
-        />
-
-        <PremiumSuccessModal
-          isOpen={showPremiumSuccess}
-          onClose={() => setShowPremiumSuccess(false)}
-        />
-
-        <PrivacyModal
-          isOpen={showPrivacyModal}
-          onClose={() => setShowPrivacyModal(false)}
-        />
-
-        <TermsModal
-          isOpen={showTermsModal}
-          onClose={() => setShowTermsModal(false)}
-        />
-
-        <DisclaimerModal
-          isOpen={showDisclaimerModal}
-          onClose={() => setShowDisclaimerModal(false)}
-        />
-
-        <CookieBanner />
-
-        {showQuickFire && (
-          <QuickFireChallenge onClose={() => setShowQuickFire(false)} />
-        )}
-      </div>
+      </ErrorBoundary>
     </Router >
   );
 }

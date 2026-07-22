@@ -586,7 +586,7 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
                         {score >= 75 && (
                             <button
                                 onClick={() => {
-                                    const msg = encodeURIComponent(`🎉 I just scored ${score}% on my Life in the UK mock test! Feeling confident for the real thing. Try it free at lifeinuktest.co.uk`);
+                                    const msg = encodeURIComponent(`🎉 I just scored ${score}% on my Life in the UK mock test! Feeling confident for the real thing. Try it free at lifeinukcoach.co.uk`);
                                     window.open(`https://wa.me/?text=${msg}`, '_blank');
                                 }}
                                 className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition font-semibold"
