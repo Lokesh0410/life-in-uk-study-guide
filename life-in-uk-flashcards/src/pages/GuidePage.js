@@ -58,19 +58,23 @@ export default function GuidePage({ guide }) {
 
     return (
         <div className="max-w-4xl mx-auto">
-            {/* JSON-LD Schemas */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(faqSchema)
-                }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(breadcrumbSchema)
-                }}
-            />
+            {/* JSON-LD Schemas - only render when data exists */}
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(faqSchema)
+                    }}
+                />
+            )}
+            {breadcrumbSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(breadcrumbSchema)
+                    }}
+                />
+            )}
 
             {/* Breadcrumbs */}
             {guide.breadcrumbs && (
