@@ -112,6 +112,8 @@ async function main() {
 main()
   .then(() => process.exit(0))
   .catch((err) => {
-    console.error(err);
-    process.exit(1);
+    // Prerendering is an SEO enhancement, not a hard requirement for the app to run —
+    // never fail the whole Netlify deploy just because Chrome/puppeteer couldn't launch.
+    console.error("Prerender step failed, continuing without it:", err);
+    process.exit(0);
   });
