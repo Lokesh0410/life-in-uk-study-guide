@@ -34,10 +34,14 @@ const routes = [
 ];
 
 function startStaticServer() {
+  // Run in its own process group (detached) so we can kill the whole
+  // tree later — `npx` spawns `serve` as a child process, and killing
+  // only the npx wrapper leaves `serve` running, which hangs CI after
+  // this script's own work is done (Netlify build never reaches "Deploy").
   const server = spawn(
     "npx",
     ["serve", "-s", buildDir, "-l", String(PORT)],
-    { stdio: "pipe" }
+    { stdio: "pipe", detached: true }
   );
   return new Promise((resolve, reject) => {
     let ready = false;
@@ -58,6 +62,16 @@ function startStaticServer() {
       }
     }, 4000);
   });
+}
+
+function killServerTree(server) {
+  try {
+    // Negative PID signals the whole process group (requires detached: true above).
+    process.kill(-server.pid, "SIGTERM");
+  } catch {
+    // Fallback: at least kill the direct child if group-kill isn't available.
+    server.kill();
+  }
 }
 
 async function prerenderRoute(browser, route) {
@@ -90,11 +104,13 @@ async function main() {
     }
   } finally {
     await browser.close();
-    server.kill();
+    killServerTree(server);
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
