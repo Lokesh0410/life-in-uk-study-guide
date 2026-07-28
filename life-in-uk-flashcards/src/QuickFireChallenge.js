@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { mockExams } from './mockExamsData';
-import { weightQuestionsBySpacedRepetition, updateMissedQuestions, markQuestionRecovered } from './spacedRepetition';
+import { weightQuestionsBySpacedRepetition, updateMissedQuestions, markQuestionRecovered, getWeakTopics } from './spacedRepetition';
 import { getBestStreaks, recordStreakResult } from './quickFireStats';
 
 const TOTAL_TIME = 60;
 const AUTO_ADVANCE_DELAY = 3000; // 3 seconds to read explanation
 const MIXED = 'Mixed';
+const WEAK_SPOTS = 'My Weak Spots';
 
 const QuickFireChallenge = ({ onClose }) => {
     const [phase, setPhase] = useState('intro'); // 'intro' | 'playing' | 'finished'
@@ -50,19 +51,33 @@ const QuickFireChallenge = ({ onClose }) => {
 
     const TOP_TOPICS_COUNT = 10;
 
+    // Weak topics are derived from the user's actual missed-question history
+    // (spacedRepetition.js), so this option only appears once they have some.
+    const weakTopics = useMemo(() => getWeakTopics(3), []);
+
     const topics = useMemo(() => {
         const topByVolume = Object.entries(topicCounts)
             .sort((a, b) => b[1] - a[1])
             .slice(0, TOP_TOPICS_COUNT)
             .map(([topic]) => topic);
-        return [MIXED, ...topByVolume];
-    }, [topicCounts]);
+        const options = [MIXED, ...topByVolume];
+        if (weakTopics.length > 0) options.splice(1, 0, WEAK_SPOTS);
+        return options;
+    }, [topicCounts, weakTopics]);
 
     const MIN_POOL_SIZE = 20;
 
     // Shuffle and pick questions, filtered by topic if one is selected
     const prepareQuestions = useCallback((topic) => {
-        const pool = topic && topic !== MIXED ? allQuestions.filter(q => q.topic === topic) : allQuestions;
+        let pool;
+        if (topic === WEAK_SPOTS) {
+            const weakTopicNames = new Set(getWeakTopics(3).map(t => t.topic));
+            pool = allQuestions.filter(q => weakTopicNames.has(q.topic));
+        } else if (topic && topic !== MIXED) {
+            pool = allQuestions.filter(q => q.topic === topic);
+        } else {
+            pool = allQuestions;
+        }
         // Weight previously-missed questions so they resurface more often (spaced repetition)
         const weighted = weightQuestionsBySpacedRepetition(pool);
         // Fisher-Yates shuffle
@@ -297,7 +312,7 @@ const QuickFireChallenge = ({ onClose }) => {
                         >
                             {topics.map(topic => (
                                 <option key={topic} value={topic}>
-                                    {topic === MIXED ? '🎲 Mixed (all topics)' : topic}
+                                    {topic === MIXED ? '🎲 Mixed (all topics)' : topic === WEAK_SPOTS ? '🎯 My Weak Spots' : topic}
                                 </option>
                             ))}
                         </select>

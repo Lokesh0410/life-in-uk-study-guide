@@ -234,8 +234,8 @@ function ScrollToTop() {
   }, [pathname]);
 
   useDocumentMeta({
-    title: pathname === "/" ? "Life in the UK Test Coach 2026 | ILR & British Citizenship Study Guide" : undefined,
-    description: pathname === "/" ? "Pass your Life in the UK Test 2026 on the first try! 45 full mock exams, 220+ flashcards, performance analytics, and a 5-day pass guarantee. The ultimate study guide for British Citizenship and ILR 2026." : undefined,
+    title: pathname === "/" ? "Life in the UK Mock Test 2026 | Free Practice Questions & Flashcards" : undefined,
+    description: pathname === "/" ? "Life in the UK Mock Test with 220+ free flashcards and 3 free mock exams. Practice real test questions, track your progress, and get a 5-day guaranteed pass path for British Citizenship and ILR 2026." : undefined,
     path: pathname === "/" ? "/" : undefined,
   });
 
@@ -453,7 +453,7 @@ export default function App() {
                   {isDark ? "☀️" : "🌙"}
                 </button>
               </div>
-              <h1 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-2">✅ Pass Your Life in the UK Test First Time!</h1>
+              <h1 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-2">✅ Life in the UK Mock Test — Pass First Time!</h1>
               <p className="text-slate-700 dark:text-slate-300 font-medium">
                 Access 45 realistic mock exams, instant feedback, and a structured study approach.
               </p>
@@ -741,6 +741,7 @@ export default function App() {
               <Route path="/evisa-explained" element={<GuidePage guide={guideBySlug["evisa-explained"]} />} />
               <Route path="/citizenship-ceremony" element={<GuidePage guide={guideBySlug["citizenship-ceremony"]} />} />
               <Route path="/british-passport-application" element={<GuidePage guide={guideBySlug["british-passport-application"]} />} />
+              <Route path="/dual-citizenship" element={<GuidePage guide={guideBySlug["dual-citizenship"]} />} />
               {/* 404 catch-all route */}
               <Route path="*" element={(
                 <div className="text-center py-20">

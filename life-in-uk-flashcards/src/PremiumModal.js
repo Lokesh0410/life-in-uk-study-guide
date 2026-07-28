@@ -41,8 +41,15 @@ const PremiumModal = ({ isOpen, onClose, redeemCode, setRedeemCode, redeemError,
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-xl animate-fade-in max-h-[90vh] overflow-y-auto">
-                <h3 className="text-2xl font-bold text-indigo-800 dark:text-indigo-400 mb-2">✨ Unlock Premium</h3>
+            <div className="relative bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-xl animate-fade-in max-h-[90vh] overflow-y-auto">
+                <button
+                    onClick={onClose}
+                    aria-label="Close"
+                    className="absolute top-4 right-4 text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300 text-2xl leading-none transition"
+                >
+                    &times;
+                </button>
+                <h3 className="text-2xl font-bold text-indigo-800 dark:text-indigo-400 mb-2 pr-6">✨ Unlock Premium</h3>
                 <p className="text-gray-600 dark:text-slate-300 mb-4">Get your personalised 5‑day exam guarantee and advanced insights.</p>
                 <ul className="space-y-2 mb-6 text-sm text-gray-700 dark:text-slate-300">
                     <li className="flex items-start">

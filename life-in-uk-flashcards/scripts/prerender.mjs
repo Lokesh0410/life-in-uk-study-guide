@@ -31,6 +31,7 @@ const routes = [
   "/evisa-explained",
   "/citizenship-ceremony",
   "/british-passport-application",
+  "/dual-citizenship",
 ];
 
 function startStaticServer() {

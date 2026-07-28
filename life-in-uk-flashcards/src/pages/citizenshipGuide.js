@@ -240,6 +240,10 @@ application process.
             url: "/british-passport-application"
         },
         {
+            title: "Dual Citizenship Guide",
+            url: "/dual-citizenship"
+        },
+        {
             title: "Life in the UK Test Preparation",
             url: "/mock-exams"
         }

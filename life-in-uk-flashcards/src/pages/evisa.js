@@ -7,11 +7,13 @@ const evisa = {
 
     seo: {
         metaTitle:
-            "UK eVisa Explained 2026: Digital Immigration Status Guide",
+            "UK eVisa & Share Code Explained 2026: How to Prove Your Status",
         metaDescription:
-            "Understand the UK eVisa system, how digital immigration status works, accessing your UKVI account and proving your immigration status.",
+            "Understand the UK eVisa system and share codes: how to generate a share code, how long it lasts, and how to prove your immigration status to employers and landlords.",
         keywords: [
             "UK eVisa",
+            "share code",
+            "evisa share code",
             "digital immigration status",
             "UKVI account",
             "prove immigration status"
@@ -97,6 +99,23 @@ Common issues include:
 
 Applicants should resolve issues through official UKVI channels.
 `
+        },
+
+        {
+            heading: "What is a share code?",
+            content: `
+A share code is a temporary code generated from a person's UKVI account that lets someone else
+(an employer, landlord, or other checker) view their immigration status online, without needing
+to see the physical eVisa or UKVI account itself.
+
+To generate a share code, sign in to the "View and prove your immigration status" service at
+view-immigration-status.service.gov.uk using your UKVI account details, then create a code for
+the purpose you need (for example, a right to work check or right to rent check).
+
+A share code lasts for 90 days from when it is created, and can be used as many times as needed
+before it expires. Once it expires, a new share code must be generated. The person checking the
+code will also need the code holder's date of birth to view the result.
+`
         }
     ],
 
@@ -122,6 +141,16 @@ Applicants should resolve issues through official UKVI channels.
             question: "How do I access my eVisa?",
             answer:
                 "Eligible individuals can access their digital status through a UKVI account."
+        },
+        {
+            question: "What is a share code and how long does it last?",
+            answer:
+                "A share code is generated from your UKVI account via view-immigration-status.service.gov.uk and lets an employer, landlord, or other checker view your immigration status online. It lasts 90 days and can be used multiple times until it expires."
+        },
+        {
+            question: "What does the person checking my share code need?",
+            answer:
+                "The checker needs your share code and your date of birth to view your immigration status result."
         }
     ],
 
@@ -140,6 +169,10 @@ Applicants should resolve issues through official UKVI channels.
         {
             title: "GOV.UK - eVisa",
             url: "https://www.gov.uk/evisa"
+        },
+        {
+            title: "GOV.UK - View and prove your immigration status (share code)",
+            url: "https://www.gov.uk/view-prove-immigration-status"
         }
     ],
 

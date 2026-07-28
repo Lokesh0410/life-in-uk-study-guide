@@ -13,6 +13,7 @@ import ukvcas from "../ukvcas";
 import evisa from "../evisa";
 import citizenshipCeremony from "../citizenshipCeremony";
 import britishPassport from "../britishPassport";
+import dualCitizenship from "../dualCitizenship";
 
 // All guides in a single array
 const allGuides = [
@@ -28,6 +29,7 @@ const allGuides = [
     evisa,
     citizenshipCeremony,
     britishPassport,
+    dualCitizenship,
 ];
 
 // Lookup by slug for route matching

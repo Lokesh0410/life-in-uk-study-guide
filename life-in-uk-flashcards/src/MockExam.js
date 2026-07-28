@@ -76,8 +76,8 @@ const ExitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
 
 export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium, onResultsUpdate }) {
     useDocumentMeta({
-        title: "45 Mock Exams — Life in the UK Test Coach 2026",
-        description: "Practice with 45 full-length Life in the UK Test mock exams, timed just like the real test, with instant scoring and performance tracking.",
+        title: "Life in the UK Test Practice — 3 Free Mock Exams + 45 Full Tests",
+        description: "Practice the Life in the UK Test with 3 free mock exams and 45 full-length timed practice tests, instant scoring, and performance tracking.",
         path: "/mock-exams",
     });
 
@@ -317,8 +317,27 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
         safeSetItem('lifeInUkExamInProgress', null);
     };
 
+    // Discards the current in-progress attempt (if any) and clears its saved
+    // state, so returning to Mock Exams never resumes a stale session with
+    // a restarted timer.
+    const discardInProgressAttempt = () => {
+        setTimerActive(false);
+        setSelectedExam(null);
+        setCurrentQuestionIndex(0);
+        setAnswers({});
+        setTimeLeft(45 * 60);
+        safeSetItem('lifeInUkExamInProgress', null);
+    };
+
     const goHome = () => {
+        discardInProgressAttempt();
         navigate('/');
+    };
+
+    // Used when exiting mid-exam — lands back on the Mock Exams list rather
+    // than Flashcards, since that's where the user was just choosing from.
+    const goToExamList = () => {
+        discardInProgressAttempt();
     };
 
     const confirmExit = (callback) => {
@@ -609,7 +628,7 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
     return (
         <div className="p-6 max-w-3xl mx-auto">
             <TopBar />
-            <div className="flex justify-between items-center mb-4"><button onClick={() => confirmExit(goHome)} className="text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-300">← Exit Exam</button><div className={`text-xl font-mono ${warning}`}>⏱️ {formatTime(timeLeft)}</div></div>
+            <div className="flex justify-between items-center mb-4"><button onClick={() => confirmExit(goToExamList)} className="text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-300">← Exit Exam</button><div className={`text-xl font-mono ${warning}`}>⏱️ {formatTime(timeLeft)}</div></div>
             <div className="bg-gray-200 dark:bg-slate-700 rounded-full h-2 mb-6"><div className="bg-indigo-600 h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div></div>
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6">
                 <div className="flex justify-between text-sm text-gray-500 dark:text-slate-400 mb-4"><span>Question {currentQuestionIndex + 1} of {selectedExam.questions.length}</span><span>{Math.round(progress)}% complete</span></div>
