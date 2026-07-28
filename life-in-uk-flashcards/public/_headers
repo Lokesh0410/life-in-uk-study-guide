@@ -4,3 +4,11 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Block direct access to premium content files (serve only via premium-gated download)
+/public/premium-cheat-sheet.pdf
+  X-Robots-Tag: noindex, nofollow
+
+/public/premium-cheat-sheet.html
+  X-Robots-Tag: noindex, nofollow

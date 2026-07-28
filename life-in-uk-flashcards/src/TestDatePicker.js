@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { safeGetItem, safeSetItem, safeRemoveItem } from './safeStorage';
 
 const STORAGE_KEY = 'lifeInUkTestDate';
 
 const TestDatePicker = () => {
     const [showModal, setShowModal] = useState(false);
-    const [hasDate, setHasDate] = useState(() => !!localStorage.getItem(STORAGE_KEY));
-    const [testDate, setTestDate] = useState(() => localStorage.getItem(STORAGE_KEY) || '');
+    const [hasDate, setHasDate] = useState(() => !!safeGetItem(STORAGE_KEY));
+    const [testDate, setTestDate] = useState(() => safeGetItem(STORAGE_KEY, ''));
     const [step, setStep] = useState('ask'); // 'ask' | 'pick' | 'done' | 'notYet' | 'warning'
     const [daysLeft, setDaysLeft] = useState(0);
     const [warningMessage, setWarningMessage] = useState('');
@@ -32,13 +33,13 @@ const TestDatePicker = () => {
             setStep('warning');
             return;
         }
-        localStorage.setItem(STORAGE_KEY, testDate);
+        safeSetItem(STORAGE_KEY, testDate);
         setHasDate(true);
         setStep('done');
     };
 
     const handleClear = () => {
-        localStorage.removeItem(STORAGE_KEY);
+        safeRemoveItem(STORAGE_KEY);
         setTestDate('');
         setHasDate(false);
         setShowModal(false);
@@ -92,14 +93,14 @@ const TestDatePicker = () => {
 
     // Badge in header
     const badge = hasDate && testDate ? (
-        <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-full px-4 py-1.5 text-sm shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-900 rounded-full px-4 py-1.5 text-sm shadow-sm">
             <span className="text-indigo-600">📅</span>
-            <span className="text-indigo-800 font-medium">
+            <span className="text-indigo-800 dark:text-indigo-300 font-medium">
                 Test in <strong>{daysLeft}</strong> {daysLeft === 1 ? 'day' : 'days'}
             </span>
             <button
                 onClick={() => setShowModal(true)}
-                className="text-indigo-500 hover:text-indigo-700 text-xs ml-1 underline"
+                className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-xs ml-1 underline"
             >
                 Edit
             </button>
@@ -107,7 +108,7 @@ const TestDatePicker = () => {
     ) : (
         <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-1.5 bg-white border border-indigo-200 rounded-full px-4 py-1.5 text-sm text-indigo-600 hover:bg-indigo-50 transition shadow-sm"
+            className="inline-flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-indigo-200 dark:border-indigo-900 rounded-full px-4 py-1.5 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition shadow-sm"
         >
             📅 Set Test Date
         </button>
@@ -121,11 +122,11 @@ const TestDatePicker = () => {
 
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl">
+                    <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl">
                         {step === 'ask' && (
                             <div className="text-center">
                                 <div className="text-4xl mb-3">📅</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">Have you booked your test date?</h3>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">Have you booked your test date?</h3>
                                 <div className="flex gap-3 mt-6">
                                     <button
                                         onClick={() => setStep('pick')}
@@ -135,7 +136,7 @@ const TestDatePicker = () => {
                                     </button>
                                     <button
                                         onClick={() => setStep('notYet')}
-                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                        className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                                     >
                                         Not yet
                                     </button>
@@ -146,8 +147,8 @@ const TestDatePicker = () => {
                         {step === 'notYet' && (
                             <div className="text-center">
                                 <div className="text-4xl mb-3">🎯</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">Check Your Readiness!</h3>
-                                <p className="text-slate-600 mb-6">
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">Check Your Readiness!</h3>
+                                <p className="text-slate-600 dark:text-slate-300 mb-6">
                                     No problem! Why not try a free mock exam to check your current knowledge level?
                                     It only takes 45 minutes and will show you exactly where you stand.
                                 </p>
@@ -161,7 +162,7 @@ const TestDatePicker = () => {
                                     </Link>
                                     <button
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                        className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                                     >
                                         Maybe Later
                                     </button>
@@ -172,27 +173,27 @@ const TestDatePicker = () => {
                         {step === 'pick' && (
                             <div className="text-center">
                                 <div className="text-4xl mb-3">🗓️</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">When is your test?</h3>
-                                <p className="text-sm text-slate-500 mb-4">We'll create a personalised countdown and study plan.</p>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">When is your test?</h3>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">We'll create a personalised countdown and study plan.</p>
                                 <input
                                     type="date"
                                     value={testDate}
                                     onChange={(e) => setTestDate(e.target.value)}
                                     min={new Date().toISOString().split('T')[0]}
                                     max={new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}
-                                    className="w-full border-2 border-indigo-200 rounded-xl p-3 text-lg text-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    className="w-full border-2 border-indigo-200 dark:border-indigo-800 dark:bg-slate-900 dark:text-slate-100 rounded-xl p-3 text-lg text-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                 />
                                 <div className="flex gap-3 mt-6">
                                     <button
                                         onClick={handleSaveDate}
                                         disabled={!testDate}
-                                        className={`flex-1 py-3 rounded-xl font-bold transition shadow-md ${testDate ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
+                                        className={`flex-1 py-3 rounded-xl font-bold transition shadow-md ${testDate ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed'}`}
                                     >
                                         Save Date
                                     </button>
                                     <button
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                        className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                                     >
                                         Cancel
                                     </button>
@@ -203,8 +204,8 @@ const TestDatePicker = () => {
                         {step === 'warning' && (
                             <div className="text-center">
                                 <div className="text-4xl mb-3">⚠️</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">Please Check Your Date</h3>
-                                <p className="text-slate-600 mb-6">{warningMessage}</p>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">Please Check Your Date</h3>
+                                <p className="text-slate-600 dark:text-slate-300 mb-6">{warningMessage}</p>
                                 <div className="flex gap-3">
                                     <button
                                         onClick={() => setStep('pick')}
@@ -214,7 +215,7 @@ const TestDatePicker = () => {
                                     </button>
                                     <button
                                         onClick={() => setShowModal(false)}
-                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                        className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                                     >
                                         Cancel
                                     </button>
@@ -225,24 +226,24 @@ const TestDatePicker = () => {
                         {step === 'done' && (
                             <div className="text-center">
                                 <div className="text-4xl mb-3">{customMsg.emoji}</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">{customMsg.title}</h3>
-                                <div className="bg-indigo-50 rounded-xl p-4 mb-4">
-                                    <p className="text-sm text-indigo-600">Your test is in</p>
-                                    <p className="text-5xl font-extrabold text-indigo-800">{daysLeft}</p>
-                                    <p className="text-sm text-indigo-600">{daysLeft === 1 ? 'day' : 'days'}</p>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">{customMsg.title}</h3>
+                                <div className="bg-indigo-50 dark:bg-indigo-950 rounded-xl p-4 mb-4">
+                                    <p className="text-sm text-indigo-600 dark:text-indigo-400">Your test is in</p>
+                                    <p className="text-5xl font-extrabold text-indigo-800 dark:text-indigo-300">{daysLeft}</p>
+                                    <p className="text-sm text-indigo-600 dark:text-indigo-400">{daysLeft === 1 ? 'day' : 'days'}</p>
                                 </div>
 
-                                <p className="text-sm text-slate-600 mb-4">{customMsg.message}</p>
+                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">{customMsg.message}</p>
 
                                 {/* Show 7-day plan only if 7-30 days */}
                                 {daysLeft >= 7 && daysLeft <= 30 && (
                                     <div className="text-left mb-4">
-                                        <h4 className="font-bold text-slate-800 mb-2">📚 Your 7-Day Study Plan</h4>
+                                        <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-2">📚 Your 7-Day Study Plan</h4>
                                         <div className="space-y-2 max-h-48 overflow-y-auto">
                                             {generateStudyPlan().map((item, idx) => (
-                                                <div key={idx} className="bg-slate-50 rounded-lg p-3 border border-slate-100">
-                                                    <p className="text-sm font-semibold text-indigo-700">Day {item.day}: {item.focus}</p>
-                                                    <p className="text-xs text-slate-600">{item.action}</p>
+                                                <div key={idx} className="bg-slate-50 dark:bg-slate-700 rounded-lg p-3 border border-slate-100 dark:border-slate-600">
+                                                    <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-400">Day {item.day}: {item.focus}</p>
+                                                    <p className="text-xs text-slate-600 dark:text-slate-400">{item.action}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -259,7 +260,7 @@ const TestDatePicker = () => {
                                     </Link>
                                     <button
                                         onClick={handleClear}
-                                        className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                                        className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                                     >
                                         Clear Date
                                     </button>

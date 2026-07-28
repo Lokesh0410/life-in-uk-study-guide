@@ -33,8 +33,8 @@ const ProgressGraph = ({ results, maxResults = 5, height = 120, width = 280 }) =
                 const y = padding.top + chartH - ((label - minScore) / range) * chartH;
                 return (
                     <g key={idx}>
-                        <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} stroke="#e5e7eb" strokeWidth="1" />
-                        <text x={padding.left - 5} y={y + 4} textAnchor="end" fontSize="9" fill="#9ca3af">{label}%</text>
+                        <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} stroke="currentColor" strokeWidth="1" className="text-gray-200 dark:text-slate-700" />
+                        <text x={padding.left - 5} y={y + 4} textAnchor="end" fontSize="9" fill="currentColor" className="text-gray-400 dark:text-slate-500">{label}%</text>
                     </g>
                 );
             })}
@@ -57,7 +57,7 @@ const ProgressGraph = ({ results, maxResults = 5, height = 120, width = 280 }) =
                     <g key={idx}>
                         <circle cx={x} cy={y} r={isBest ? 5 : 3.5} fill={isBest ? '#22c55e' : '#6366f1'} stroke="white" strokeWidth="1.5" />
                         {/* X-axis label */}
-                        <text x={x} y={height - 5} textAnchor="middle" fontSize="8" fill="#9ca3af">
+                        <text x={x} y={height - 5} textAnchor="middle" fontSize="8" fill="currentColor" className="text-gray-400 dark:text-slate-500">
                             {new Date(r.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
                         </text>
                     </g>

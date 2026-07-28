@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useDocumentMeta from '../useDocumentMeta';
 
 export default function GovernmentAndLaw() {
+    useDocumentMeta({
+        title: "Government and Law Study Guide — Life in the UK Test 2026",
+        description: "Master the Government, Parliament, and Law chapter of the official Life in the UK Test handbook, covering UK democracy and the justice system.",
+        path: "/study-guide/government-and-law",
+    });
+
     return (
         <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-12">

@@ -26,7 +26,7 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
     };
 
     return (
-        <div className="perspective cursor-pointer h-full w-full" onClick={handleCardClick}>
+        <div className="no-copy perspective cursor-pointer h-full w-full" onClick={handleCardClick} onContextMenu={(e) => e.preventDefault()}>
             <div className={`relative w-full h-full transition-transform duration-500 transform-style preserve-3d ${flip ? "rotate-y-180" : ""}`}>
                 {/* FRONT */}
                 <div className={`absolute w-full h-full backface-hidden rounded-2xl shadow-sm border border-slate-200/60 p-5 flex flex-col justify-center items-center text-center ${pastelColors[index % pastelColors.length]}`}>
@@ -48,29 +48,29 @@ export default function FlashCard({ card, index, isRead, onToggleRead }) {
                 </div>
 
                 {/* BACK */}
-                <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl shadow-md p-5 flex flex-col justify-between items-center text-center bg-white border-2 border-indigo-200">
+                <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl shadow-md p-5 flex flex-col justify-between items-center text-center bg-white dark:bg-slate-800 border-2 border-indigo-200 dark:border-indigo-800">
                     {/* Read Checkbox (Back) */}
                     <button
                         type="button"
-                        className="read-toggle absolute top-3 right-3 text-slate-500 hover:text-indigo-600 transition p-1"
+                        className="read-toggle absolute top-3 right-3 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition p-1"
                         title={isRead ? "Mark as unread" : "Mark as read"}
                     >
                         {isRead ? (
                             <span className="text-xl">✅</span>
                         ) : (
-                            <span className="w-5 h-5 rounded-full border-2 border-slate-400 block hover:border-indigo-500" />
+                            <span className="w-5 h-5 rounded-full border-2 border-slate-400 dark:border-slate-500 block hover:border-indigo-500" />
                         )}
                     </button>
 
                     {/* Question at the top */}
-                    <div className="w-full text-left border-b border-indigo-50 pb-1.5 mb-1 pr-6">
-                        <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Question</span>
-                        <span className="text-xs text-slate-500 font-medium truncate block">{card.front}</span>
+                    <div className="w-full text-left border-b border-indigo-50 dark:border-slate-700 pb-1.5 mb-1 pr-6">
+                        <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider block">Question</span>
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium truncate block">{card.front}</span>
                     </div>
 
                     {/* Answer in center */}
                     <div className="flex-1 flex items-center justify-center w-full my-1">
-                        <p className="text-sm font-bold text-indigo-950 whitespace-pre-line leading-snug">
+                        <p className="text-sm font-bold text-indigo-950 dark:text-indigo-200 whitespace-pre-line leading-snug">
                             {card.back}
                         </p>
                         {card.image && (

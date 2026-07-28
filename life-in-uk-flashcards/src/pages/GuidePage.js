@@ -1,17 +1,48 @@
 // src/pages/GuidePage.js
 // Reusable component to render any immigration guide from data objects
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import allGuides from "./immigrationGuides/index";
+import useDocumentMeta from "../useDocumentMeta";
+import SolicitorModal from "../SolicitorModal";
+import { safeGetItem, safeSetItem } from "../safeStorage";
+
+const CHECKLIST_STORAGE_KEY = "lifeInUkGuideChecklists";
 
 export default function GuidePage({ guide }) {
+    useDocumentMeta({
+        title: guide?.seo?.metaTitle,
+        description: guide?.seo?.metaDescription,
+        path: guide ? `/${guide.slug}` : undefined,
+    });
+
     useEffect(() => {
-        if (guide?.seo?.metaTitle) {
-            document.title = guide.seo.metaTitle;
-        }
         window.scrollTo(0, 0);
     }, [guide]);
+
+    const [showSolicitorForm, setShowSolicitorForm] = useState(false);
+
+    // Persisted checklist progress, keyed by guide slug so each guide's
+    // checklist state is tracked independently.
+    const [checkedItems, setCheckedItems] = useState(() => {
+        const allChecklists = safeGetItem(CHECKLIST_STORAGE_KEY, {});
+        return (guide && allChecklists[guide.slug]) || {};
+    });
+
+    useEffect(() => {
+        const allChecklists = safeGetItem(CHECKLIST_STORAGE_KEY, {});
+        setCheckedItems((guide && allChecklists[guide.slug]) || {});
+    }, [guide]);
+
+    const toggleChecklistItem = (index) => {
+        if (!guide) return;
+        const newChecked = { ...checkedItems, [index]: !checkedItems[index] };
+        setCheckedItems(newChecked);
+        const allChecklists = safeGetItem(CHECKLIST_STORAGE_KEY, {});
+        allChecklists[guide.slug] = newChecked;
+        safeSetItem(CHECKLIST_STORAGE_KEY, allChecklists);
+    };
 
     if (!guide) {
         return (
@@ -95,9 +126,14 @@ export default function GuidePage({ guide }) {
             )}
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
                 {guide.title}
             </h1>
+            {guide.metadata?.lastUpdated && (
+                <p className="text-xs text-slate-400 mb-4 flex items-center gap-1">
+                    <span>✓</span> Last verified: {guide.metadata.lastUpdated}
+                </p>
+            )}
 
             {/* Introduction */}
             {guide.introduction && (
@@ -125,17 +161,31 @@ export default function GuidePage({ guide }) {
                 ))}
             </div>
 
-            {/* Checklist */}
+            {/* Checklist (click an item to mark it done — saved on this device) */}
             {guide.checklist && guide.checklist.length > 0 && (
                 <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-10">
-                    <h3 className="text-lg font-bold text-emerald-800 mb-3">✅ Checklist</h3>
+                    <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-lg font-bold text-emerald-800">✅ Checklist</h3>
+                        <span className="text-xs font-semibold text-emerald-600">
+                            {Object.values(checkedItems).filter(Boolean).length} / {guide.checklist.length} done
+                        </span>
+                    </div>
                     <ul className="space-y-2">
-                        {guide.checklist.map((item, i) => (
-                            <li key={i} className="flex items-start gap-2 text-emerald-700">
-                                <span className="mt-0.5 shrink-0">☐</span>
-                                <span>{item}</span>
-                            </li>
-                        ))}
+                        {guide.checklist.map((item, i) => {
+                            const isChecked = !!checkedItems[i];
+                            return (
+                                <li key={i}>
+                                    <button
+                                        type="button"
+                                        onClick={() => toggleChecklistItem(i)}
+                                        className={`w-full flex items-start gap-2 text-left transition ${isChecked ? "text-emerald-400 line-through" : "text-emerald-700 hover:text-emerald-900"}`}
+                                    >
+                                        <span className="mt-0.5 shrink-0">{isChecked ? "☑" : "☐"}</span>
+                                        <span>{item}</span>
+                                    </button>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
             )}
@@ -158,6 +208,20 @@ export default function GuidePage({ guide }) {
                         ))}
                     </div>
                 </div>
+            )}
+
+            {/* Suggested next step in the journey */}
+            {guide.relatedPages && guide.relatedPages.length > 0 && (
+                <Link
+                    to={guide.relatedPages[0].url}
+                    className="block bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl p-6 mb-10 transition shadow-md"
+                >
+                    <p className="text-xs font-bold uppercase tracking-wider text-indigo-200 mb-1">Suggested next step</p>
+                    <div className="flex items-center justify-between">
+                        <span className="text-lg font-bold">{guide.relatedPages[0].title}</span>
+                        <span className="text-2xl">→</span>
+                    </div>
+                </Link>
             )}
 
             {/* Related Pages */}
@@ -227,6 +291,19 @@ export default function GuidePage({ guide }) {
                     ))}
                 </div>
             </div>
+
+            {/* Solicitor CTA */}
+            <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-5 mb-8 text-center">
+                <h3 className="text-xl font-bold text-indigo-800 mb-2">Need further assistance?</h3>
+                <p className="text-indigo-700 mb-4">If you need personalized advice on your immigration journey, we can connect you with trusted solicitors.</p>
+                <button
+                    onClick={() => setShowSolicitorForm(true)}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-xl font-bold transition shadow-md"
+                >
+                    Find an Immigration Solicitor
+                </button>
+            </div>
+            <SolicitorModal isOpen={showSolicitorForm} onClose={() => setShowSolicitorForm(false)} />
 
             {/* Back to home */}
             <div className="text-center mt-8 mb-12">

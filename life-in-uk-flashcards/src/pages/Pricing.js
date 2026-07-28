@@ -1,22 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useDocumentMeta from '../useDocumentMeta';
 
 const Pricing = ({ onUnlockPremium, isPremium }) => {
+    useDocumentMeta({
+        title: "Pricing — Life in the UK Test Coach 2026 | £7.99 One-Time",
+        description: "Unlock all 45 Life in the UK Test mock exams, performance analytics, and a 5-day guaranteed pass path for a one-time £7.99 payment.",
+        path: "/pricing",
+    });
+
     return (
-        <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl font-extrabold text-slate-900 mb-4">
+                <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
                     Unlock Your Full Potential
                 </h2>
-                <p className="text-xl text-slate-600 mb-12">
+                <p className="text-xl text-slate-600 dark:text-slate-300 mb-12">
                     Choose the plan that's right for your Life in the UK test preparation.
                 </p>
 
                 {isPremium && (
-                    <div className="mb-8 bg-green-50 border-2 border-green-200 rounded-2xl p-6 max-w-lg mx-auto">
+                    <div className="mb-8 bg-green-50 dark:bg-green-950 border-2 border-green-200 dark:border-green-900 rounded-2xl p-6 max-w-lg mx-auto">
                         <div className="text-4xl mb-2">🎉</div>
-                        <h3 className="text-xl font-bold text-green-800 mb-1">You're a Premium Member!</h3>
-                        <p className="text-green-700 text-sm">
+                        <h3 className="text-xl font-bold text-green-800 dark:text-green-300 mb-1">You're a Premium Member!</h3>
+                        <p className="text-green-700 dark:text-green-400 text-sm">
                             You have full access to all 45 mock exams, performance dashboard, and the offline cheat sheet.
                         </p>
                         <Link
@@ -30,22 +37,22 @@ const Pricing = ({ onUnlockPremium, isPremium }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Free Tier */}
-                    <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-8 flex flex-col">
-                        <h3 className="text-2xl font-bold text-slate-800 mb-4">Free Tier</h3>
-                        <p className="text-slate-500 mb-6">Basic access to get started.</p>
-                        <div className="text-5xl font-extrabold text-indigo-600 mb-6">
-                            £0<span className="text-xl font-medium text-slate-500">/one-time</span>
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 p-8 flex flex-col">
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">Free Tier</h3>
+                        <p className="text-slate-500 dark:text-slate-400 mb-6">Basic access to get started.</p>
+                        <div className="text-5xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-6">
+                            £0<span className="text-xl font-medium text-slate-500 dark:text-slate-400">/one-time</span>
                         </div>
-                        <ul className="text-left text-slate-700 space-y-3 flex-grow mb-8">
+                        <ul className="text-left text-slate-700 dark:text-slate-300 space-y-3 flex-grow mb-8">
                             <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> Access to all Study Flashcards</li>
-                            <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> 3 Free Mock Exam</li>
+                            <li className="flex items-center"><span className="text-green-500 mr-2">✔</span> 3 Free Mock Exams</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No Performance Dashboard</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No Downloadable Cheat Sheet</li>
                             <li className="flex items-center"><span className="text-red-500 mr-2">✖</span> No 5-Day Guaranteed Pass Path</li>
                         </ul>
                         <Link
                             to="/"
-                            className="block w-full bg-slate-100 text-slate-700 py-3 rounded-xl font-bold transition hover:bg-slate-200 shadow-sm"
+                            className="block w-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold transition hover:bg-slate-200 dark:hover:bg-slate-700 shadow-sm"
                         >
                             Start Free Studying
                         </Link>
@@ -80,9 +87,9 @@ const Pricing = ({ onUnlockPremium, isPremium }) => {
                     </div>
                 </div>
 
-                <div className="mt-12 text-slate-500 text-sm">
+                <div className="mt-12 text-slate-500 dark:text-slate-400 text-sm">
                     <p>No recurring fees. Secure payment processing by Stripe.</p>
-                    <p className="mt-2">Questions? <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 underline hover:text-indigo-800">Contact Support</a></p>
+                    <p className="mt-2">Questions? <a href="mailto:help@lifeinukcoach.co.uk" className="text-indigo-600 dark:text-indigo-400 underline hover:text-indigo-800 dark:hover:text-indigo-300">Contact Support</a></p>
                 </div>
             </div>
         </div>

@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { mockExams } from './mockExamsData';
+import { weightQuestionsBySpacedRepetition, updateMissedQuestions, markQuestionRecovered } from './spacedRepetition';
+import { getBestStreaks, recordStreakResult } from './quickFireStats';
 
 const TOTAL_TIME = 60;
 const AUTO_ADVANCE_DELAY = 3000; // 3 seconds to read explanation
+const MIXED = 'Mixed';
 
 const QuickFireChallenge = ({ onClose }) => {
     const [phase, setPhase] = useState('intro'); // 'intro' | 'playing' | 'finished'
@@ -16,11 +19,13 @@ const QuickFireChallenge = ({ onClose }) => {
     const [bestStreak, setBestStreak] = useState(0);
     const [totalAnswered, setTotalAnswered] = useState(0);
     const [history, setHistory] = useState([]); // { question, chosen, correct, isCorrect }
+    const [selectedTopic, setSelectedTopic] = useState(MIXED);
+    const [bestStreaks, setBestStreaks] = useState(() => getBestStreaks());
     const timerRef = useRef(null);
     const advanceRef = useRef(null);
 
-    // Shuffle and pick questions from all mock exams
-    const prepareQuestions = useCallback(() => {
+    // All available topics, derived once from the question bank
+    const allQuestions = useMemo(() => {
         const all = [];
         mockExams.forEach(exam => {
             exam.questions.forEach(q => {
@@ -29,20 +34,52 @@ const QuickFireChallenge = ({ onClose }) => {
                     choices: q.choices,
                     correct: q.correct,
                     multiple: q.multiple || false,
-                    explanation: q.explanation || ''
+                    explanation: q.explanation || '',
+                    topic: q.topic || 'General Knowledge'
                 });
             });
         });
-        // Fisher-Yates shuffle
-        for (let i = all.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [all[i], all[j]] = [all[j], all[i]];
-        }
         return all;
     }, []);
 
+    const topicCounts = useMemo(() => {
+        const counts = {};
+        allQuestions.forEach(q => { counts[q.topic] = (counts[q.topic] || 0) + 1; });
+        return counts;
+    }, [allQuestions]);
+
+    const TOP_TOPICS_COUNT = 10;
+
+    const topics = useMemo(() => {
+        const topByVolume = Object.entries(topicCounts)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, TOP_TOPICS_COUNT)
+            .map(([topic]) => topic);
+        return [MIXED, ...topByVolume];
+    }, [topicCounts]);
+
+    const MIN_POOL_SIZE = 20;
+
+    // Shuffle and pick questions, filtered by topic if one is selected
+    const prepareQuestions = useCallback((topic) => {
+        const pool = topic && topic !== MIXED ? allQuestions.filter(q => q.topic === topic) : allQuestions;
+        // Weight previously-missed questions so they resurface more often (spaced repetition)
+        const weighted = weightQuestionsBySpacedRepetition(pool);
+        // Fisher-Yates shuffle
+        for (let i = weighted.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [weighted[i], weighted[j]] = [weighted[j], weighted[i]];
+        }
+        // Small topic pools (a handful of questions) get padded by repeating the
+        // shuffled set so a 60s round doesn't run dry on niche topics.
+        if (weighted.length === 0) return weighted;
+        const padded = [...weighted];
+        while (padded.length < MIN_POOL_SIZE) padded.push(...weighted);
+        return padded;
+    }, [allQuestions]);
+
     const startGame = () => {
-        const shuffled = prepareQuestions();
+        const shuffled = prepareQuestions(selectedTopic);
         setQuestions(shuffled);
         setCurrentIndex(0);
         setScore(0);
@@ -55,6 +92,13 @@ const QuickFireChallenge = ({ onClose }) => {
         setHistory([]);
         setPhase('playing');
     };
+
+    // Persist best streak (overall + per-topic) whenever a round ends
+    useEffect(() => {
+        if (phase !== 'finished') return;
+        setBestStreaks(recordStreakResult(bestStreak, selectedTopic));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phase]);
 
     // Timer
     useEffect(() => {
@@ -138,8 +182,10 @@ const QuickFireChallenge = ({ onClose }) => {
                 const newStreak = streak + 1;
                 setStreak(newStreak);
                 if (newStreak > bestStreak) setBestStreak(newStreak);
+                markQuestionRecovered(q.text);
             } else {
                 setStreak(0);
+                updateMissedQuestions([{ text: q.text, topic: q.topic }]);
             }
         }
     };
@@ -166,8 +212,10 @@ const QuickFireChallenge = ({ onClose }) => {
                 const newStreak = streak + 1;
                 setStreak(newStreak);
                 if (newStreak > bestStreak) setBestStreak(newStreak);
+                markQuestionRecovered(q.text);
             } else {
                 setStreak(0);
+                updateMissedQuestions([{ text: q.text, topic: q.topic }]);
             }
             setAnswered(chosenIndices[0] || null); // Keep first chosen as 'answered' for styling
         }
@@ -227,25 +275,46 @@ const QuickFireChallenge = ({ onClose }) => {
     if (phase === 'intro') {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
                     <div className="text-5xl mb-4">⚡</div>
-                    <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Quick-Fire Challenge</h2>
-                    <p className="text-slate-600 mb-6">60 seconds of rapid-fire questions. Answer as many as you can!</p>
-                    <div className="bg-indigo-50 rounded-xl p-4 mb-6 text-left text-sm text-slate-700 space-y-2">
+                    <h2 className="text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-2">Quick-Fire Challenge</h2>
+                    <p className="text-slate-600 dark:text-slate-300 mb-6">60 seconds of rapid-fire questions. Answer as many as you can!</p>
+                    <div className="bg-indigo-50 dark:bg-indigo-950 rounded-xl p-4 mb-6 text-left text-sm text-slate-700 dark:text-slate-300 space-y-2">
                         <p>⏱️ <strong>60 seconds</strong> on the clock</p>
                         <p>⚡ Answer fast — questions auto-advance after 3s (single choice)</p>
                         <p>🔥 Build streaks for bonus points</p>
-                        <p>🎯 Questions from all topics</p>
+                        <p>🎯 Choose a topic below, or go mixed</p>
                         <p>🔙 You can go back to review previous questions</p>
-                        <p className="text-xs text-slate-500 mt-2">⚠️ This is a fast-paced practice mode, not a real test simulation.</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">⚠️ This is a fast-paced practice mode, not a real test simulation.</p>
                     </div>
+
+                    <div className="text-left mb-6">
+                        <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Topic</label>
+                        <select
+                            value={selectedTopic}
+                            onChange={(e) => setSelectedTopic(e.target.value)}
+                            className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                            {topics.map(topic => (
+                                <option key={topic} value={topic}>
+                                    {topic === MIXED ? '🎲 Mixed (all topics)' : topic}
+                                </option>
+                            ))}
+                        </select>
+                        {(bestStreaks.overall > 0 || (selectedTopic !== MIXED && bestStreaks.byTopic[selectedTopic])) && (
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                                🏆 Best streak {selectedTopic === MIXED ? 'overall' : `in ${selectedTopic}`}: <strong>{selectedTopic === MIXED ? bestStreaks.overall : (bestStreaks.byTopic[selectedTopic] || 0)}</strong>
+                            </p>
+                        )}
+                    </div>
+
                     <button
                         onClick={startGame}
                         className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all shadow-md"
                     >
                         🚀 Start Challenge!
                     </button>
-                    <button onClick={onClose} className="mt-3 text-sm text-slate-400 hover:text-slate-600 transition">Cancel</button>
+                    <button onClick={onClose} className="mt-3 text-sm text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition">Cancel</button>
                 </div>
             </div>
         );
@@ -255,30 +324,33 @@ const QuickFireChallenge = ({ onClose }) => {
         const pct = totalAnswered > 0 ? Math.round((score / totalAnswered) * 100) : 0;
         return (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
                     <div className="text-5xl mb-4">⏰</div>
-                    <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Time's Up!</h2>
+                    <h2 className="text-3xl font-extrabold text-slate-900 dark:text-slate-100 mb-2">Time's Up!</h2>
                     <div className="grid grid-cols-2 gap-4 my-6">
-                        <div className="bg-green-50 rounded-xl p-4">
-                            <p className="text-3xl font-bold text-green-700">{score}</p>
-                            <p className="text-xs text-green-600">Correct</p>
+                        <div className="bg-green-50 dark:bg-green-950 rounded-xl p-4">
+                            <p className="text-3xl font-bold text-green-700 dark:text-green-400">{score}</p>
+                            <p className="text-xs text-green-600 dark:text-green-400">Correct</p>
                         </div>
-                        <div className="bg-red-50 rounded-xl p-4">
-                            <p className="text-3xl font-bold text-red-600">{totalAnswered - score}</p>
-                            <p className="text-xs text-red-600">Incorrect</p>
+                        <div className="bg-red-50 dark:bg-red-950 rounded-xl p-4">
+                            <p className="text-3xl font-bold text-red-600 dark:text-red-400">{totalAnswered - score}</p>
+                            <p className="text-xs text-red-600 dark:text-red-400">Incorrect</p>
                         </div>
-                        <div className="bg-indigo-50 rounded-xl p-4">
-                            <p className="text-3xl font-bold text-indigo-700">{totalAnswered}</p>
-                            <p className="text-xs text-indigo-600">Answered</p>
+                        <div className="bg-indigo-50 dark:bg-indigo-950 rounded-xl p-4">
+                            <p className="text-3xl font-bold text-indigo-700 dark:text-indigo-400">{totalAnswered}</p>
+                            <p className="text-xs text-indigo-600 dark:text-indigo-400">Answered</p>
                         </div>
-                        <div className="bg-amber-50 rounded-xl p-4">
-                            <p className="text-3xl font-bold text-amber-600">{pct}%</p>
-                            <p className="text-xs text-amber-600">Accuracy</p>
+                        <div className="bg-amber-50 dark:bg-amber-950 rounded-xl p-4">
+                            <p className="text-3xl font-bold text-amber-600 dark:text-amber-400">{pct}%</p>
+                            <p className="text-xs text-amber-600 dark:text-amber-400">Accuracy</p>
                         </div>
                     </div>
                     {bestStreak >= 3 && (
-                        <div className="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-4">
-                            <p className="text-orange-700 font-bold">🔥 Best Streak: {bestStreak} in a row!</p>
+                        <div className="bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-900 rounded-xl p-3 mb-4">
+                            <p className="text-orange-700 dark:text-orange-400 font-bold">🔥 Best Streak: {bestStreak} in a row!</p>
+                            {bestStreak >= bestStreaks.overall && bestStreak > 0 && (
+                                <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">🎉 New all-time record!</p>
+                            )}
                         </div>
                     )}
                     <div className="flex gap-3">
@@ -290,11 +362,26 @@ const QuickFireChallenge = ({ onClose }) => {
                         </button>
                         <button
                             onClick={onClose}
-                            className="flex-1 bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                            className="flex-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                         >
                             Done
                         </button>
                     </div>
+                    {(bestStreak >= 5 || (totalAnswered >= 5 && pct >= 70)) && (
+                        <button
+                            onClick={() => {
+                                const msg = encodeURIComponent(
+                                    bestStreak >= 5
+                                        ? `🔥 I just hit a ${bestStreak}-question streak on the Life in the UK Quick-Fire Challenge! Think you can beat it? Try it free at lifeinukcoach.co.uk`
+                                        : `⚡ I just scored ${pct}% on the Life in the UK Quick-Fire Challenge! Try it free at lifeinukcoach.co.uk`
+                                );
+                                window.open(`https://wa.me/?text=${msg}`, '_blank');
+                            }}
+                            className="w-full mt-3 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition font-semibold"
+                        >
+                            📲 Share Result
+                        </button>
+                    )}
                 </div>
             </div>
         );
@@ -305,8 +392,8 @@ const QuickFireChallenge = ({ onClose }) => {
     if (!q) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-                <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
-                    <p className="text-xl">Loading questions...</p>
+                <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
+                    <p className="text-xl text-slate-900 dark:text-slate-100">Loading questions...</p>
                 </div>
             </div>
         );
@@ -319,7 +406,7 @@ const QuickFireChallenge = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden">
                 {/* Top bar: timer + score + streak - better spaced */}
                 <div className="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -359,14 +446,14 @@ const QuickFireChallenge = ({ onClose }) => {
                     {currentIndex > 0 && (
                         <button
                             onClick={goBack}
-                            className="mb-3 text-xs text-indigo-600 hover:text-indigo-800 font-medium transition flex items-center gap-1"
+                            className="mb-3 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium transition flex items-center gap-1"
                         >
                             ← Back to previous question
                         </button>
                     )}
 
                     <div className="flex items-center justify-between mb-1">
-                        <p className="text-xs text-slate-400">
+                        <p className="text-xs text-slate-400 dark:text-slate-500">
                             {isCurrentQuestionAnswered ? 'Answered' : (q.multiple ? 'Select all correct answers' : 'Select an answer')}
                         </p>
                         {hasMultipleCorrect && !isCurrentQuestionAnswered && (
@@ -375,12 +462,12 @@ const QuickFireChallenge = ({ onClose }) => {
                             </span>
                         )}
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-5 leading-relaxed">{q.text}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-5 leading-relaxed">{q.text}</h3>
 
                     <div className="space-y-2.5">
                         {q.choices.map((choice, idx) => {
-                            let bg = 'bg-slate-50 hover:bg-slate-100 border-slate-200';
-                            let textColor = 'text-slate-800';
+                            let bg = 'bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 border-slate-200 dark:border-slate-600';
+                            let textColor = 'text-slate-800 dark:text-slate-100';
                             const isSelected = currentSelections.includes(idx);
 
                             if (isCurrentQuestionAnswered) {
@@ -389,17 +476,17 @@ const QuickFireChallenge = ({ onClose }) => {
                                     : idx === q.correct;
 
                                 if (isChoiceCorrect) {
-                                    bg = 'bg-green-100 border-green-500';
-                                    textColor = 'text-green-800';
+                                    bg = 'bg-green-100 dark:bg-green-900 border-green-500';
+                                    textColor = 'text-green-800 dark:text-green-300';
                                 } else if (isSelected && !isChoiceCorrect) {
-                                    bg = 'bg-red-100 border-red-500';
-                                    textColor = 'text-red-800';
+                                    bg = 'bg-red-100 dark:bg-red-900 border-red-500';
+                                    textColor = 'text-red-800 dark:text-red-300';
                                 } else {
-                                    bg = 'bg-slate-50 border-slate-200 opacity-60';
+                                    bg = 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600 opacity-60';
                                 }
                             } else if (isSelected) {
-                                bg = 'bg-indigo-100 border-indigo-500';
-                                textColor = 'text-indigo-800';
+                                bg = 'bg-indigo-100 dark:bg-indigo-900 border-indigo-500';
+                                textColor = 'text-indigo-800 dark:text-indigo-300';
                             }
 
                             return (
@@ -426,7 +513,7 @@ const QuickFireChallenge = ({ onClose }) => {
 
                     {q.multiple && !isCurrentQuestionAnswered && ( // Submit button for multiple choice
                         <div className="mt-4">
-                            <p className="text-xs text-slate-500 mb-2 text-center">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 text-center">
                                 Select exactly {Array.isArray(q.correct) ? q.correct.length : 1} answer(s)
                                 {currentSelections.length > 0 && ` (${currentSelections.length} selected)`}
                             </p>
@@ -435,7 +522,7 @@ const QuickFireChallenge = ({ onClose }) => {
                                 disabled={!currentSelections || currentSelections.length !== (Array.isArray(q.correct) ? q.correct.length : 1)}
                                 className={`w-full py-3 rounded-xl font-bold transition shadow-md ${currentSelections && currentSelections.length === (Array.isArray(q.correct) ? q.correct.length : 1)
                                         ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                                        : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                                        : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed'
                                     }`}
                             >
                                 Submit Answer & Next
@@ -445,7 +532,7 @@ const QuickFireChallenge = ({ onClose }) => {
 
                     {/* Feedback bar */}
                     {isCurrentQuestionAnswered && (
-                        <div className={`mt-4 p-3 rounded-xl text-sm ${currentQuestionData?.isCorrect ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
+                        <div className={`mt-4 p-3 rounded-xl text-sm ${currentQuestionData?.isCorrect ? "bg-green-50 dark:bg-green-950 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-900" : "bg-red-50 dark:bg-red-950 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900"}`}>
                             <p className="font-semibold">{currentQuestionData?.isCorrect ? "✅ Correct!" : "❌ Incorrect"}</p>
                             {(q.multiple && Array.isArray(q.correct) && q.correct.length > 0) ? (
                                 <p className="text-xs mt-1">
@@ -461,7 +548,7 @@ const QuickFireChallenge = ({ onClose }) => {
                     {!q.multiple && !isCurrentQuestionAnswered && ( // Auto-advance for single choice if not answered yet
                         <button
                             onClick={handleAdvance} // This will trigger auto-advance without scoring if no answer selected
-                            className="mt-4 w-full bg-slate-100 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-200 transition"
+                            className="mt-4 w-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition"
                         >
                             Skip & Next
                         </button>
@@ -469,7 +556,7 @@ const QuickFireChallenge = ({ onClose }) => {
                 </div>
 
                 {/* Progress bar at bottom */}
-                <div className="h-1.5 bg-slate-200">
+                <div className="h-1.5 bg-slate-200 dark:bg-slate-700">
                     <div
                         className="h-full bg-indigo-600 transition-all duration-300"
                         style={{ width: `${((currentIndex + 1) / Math.min(questions.length, 50)) * 100}%` }}

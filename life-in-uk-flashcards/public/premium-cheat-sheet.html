@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life in the UK Premium Cheat Sheet</title>
+<style>
+  @page { margin: 0.5in; size: A4; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1e293b; background: #f8fafc; padding: 20px; }
+  .page { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-radius: 16px; }
+  h1 { font-size: 28px; text-align: center; color: #1e3a5f; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 24px; }
+  h2 { font-size: 20px; color: #1e3a5f; border-bottom: 3px solid #3b82f6; padding-bottom: 6px; margin: 28px 0 16px; display: flex; align-items: center; gap: 8px; }
+  h3 { font-size: 15px; color: #334155; margin: 14px 0 8px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding: 0; }
+  .timeline::before { content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 3px; background: #e2e8f0; }
+  .tl-item { display: flex; margin-bottom: 3px; align-items: baseline; position: relative; }
+  .tl-year { width: 110px; text-align: right; padding-right: 16px; font-weight: 700; font-size: 12px; color: #475569; flex-shrink: 0; }
+  .tl-dot { position: absolute; left: 116px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; top: 3px; }
+  .tl-event { padding-left: 24px; font-size: 11px; color: #334155; line-height: 1.3; }
+
+  /* Government cards */
+  .gov-card { background: #f1f5f9; border-radius: 10px; padding: 12px; border-left: 4px solid #3b82f6; }
+  .gov-card .role { font-weight: 700; font-size: 13px; color: #1e293b; }
+  .gov-card .name { font-size: 12px; color: #475569; }
+  .gov-card .detail { font-size: 11px; color: #64748b; margin-top: 2px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 8px; }
+  th { background: #1e3a5f; color: white; padding: 6px 8px; text-align: left; font-weight: 600; }
+  td { padding: 5px 8px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .tag { display: inline-block; background: #dbeafe; color: #1d4ed8; padding: 1px 7px; border-radius: 10px; font-size: 9px; font-weight: 600; }
+
+  /* Values */
+  .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .value-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px; }
+  .value-box h3 { color: #166534; margin: 0 0 6px; font-size: 13px; }
+  .value-box li { font-size: 11px; margin: 3px 0; list-style: none; padding-left: 14px; position: relative; }
+  .value-box li::before { content: '✓'; position: absolute; left: 0; color: #16a34a; font-weight: bold; }
+
+  /* Invention cards */
+  .inv-card { background: #fefce8; border: 1px solid #fde68a; border-radius: 8px; padding: 8px; text-align: center; }
+  .inv-card .name { font-weight: 700; font-size: 12px; }
+  .inv-card .detail { font-size: 10px; color: #64748b; }
+
+  /* Monarch cards */
+  .monarch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .monarch-item { background: #f8fafc; padding: 8px 10px; border-radius: 8px; border-left: 3px solid #6366f1; }
+  .monarch-item .name { font-weight: 700; font-size: 12px; }
+  .monarch-item .meta { font-size: 10px; color: #64748b; }
+
+  /* Saints */
+  .saints { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  .saint-card { background: linear-gradient(135deg, #fef2f2, #fff7ed); border: 1px solid #fecaca; border-radius: 10px; padding: 12px; text-align: center; }
+  .saint-card .saint { font-weight: 700; font-size: 13px; }
+  .saint-card .info { font-size: 11px; color: #475569; }
+
+  .footer { text-align: center; margin-top: 24px; padding-top: 16px; border-top: 2px solid #e2e8f0; font-size: 11px; color: #94a3b8; }
+
+  /* Prevent section splitting across print pages */
+  .section { margin-bottom: 20px; }
+  h2 { break-after: avoid; page-break-after: avoid; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; padding: 15px; max-width: 100%; }
+    .section { break-inside: avoid; page-break-inside: avoid; }
+    .tl-item { break-inside: avoid; }
+    .gov-card, .value-box, .monarch-item, .inv-card, .saint-card { break-inside: avoid; }
+    table { break-inside: avoid; page-break-inside: avoid; }
+    .two-col, .three-col, .value-grid, .saints { break-inside: avoid; page-break-inside: avoid; }
+  }
+  @media (max-width: 800px) { .two-col, .three-col, .value-grid { grid-template-columns: 1fr; } .saints { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) {
+    body { padding: 8px; }
+    .page { padding: 14px; }
+    .monarch-grid { grid-template-columns: 1fr; }
+    .saints { grid-template-columns: 1fr; }
+    .timeline::before { left: 68px; }
+    .tl-year { width: 60px; font-size: 10px; padding-right: 8px; }
+    .tl-dot { left: 64px; }
+    .tl-event { padding-left: 16px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>📖 Life in the UK – Premium Cheat Sheet</h1>
+  <p class="subtitle">Quick reference guide: timeline, government, key facts, British values | Print to PDF for offline use</p>
+
+  <section class="section">
+  <!-- TIMELINE -->
+  <h2>⏳ British History Timeline</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-year">~10,000 BCE</span>
+      <span class="tl-dot" style="background:#8B5CF6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#8B5CF620;color:#8B5CF6;">Prehistory</span> Channel forms, Britain becomes an island</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">~4000 BCE</span>
+      <span class="tl-dot" style="background:#8B5CF6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#8B5CF620;color:#8B5CF6;">Prehistory</span> First farmers arrive from SE Europe</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">~2500 BCE</span>
+      <span class="tl-dot" style="background:#8B5CF6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#8B5CF620;color:#8B5CF6;">Prehistory</span> Stonehenge completed</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">55 BCE</span>
+      <span class="tl-dot" style="background:#EF4444;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EF444420;color:#EF4444;">Roman</span> Julius Caesar invades Britain</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">43 CE</span>
+      <span class="tl-dot" style="background:#EF4444;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EF444420;color:#EF4444;">Roman</span> Emperor Claudius conquers Britain</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">122 CE</span>
+      <span class="tl-dot" style="background:#EF4444;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EF444420;color:#EF4444;">Roman</span> Hadrian's Wall built</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">410 CE</span>
+      <span class="tl-dot" style="background:#EF4444;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EF444420;color:#EF4444;">Roman</span> Romans leave Britain</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">~500 CE</span>
+      <span class="tl-dot" style="background:#F59E0B;"></span>
+      <span class="tl-event"><span class="tag" style="background:#F59E0B20;color:#F59E0B;">Saxon/Viking</span> Anglo-Saxon kingdoms established</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">789 CE</span>
+      <span class="tl-dot" style="background:#F59E0B;"></span>
+      <span class="tl-event"><span class="tag" style="background:#F59E0B20;color:#F59E0B;">Saxon/Viking</span> First Viking raids</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">871 CE</span>
+      <span class="tl-dot" style="background:#F59E0B;"></span>
+      <span class="tl-event"><span class="tag" style="background:#F59E0B20;color:#F59E0B;">Saxon/Viking</span> Alfred the Great becomes king</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1066</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Battle of Hastings – Norman Conquest</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1086</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Domesday Book completed</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1215</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Magna Carta signed at Runnymede</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1284</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Statute of Rhuddlan – Wales annexed</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1314</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Battle of Bannockburn</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1348</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Black Death arrives in Britain</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1455-85</span>
+      <span class="tl-dot" style="background:#3B82F6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#3B82F620;color:#3B82F6;">Medieval</span> Wars of the Roses</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1534</span>
+      <span class="tl-dot" style="background:#EC4899;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EC489920;color:#EC4899;">Tudor</span> Act of Supremacy – Church of England</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1558-1603</span>
+      <span class="tl-dot" style="background:#EC4899;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EC489920;color:#EC4899;">Tudor</span> Elizabeth I – Golden Age</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1588</span>
+      <span class="tl-dot" style="background:#EC4899;"></span>
+      <span class="tl-event"><span class="tag" style="background:#EC489920;color:#EC4899;">Tudor</span> Defeat of Spanish Armada</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1603</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Union of the Crowns (James VI & I)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1605</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Gunpowder Plot</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1642-51</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> English Civil War</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1649</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Charles I executed</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1660</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> The Restoration (Charles II)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1665</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Great Plague of London</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1666</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Great Fire of London</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1688</span>
+      <span class="tl-dot" style="background:#10B981;"></span>
+      <span class="tl-event"><span class="tag" style="background:#10B98120;color:#10B981;">Stuart</span> Glorious Revolution</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1689</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Bill of Rights</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1707</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Act of Union (England & Scotland)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1721-42</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Sir Robert Walpole (first PM)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1746</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Battle of Culloden – Jacobites defeated</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1776</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> American Declaration of Independence</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1805</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Battle of Trafalgar (Nelson)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1807</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Slave Trade Act (abolition)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1815</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Battle of Waterloo</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1832</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> First Reform Act (voting)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1833</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Slavery Abolition Act</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1837-1901</span>
+      <span class="tl-dot" style="background:#6366F1;"></span>
+      <span class="tl-event"><span class="tag" style="background:#6366F120;color:#6366F1;">Empire</span> Victorian Age</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1848</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Public Health Act</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1903</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Women's Social & Political Union</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1914-18</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> First World War</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1918</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Women over 30 get vote</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1928</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Equal voting rights at 21</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1939-45</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Second World War</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1940</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Battle of Britain</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1945</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Welfare State begins (Attlee)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1948</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> NHS founded; Windrush arrives</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1973</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> UK joins EEC (Common Market)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1979-90</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Margaret Thatcher PM</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1998</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Good Friday Agreement</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1999</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Devolution (Scottish/Welsh parliaments)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2016</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Brexit referendum (Leave 51.9%)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2020</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> UK formally leaves EU (Jan 31)</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">2022</span>
+      <span class="tl-dot" style="background:#14B8A6;"></span>
+      <span class="tl-event"><span class="tag" style="background:#14B8A620;color:#14B8A6;">Modern</span> Queen Elizabeth II dies; Charles III King</span>
+    </div></div></section>
+
+  <section class="section">
+  <!-- GOVERNMENT -->
+  <h2>🏛️ UK Government Structure</h2>
+  <div class="two-col">
+    <div class="gov-card">
+      <div class="role">👑 The Monarch</div>
+      <div class="name">King Charles III</div>
+      <div class="detail">Head of State, opens Parliament, Royal Assent</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">🏛️ Prime Minister</div>
+      <div class="name">Keir Starmer (since Jul 2024)</div>
+      <div class="detail">Head of Government, appoints ministers</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">📋 Cabinet</div>
+      <div class="name">~22 senior ministers</div>
+      <div class="detail">Meet weekly, decide government policy</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">🗳️ House of Commons</div>
+      <div class="name">650 MPs</div>
+      <div class="detail">Elected, pass laws, scrutinise government</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">👑 House of Lords</div>
+      <div class="name">~800 Lords</div>
+      <div class="detail">Life peers, bishops, hereditary; review & amend</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">⚖️ Supreme Court</div>
+      <div class="name">12 Justices</div>
+      <div class="detail">Highest UK court (since 2009)</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">🏛️ Devolved Govts</div>
+      <div class="name">Scotland, Wales, NI</div>
+      <div class="detail">Health, education, transport, justice</div>
+    </div>
+    <div class="gov-card">
+      <div class="role">🏛️ Local Councils</div>
+      <div class="name">340+ councils</div>
+      <div class="detail">Schools, bins, housing, planning</div>
+    </div></div></section>
+
+  <section class="section">
+  <!-- KEY DATES & MONARCHS -->
+  <h2>📅 Key Dates & Monarchs</h2>
+  <div class="two-col">
+    <div>
+      <h3>📌 Must-Know Dates</h3>
+      <table><thead><tr><th>Year</th><th>Event</th></tr></thead><tbody><tr><td><strong>1215</strong></td><td>Magna Carta</td></tr><tr><td><strong>1314</strong></td><td>Bannockburn</td></tr><tr><td><strong>1534</strong></td><td>Anglican Church</td></tr><tr><td><strong>1588</strong></td><td>Spanish Armada</td></tr><tr><td><strong>1605</strong></td><td>Gunpowder Plot</td></tr><tr><td><strong>1642-51</strong></td><td>Civil War</td></tr><tr><td><strong>1666</strong></td><td>Great Fire</td></tr><tr><td><strong>1688-89</strong></td><td>Glorious Rev & Bill of Rights</td></tr><tr><td><strong>1707</strong></td><td>Act of Union (GB)</td></tr><tr><td><strong>1805</strong></td><td>Trafalgar</td></tr><tr><td><strong>1807</strong></td><td>Slave Trade Abolished</td></tr><tr><td><strong>1815</strong></td><td>Waterloo</td></tr><tr><td><strong>1832</strong></td><td>Reform Act</td></tr><tr><td><strong>1914-18</strong></td><td>WWI</td></tr><tr><td><strong>1928</strong></td><td>Equal Votes</td></tr><tr><td><strong>1940</strong></td><td>Battle of Britain</td></tr><tr><td><strong>1948</strong></td><td>NHS founded</td></tr><tr><td><strong>1998</strong></td><td>Good Friday Agreement</td></tr></tbody></table></div><div>
+      <h3>👑 Key Monarchs</h3>
+      <table><thead><tr><th>Monarch</th><th>Reign</th><th>Key Fact</th></tr></thead><tbody><tr><td><strong>William I (Conqueror)</strong></td><td>1066-1087</td><td>Norman Conquest, Domesday Book</td></tr><tr><td><strong>Henry II</strong></td><td>1154-1189</td><td>First Plantagenet, common law</td></tr><tr><td><strong>John</strong></td><td>1199-1216</td><td>Magna Carta (1215)</td></tr><tr><td><strong>Edward I</strong></td><td>1272-1307</td><td>Conquered Wales, Model Parliament</td></tr><tr><td><strong>Henry VIII</strong></td><td>1509-1547</td><td>Church of England, 6 wives</td></tr><tr><td><strong>Elizabeth I</strong></td><td>1558-1603</td><td>Golden Age, Spanish Armada</td></tr><tr><td><strong>Charles I</strong></td><td>1625-1649</td><td>Executed after Civil War</td></tr><tr><td><strong>Charles II</strong></td><td>1660-1685</td><td>The Restoration</td></tr><tr><td><strong>Victoria</strong></td><td>1837-1901</td><td>Largest empire, longest reign</td></tr><tr><td><strong>Elizabeth II</strong></td><td>1952-2022</td><td>Longest-reigning British monarch</td></tr><tr><td><strong>Charles III</strong></td><td>2022–</td><td>Current monarch</td></tr></tbody></table></div></div></section>
+
+  <section class="section">
+  <!-- PATRON SAINTS & SYMBOLS -->
+  <h2>🌸 Patron Saints & National Symbols</h2>
+  <div class="saints">
+    <div class="saint-card">
+      <div class="saint">St George 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+      <div class="info">23 Apr · England</div>
+      <div class="info" style="font-size:10px;">Red cross on white (flag)</div>
+    </div>
+    <div class="saint-card">
+      <div class="saint">St Andrew 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+      <div class="info">30 Nov · Scotland</div>
+      <div class="info" style="font-size:10px;">White diagonal on blue (flag)</div>
+    </div>
+    <div class="saint-card">
+      <div class="saint">St David 🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
+      <div class="info">1 Mar · Wales</div>
+      <div class="info" style="font-size:10px;">Daffodil</div>
+    </div>
+    <div class="saint-card">
+      <div class="saint">St Patrick ☘️</div>
+      <div class="info">17 Mar · N Ireland</div>
+      <div class="info" style="font-size:10px;">Shamrock</div>
+    </div></div>
+  <div class="two-col" style="margin-top:10px;margin-bottom:8px;"><div style="background:#f8fafc;padding:8px 12px;border-radius:8px;font-size:12px;"><strong>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</strong> · 🌹 Rose · St George (23 Apr)</div><div style="background:#f8fafc;padding:8px 12px;border-radius:8px;font-size:12px;"><strong>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</strong> · 🌱 Thistle · St Andrew (30 Nov)</div><div style="background:#f8fafc;padding:8px 12px;border-radius:8px;font-size:12px;"><strong>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</strong> · 🌼 Daffodil · St David (1 Mar)</div><div style="background:#f8fafc;padding:8px 12px;border-radius:8px;font-size:12px;"><strong>☘️ N Ireland</strong> · 🍀 Shamrock · St Patrick (17 Mar)</div></div></section>
+
+  <section class="section">
+  <!-- BRITISH VALUES -->
+  <h2>🏅 British Values & Principles</h2>
+  <div class="value-grid">
+    <div class="value-box" style="grid-column:1;">
+      <h3>🌟 5 Fundamental Values</h3>
+      <ul><li>Democracy</li><li>Rule of Law</li><li>Individual Liberty</li><li>Tolerance of different faiths</li><li>Participation in community life</li></ul>
+    </div>
+    <div class="value-box" style="grid-column:2;">
+      <h3>🗽 Freedoms the UK Offers</h3>
+      <ul><li>Freedom of belief & religion</li><li>Freedom of speech</li><li>Freedom from unfair discrimination</li><li>Right to a fair trial</li><li>Right to vote</li></ul>
+    </div>
+    <div class="value-box" style="grid-column:1 / span 2;">
+      <h3>🏡 Responsibilities</h3>
+      <ul><li>Respect & obey the law</li><li>Respect others' rights</li><li>Treat others with fairness</li><li>Look after yourself & family</li><li>Look after your area & environment</li></ul>
+    </div>
+  </div></section>
+
+  <section class="section">
+  <!-- BRITISH INVENTIONS -->
+  <h2>🔬 British Inventions & Discoveries</h2>
+  <div class="three-col">
+    <div class="inv-card">
+      <div class="name">Television 📺</div>
+      <div class="detail">John Logie Baird (1920s)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">Radar 📡</div>
+      <div class="detail">Robert Watson-Watt (1935)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">Jet Engine ✈️</div>
+      <div class="detail">Frank Whittle (1930s)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">World Wide Web 🌐</div>
+      <div class="detail">Tim Berners-Lee (1990)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">Penicillin 💊</div>
+      <div class="detail">Alexander Fleming (1928)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">DNA Structure 🧬</div>
+      <div class="detail">Crick & Watson (1953)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">ATM 🏧</div>
+      <div class="detail">James Goodfellow (1967)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">Hovercraft 🚤</div>
+      <div class="detail">Christopher Cockerell (1950s)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">IVF 👶</div>
+      <div class="detail">Edwards & Steptoe (1978)</div>
+    </div>
+    <div class="inv-card">
+      <div class="name">MRI Scanner 🏥</div>
+      <div class="detail">Peter Mansfield (1970s)</div>
+    </div></div></section>
+
+  <section class="section">
+  <!-- TEST INFO -->
+  <h2>📝 Life in the UK Test</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+    <div style="background:#e0f2fe;border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:4px;">24</div>
+      <div style="font-weight:700;font-size:13px;">Questions</div>
+      <div style="font-size:11px;color:#475569;">Randomly selected from official handbook</div>
+    </div>
+    <div style="background:#dcfce7;border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:4px;">75%</div>
+      <div style="font-weight:700;font-size:13px;">Pass Mark</div>
+      <div style="font-size:11px;color:#475569;">18 out of 24 correct to pass</div>
+    </div>
+    <div style="background:#fef9c3;border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:4px;">45 min</div>
+      <div style="font-weight:700;font-size:13px;">Time Limit</div>
+      <div style="font-size:11px;color:#475569;">At approved test centres across UK</div>
+    </div>
+  </div></section>
+
+  <section class="section">
+  <!-- STUDY GUIDE SECTIONS -->
+  <h2>📚 Study Guide Overview</h2>
+  <table><thead><tr><th>#</th><th>Section</th><th>Cards</th></tr></thead><tbody><tr><td></td><td>🌍 1. The 4 Nations</td><td>15</td></tr><tr><td></td><td>🛡️ 2. Early History</td><td>16</td></tr><tr><td></td><td>📜 3. Middle Ages & Rights</td><td>11</td></tr><tr><td></td><td>⛪ 4. Tudors & Stuarts</td><td>14</td></tr><tr><td></td><td>🚂 5. Enlightenment & Empire</td><td>20</td></tr><tr><td></td><td>🕊️ 6. The 20th Century</td><td>23</td></tr><tr><td></td><td>⚖️ 7. Government & Law</td><td>19</td></tr><tr><td></td><td>🌸 8. Symbols & Saints</td><td>6</td></tr><tr><td></td><td>🎉 9. Traditions & Holidays</td><td>8</td></tr><tr><td></td><td>💡 10. Arts & Science</td><td>15</td></tr><tr><td></td><td>🏅 11. British Values</td><td>8</td></tr><tr><td></td><td>👑 12. The Monarchy</td><td>5</td></tr><tr><td></td><td>🗳️ 13. Elections & Voting</td><td>6</td></tr><tr><td></td><td>🏛️ 14. Parliament & Government</td><td>5</td></tr><tr><td></td><td>⚖️ 15. Justice System</td><td>5</td></tr><tr><td></td><td>🌐 16. Britain & the World</td><td>7</td></tr><tr><td></td><td>📖 17. Literature & Writers</td><td>5</td></tr><tr><td></td><td>⚽ 18. Sports & Icons</td><td>10</td></tr><tr><td></td><td>🏡 19. Everyday Life</td><td>6</td></tr><tr><td></td><td>🏛️ 20. Local Government</td><td>6</td></tr><tr><td></td><td>🛂 21. Migration & Citizenship</td><td>4</td></tr><tr><td></td><td>📅 22. Key Dates & Quick Facts</td><td>10</td></tr><tr><td></td><td>⛪ 23. Religion & Faith</td><td>11</td></tr><tr><td></td><td>🎊 24. Customs & Traditions</td><td>14</td></tr><tr><td></td><td>🔬 25. British Inventions & Discoveries</td><td>16</td></tr><tr><td></td><td>🍽️ 26. Food & Leisure</td><td>10</td></tr><tr><td></td><td>🏰 27. Places of Interest</td><td>12</td></tr><tr><td></td><td>📊 28. Modern Society & Demographics</td><td>8</td></tr><tr><td></td><td>💰 29. Taxation & Driving</td><td>9</td></tr><tr><td></td><td>🤝 30. Human Rights & Equal Opportunities</td><td>10</td></tr><tr><td></td><td>🦴 31. Early Britain & Prehistory</td><td>10</td></tr><tr><td></td><td>🏛️ 32. Roman Britain</td><td>8</td></tr><tr><td></td><td>⚔️ 33. Anglo-Saxons & Vikings</td><td>10</td></tr><tr><td></td><td>🏰 34. Norman Conquest & Middle Ages</td><td>13</td></tr><tr><td></td><td>👑 35. Tudors & Stuarts (Detailed)</td><td>24</td></tr><tr><td></td><td>🌍 36. Global Power & Empire</td><td>23</td></tr><tr><td></td><td>🕊️ 37. 20th Century & Modern Britain</td><td>19</td></tr><tr><td></td><td>🎭 38. Arts, Literature & Culture</td><td>24</td></tr><tr><td></td><td>🌐 39. International Relations</td><td>9</td></tr><tr><td></td><td>⚖️ 40. Legal System & Courts</td><td>14</td></tr><tr><td></td><td>🤝 41. Community & Citizenship</td><td>11</td></tr><tr><td></td><td>🏅 42. British Values & Principles (Detailed)</td><td>16</td></tr></tbody></table></section>
+
+  <div class="footer">
+    Generated from lifeinukcoach.co.uk study guide · 495 flashcards across 42 sections · Print as PDF for offline use
+  </div>
+</div>
+</body>
+</html>

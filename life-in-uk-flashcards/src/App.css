@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+/* Flashcard 3D perspective styles */
+.perspective { perspective: 1000px; }
+.transform-style {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+/* harmless alias class — preserve-3d is applied by .transform-style above */
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 { transform: rotateY(180deg); }
+
+/* Discourage casual copy/paste scraping of study content.
+   Inputs, textareas, and buttons remain selectable/clickable as normal
+   since this only affects text nodes, not form controls. */
+.no-copy {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.no-copy input,
+.no-copy textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}

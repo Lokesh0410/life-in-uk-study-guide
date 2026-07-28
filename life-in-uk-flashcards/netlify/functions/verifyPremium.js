@@ -5,11 +5,22 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 
-const CORS_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
+const ALLOWED_ORIGINS = [
+    'https://lifeinukcoach.co.uk',
+    'https://www.lifeinukcoach.co.uk',
+    'http://localhost:3000',
+    'http://localhost:8888',
+];
+
+function getCorsHeaders(origin) {
+    const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+    return {
+        'Access-Control-Allow-Origin': allowed,
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Vary': 'Origin',
+    };
+}
 
 // Simple in-memory rate limiter
 // Netlify functions are stateless, but within a single warm instance this provides basic protection.
@@ -42,12 +53,15 @@ function isRateLimited(ip) {
 }
 
 exports.handler = async (event) => {
+    const origin = event.headers.origin || '';
+    const headers = getCorsHeaders(origin);
+
     if (event.httpMethod === 'OPTIONS') {
-        return { statusCode: 200, headers: CORS_HEADERS, body: '' };
+        return { statusCode: 200, headers, body: '' };
     }
 
     if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Method not allowed' }) };
+        return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
     }
 
     // Rate limiting by IP
@@ -56,7 +70,7 @@ exports.handler = async (event) => {
         console.warn(`Rate limit exceeded for IP: ${clientIp}`);
         return {
             statusCode: 429,
-            headers: { ...CORS_HEADERS, 'Retry-After': '60' },
+            headers: { ...headers, 'Retry-After': '60' },
             body: JSON.stringify({ error: 'Too many requests. Please try again in a minute.' }),
         };
     }
@@ -65,15 +79,15 @@ exports.handler = async (event) => {
     try {
         ({ email } = JSON.parse(event.body || '{}'));
     } catch {
-        return { statusCode: 400, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Invalid request body' }) };
+        return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid request body' }) };
     }
 
     if (!email || !email.includes('@')) {
-        return { statusCode: 400, headers: CORS_HEADERS, body: JSON.stringify({ error: 'A valid email address is required.' }) };
+        return { statusCode: 400, headers, body: JSON.stringify({ error: 'A valid email address is required.' }) };
     }
 
     if (!process.env.STRIPE_SECRET) {
-        return { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify({ error: 'Server configuration error' }) };
+        return { statusCode: 500, headers, body: JSON.stringify({ error: 'Server configuration error' }) };
     }
 
     try {
@@ -83,7 +97,7 @@ exports.handler = async (event) => {
         if (!customers.data.length) {
             return {
                 statusCode: 200,
-                headers: CORS_HEADERS,
+                headers,
                 body: JSON.stringify({ isPremium: false, message: 'No purchase found for this email address.' }),
             };
         }
@@ -100,7 +114,7 @@ exports.handler = async (event) => {
             if (hasPaid) {
                 return {
                     statusCode: 200,
-                    headers: CORS_HEADERS,
+                    headers,
                     body: JSON.stringify({ isPremium: true }),
                 };
             }
@@ -108,14 +122,14 @@ exports.handler = async (event) => {
 
         return {
             statusCode: 200,
-            headers: CORS_HEADERS,
+            headers,
             body: JSON.stringify({ isPremium: false, message: 'No completed purchase found for this email.' }),
         };
     } catch (error) {
         console.error('verifyPremium error:', error);
         return {
             statusCode: 500,
-            headers: CORS_HEADERS,
+            headers,
             body: JSON.stringify({ error: 'Something went wrong. Please try again.' }),
         };
     }

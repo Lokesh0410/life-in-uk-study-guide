@@ -64,13 +64,13 @@ export default function TestimonialsCarousel() {
   }, []);
 
   return (
-    <div className="w-full max-w-lg mx-auto bg-white border border-slate-100 rounded-2xl p-6 shadow-sm relative overflow-hidden mt-6">
-      <h4 className="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-3 text-center">Success Stories & Reviews</h4>
+    <div className="w-full max-w-lg mx-auto bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 shadow-sm relative overflow-hidden mt-6">
+      <h4 className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-3 text-center">Success Stories & Reviews</h4>
       <div className="min-h-[110px] flex flex-col justify-center transition-all duration-500 ease-in-out">
-        <p className="text-sm italic text-slate-600 text-center mb-4">
+        <p className="text-sm italic text-slate-600 dark:text-slate-300 text-center mb-4">
           "{testimonials[currentIndex].text}"
         </p>
-        <p className="text-xs font-bold text-slate-800 text-center">
+        <p className="text-xs font-bold text-slate-800 dark:text-slate-200 text-center">
           — {testimonials[currentIndex].name}, {testimonials[currentIndex].location}
         </p>
       </div>
@@ -80,7 +80,7 @@ export default function TestimonialsCarousel() {
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             className={`w-1.5 h-1.5 rounded-full transition-all ${
-              currentIndex === idx ? 'bg-indigo-600 w-3' : 'bg-slate-200'
+              currentIndex === idx ? 'bg-indigo-600 w-3' : 'bg-slate-200 dark:bg-slate-700'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

@@ -7,7 +7,11 @@ export default function LazyCardWrapper({ children }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          // Once visible, keep rendered — prevents flip state from being destroyed when scrolled away
+          setIsVisible(true);
+          observer.disconnect();
+        }
       },
       {
         rootMargin: "400px 0px", // Load card before it enters the viewport
@@ -24,7 +28,6 @@ export default function LazyCardWrapper({ children }) {
     };
   }, []);
 
-  // We always render the outer div with placeholderRef so that the observer can track it
   return (
     <div ref={placeholderRef} className="h-56">
       {isVisible ? (
