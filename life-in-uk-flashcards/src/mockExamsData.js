@@ -11,314 +11,316 @@ export const mockExams = [
     "title": "Mock Exam #1 (Full Test)",
     "questions": [
       {
-        "text": "What is known as Lent?",
+        "text": "Why is Magna Carta considered such a significant document in English history?",
         "choices": [
-          "The 40 days before Easter",
-          "The 40 days after Christmas",
-          "The 40 days before Christmas",
-          "The 40 days after Easter"
+          "It established that the king himself was subject to the law",
+          "It gave all adult men the right to vote",
+          "It created the first House of Commons",
+          "It ended the monarchy permanently"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The 40 days before Easter are known as Lent.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Which country's flag is not part of the Union Flag?",
-        "choices": [
-          "Wales",
-          "Ireland",
-          "Scotland",
-          "England"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The Welsh dragon is not part of the Union Flag.",
-        "topic": "Symbols & Saints"
-      },
-      {
-        "text": "What is the judiciary responsible for?",
-        "choices": [
-          "Deciding whether a person is guilty",
-          "Looking after a jury",
-          "Putting people in prison",
-          "Interpreting the law"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Judges, who are together called 'the judiciary', are responsible for interpreting the law and ensuring that trials are conducted fairly.",
-        "topic": "Justice System"
-      },
-      {
-        "text": "When did the Habeas Corpus Act become law?",
-        "choices": [
-          "1685",
-          "1687",
-          "1679",
-          "1683"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "The Habeas Corpus Act became law in 1679. This was a very important piece of legislation which remains relevant today. Habeas corpus is Latin for 'you must present the person in court'. The Act guaranteed that no one could be held prisoner unlawfully. Every prisoner has a right to a court hearing.",
-        "topic": "Legal System & Courts"
-      },
-      {
-        "text": "Which of the events is the bombing of English cities by the Germans?",
-        "choices": [
-          "The Blitz",
-          "The Dunkirk spirit",
-          "D-Day",
-          "The Battle of Britain"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The Blitz was the German air force bombing London and other British cities at night-time. The phrase 'the Blitz spirit' is still used today to describe Britons pulling together in the face of adversity.",
-        "topic": "The 20th Century"
-      },
-      {
-        "text": "Why is it called 'The Glorious Revolution'?",
-        "choices": [
-          "Women were given the right to vote",
-          "Because of new technological advances",
-          "Because there was no fighting",
-          "Because of new achievements"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "This event was later called the 'Glorious Revolution' because there was no fighting in England and because it guaranteed the power of Parliament, ending the threat of a monarch ruling on his or her own as he or she wished.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Which of these venues is located in Greenwich?",
-        "choices": [
-          "The SECC",
-          "The O2",
-          "Auditorio de Tenerife",
-          "The Copenhagen Concert Hall"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "There are many large venues that host music events throughout the year, such as: The O2 in Greenwich and the Scottish Exhibition and Conference Centre (SECC) in Glasgow.",
-        "topic": "Arts, Literature & Culture"
-      },
-      {
-        "text": "When did the UK leave the EU following the Brexit Vote?",
-        "choices": [
-          "1957",
-          "2020",
-          "1987",
-          "1973"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "The European Union (EU), originally called the European Economic Community (EEC), was set up by six western European countries (Belgium, France, Germany, Italy, Luxembourg and the Netherlands) who signed the Treaty of Rome on 25 March 1957. The UK originally decided not to join this group but it became a member in 1973. After UK's Brexit vote in 2020, there are now 27 EU member states.",
-        "topic": "Elections & Voting"
-      },
-      {
-        "text": "When was The First British Prime minister (Sir Robert Walpole) in power?",
-        "choices": [
-          "1742-1746",
-          "1714-1721",
-          "1707-1714",
-          "1721-1742"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The first man to be called 'Prime Minister' was Sir Robert Walpole, who was Prime Minister from 1721 to 1742.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Which country's national flower is a thistle?",
-        "choices": [
-          "Northern Ireland",
-          "England",
-          "Scotland",
-          "Wales"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "A thistle is a national flower of Scotland.",
-        "topic": "Symbols & Saints"
-      },
-      {
-        "text": "Who developed ideas about economics during the Enlightenment period which are still referred to today?",
-        "choices": [
-          "David Hume",
-          "Adam Smith",
-          "James Watt",
-          "Isaac Newton"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Many of the great thinkers of the Enlightenment were Scottish. Adam Smith developed ideas about economics which are still referred to today. David Hume's ideas about human nature continue to influence philosophers. Scientific discoveries, such as James Watt's work on steam power, helped the progress of the Industrial Revolution.",
-        "topic": "Arts & Science"
-      },
-      {
-        "text": "One TV licence covers all of the equipment at one address, but people who rent different rooms in a shared house must buy a separate TV licence",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "One TV licence covers all of the equipment at one address, but people who rent different rooms in a shared house must buy a separate TV licence",
-        "topic": "Everyday Life"
-      },
-      {
-        "text": "Magistrates and Justices of the Peace (JPs) are members of what?",
-        "choices": [
-          "Law Society",
-          "Local Community",
-          "Ruling Party",
-          "Police Force"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Magistrates and Justices of the Peace (JPs) are members of the local community. In England, Wales and Scotland they usually work unpaid and do not need legal qualifications. They receive training to do the job and are supported by a legal adviser.",
-        "topic": "Justice System"
-      },
-      {
-        "text": "A 2 minutes silence is observed on Easter to commemorate the death of Jesus Christ",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Remembrance Day, 11 November, commemorates those who died fighting for the UK and its allies. Originally it commemorated the dead of the First World War, which ended on 11 November 1918. People wear poppies (the red flower found on the battlefields of the First World War). At 11.00 am there is a two-minute silence and wreaths are laid at the Cenotaph in Whitehall, London.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Peers nominated by the Prime Minister can only serve for their lifetime",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Since 1958, the Prime Minister has had the power to nominate peers just for their own lifetime. These are called life peers. They have usually had an important career in politics, business, law or another profession. Life peers are appointed by the monarch on the advice of the Prime Minister.",
+        "explanation": "In 1215, King John was forced by his noblemen to agree to a charter of rights called the Magna Carta. It established the idea that even the king was subject to the law and restricted his power to collect taxes or change laws without consulting his noblemen.",
         "topic": "Government & Law"
       },
       {
-        "text": "Which TWO countries took part in the Battle of Agincourt?",
+        "text": "St George, the patron saint of England, has a special day celebrated on which date?",
         "choices": [
-          "France",
-          "Scotland",
-          "Wales",
-          "England"
-        ],
-        "multiple": true,
-        "correct": [
-          0,
-          3
-        ],
-        "explanation": "English kings also fought a long war with France, called the Hundred Years War (even though it actually lasted 116 years). One of the most famous battles of the Hundred Years War was the Battle of Agincourt in 1415, where King Henry V's vastly outnumbered English army defeated the French. The English left France in the 1450s.",
-        "topic": "The Monarchy"
-      },
-      {
-        "text": "Who is credited with the introduction of the National Health Service (NHS) in 1948?",
-        "choices": [
-          "David Hume",
-          "Florence Nightingale",
-          "Aneurin Bevan",
-          "Winston Churchill"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "In 1948, Aneurin (Nye) Bevan, the Minister for Health, led the establishment of the National Health Service (NHS), which guaranteed a minimum standard of health care for all, free at the point of use",
-        "topic": "Everyday Life"
-      },
-      {
-        "text": "The Speaker is an MP, he/she represents a constituency and deals with constituents' problems like any other MP",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The Speaker is neutral and does not represent a political party, even though he or she is an MP, represents a constituency and deals with constituents' problems like any other MP.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What religion were Puritans?",
-        "choices": [
-          "Jews",
-          "Buddhists",
-          "Catholics",
-          "Protestants"
+          "1 March",
+          "17 March",
+          "30 November",
+          "23 April"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "Puritans, a group of Protestants who advocated strict and simple religious doctrine and worship.",
+        "explanation": "23 April: St George's Day, England.",
+        "topic": "Symbols & Saints"
+      },
+      {
+        "text": "Which missionary, who led a group sent from Rome, became the first Archbishop of Canterbury?",
+        "choices": [
+          "St Patrick",
+          "St Augustine",
+          "St David",
+          "St Columba"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "St Augustine led missionaries from Rome, who spread Christianity in the south. St Augustine became the first Archbishop of Canterbury.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "Who can nominate life peers? (Select TWO)",
+        "text": "The Lake District, England's largest national park, is well known for which features?",
         "choices": [
-          "The Prime Minister",
-          "The Monarchy",
-          "The Speaker",
-          "Leaders of other main political parties"
-        ],
-        "multiple": true,
-        "correct": [
-          0,
-          3
-        ],
-        "explanation": "Since 1958, the Prime Minister has had the power to nominate peers just for their own lifetime. These are called life peers. Life peers are appointed by the monarch on the advice of the Prime Minister. They also include people nominated by the leaders of the other main political parties or by an independent Appointments Commission for non-party peers.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What country did Hitler invade in 1939?",
-        "choices": [
-          "The USA",
-          "Poland",
-          "Italy",
-          "USSR"
+          "Its volcanic rock columns",
+          "Its Roman forts",
+          "Its lakes and mountains",
+          "Its coal mines"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "The British government tried to avoid another war. However, when Hitler invaded Poland in 1939, Britain and France declared war in order to stop his aggression.",
+        "correct": 2,
+        "explanation": "The Lake District is England's largest national park. It is famous for its lakes and mountains and is very popular with climbers, walkers and sailors.",
+        "topic": "Places of Interest"
+      },
+      {
+        "text": "From what age is a person permitted to ride a moped in the UK?",
+        "choices": [
+          "17",
+          "18",
+          "14",
+          "16"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "You need to be at least 16 years old to ride a moped, and there are other age requirements and special tests for driving large vehicles.",
+        "topic": "Taxation & Driving"
+      },
+      {
+        "text": "Which religion did Elizabeth I belong to?",
+        "choices": [
+          "Protestant",
+          "Presbyterian",
+          "Puritan",
+          "Catholic"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Queen Elizabeth I was a Protestant. She re-established the Church of England as the official Church in England.",
+        "topic": "Tudors & Stuarts"
+      },
+      {
+        "text": "The main site for the 2012 Olympic Games was located in which part of London?",
+        "choices": [
+          "Westminster",
+          "Camden",
+          "Stratford",
+          "Greenwich"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The UK has hosted the Olympic Games on three occasions: 1908, 1948 and 2012. The main Olympic site for the 2012 Games was in Stratford, East London.",
         "topic": "20th Century & Modern Britain"
       },
       {
-        "text": "Name the most famous cricket competition, which is a series of Test matches played between England and Australia",
+        "text": "Belfast is the capital city of which UK country?",
         "choices": [
-          "Lords",
-          "Ashes",
-          "Classics",
-          "Masters"
+          "Scotland",
+          "Wales",
+          "Northern Ireland",
+          "England"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "The most famous competition is the Ashes, which is a series of Test matches played between England and Australia.",
+        "correct": 2,
+        "explanation": "The capital of Northern Ireland is Belfast.",
+        "topic": "The 4 Nations"
+      },
+      {
+        "text": "The Grand National, one of the UK's most famous horse races, is held near which city?",
+        "choices": [
+          "Liverpool",
+          "Manchester",
+          "London",
+          "Edinburgh"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Famous horse-racing events include: Royal Ascot; the Grand National at Aintree near Liverpool; and the Scottish Grand National at Ayr.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "In England & Wales, the small claims procedure is an informal way of helping people to settle minor disputes claims of less than?",
+        "text": "What are the two chambers that together make up the UK Parliament?",
         "choices": [
-          "£2,000",
-          "£10,000",
-          "£4,000",
-          "£3,000"
+          "The Chamber and the Council",
+          "The House of Commons and the House of Lords",
+          "The Senate and the Assembly",
+          "The Commons and the Cabinet"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The small claims procedure is an informal way of helping people to settle minor disputes without spending a lot of time and money using a lawyer. This procedure is used for claims of less than £10,000 in England and Wales; £5,000 in Scotland and £5,000 in Northern Ireland (Changed from £3000).",
+        "explanation": "In the UK, there are several different parts of government, including Parliament (the House of Commons and the House of Lords).",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "On which occasion do UK television and radio stations sometimes broadcast humorous fake stories?",
+        "choices": [
+          "April Fool's Day",
+          "Boxing Day",
+          "Halloween",
+          "Bonfire Night"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "The traditions of comedy and satire, and the ability to laugh at ourselves, are an important part of the UK character; jokes and spoof stories are associated with April Fool's Day.",
+        "topic": "Customs & Traditions"
+      },
+      {
+        "text": "At 11.00 am on 11 November 1918, what happened?",
+        "choices": [
+          "The First World War ended",
+          "The Second World War began",
+          "The Battle of the Somme began",
+          "The Battle of Britain ended"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "The First World War ended at 11.00 am on 11th November 1918 with victory for Britain and its allies.",
+        "topic": "The 20th Century"
+      },
+      {
+        "text": "Napoleon's forces were defeated by the Duke of Wellington at the Battle of Waterloo in 1815. Which country did Napoleon rule?",
+        "choices": [
+          "Prussia",
+          "France",
+          "Austria",
+          "Spain"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "In 1815, the French Wars ended with the defeat of the Emperor Napoleon by the Duke of Wellington at the Battle of Waterloo.",
+        "topic": "Global Power & Empire"
+      },
+      {
+        "text": "Councillors on local councils in the UK reach office through which process?",
+        "choices": [
+          "Appointment by central government",
+          "Appointment by the monarch",
+          "Selection by lottery",
+          "Democratic election"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'.",
+        "topic": "Local Government"
+      },
+      {
+        "text": "Which matters can the Northern Ireland Assembly decide on without needing approval from the UK Parliament?",
+        "choices": [
+          "National social security policy",
+          "Defence and foreign affairs",
+          "Immigration and taxation",
+          "Education, agriculture, health and social services"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The Northern Ireland Assembly can make decisions on issues such as education, agriculture, the environment, health and social services. Defence, foreign affairs, immigration, taxation and social security remain under central UK government control.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "Which scientific principle is Sir Isaac Newton most famous for explaining?",
+        "choices": [
+          "The circulation of blood",
+          "How gravity applies to the whole universe",
+          "The theory of evolution",
+          "The structure of DNA"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "Newton's most famous published work was Philosophiae Naturalis Principia Mathematica, which showed how gravity applied to the whole universe. He also discovered that white light is made up of the colours of the rainbow.",
+        "topic": "Arts & Science"
+      },
+      {
+        "text": "Tolerance of people with different faiths and beliefs is described in the handbook as which of the following?",
+        "choices": [
+          "A legal requirement only for public officials",
+          "One of the fundamental principles of British life",
+          "A recent addition to UK law",
+          "Something only religious leaders must observe"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The fundamental principles of British life include: democracy; the rule of law; individual liberty; tolerance of those with different faiths and beliefs; and participation in community life.",
+        "topic": "British Values"
+      },
+      {
+        "text": "Which Labour politician became Prime Minister in 1997?",
+        "choices": [
+          "Gordon Brown",
+          "Clement Attlee",
+          "Harold Wilson",
+          "Tony Blair"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "In 1997 the Labour Party led by Tony Blair was elected.",
+        "topic": "20th Century & Modern Britain"
+      },
+      {
+        "text": "Admiral Nelson was killed while commanding the British fleet at which battle?",
+        "choices": [
+          "The Battle of Waterloo",
+          "The Battle of Trafalgar",
+          "The Battle of the Somme",
+          "The Battle of Agincourt"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "Britain's navy won the Battle of Trafalgar in 1805. Admiral Nelson was in charge of the British fleet at Trafalgar and was killed in the battle.",
+        "topic": "The Monarchy"
+      },
+      {
+        "text": "St David's Day, celebrating the patron saint of Wales, falls on which date?",
+        "choices": [
+          "30 November",
+          "17 March",
+          "23 April",
+          "1 March"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "1 March: St David's Day, Wales.",
+        "topic": "Symbols & Saints"
+      },
+      {
+        "text": "What is the Shadow Cabinet made up of?",
+        "choices": [
+          "Civil servants who run government departments",
+          "Former Prime Ministers who advise the government",
+          "Members of the House of Lords only",
+          "Senior opposition MPs appointed to challenge government ministers in each department"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The leader of the opposition appoints senior opposition MPs to be 'shadow ministers'. They form the shadow cabinet and their role is to challenge the government and put forward alternative policies.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "From what age can a person hold a licence to drive a car in the UK?",
+        "choices": [
+          "16",
+          "17",
+          "18",
+          "21"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "In the UK, you must be at least 17 years old to drive a car or motor cycle and you must have a driving licence to drive on public roads.",
+        "topic": "Taxation & Driving"
+      },
+      {
+        "text": "People on the electoral register can be randomly selected for which civic duty from the age of 18?",
+        "choices": [
+          "Jury service",
+          "Magistrate duties",
+          "Local council membership",
+          "Civil service employment"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "As well as getting the right to vote, people on the electoral register are randomly selected to serve on a jury from the age of 18.",
         "topic": "Justice System"
       },
       {
-        "text": "Which tribes invaded Britain after the Romans had left?",
+        "text": "Which tribal queen led resistance against the Romans in what is now eastern England?",
         "choices": [
-          "The Vikings",
-          "The Jutes and the Anglo-Saxons",
-          "The Celtics",
-          "The Normans"
+          "Mary Stuart",
+          "Boudicca",
+          "Emmeline Pankhurst",
+          "Elizabeth I"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The Roman army left Britain in AD 410 to defend other parts of the Roman Empire and never returned. Britain was again invaded by tribes from northern Europe: the Jutes, the Angles and the Saxons.",
-        "topic": "Early Britain & Prehistory"
+        "explanation": "One of the tribal leaders who fought against the Romans was Boudicca, the queen of the Iceni in what is now eastern England.",
+        "topic": "Roman Britain"
       }
     ]
   },
@@ -327,315 +329,319 @@ export const mockExams = [
     "title": "Mock Exam #2 (Full Test)",
     "questions": [
       {
-        "text": "Roast beef is a traditional food of which country?",
+        "text": "Where is Tate Modern, a well-known gallery of modern art, located?",
         "choices": [
-          "England",
-          "Northern Ireland",
-          "Wales",
-          "Scotland"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "Roast beef, which is served with potatoes is an example of English traditional food.",
-        "topic": "Customs & Traditions"
-      },
-      {
-        "text": "Who can get a 50% discount on their TV licence?",
-        "choices": [
-          "Blind people",
-          "Students",
-          "Army Officers",
-          "Deaf people"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "People over 75 can apply for a free TV licence and blind people can get a 50% discount.",
-        "topic": "Everyday Life"
-      },
-      {
-        "text": "Which languages were the basis of modern English?",
-        "choices": [
-          "Norman French and Anglo Saxon",
-          "Gaelic and Celtic",
-          "Norman French and Celtic",
-          "Celtic and Anglo Saxon"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "After the Norman Conquest, the king and his noblemen had spoken Norman French and the peasants had continued to speak Anglo-Saxon. Gradually these two languages combined to become one English language.",
-        "topic": "The Monarchy"
-      },
-      {
-        "text": "How many members does The Northern Ireland Assembly have?",
-        "choices": [
-          "90",
-          "129",
-          "119",
-          "110"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The Northern Ireland Assembly was established soon after the Belfast Agreement (or Good Friday Agreement) in 1998. There is a power-sharing agreement which distributes ministerial Offices amongst the main parties. The Assembly has 90 elected members (reduced from 108 in 2016), known as MLAs (members of the Legislative Assembly). They are elected with a form of proportional representation. The Assembly is chaired by a Speaker and three deputy Speakers. At least 10 members (including the Speaker) must be present in order for a vote to be taken on any matter.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "When did the first farmers arrive in Britain?",
-        "choices": [
-          "6,000 years ago",
-          "8,000 years ago",
-          "4,000 years ago",
-          "10,000 years ago"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The first farmers arrived in Britain about 6,000 years ago. The ancestors of these first farmers probably came from south-east Europe. These people built houses, tombs and monuments on the land.",
-        "topic": "Key Dates & Quick Facts"
-      },
-      {
-        "text": "Who was the 'Iron Duke' that defeated the Emperor Napoleon?",
-        "choices": [
-          "Churchill",
-          "Sir Christopher Wren",
-          "Wellington",
-          "Admiral Nelson"
+          "Edinburgh",
+          "Cardiff",
+          "London",
+          "Belfast"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "In 1815, the French Wars ended with the defeat of the Emperor Napoleon by the Duke of Wellington at the Battle of Waterloo. Wellington was known as the Iron Duke and later became Prime Minister.",
-        "topic": "Parliament & Government"
+        "explanation": "Some of the most well-known galleries are The National Gallery, Tate Britain and Tate Modern in London.",
+        "topic": "Places of Interest"
       },
       {
-        "text": "When did the Irish Free State become a republic?",
+        "text": "In which city were the main venues for the 2012 Olympic Games situated?",
         "choices": [
-          "1922",
-          "1931",
-          "1937",
-          "1949"
+          "Glasgow",
+          "Birmingham",
+          "Manchester",
+          "London"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "In 1922 Ireland became two countries. The six counties in the north which were mainly Protestant remained part of the UK under the name Northern Ireland. The rest of Ireland became the Irish Free State. It had its own government and became a republic in 1949.",
-        "topic": "Religion & Faith"
+        "explanation": "The main Olympic site for the 2012 Games was in Stratford, East London.",
+        "topic": "20th Century & Modern Britain"
       },
       {
-        "text": "Ulster fry is a traditional food of which country?",
+        "text": "Which of these is a Union Flag component fact?",
         "choices": [
-          "Northern Ireland",
-          "Wales",
-          "Scotland",
-          "England"
+          "The Welsh dragon does not appear on the Union Flag",
+          "The Union Flag was created in the 20th century",
+          "Wales has its own cross on the Union Flag",
+          "The Union Flag has four crosses"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "Northern Ireland's traditional food is 'Ulster fry' - a fried meal with bacon, eggs, sausage, black pudding, white pudding, tomatoes, mushrooms, soda bread and potato bread.",
-        "topic": "Customs & Traditions"
+        "explanation": "The Welsh dragon does not appear on the Union Flag because, when the first Union Flag was created in 1606 from the flags of Scotland and England, the Principality of Wales was already united with England.",
+        "topic": "Symbols & Saints"
       },
       {
-        "text": "Who tells visitors about the history of the Tower of London?",
+        "text": "Which animated films featuring a cheese-loving inventor and his dog have won multiple Oscars for their British creator?",
         "choices": [
-          "Instructors",
-          "London Guides",
-          "Beefeaters",
-          "History graduates"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "The Tower of London was first built by William the Conqueror after he became king in 1066. Tours are given by the Yeoman Warders, also known as Beefeaters, who tell visitors about the building's history. People can also see the Crown Jewels there.",
-        "topic": "The Monarchy"
-      },
-      {
-        "text": "Which TWO wives of Henry VIII were executed?",
-        "choices": [
-          "Jayne Seymour",
-          "Catherine Howard",
-          "Anne Boleyn",
-          "Anne of Cleves"
-        ],
-        "multiple": true,
-        "correct": [
-          1,
-          2
-        ],
-        "explanation": "Anne Boleyn was English. She and Henry had one daughter, Elizabeth. Anne was unpopular in the country and was accused of taking lovers. She was executed at the Tower of London. Catherine was a cousin of Anne Boleyn. She was also accused of taking lovers and executed.",
-        "topic": "Tudors & Stuarts"
-      },
-      {
-        "text": "When did Ireland split into two countries?",
-        "choices": [
-          "1916",
-          "1922",
-          "1959",
-          "1921"
+          "Shaun the Sheep films only",
+          "Wallace and Gromit films",
+          "Paddington films",
+          "Peter Rabbit films"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "In 1921 a peace treaty was signed and in 1922 Ireland became two countries. The six counties in the north which were mainly Protestant remained part of the UK under the name Northern Ireland. The rest of Ireland became the Irish Free State. It had its own government and became a republic in 1949.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Volunteering is compulsory in the UK",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Volunteering is working for good causes without payment. It is not compulsory.",
-        "topic": "Community & Citizenship"
-      },
-      {
-        "text": "Nowadays, the House of Commons has more power than the House of Lords",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "The House of Commons has powers to overrule the House of Lords, but these are not used often.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Select TWO popular social networking websites",
-        "choices": [
-          "Telephone",
-          "E-mail",
-          "Twitter",
-          "Facebook"
-        ],
-        "multiple": true,
-        "correct": [
-          2,
-          3
-        ],
-        "explanation": "Social networking websites such as Facebook and Twitter are a popular way for people to stay in touch with friends, organise social events, and share photos, videos and opinions. Many people use social networking on their mobile phones when out and about.",
-        "topic": "British Inventions & Discoveries"
-      },
-      {
-        "text": "What can 'Carry on' be associated with?",
-        "choices": [
-          "Art",
-          "Novels",
-          "Music",
-          "Films"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The 1950s and 1960s were a high point for British comedies, including Passport to Pimlico, The Ladykillers and, later, the Carry On films.",
+        "explanation": "Nick Park has won four Oscars for his animated films, including three for films featuring Wallace and Gromit.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "How can you make a complaint about the Police? (Choose TWO)",
+        "text": "The Channel Islands and the Isle of Man are best described as which of the following?",
         "choices": [
-          "Going to a police station",
-          "Writing to the Chief Constable of the police force involved",
-          "Visiting a council office",
-          "Visiting the local polling places"
+          "Crown dependencies with their own governments",
+          "Regions of England",
+          "Overseas colonies administered by Parliament",
+          "Full members of the United Kingdom"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "The Channel Islands and the Isle of Man are closely linked with the UK but are not part of it. These have their own governments and are called 'Crown dependencies'.",
+        "topic": "Britain & the World"
+      },
+      {
+        "text": "Who is recognised as the patron saint of Scotland?",
+        "choices": [
+          "St Patrick",
+          "St George",
+          "St Andrew",
+          "St David"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The cross of St Andrew, patron saint of Scotland, is a diagonal white cross on a blue ground.",
+        "topic": "Symbols & Saints"
+      },
+      {
+        "text": "What was distinctive about how the Glorious Revolution unfolded in England?",
+        "choices": [
+          "It was decided by a popular referendum",
+          "It led to the abolition of Parliament",
+          "It was won through a long civil war",
+          "It took place without any fighting in England"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "This event was later called the 'Glorious Revolution' because there was no fighting in England and because it guaranteed the power of Parliament.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "In which year did Britain formally leave the European Union following the Brexit referendum result?",
+        "choices": [
+          "1973",
+          "1957",
+          "2016",
+          "2020"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "After the UK's Brexit vote, the UK left the EU in 2020, and there are now 27 EU member states.",
+        "topic": "Elections & Voting"
+      },
+      {
+        "text": "William Caxton is remembered in English history chiefly for what achievement?",
+        "choices": [
+          "Founding the Church of England",
+          "Introducing the printing press to England",
+          "Writing the Canterbury Tales",
+          "Translating the Bible into English"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The Canterbury Tales was one of the first books to be printed by William Caxton, the first person in England to print books using a printing press.",
+        "topic": "Literature & Writers"
+      },
+      {
+        "text": "During which period in the 17th century did England exist as a republic without a monarch?",
+        "choices": [
+          "1688 to 1700",
+          "1642 to 1649",
+          "1600 to 1620",
+          "1649 to 1660"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "In 1649 Charles I was executed and England declared itself a republic, called the Commonwealth. The monarchy was restored in 1660.",
+        "topic": "Tudors & Stuarts"
+      },
+      {
+        "text": "What documents does a non-UK national typically need to obtain a National Insurance number?",
+        "choices": [
+          "A birth certificate only",
+          "A university degree certificate",
+          "A letter from their employer only",
+          "Documents proving identity and permission to work in the UK"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "You will usually need documents that prove your identity and that you have permission to work in the UK when applying for a National Insurance number.",
+        "topic": "Everyday Life"
+      },
+      {
+        "text": "The King James Bible, produced during the reign of James I, is also known by which name?",
+        "choices": [
+          "The Great Bible",
+          "The Vulgate",
+          "The Authorised Version",
+          "The Geneva Bible"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The King James Version, also called the 'Authorised Version', was a new translation of the Bible into English produced during James I's reign, and continues to be used in many Protestant churches today.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "In which year were UK men and women first able to vote on equal terms, both from age 21?",
+        "choices": [
+          "1969",
+          "1928",
+          "1832",
+          "1918"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The voting franchise was extended to women over 30 by 1918, and then in 1928 to men and women over 21.",
+        "topic": "Elections & Voting"
+      },
+      {
+        "text": "Which is a duty carried out by Members of Parliament in the House of Commons?",
+        "choices": [
+          "Running local councils",
+          "Appointing judges directly",
+          "Representing everyone in their constituency",
+          "Selecting the monarch"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "Each MP represents a parliamentary constituency. MPs represent everyone in their constituency, help to create new laws, scrutinise and comment on what the government is doing, and debate important national issues.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "In England, Wales and Northern Ireland, which court hears the cases of accused persons aged 10 to 17?",
+        "choices": [
+          "The Youth Court",
+          "The Crown Court",
+          "The High Court",
+          "The Magistrates' Court"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "In England, Wales and Northern Ireland, if an accused person is aged 10 to 17, the case is normally heard in a Youth Court.",
+        "topic": "Legal System & Courts"
+      },
+      {
+        "text": "Which value is emphasised as a core principle of British life alongside the rule of law and individual liberty?",
+        "choices": [
+          "Central economic planning",
+          "Religious conformity",
+          "Military service",
+          "Democracy"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The fundamental principles of British life include democracy, the rule of law, individual liberty, tolerance of those with different faiths and beliefs, and participation in community life.",
+        "topic": "British Values & Principles (Detailed)"
+      },
+      {
+        "text": "How is the Tower of London most closely linked to the Norman Conquest?",
+        "choices": [
+          "It was destroyed during the conquest",
+          "It was the site of the Battle of Hastings",
+          "It was built by the Anglo-Saxons before the conquest",
+          "It was built after William the Conqueror became king"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The Tower of London was first built by William the Conqueror after he became king in 1066.",
+        "topic": "Norman Conquest & Middle Ages"
+      },
+      {
+        "text": "Which power did the Magna Carta specifically restrict?",
+        "choices": [
+          "The army's power to conscript soldiers",
+          "The Church's power to conduct services",
+          "The king's power to collect taxes or change laws without consulting his nobles",
+          "Parliament's power to pass legislation"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The Magna Carta established the idea that even the king was subject to the law. It protected the rights of the nobility and restricted the king's power to collect taxes or to make or change laws.",
+        "topic": "Middle Ages & Rights"
+      },
+      {
+        "text": "Which of these are Crown dependencies rather than parts of the United Kingdom?",
+        "choices": [
+          "The Falkland Islands and Gibraltar",
+          "Scotland and Wales",
+          "The Channel Islands and the Isle of Man",
+          "Northern Ireland and Wales"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The Channel Islands and the Isle of Man are Crown dependencies, not parts of the UK.",
+        "topic": "Britain & the World"
+      },
+      {
+        "text": "Which age must a person be to serve on a jury in England and Wales, alongside being on the electoral register?",
+        "choices": [
+          "At least 18",
+          "At least 21",
+          "At least 25",
+          "At least 16"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "People on the electoral register are randomly selected to serve on a jury; anyone on the register aged 18 or over can be asked to do this.",
+        "topic": "Justice System"
+      },
+      {
+        "text": "How does someone typically go about joining the civil service?",
+        "choices": [
+          "By applying through an application process, as with other UK jobs",
+          "By being appointed directly by the monarch",
+          "By being nominated by an MP",
+          "By passing a citizenship test"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "People can apply to join the civil service through an application process, like other jobs in the UK.",
+        "topic": "Government & Law"
+      },
+      {
+        "text": "Which building is a well-known example of construction that followed the Norman Conquest?",
+        "choices": [
+          "Hadrian's Wall",
+          "Stonehenge",
+          "The Tower of London",
+          "The Houses of Parliament"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The Tower of London was first built by William the Conqueror after he became king in 1066, following the Norman Conquest.",
+        "topic": "Norman Conquest & Middle Ages"
+      },
+      {
+        "text": "Which two of these are described as fundamental principles of British life?",
+        "choices": [
+          "Participation in community life",
+          "State control of the press",
+          "Compulsory military service",
+          "Democracy"
         ],
         "multiple": true,
         "correct": [
           0,
-          1
+          3
         ],
-        "explanation": "Anyone can make a complaint about the police by going to a police station or writing to the Chief Constable of the police force involved.",
-        "topic": "Government & Law"
+        "explanation": "The fundamental principles of British life include democracy, the rule of law, individual liberty, tolerance of those with different faiths and beliefs, and participation in community life.",
+        "topic": "British Values"
       },
       {
-        "text": "Sir Edward Elgar is known for his famous music work - 'The Planets'",
+        "text": "Which country is the Isle of Man most accurately described as?",
         "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "More recently, important composers include Gustav Holst (1874-1934), whose work includes The Planets, a suite of pieces themed around the planets of the solar system. He adapted Jupiter, part of the Planets suite, as the tune for I vow to thee my country, a popular hymn in British churches.",
-        "topic": "Arts, Literature & Culture"
-      },
-      {
-        "text": "What were the first Women's Social and Political Union group members called?",
-        "choices": [
-          "House of Lords",
-          "Rotten boroughs",
-          "Slaves",
-          "Suffragettes"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Emmeline Pankhurst (1858-1928) was born in Manchester in 1858. She set up the Women's Franchise League in 1889, which fought to get the vote in local elections for married women. In 1903 she helped found the Women's Social and Political Union (WSPU). This was the first group whose members were called 'suffragettes'.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What was the system of land ownership used by the Normans known as?",
-        "choices": [
-          "The Magna Carta",
-          "Noble land",
-          "Feudalism",
-          "Democracy"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "The Normans used a system of land ownership known as feudalism. The king gave land to his lords in return for help in war. Landowners had to send certain numbers of men to serve in the army. Some peasants had their own land but most were serfs.",
-        "topic": "The Monarchy"
-      },
-      {
-        "text": "Who can only give 'advice, warn and encourage' about government matters?",
-        "choices": [
-          "The Speaker",
-          "The Monarch",
-          "Prime Minister",
-          "Members of the police"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "The monarch has regular meetings with the Prime Minister and can advice, warn and encourage, but the decisions on government policies are made by the Prime Minister and cabinet",
-        "topic": "Government & Law"
-      },
-      {
-        "text": "What awards event celebrates British theatre?",
-        "choices": [
-          "The Turner Prize",
-          "The Mercury Prize",
-          "The Brit Awards",
-          "The Laurence Olivier Awards"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The Laurence Olivier Awards take place annually at different venues in London. There are a variety of categories, including best director, best actor and best actress. The awards are named after the British actor Sir Laurence Olivier, later Lord Olivier, who was best known for his roles in various Shakespeare plays.",
-        "topic": "Literature & Writers"
-      },
-      {
-        "text": "It is a legal requirement that men and women should not be discriminated against due to their gender or marital status",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "UK laws ensure that people are not treated unfairly in any area of life or work because of their age, disability, sex, pregnancy and maternity, race, religion or belief, sexuality or marital status.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Catherine Howard was Anne Boleyn's cousin",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Catherine was a cousin of Anne Boleyn. She was also accused of taking lovers and executed.",
-        "topic": "Tudors & Stuarts"
-      },
-      {
-        "text": "Who is known as William the Conqueror?",
-        "choices": [
-          "William, the Duke of Normandy",
-          "William, the Duke of France",
-          "William, the Duke of Edinburgh",
-          "William, the Duke of Lion"
+          "A Crown dependency, not part of the UK",
+          "A region of Scotland",
+          "An overseas territory administered from London",
+          "A county of England"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "In 1066, an invasion led by William, the Duke of Normandy (in what is now northern France), defeated Harold, the Saxon king of England, at the Battle of Hastings. Harold was killed in the battle. William became king of England and is known as William the Conqueror.",
-        "topic": "The Monarchy"
+        "explanation": "The Isle of Man is a Crown dependency. Crown dependencies are connected with the UK but are not part of it.",
+        "topic": "Britain & the World"
       }
     ]
   },
@@ -644,309 +650,322 @@ export const mockExams = [
     "title": "Mock Exam #3 (Full Test)",
     "questions": [
       {
-        "text": "What did Henry VII do?",
+        "text": "Which competition, held annually at Aintree near Liverpool, is a famous National Hunt horse race?",
         "choices": [
-          "Restricted King's power",
-          "Broke away from the Church of Rome",
-          "Increased the power of the nobles",
-          "Reduced the power of the nobles"
+          "The Open Championship",
+          "The Grand National",
+          "Royal Ascot",
+          "The Derby"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "Henry VII wanted to make sure that England remained peaceful and that his position as king was secure. He deliberately strengthened the central administration of England and reduced the power of the nobles.",
-        "topic": "The Monarchy"
+        "correct": 1,
+        "explanation": "The Grand National takes place at Aintree near Liverpool.",
+        "topic": "Sports & Icons"
       },
       {
-        "text": "Which of these is not a music festival?",
+        "text": "Which country's national flower is the daffodil?",
         "choices": [
-          "Glastonbury",
-          "Creamfields",
-          "The Fringe",
-          "V festival"
+          "Northern Ireland",
+          "Wales",
+          "England",
+          "Scotland"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "The Edinburgh Festival takes place in Edinburgh, Scotland, every summer. The Fringe (One of the festivals) is a showcase of mainly theatre and comedy performances.",
-        "topic": "Arts, Literature & Culture"
+        "correct": 1,
+        "explanation": "Wales's national flower is the daffodil, celebrated especially around St David's Day.",
+        "topic": "Symbols & Saints"
       },
       {
-        "text": "Who is responsible for crime and immigration?",
+        "text": "Both the England men's cricket team and other sports still play an annual fixture against Australia known as what?",
         "choices": [
-          "Chancellor of the Exchequer",
-          "Secretary of State",
-          "Home Secretary",
-          "Foreign Secretary"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "Home Secretary is responsible for crime, policing and immigration.",
-        "topic": "Legal System & Courts"
-      },
-      {
-        "text": "When did the English civil war begin?",
-        "choices": [
-          "1646",
-          "1641",
-          "1642",
-          "1640"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "Civil war between the king and Parliament could not now be avoided and began in 1642. The country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "In 1284 King Edward I of England introduced the Statute of Rhuddlan, which annexed Wales to the Crown of England.",
-        "choices": [
-          "True",
-          "False"
+          "The Ashes",
+          "The Ryder Cup",
+          "The Six Nations",
+          "The Grand Slam"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "In 1284 King Edward I of England introduced the Statute of Rhuddlan, which annexed Wales to the Crown of England.",
-        "topic": "The Monarchy"
+        "explanation": "The most famous cricket competition is the Ashes, which is a series of Test matches played between England and Australia.",
+        "topic": "Sports & Icons"
       },
       {
-        "text": "When were the Anglo-Saxon kingdoms established in England?",
+        "text": "Which two houses make up the UK Parliament?",
         "choices": [
-          "By AD 500",
-          "By AD 600",
-          "By AD 550",
-          "By AD 410"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "By about AD 600, Anglo-Saxon kingdoms were established in Britain. These kingdoms were mainly in what is now England.",
-        "topic": "The 4 Nations"
-      },
-      {
-        "text": "The Scottish Parliament (after the Magna Carta was established in England) was split into two estates: the Lords and the Commons",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "In England, the nobility, great landowners and bishops sat in the House of Lords. Knights, who were usually smaller landowners, and wealthy people from towns and cities were elected to sit in the House of Commons. Only a small part of the population was able to join in electing the members of the Commons. In Scotland, the parliament had three Houses, called Estates: the Lords, the Commons and the Clergy.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What is the Shadow Cabinet?",
-        "choices": [
-          "The cabinet that is in trouble",
-          "The name of the office of the Leader of the Opposition in the Parliament",
-          "Senior members of the main opposition party who 'shadow' Government ministers in different departments",
-          "The cabinet where the Prime Minister had to resign"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "ministers in different departments The leader of the opposition leads his or her party in pointing out what they see as the government's failures and weaknesses. The leader of the opposition also appoints senior opposition MPs to be 'shadow ministers'. They form the shadow cabinet and their role is to challenge the government and put forward alternative policies.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Who wrote about their experiences in the First World War?",
-        "choices": [
-          "Lord Byron and John Masefield",
-          "Wilfred Owen and William Blake",
-          "Wilfred Owen and Siegfried Sassoon",
-          "Elizabeth and Robert Browning"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "Wilfred Owen and Siegfried Sassoon - were inspired to write about their experiences in the First World War.",
-        "topic": "The 20th Century"
-      },
-      {
-        "text": "Discrimination in the workplace is a criminal offence",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "An example of civil laws are disputes over wages and cases of unfair dismissal or discrimination in the workplace.",
-        "topic": "Human Rights & Equal Opportunities"
-      },
-      {
-        "text": "What is the Giant's Causeway made of?",
-        "choices": [
-          "Iron",
-          "Bronze",
-          "Volcanic Lava",
-          "Stone"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "Located on the north-east coast of Northern Ireland, the Giant's Causeway is a land formation of columns made from volcanic lava. It was formed about 50 million years ago. There are many legends about the Causeway and how it was formed.",
-        "topic": "The 4 Nations"
-      },
-      {
-        "text": "Conditions in Ireland in the 19th century were much better than in the rest of the UK",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "Conditions in Ireland were not as good as in the rest of the UK. Two-thirds of the population still depended on farming to make their living, often on very small plots of land. Many depended on potatoes as a large part of their diet. In the middle of the century the potato crop failed, and Ireland suffered a famine. A million people died from disease and starvation.",
-        "topic": "Global Power & Empire"
-      },
-      {
-        "text": "Radar was developed by Scotsman Sir Robert Watson-Watt",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Radar was developed by Scotsman Sir Robert Watson-Watt (1892-1973), who proposed that enemy aircraft could be detected by radio waves. The first successful radar test took place in 1935.",
-        "topic": "British Inventions & Discoveries"
-      },
-      {
-        "text": "When did the BBC begin the world's first regular TV service?",
-        "choices": [
-          "1922",
-          "1938",
-          "1936",
-          "1921"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "The BBC started radio broadcasts in 1922 and began the world's first regular television service in 1936.",
-        "topic": "British Inventions & Discoveries"
-      },
-      {
-        "text": "Satirical magazines began to be published in the 19th century. When was 'Punch' first published?",
-        "choices": [
-          "1890s",
-          "1810s",
-          "1870s",
-          "1840s"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Punch' was published for the first time in the 1840s",
-        "topic": "Enlightenment & Empire"
-      },
-      {
-        "text": "What destroyed London in year 1666?",
-        "choices": [
-          "Nuclear Plant",
-          "Fire",
-          "Water",
-          "Plague"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "During Charles II's reign, in 1665, there was a major outbreak of plague in London. Thousands of people died, especially in poorer areas. The following year, a great fire destroyed much of the city, including many churches and St Paul's Cathedral.",
-        "topic": "Places of Interest"
-      },
-      {
-        "text": "Other than London universities, which university was credited with the discovery of the DNA molecule in 1953?",
-        "choices": [
-          "Cambridge",
-          "Edinburgh",
-          "Oxford",
-          "Aberdeen"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The structure of the DNA molecule was discovered in 1953 through work at British universities in London and Cambridge. This discovery contributed to many scientific advances, particularly in medicine and fighting crime. Francis Crick (1916-2004), one of those awarded the Nobel Prize for this discovery, was British.",
-        "topic": "Arts & Science"
-      },
-      {
-        "text": "During the reigns of Elizabeth I and James I, where did the English government encourage Scottish and English Protestants to settle?",
-        "choices": [
-          "Ulster",
-          "Edinburgh",
-          "East London",
-          "Cardiff"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "During the reigns of Elizabeth I and James I, many people in Ireland opposed rule by the Protestant government in England. There were a number of rebellions. The English government encouraged Scottish and English Protestants to settle in Ulster, the northern province of Ireland, taking over the land from Catholic landholders. These settlements were known as plantations.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Which architectural style are the famous London buildings of the 19th century, such as the House of Parliament and St Pancras Station, associated with?",
-        "choices": [
-          "Roman",
-          "Gothic",
-          "Indian",
-          "Catholic"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "In the 19th century, the medieval 'gothic' style became popular again. As cities expanded, many great public buildings were built in this style. The Houses of Parliament and St Pancras Station were built at this time, as were the town halls in cities such as Manchester and Sheffield.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What can the Laws made by the EU also be called?",
-        "choices": [
-          "Framework Decisions",
-          "All of these",
-          "Directives",
-          "Regulations"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "EU law is legally binding in the UK and all the other EU member states. European laws are called directives, regulations or framework decisions.",
-        "topic": "Government & Law"
-      },
-      {
-        "text": "Which TWO things happened when Mary Stuart's husband got murdered?",
-        "choices": [
-          "She fled to France",
-          "She gave her throne to Elizabeth I",
-          "She was suspected of involvement in the murder",
-          "She asked Elizabeth I for help"
+          "Senedd",
+          "Stormont",
+          "House of Commons",
+          "House of Lords"
         ],
         "multiple": true,
         "correct": [
           2,
           3
         ],
-        "explanation": "The queen of Scotland, Mary Stuart (often now called 'Mary, Queen of Scots') was a Catholic. She was only a week old when her father died and she became queen. Much of her childhood was spent in France. When she returned to Scotland, she was the centre of a power struggle between different groups. When her husband was murdered, Mary was suspected of involvement and fled to England. She gave her throne to her Protestant son, James VI of Scotland. Mary was Elizabeth I's cousin and hoped that Elizabeth might help her, but Elizabeth suspected Mary of wanting to take over the English throne, and kept her a prisoner for 20 years. Mary was eventually executed, accused of plotting against Elizabeth I.",
-        "topic": "The Monarchy"
+        "explanation": "Parliament is made up of the House of Commons and the House of Lords.",
+        "topic": "Parliament & Government"
       },
       {
-        "text": "Whom did the serfs serve?",
+        "text": "The House of Commons is regarded as more important than the House of Lords chiefly because of what?",
         "choices": [
-          "Knights",
-          "Lords",
-          "Peasants",
-          "Slaves"
+          "It meets more often",
+          "Its members are democratically elected",
+          "It has existed for longer",
+          "It has more members"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The Normans used a system of land ownership known as feudalism. The king gave land to his lords in return for help in war. Landowners had to send certain numbers of men to serve in the army. Some peasants had their own land but most were serfs.",
-        "topic": "The Monarchy"
+        "explanation": "The House of Commons is regarded as the more important of the two chambers in Parliament because its members are democratically elected.",
+        "topic": "Parliament & Government"
       },
       {
-        "text": "The Victoria Cross medal was introduced during which war?",
+        "text": "Which annual UK occasion is associated with playing jokes and pranks on 1 April?",
         "choices": [
-          "The Crimean War",
-          "The First World War",
-          "The Second World War",
-          "The Hundred Years War"
+          "April Fool's Day",
+          "Boxing Day",
+          "Remembrance Day",
+          "Bonfire Night"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "Queen Victoria introduced the Victoria Cross medal during the Crimean war. It honours acts of valour by soldiers.",
-        "topic": "The Monarchy"
+        "explanation": "April Fool's Day is a UK tradition associated with jokes and pranks, listed among the UK's customs and traditions.",
+        "topic": "Customs & Traditions"
       },
       {
-        "text": "What is the 'Divine Right of Kings?",
+        "text": "The First World War ended on which date?",
         "choices": [
-          "Increased power of the parliament",
-          "Reduced the power of the nobles",
-          "The King was Appointed by God",
-          "Reduced the power of the King"
+          "28 June 1914",
+          "11 November 1918",
+          "1 September 1939",
+          "6 June 1944"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The First World War ended at 11.00 am on 11 November 1918 with victory for Britain and its allies.",
+        "topic": "The 20th Century"
+      },
+      {
+        "text": "At the Battle of Waterloo in 1815, which country's forces were defeated by the Duke of Wellington?",
+        "choices": [
+          "Prussia",
+          "Russia",
+          "France",
+          "Spain"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "Divine Right of Kings' is the idea that the king was directly appointed by God to rule. The king should be able to act without having to seek approval from Parliament.",
+        "explanation": "In 1815, the French Wars ended with the defeat of the Emperor Napoleon (of France) by the Duke of Wellington at the Battle of Waterloo.",
+        "topic": "Global Power & Empire"
+      },
+      {
+        "text": "Local councils in the UK are made up of representatives who are chosen how?",
+        "choices": [
+          "Selected by the civil service",
+          "Elected by local people",
+          "Nominated by the monarch",
+          "Appointed by the Prime Minister"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'.",
+        "topic": "Local Government"
+      },
+      {
+        "text": "Which of the following can the devolved Scottish Parliament decide without needing UK Parliament approval?",
+        "choices": [
+          "UK-wide defence policy",
+          "Foreign affairs",
+          "Civil and criminal law, health and education in Scotland",
+          "Immigration policy"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The Scottish Parliament can pass laws for Scotland on matters not specifically reserved to the UK Parliament, including civil and criminal law, health, education and planning.",
         "topic": "Parliament & Government"
+      },
+      {
+        "text": "Sir Isaac Newton is credited with explaining that gravity applies to what?",
+        "choices": [
+          "The whole universe",
+          "Only objects on Earth",
+          "Only the planets, not the Earth",
+          "Only liquids"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Newton's most famous published work showed how gravity applied to the whole universe.",
+        "topic": "Arts & Science"
+      },
+      {
+        "text": "Which of these is one of the fundamental principles underpinning British life?",
+        "choices": [
+          "A single official state religion for all citizens",
+          "The rule of law",
+          "Compulsory religious worship",
+          "Mandatory national service"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The fundamental principles of British life include democracy, the rule of law, individual liberty, tolerance of those with different faiths and beliefs, and participation in community life.",
+        "topic": "British Values"
+      },
+      {
+        "text": "Which Labour politician led the government elected in 1997?",
+        "choices": [
+          "Gordon Brown",
+          "Neil Kinnock",
+          "Harold Wilson",
+          "Tony Blair"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "In 1997 the Labour Party led by Tony Blair was elected.",
+        "topic": "20th Century & Modern Britain"
+      },
+      {
+        "text": "In which battle was Admiral Nelson, commander of the British fleet, killed in 1805?",
+        "choices": [
+          "The Battle of the Somme",
+          "The Battle of Trafalgar",
+          "The Battle of Agincourt",
+          "The Battle of Waterloo"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "Britain's navy fought against combined French and Spanish fleets, winning the Battle of Trafalgar in 1805. Admiral Nelson was killed in the battle.",
+        "topic": "The Monarchy"
+      },
+      {
+        "text": "St David's Day, marked every 1 March, celebrates the patron saint of which country?",
+        "choices": [
+          "Wales",
+          "England",
+          "Scotland",
+          "Northern Ireland"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "1 March: St David's Day, Wales.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "Which description best fits the role of the Shadow Cabinet?",
+        "choices": [
+          "Retired ministers who advise the monarch",
+          "A backup government appointed if the current one resigns",
+          "Senior opposition MPs who challenge government ministers in each department",
+          "A committee that selects judges"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The leader of the opposition appoints senior opposition MPs to be 'shadow ministers'. They form the shadow cabinet and their role is to challenge the government and put forward alternative policies.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "What is the minimum age at which someone can legally drive a motorcycle or car in the UK?",
+        "choices": [
+          "21",
+          "16",
+          "17",
+          "18"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "In the UK, you must be at least 17 years old to drive a car or motor cycle.",
+        "topic": "Taxation & Driving"
+      },
+      {
+        "text": "At what age can someone be called for jury service if they are on the electoral register?",
+        "choices": [
+          "18",
+          "21",
+          "16",
+          "25"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "People on the electoral register are randomly selected to serve on a jury; the eligible age to be called starts at 18.",
+        "topic": "Justice System"
+      },
+      {
+        "text": "Which tribal leader fought against Roman forces in what is now eastern England?",
+        "choices": [
+          "Mary, Queen of Scots",
+          "Robert the Bruce",
+          "Boudicca, queen of the Iceni",
+          "William the Conqueror"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "One of the tribal leaders who fought against the Romans was Boudicca, the queen of the Iceni in what is now eastern England.",
+        "topic": "Roman Britain"
+      },
+      {
+        "text": "Tate Modern, a major gallery of modern art, is located in which city?",
+        "choices": [
+          "London",
+          "Glasgow",
+          "Cardiff",
+          "Manchester"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Some of the most well-known galleries are The National Gallery, Tate Britain and Tate Modern, all in London.",
+        "topic": "Places of Interest"
+      },
+      {
+        "text": "London hosted the Olympic Games in 2012 - in which other two years has the UK also hosted the Games?",
+        "choices": [
+          "1936",
+          "1924",
+          "1908",
+          "1948"
+        ],
+        "multiple": true,
+        "correct": [
+          2,
+          3
+        ],
+        "explanation": "The UK has hosted the Olympic Games on three occasions: 1908, 1948 and 2012.",
+        "topic": "Sports & Icons"
+      },
+      {
+        "text": "The Union Flag's design reflects the crosses of St George, St Andrew and which other patron saint?",
+        "choices": [
+          "St Columba",
+          "St Patrick",
+          "St Augustine",
+          "St David"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The Union Flag consists of the crosses of St George (England), St Andrew (Scotland) and St Patrick (Ireland).",
+        "topic": "Symbols & Saints"
+      },
+      {
+        "text": "Which animated character duo, created by Nick Park, helped win him multiple Oscars?",
+        "choices": [
+          "Shaun and Bitzer",
+          "Peppa Pig and George",
+          "Bob the Builder and friends",
+          "Wallace and Gromit"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Nick Park has won four Oscars for his animated films, including three for films featuring Wallace and Gromit.",
+        "topic": "Arts, Literature & Culture"
+      },
+      {
+        "text": "England was governed as a republic without a king from 1649 until which year, when the monarchy was restored?",
+        "choices": [
+          "1660",
+          "1688",
+          "1670",
+          "1649"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Charles I was executed in 1649 and England became a republic (the Commonwealth). The monarchy was restored in 1660.",
+        "topic": "Tudors & Stuarts (Detailed)"
       }
     ]
   },
@@ -955,106 +974,106 @@ export const mockExams = [
     "title": "Practice Exam 4",
     "questions": [
       {
-        "text": "Which of these UK landmarks is in Wales?",
+        "text": "Snowdon, the highest mountain in Wales, is located within which national park?",
         "choices": [
+          "Giant's Causeway",
           "The Lake District",
-          "Snowdonia",
           "Loch Lomond",
-          "The Giant's Causeway"
+          "Snowdonia"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Snowdonia is a national park in North Wales. It covers an area of 838 square miles. Its most well-known landmark is Snowdon, which is the highest mountain in Wales.",
+        "correct": 3,
+        "explanation": "Snowdonia is a national park in North Wales. Its most well-known landmark is Snowdon, which is the highest mountain in Wales.",
         "topic": "Places of Interest"
       },
       {
-        "text": "What's the age requirement to drink wine with a meal with someone over 18?",
+        "text": "A 16 year old may drink wine or beer with a meal in a hotel or restaurant only under which condition?",
         "choices": [
-          "21",
-          "18",
-          "17",
-          "16"
+          "Only after 9pm",
+          "Never, regardless of company",
+          "If accompanied by someone over 18",
+          "Only on public holidays"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "16 year olds can drink wine or beer with a meal in a hotel or restaurant as long as they are with someone over 18.",
+        "correct": 2,
+        "explanation": "People aged 16 or over can drink alcohol with a meal in a hotel or restaurant as long as they are with someone over 18.",
         "topic": "Food & Leisure"
       },
       {
-        "text": "Who tried to arrest 5 parliamentary leaders from the House of Commons?",
+        "text": "Which king entered the House of Commons in an attempt to arrest five parliamentary leaders, an act no monarch has repeated since?",
         "choices": [
-          "Charles I",
           "James I",
           "Henry VIII",
-          "Henry VII"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "Charles I entered the House of Commons and tried to arrest five parliamentary leaders, but they had been warned and were not there. This led to the English Civil war in 1642.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "When did Protestant ideas begin to spread?",
-        "choices": [
-          "15th century",
-          "18th century",
-          "17th century",
-          "16th century"
+          "Charles II",
+          "Charles I"
         ],
         "multiple": false,
         "correct": 3,
+        "explanation": "Charles I entered the House of Commons and tried to arrest five parliamentary leaders, but they had been warned and were not there. No monarch has set foot in the Commons since.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "During which century did Protestant ideas gain strength across England, Wales and Scotland?",
+        "choices": [
+          "The 18th century",
+          "The 16th century",
+          "The 14th century",
+          "The 19th century"
+        ],
+        "multiple": false,
+        "correct": 1,
         "explanation": "Protestant ideas gradually gained strength in England, Wales and Scotland during the 16th century.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "What yearly event happens between Oxford and Cambridge Universities?",
+        "text": "Which annual sporting event takes place on the River Thames between two well-known universities?",
         "choices": [
-          "A Rowing Race",
-          "A Game of Football",
-          "A Tennis Match",
-          "A game of Basketball"
+          "A sailing race between Cowes and Portsmouth",
+          "A rowing race between Oxford and Cambridge",
+          "A swimming race between London and Bristol",
+          "A cycling race between Bath and Cardiff"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Rowing is also popular, both as a leisure activity and as a competitive sport. There is a popular yearly race on the Thames between Oxford and Cambridge Universities.",
+        "correct": 1,
+        "explanation": "There is a popular yearly rowing race on the Thames between Oxford and Cambridge Universities.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "As per 2021 census, what percentage of the population in England and Wales doesn't follow a religion?",
+        "text": "According to the 2021 census, roughly what proportion of people in England and Wales reported having no religion?",
         "choices": [
-          "14%",
-          "21%",
-          "6%",
-          "37%"
+          "Around 6%",
+          "Around 21%",
+          "Around 37%",
+          "Around 14%"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "The 2021 Census results released so far show 37% of people in England and Wales (from a total sampled 60 million) stated not to follow any religion. 46% of people identified themselves as Christian. Much smaller proportions identified themselves as Hindu (2%), Sikh (1%), Jewish or Buddhist (both around 0.5%), while 0.5% of people followed another religion.",
+        "correct": 2,
+        "explanation": "The 2021 census showed a significant increase in people identifying with no religion, rising to 37.2%.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "People living in the UK must pay tax on which of the following TWO?",
+        "text": "Which TWO of the following are sources of income on which people in the UK must pay tax?",
         "choices": [
-          "Payday Loans",
-          "Wages from paid employment",
-          "Student Loans",
-          "Income from property, savings and dividends"
+          "Income from savings and dividends",
+          "Payday loans",
+          "Student loans",
+          "Wages from employment"
         ],
         "multiple": true,
         "correct": [
-          1,
+          0,
           3
         ],
-        "explanation": "People in the UK have to pay tax on their income, which includes: wages from paid employment; profits from self-employment, taxable benefits; pensions; income from property, savings and dividends.",
+        "explanation": "People in the UK have to pay tax on income including wages from paid employment, and income from property, savings and dividends.",
         "topic": "Taxation & Driving"
       },
       {
-        "text": "Where were the first farmers that came to Britain from?",
+        "text": "The earliest farmers to settle in Britain, around 6,000 years ago, are believed to have come from which region?",
         "choices": [
-          "South west Europe",
-          "North Europe",
-          "South east Europe",
-          "North west Europe"
+          "Scandinavia",
+          "North Africa",
+          "South-east Europe",
+          "The Iberian Peninsula"
         ],
         "multiple": false,
         "correct": 2,
@@ -1062,209 +1081,217 @@ export const mockExams = [
         "topic": "Early Britain & Prehistory"
       },
       {
-        "text": "D-Day is the day when the British evacuated the French from Normandy",
+        "text": "What actually took place on D-Day, 6 June 1944?",
         "choices": [
-          "True",
-          "False"
+          "The Blitz began over London",
+          "Allied forces landed in Normandy",
+          "British forces evacuated Dunkirk",
+          "Germany surrendered"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "On 6 June 1944, allied forces landed in Normandy (this event is often referred to as 'D-Day').",
+        "explanation": "On 6 June 1944, allied forces landed in Normandy, an event often referred to as 'D-Day'.",
         "topic": "The 20th Century"
       },
       {
-        "text": "Which TWO are Police duties?",
+        "text": "Which TWO of these are duties carried out by the police in the UK?",
         "choices": [
-          "Misuse their authority",
-          "Protect life and property",
-          "Detect and prevent crime",
-          "Be corrupt"
+          "Acting with corruption",
+          "Misusing their authority",
+          "Protecting life and property",
+          "Preventing and detecting crime"
         ],
         "multiple": true,
         "correct": [
-          1,
-          2
+          2,
+          3
         ],
-        "explanation": "The job of the police in the UK is to: protect life and property; prevent disturbances (also known as keeping the peace); prevent and detect crime.",
+        "explanation": "The job of the police in the UK includes protecting life and property, and preventing and detecting crime.",
         "topic": "Government & Law"
       },
       {
-        "text": "Where was Isaac Newton born?",
+        "text": "Sir Isaac Newton, who studied at Cambridge, was born in which part of England?",
         "choices": [
-          "Wales",
-          "England",
-          "Ireland",
-          "Scotland"
+          "Cornwall",
+          "Yorkshire",
+          "Lincolnshire",
+          "Kent"
         ],
         "multiple": false,
-        "correct": 1,
+        "correct": 2,
         "explanation": "Born in Lincolnshire, eastern England, Isaac Newton first became interested in science when he studied at Cambridge University.",
         "topic": "Arts & Science"
       },
       {
-        "text": "How many countries make up the EU?",
+        "text": "How many countries currently belong to the European Union following the UK's departure?",
         "choices": [
           "54",
-          "190",
+          "27",
           "15",
-          "27"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The European Union (EU), originally called the European Economic Community (EEC), was set up by six western European countries (Belgium, France, Germany, Italy, Luxembourg and the Netherlands) who signed the Treaty of Rome on 25 March 1957. The UK originally decided not to join this group but it became a member in 1973. After the Brexit vote to leave in 2020, there are now 27 EU member states",
-        "topic": "Elections & Voting"
-      },
-      {
-        "text": "Children's Hearings system is used in which country?",
-        "choices": [
-          "Wales",
-          "Scotland",
-          "Northern Ireland",
-          "England"
+          "28"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an offence. Northern Ireland has a system of youth conferencing to consider how a child should be dealt with when they have committed an offence.",
-        "topic": "The 4 Nations"
+        "explanation": "After the UK left the EU, there are now 27 EU member states.",
+        "topic": "Elections & Voting"
       },
       {
-        "text": "During the Bronze age people lived in roundhouses and buried their dead in tombs called round barrows",
+        "text": "In which UK country is the Children's Hearings System used to deal with young offenders?",
         "choices": [
-          "True",
-          "False"
+          "Scotland",
+          "Northern Ireland",
+          "England",
+          "Wales"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The statement is true",
+        "explanation": "In Scotland a system called the Children's Hearings System is used to deal with children and young people who have committed an offence.",
+        "topic": "The 4 Nations"
+      },
+      {
+        "text": "During the Bronze Age, what kind of dwellings did people typically live in?",
+        "choices": [
+          "Roundhouses",
+          "Timber-framed manors",
+          "Wattle huts on stilts",
+          "Stone cottages"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "During the Bronze Age, people lived in roundhouses and buried their dead in tombs called round barrows.",
         "topic": "Early Britain & Prehistory"
       },
       {
-        "text": "What party won the General Election in 2010?",
+        "text": "What was the outcome of the 2010 UK General Election in terms of forming a government?",
         "choices": [
-          "Tories",
-          "Labour Party",
-          "Liberal democrats",
-          "None, Liberal Democrats and Conservative party formed a Coalition"
+          "No party won a majority, so the Conservatives and Liberal Democrats formed a coalition",
+          "A snap second election was called immediately",
+          "The Conservatives won a clear majority outright",
+          "Labour won a landslide majority"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "In May 2010, and for the first time in the UK since February 1974, no political party won an overall majority in the General Election. The Conservative and Liberal Democrat parties formed a coalition and the leader of the Conservative Party, David Cameron, became Prime Minister.",
+        "correct": 0,
+        "explanation": "In May 2010, no political party won an overall majority. The Conservative and Liberal Democrat parties formed a coalition, and David Cameron became Prime Minister.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Which TWO did the Romans establish in Britain?",
+        "text": "Which TWO of the following did the Romans bring to Britain during their 400-year occupation?",
         "choices": [
-          "Introduced new plants and animals",
-          "Introduced constitutional monarchy",
-          "Created a structure of law",
-          "Introduced basic democracy"
+          "A structure of law",
+          "New plants and animals",
+          "Basic democracy",
+          "Constitutional monarchy"
         ],
         "multiple": true,
         "correct": [
           0,
-          2
+          1
         ],
-        "explanation": "The Romans remained in Britain for 400 years. They built roads and public buildings, created a structure of law, and introduced new plants and animals",
+        "explanation": "The Romans remained in Britain for 400 years. They built roads and public buildings, created a structure of law, and introduced new plants and animals.",
         "topic": "Government & Law"
       },
       {
-        "text": "Robert the Bruce is associated with which country?",
+        "text": "In 1314, Robert the Bruce led which country's forces to victory over the English at Bannockburn?",
         "choices": [
-          "England",
-          "Ireland",
           "Scotland",
+          "England itself",
+          "Ireland",
           "Wales"
         ],
         "multiple": false,
-        "correct": 2,
+        "correct": 0,
         "explanation": "In 1314 the Scottish, led by Robert the Bruce, defeated the English at the Battle of Bannockburn, and Scotland remained unconquered by the English.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "What system can be used to complete a tax return if you are self- employed?",
+        "text": "If you are self-employed in the UK, which system must you use to pay tax?",
         "choices": [
-          "PAYE (Pay as you earn)",
-          "National Insurance contribution",
-          "Self-checkout",
-          "Self-assessment"
+          "Council Tax",
+          "Self-assessment",
+          "PAYE",
+          "National Insurance contribution"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "For most people, the right amount of income tax is automatically taken from their income from employment by their employer and paid directly to HM Revenue Customs (HMRC), the government department that collects taxes. This system is called 'Pay As You Earn' (PAYE). If you are self-employed, you need to pay your own tax through a system called 'self- assessment', which includes completing a tax return.",
+        "correct": 1,
+        "explanation": "If you are self-employed, you need to pay your own tax through a system called 'self-assessment', which includes completing a tax return.",
         "topic": "Taxation & Driving"
       },
       {
-        "text": "The London Eye is situated on the southern bank of which river?",
+        "text": "On which river does the London Eye stand, on its southern bank?",
         "choices": [
-          "Walbrook",
-          "Clyde",
-          "Tyburn",
-          "Thames"
+          "The Tyburn",
+          "The Thames",
+          "The Avon",
+          "The Clyde"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "The London Eye is situated on the southern bank of the River Thames and is a Ferris wheel that is 443 feet (135 metres) tall. It was originally built as part of the UK's celebration of the new millennium and continues to be an important part of New Year celebrations.",
+        "correct": 1,
+        "explanation": "The London Eye is situated on the southern bank of the River Thames.",
         "topic": "Traditions & Holidays"
       },
       {
-        "text": "NSPCC is a charity for which of the following?",
+        "text": "The NSPCC is a well-known UK charity dedicated to which cause?",
         "choices": [
-          "Children",
-          "Environment",
-          "Old people",
-          "Animals"
+          "Supporting elderly people",
+          "Preventing cruelty to children",
+          "Animal welfare",
+          "Protecting the environment"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Children - the National Society for the Prevention of Cruelty to Children (NSPCC); The homeless - Crisis and Shelter; Medical research charities - Cancer Research UK; Environmental charities- the National Trust and Friends of the Earth; Animals - People's Dispensary for Sick Animals (PDSA).",
+        "correct": 1,
+        "explanation": "The National Society for the Prevention of Cruelty to Children (NSPCC) is a charity working with children.",
         "topic": "Community & Citizenship"
       },
       {
-        "text": "After the Black Death, a new social class appeared, - owners of large areas of land. What were they called?",
+        "text": "Following the Black Death, a new social class of large landowners emerged in England. What were they called?",
         "choices": [
-          "The Gentry",
-          "The Tudors",
-          "The Clans",
-          "The Serfs"
+          "The serfs",
+          "The gentry",
+          "The clans",
+          "The Tudors"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "New social classes appeared, including owners of large areas of land called 'the gentry', and people left the countryside to live in the towns. In the towns, growing wealth led to the development of a strong middle class.",
+        "correct": 1,
+        "explanation": "New social classes appeared, including owners of large areas of land, later called 'the gentry'.",
         "topic": "Norman Conquest & Middle Ages"
       },
       {
-        "text": "The Chartists are associated with the Civil War which took place in the 17th century",
+        "text": "The Chartists, who campaigned for parliamentary reform, were most active during which decades?",
         "choices": [
-          "True",
-          "False"
+          "The 1900s and 1910s",
+          "The 1680s and 1690s",
+          "The 1640s and 1650s",
+          "The 1830s and 1840s"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "In the 1830s and 1840s, a group called the Chartists campaigned for reform. They wanted six changes: for every man to have the vote; elections every year; for all regions to be equal in the electoral system; secret ballots; for any man to be able to stand as an MP; for MPs to be paid.",
+        "correct": 3,
+        "explanation": "In the 1830s and 1840s, a group called the Chartists campaigned for reform, including votes for every man and secret ballots.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Mothering Sunday is the third Sunday in June",
+        "text": "Mothering Sunday takes place on which day relative to Easter?",
         "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Mothering Sunday (or Mother's Day) is the Sunday three weeks before Easter. Children send cards or buy gifts for their mothers.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "In 1348, a disease, probably a form of plague, came to Britain. What was it called?",
-        "choices": [
-          "Giant Evil",
-          "White Death",
-          "Black Death",
-          "Malaria"
+          "40 days before Easter",
+          "The Sunday three weeks after Easter",
+          "The Sunday three weeks before Easter",
+          "The same day as Easter Sunday"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "In 1348, a disease, probably a form of plague, came to Britain. This was known as the Black Death. One third of the population of England died and a similar proportion in Scotland and Wales.",
+        "explanation": "Mothering Sunday (or Mother's Day) is the Sunday three weeks before Easter.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "The disease known as the Black Death arrived in Britain in which year?",
+        "choices": [
+          "1666",
+          "1215",
+          "1600",
+          "1348"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "In 1348, a disease, probably a form of plague, came to Britain. This was known as the Black Death.",
         "topic": "Modern Society & Demographics"
       }
     ]
@@ -1274,299 +1301,315 @@ export const mockExams = [
     "title": "Practice Exam 5",
     "questions": [
       {
-        "text": "Hadrian's Wall is a popular UNESCO World Heritage Site",
+        "text": "Hadrian's Wall, including the forts of Housesteads and Vindolanda, holds which international designation?",
         "choices": [
-          "False",
-          "True"
+          "Royal Estate",
+          "Site of Special Scientific Interest only",
+          "National Trust property only",
+          "UNESCO World Heritage Site"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Parts of Hadrian's Wall, including the forts of Housesteads and Vindolanda, can still be seen. It is a popular area for walkers and is a UNESCO (United Nations Education, Scientific and Cultural Organization) World Heritage Site.",
+        "correct": 3,
+        "explanation": "Hadrian's Wall is a popular area for walkers and is a UNESCO World Heritage Site.",
         "topic": "Places of Interest"
       },
       {
-        "text": "Who mapped the coast of Australia?",
+        "text": "Which explorer is credited with mapping the coast of Australia?",
         "choices": [
-          "James Cook",
-          "Sake Dean Mahomet",
           "Sir Francis Drake",
-          "Admiral Nelson"
+          "Admiral Nelson",
+          "Captain James Cook",
+          "Sake Dean Mahomet"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 2,
         "explanation": "Captain James Cook mapped the coast of Australia.",
         "topic": "Tudors & Stuarts"
       },
       {
-        "text": "When did English become the official language for documents?",
+        "text": "By what year had English become the preferred language of official documents, the royal court and Parliament?",
         "choices": [
-          "1400",
           "1554",
-          "1502",
-          "1451"
+          "1451",
+          "1400",
+          "1502"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 2,
         "explanation": "By 1400, in England, official documents were being written in English, and English had become the preferred language of the royal court and Parliament.",
         "topic": "Legal System & Courts"
       },
       {
-        "text": "What percentage of the total UK population lives in Wales?",
+        "text": "Roughly what share of the total UK population lives in Wales?",
         "choices": [
-          "5%",
-          "1%",
-          "20%",
-          "10%"
+          "Around 1%",
+          "Around 20%",
+          "Around 5%",
+          "Around 10%"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "UK population is very unequally distributed over the four parts of the UK. Wales makes around 5%.",
+        "correct": 2,
+        "explanation": "UK population is very unequally distributed over the four parts of the UK. Wales makes up around 5%.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "Who developed a radar?",
+        "text": "Which Scottish scientist proposed that enemy aircraft could be detected using radio waves, leading to the development of radar?",
         "choices": [
-          "Patrick Steptoe",
-          "Mary Peters",
+          "Sir Bernard Lovell",
+          "Sir Robert Watson-Watt",
           "James Goodfellow",
-          "Sir Robert Watson-Watt"
+          "Patrick Steptoe"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "Radar was developed by Scotsman Sir Robert Watson-Watt (1892-1973), who proposed that enemy aircraft could be detected by radio waves. The first successful radar test took place in 1935.",
+        "correct": 1,
+        "explanation": "Radar was developed by Scotsman Sir Robert Watson-Watt, who proposed that enemy aircraft could be detected by radio waves.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "What is the capital of Northern Ireland?",
+        "text": "Which city serves as the capital of Northern Ireland?",
         "choices": [
-          "Edinburgh",
           "Belfast",
           "London",
+          "Edinburgh",
           "Cardiff"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Belfast is the capital city of Northern Ireland.",
+        "correct": 0,
+        "explanation": "The capital of Northern Ireland is Belfast.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "As per 2021 survey, what percentage of Wales and England identified as Muslim?",
+        "text": "Per the 2021 census, Islam is described as which of the following in the UK?",
         "choices": [
-          "11%",
-          "6%",
-          "2%",
-          "16%"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Islam is the second largest religion in the United Kingdom. The 2021 Census results released so far show a population of 3,868,133 (6.5%) in England and Wales (from a total sampled 60 million). 46% of people identified themselves as Christian. Much smaller proportions identified themselves as Hindu (2%), Sikh (1%), Jewish or Buddhist (both around 0.5%), 0.5% of people followed another religion and 37% stated not to follow any religion.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "The Civil War in 1642 split the country into which two groups?",
-        "choices": [
-          "House of York and House of Lancaster",
-          "The landowners and the slaves",
-          "House of Commons and House of Lords",
-          "The Roundheads and the Cavaliers"
+          "Not present in official statistics",
+          "A minor faith with under 1% of the population",
+          "The largest religion",
+          "The second largest religion"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "Civil war between the king and Parliament could not now be avoided and began in 1642. The country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
+        "explanation": "Islam is the second largest religion in the United Kingdom, according to the 2021 census figures.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "During the 1642 Civil War, supporters of Parliament and supporters of the king were known respectively as what?",
+        "choices": [
+          "The Puritans and the Anglicans",
+          "The Whigs and the Tories",
+          "The Roundheads and the Cavaliers",
+          "The Chartists and the Jacobites"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
         "topic": "Parliament & Government"
       },
       {
-        "text": "The small claims procedure in Northern Ireland is used for claims of less than what amount?",
+        "text": "In Scotland, the small claims procedure is used for disputes involving amounts under what value?",
         "choices": [
-          "£1,000",
           "£5,000",
           "£20,000",
+          "£1,000",
           "£10,000"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "The small claims procedure is an informal way of helping people to settle minor disputes without spending a lot of time and money using a lawyer. This procedure is used for claims of less than £10,000 in England and Wales; £5,000 in Scotland and £5,000 in Northern Ireland (Changed from £3000).",
+        "correct": 0,
+        "explanation": "The small claims procedure is used for claims of less than £5,000 in Scotland.",
         "topic": "Justice System"
       },
       {
-        "text": "Where was Emmeline Pankhurst born?",
+        "text": "In which city was suffragette leader Emmeline Pankhurst born?",
         "choices": [
-          "Aberdeen",
           "Glasgow",
           "Manchester",
+          "Aberdeen",
           "London"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "Emmeline Pankhurst was born in Manchester in 1858. She set up the Women's Franchise League in 1889, which fought to get the vote in local elections for married women.",
+        "correct": 1,
+        "explanation": "Emmeline Pankhurst was born in Manchester in 1858.",
         "topic": "Elections & Voting"
       },
       {
-        "text": "Which of these was said by Winston Churchill?",
+        "text": "Which of these lines is genuinely attributed to a Winston Churchill wartime speech?",
         "choices": [
-          "Never in the field of human conflict was so much owed by so many to so few' only",
-          "I have nothing to offer but blood, toil, tears and sweat' only",
-          "We shall never surrender' only",
-          "All of the these"
+          "'Blood and iron'",
+          "'We shall never surrender'",
+          "'Ask not what your country can do for you'",
+          "'Peace for our time'"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "All of these are examples of his speeches.",
+        "correct": 1,
+        "explanation": "Churchill's wartime speeches included the line 'we shall never surrender', among others such as 'blood, toil, tears and sweat'.",
         "topic": "20th Century & Modern Britain"
       },
       {
-        "text": "Where is Snowdonia located?",
+        "text": "Snowdonia, home to the highest mountain in Wales, is located in which part of the country?",
         "choices": [
-          "Wales",
-          "North England",
-          "Scotland",
-          "West England"
+          "North Wales",
+          "South Wales",
+          "Mid Wales",
+          "West Wales border"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "Snowdonia is a national park in North Wales. It covers an area of 838 square miles (2,170 square kilometres). Its most well-known landmark is Snowdon, which is the highest mountain in Wales.",
+        "explanation": "Snowdonia is a national park in North Wales.",
         "topic": "Places of Interest"
       },
       {
-        "text": "A 60 second silence is observed on the Remembrance Day",
+        "text": "How long is the silence observed at 11.00 am on Remembrance Day?",
         "choices": [
-          "True",
-          "False"
+          "Two minutes",
+          "Sixty seconds",
+          "Five minutes",
+          "One minute"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Remembrance Day, 11 November, commemorates those who died fighting for the UK and its allies. Originally it commemorated the dead of the First World War, which ended on 11 November 1918. People wear poppies (the red flower found on the battlefields of the First World War). At 11.00 am there is a two-minute silence and wreaths are laid at the Cenotaph in Whitehall, London.",
+        "correct": 0,
+        "explanation": "At 11.00 am on Remembrance Day there is a two-minute silence and wreaths are laid at the Cenotaph in Whitehall, London.",
         "topic": "Customs & Traditions"
       },
       {
-        "text": "The European Convention on Human Rights is incorporated into UK law",
+        "text": "The Human Rights Act 1998 did what regarding the European Convention on Human Rights?",
         "choices": [
-          "False",
-          "True"
+          "Rejected several of its principles",
+          "Incorporated it into UK law",
+          "Replaced it with a UK-only charter",
+          "Applied it only to England"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The Human Rights Act 1998 incorporated the European Convention on Human Rights into UK law. The government, public bodies and the courts must follow the principles of the Convention.",
+        "explanation": "The Human Rights Act 1998 incorporated the European Convention on Human Rights into UK law.",
         "topic": "Government & Law"
       },
       {
-        "text": "What should all new citizens do as part of the citizenship ceremony?",
+        "text": "As part of the citizenship ceremony, what must all new citizens do regarding the monarch?",
         "choices": [
-          "Take ceremonial pictures",
-          "Sign passports and official citizenship certificates",
-          "Swear or affirm loyalty to the King (or Queen)",
-          "Prepare and make an individual speech during the ceremony"
+          "Swear or affirm loyalty to the King",
+          "Take an oath in Latin",
+          "Sign a separate immigration form",
+          "Present a family history document"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "New citizens swear or affirm loyalty to the Queen as part of the citizenship ceremony.",
+        "correct": 0,
+        "explanation": "New citizens swear or affirm loyalty to the King as part of the citizenship ceremony.",
         "topic": "The Monarchy"
       },
       {
-        "text": "One of the tribal leaders who fought against the Romans was Boudicca, the queen of the Iceni. What is it known as now?",
+        "text": "Boudicca, who led resistance against the Romans, ruled which tribe?",
         "choices": [
-          "Western England",
-          "Eastern England",
-          "Northern England",
-          "Southern England"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "One of the tribal leaders who fought against the Romans was Boudicca, the queen of the Iceni in what is now eastern England. She is still remembered today and there is a statue of her on Westminster Bridge in London, near the Houses of Parliament.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Anyone who is on the electoral register and is aged 18-75 can be asked to serve on a jury",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "As well as getting the right to vote, people on the electoral register are randomly selected to serve on a jury. Anyone who is on the electoral register and is aged 18 to 75 can be asked to do this. The age limit has been raised from 70 to 75 in Wales and England in 2016.",
-        "topic": "Justice System"
-      },
-      {
-        "text": "The Channel Islands are self-governing",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "There are also several islands which are closely linked with the UK but are not part of it: the Channel Islands and the Isle of Man. These have their own governments and are called 'Crown dependencies'.",
-        "topic": "Britain & the World"
-      },
-      {
-        "text": "It is illegal for any person under the age of 18 to buy a Lottery ticket",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "There is a National Lottery for which draws are made every week. You can enter by buying a ticket or a scratch card. People under 18 (Changed in 2021 from 16 to 18) are not allowed to participate in the National Lottery.",
-        "topic": "Food & Leisure"
-      },
-      {
-        "text": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint. Each saint has a special day: 1 March: St David's Day, Wales;17 March: St Patrick's Day, Northern Ireland; 23 April: St George's Day, England; 30 November: St Andrew's Day, Scotland.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "The Commonwealth can suspend any of its members",
-        "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Membership is voluntary. The Commonwealth has no power over its members, although it can suspend membership.",
-        "topic": "Britain & the World"
-      },
-      {
-        "text": "The Proms is an eight-week summer season of what?",
-        "choices": [
-          "Classic Pop music",
-          "Heavy metal music",
-          "Orchestral classical music",
-          "Underground Hip-Hop music"
+          "The Brigantes",
+          "The Picts",
+          "The Iceni",
+          "The Britons of Wales"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "The Proms is an eight-week summer season of orchestral (or solo instrumental) classical music that takes place in various venues, including the Royal Albert Hall in London. It has been organised by the British Broadcasting Corporation (BBC) since 1927. The Last Night of the Proms is the most well-known concert and (along with others in the series) is broadcast on television.",
-        "topic": "British Inventions & Discoveries"
+        "explanation": "One of the tribal leaders who fought against the Romans was Boudicca, the queen of the Iceni, in what is now eastern England.",
+        "topic": "Parliament & Government"
       },
       {
-        "text": "Who built the Tower of London?",
+        "text": "Up to what age can someone on the electoral register be asked to serve on a jury, following a change made in 2016?",
         "choices": [
-          "Henry VII",
-          "Henry VIII",
-          "Oliver Cromwell",
-          "William the Conqueror"
+          "70",
+          "80",
+          "65",
+          "75"
         ],
         "multiple": false,
         "correct": 3,
+        "explanation": "The age limit for jury service was raised from 70 to 75 in England and Wales in 2016.",
+        "topic": "Justice System"
+      },
+      {
+        "text": "The Channel Islands are best described in terms of their governance as what?",
+        "choices": [
+          "Without any government of their own",
+          "Self-governing",
+          "Governed by the Scottish Parliament",
+          "Governed directly by Westminster"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The Channel Islands and the Isle of Man have their own governments and are called Crown dependencies.",
+        "topic": "Britain & the World"
+      },
+      {
+        "text": "Since a change made in 2021, what is the minimum age to buy a National Lottery ticket?",
+        "choices": [
+          "17",
+          "18",
+          "21",
+          "16"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "People under 18 (changed in 2021 from 16 to 18) are not allowed to participate in the National Lottery.",
+        "topic": "Food & Leisure"
+      },
+      {
+        "text": "How many of the UK's four nations have their own patron saint?",
+        "choices": [
+          "Only England and Scotland",
+          "All four: England, Scotland, Wales and Northern Ireland",
+          "Only three, excluding Northern Ireland",
+          "Only two"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "Can the Commonwealth suspend a member country?",
+        "choices": [
+          "Yes, although membership is voluntary",
+          "Only if the UK Parliament votes for it",
+          "Only during wartime",
+          "No, membership is permanent once granted"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Membership of the Commonwealth is voluntary. The Commonwealth has no power over its members, although it can suspend membership.",
+        "topic": "Britain & the World"
+      },
+      {
+        "text": "The Proms, held at venues including the Royal Albert Hall, is an eight-week season of what kind of music?",
+        "choices": [
+          "Jazz music",
+          "Rock and pop music",
+          "Orchestral classical music",
+          "Folk music"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The Proms is an eight-week summer season of orchestral classical music, organised by the BBC since 1927.",
+        "topic": "British Inventions & Discoveries"
+      },
+      {
+        "text": "Which Norman king had the Tower of London built after his conquest?",
+        "choices": [
+          "William the Conqueror",
+          "Oliver Cromwell",
+          "Henry VIII",
+          "Henry VII"
+        ],
+        "multiple": false,
+        "correct": 0,
         "explanation": "The Tower of London was built by William the Conqueror after he became king in 1066.",
         "topic": "The Monarchy"
       },
       {
-        "text": "Who established the Church of England?",
+        "text": "When the Pope refused to grant Henry VIII a divorce, what was his response?",
         "choices": [
-          "The Pope",
-          "Henry VII",
-          "Henry VIII",
-          "St George"
+          "He converted to Catholicism entirely",
+          "He abolished Parliament",
+          "He fled to France",
+          "He established the Church of England"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "To divorce his first wife, Henry VIII needed the approval of the Pope. When the Pope refused, Henry established the Church of England. In this new Church, the king, not the Pope, would have the power to appoint bishops and order how people should worship.",
+        "correct": 3,
+        "explanation": "When the Pope refused to allow Henry VIII's divorce, Henry established the Church of England, giving the king rather than the Pope power over the Church.",
         "topic": "The Monarchy"
       }
     ]
@@ -1576,262 +1619,272 @@ export const mockExams = [
     "title": "Practice Exam 6",
     "questions": [
       {
-        "text": "Who was Queen Elizabeth II married to?",
+        "text": "Which member of the Royal Family was Queen Elizabeth II married to?",
         "choices": [
-          "Prince Philip",
+          "King Charles III",
           "Prince William",
-          "Prince Harry",
-          "King Charles III"
+          "Prince Philip, Duke of Edinburgh",
+          "Prince Harry"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Queen Elizabeth II reigned since her father's death in 1952, (she celebrated her Diamond Jubilee i.e. 60 years as queen) until she passed away in 2022. She was married to Prince Philip, the Duke of Edinburgh. Her eldest son, King Charles III (previously known as the Prince of Wales) became the sovereign monarch in 2022. His eldest son, heir to the throne, Prince William is the new Prince of Wales.",
+        "correct": 2,
+        "explanation": "Queen Elizabeth II was married to Prince Philip, the Duke of Edinburgh.",
         "topic": "The Monarchy"
       },
       {
-        "text": "When did the English Civil war begin?",
+        "text": "In which year did civil war break out between the king and Parliament in England?",
         "choices": [
-          "1642",
           "1598",
-          "1588",
-          "1640"
+          "1640",
+          "1642",
+          "1588"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Civil war between the king and Parliament began in 1642. The country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
+        "correct": 2,
+        "explanation": "Civil war between the king and Parliament began in 1642.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Who is Sir Chris Hoy?",
+        "text": "Sir Chris Hoy, winner of multiple Olympic gold medals, competed in which sport?",
         "choices": [
-          "A Scottish tennis player",
-          "A Scottish rower",
-          "A Scottish runner",
-          "A Scottish cyclist"
+          "Cycling",
+          "Tennis",
+          "Running",
+          "Rowing"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "Sir Chris Hoy (1976-) is a Scottish cyclist who has won six gold and one silver Olympic medals. He has also won 11 world championship titles.",
+        "correct": 0,
+        "explanation": "Sir Chris Hoy is a Scottish cyclist who has won six gold and one silver Olympic medals.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "Who wrote the Canterbury Tales?",
+        "text": "Which medieval author wrote The Canterbury Tales?",
         "choices": [
-          "William Caxton",
-          "J K Rowling",
           "Charles Dickens",
-          "Geoffrey Chaucer"
+          "J K Rowling",
+          "Geoffrey Chaucer",
+          "William Caxton"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "In the years leading up to 1400, Geoffrey Chaucer wrote a series of poems in English about a group of people going to Canterbury on a pilgrimage. The people decided to tell each other stories on the journey, and the poems describe the travellers and some of the stories they told called The Canterbury Tales.",
+        "correct": 2,
+        "explanation": "Geoffrey Chaucer wrote The Canterbury Tales, a series of poems about pilgrims travelling to Canterbury.",
         "topic": "Literature & Writers"
       },
       {
-        "text": "Who won gold medals for ice dancing at the Olympic Games in 1984?",
+        "text": "Which pair won gold medals in ice dancing at the 1984 Winter Olympics?",
         "choices": [
           "Peggy Fleming and Sasha Colin",
+          "Tessa Virtue and Scott Moir",
           "Jayne Torvill and Christopher Dean",
-          "Bobby Moore and Dame Kelly Holmes",
-          "Tessa Virtue and Scott Moir"
+          "Bobby Moore and Dame Kelly Holmes"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Jayne Torvill (1957-) and Christopher Dean (1958-) won gold medals for ice dancing at the Olympic Games in 1984 and in four consecutive world championships.",
+        "correct": 2,
+        "explanation": "Jayne Torvill and Christopher Dean won gold medals for ice dancing at the Olympic Games in 1984.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "The Battle of Somme resulted in how many British casualties on the first day?",
+        "text": "Roughly how many British casualties occurred on the first day of the Battle of the Somme in July 1916?",
         "choices": [
-          "40000",
-          "140000",
-          "120000",
-          "60000"
+          "About 140,000",
+          "About 60,000",
+          "About 120,000",
+          "About 40,000"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "One battle, the British attack on the Somme in July 1916, resulted in about 60,000 British casualties on the first day alone.",
+        "correct": 1,
+        "explanation": "The British attack on the Somme in July 1916 resulted in about 60,000 British casualties on the first day alone.",
         "topic": "The 20th Century"
       },
       {
-        "text": "For how many years did Charles I raise money without Parliament's approval?",
+        "text": "For roughly how many years did Charles I rule without recalling Parliament, raising money by other means?",
         "choices": [
-          "11",
-          "15",
-          "12",
-          "10"
+          "10 years",
+          "11 years",
+          "12 years",
+          "15 years"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "For 11 years, Charles I found ways in which to raise money without Parliament's approval but eventually trouble in Scotland meant that he had to recall Parliament.",
+        "correct": 1,
+        "explanation": "For 11 years, Charles I found ways to raise money without Parliament's approval, until trouble in Scotland forced him to recall it.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "The burial place of one of the kings was at Sutton Hoo in modern Suffolk",
+        "text": "The burial place of an Anglo-Saxon king was found at Sutton Hoo in which modern county?",
         "choices": [
-          "True",
-          "False"
+          "Norfolk",
+          "Kent",
+          "Suffolk",
+          "Yorkshire"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The burial place of one of the Anglo-Saxon kings was at Sutton Hoo in modern Suffolk. This king was buried with treasure and armour, all placed in a ship which was then covered by a mound of earth.",
+        "correct": 2,
+        "explanation": "The burial place of one of the Anglo-Saxon kings was at Sutton Hoo in modern Suffolk.",
         "topic": "The Monarchy"
       },
       {
-        "text": "What is the National Citizen Service?",
+        "text": "The National Citizen Service programme is aimed at young people of which ages, offering outdoor activities and community projects?",
         "choices": [
-          "It provides free, confidential and impartial advice on consumer issues",
-          "It is a volunteering programme for young people who want to do voluntary development work abroad",
-          "It provides free, independent, impartial advice on your rights and responsibilities",
-          "It helps you build your skills for work and life"
+          "10 and 11",
+          "16 and 17",
+          "13 and 14",
+          "18 and 19"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "There are many opportunities for young people to volunteer and receive accreditation which will help them to develop their skills. These include the National Citizen Service programme, which gives 16- and 17-year-olds the opportunity to enjoy outdoor activities, develop their skills and take part in a community project.",
+        "correct": 1,
+        "explanation": "The National Citizen Service programme gives 16- and 17-year-olds the opportunity to enjoy outdoor activities and take part in a community project.",
         "topic": "Community & Citizenship"
       },
       {
-        "text": "Protestant Christian groups include Baptists, Methodists, Presbyterians and Quakers",
+        "text": "Which of these is a Protestant Christian denomination found in the UK?",
         "choices": [
-          "True",
-          "False"
+          "Roman Catholics",
+          "Methodists",
+          "None of these are Protestant",
+          "Eastern Orthodox"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Protestant Christian groups in the UK are Baptists, Methodists, Presbyterians and Quakers. There are also other denominations of Christianity, the biggest of which is Roman Catholic.",
+        "correct": 1,
+        "explanation": "Protestant Christian groups in the UK include Baptists, Methodists, Presbyterians and Quakers.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "Which of the options given below is not necessary for a new car?",
+        "text": "A vehicle over three years old must undergo which annual test?",
         "choices": [
-          "Car insurance",
-          "Seat belts",
-          "MOT test",
-          "Road tax"
+          "A DVLA colour check",
+          "An MOT test",
+          "A congestion charge review",
+          "A police roadworthiness stop"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year. It is an offence not to have an MOT certificate if your vehicle is more than three years old.",
+        "correct": 1,
+        "explanation": "If your vehicle is over three years old, you must take it for a Ministry of Transport (MOT) test every year.",
         "topic": "Taxation & Driving"
       },
       {
-        "text": "What is the BBC funded by?",
+        "text": "The BBC is funded mainly through which of the following?",
         "choices": [
-          "The local council",
+          "Advertisements",
           "TV licences",
-          "The government",
-          "Advertisements"
+          "Government grants",
+          "Local council funding"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Money from TV licences goes to the BBC.",
+        "explanation": "The BBC is funded through money raised from TV licences.",
         "topic": "Local Government"
       },
       {
-        "text": "How many senior MPs get appointed by the Prime Minister to become ministers in charge of departments?",
+        "text": "Roughly how many senior MPs does the Prime Minister appoint to head government departments?",
         "choices": [
-          "5",
-          "50",
-          "40",
-          "20"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The Prime Minister appoints about 20 senior MPs to become ministers in charge of departments. These include: Chancellor of the Exchequer: responsible for the economy; Home Secretary:responsible for crime, policing and immigration; Foreign Secretary: responsible for managing relationships with foreign countries; other ministers (called 'Secretaries of State') are responsible for subjects such as education, health and defence.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "When was the Scottish Parliament formed?",
-        "choices": [
-          "1978",
-          "1989",
-          "1991",
-          "1999"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Since 1997, some powers have been devolved from the central government to give people in Wales, Scotland and Northern Ireland more control over matters that directly affect them. There has been a Welsh Assembly and a Scottish Parliament since 1999.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "It is illegal to sell tobacco products such as cigarettes, cigars, roll-up tobacco to anyone under what age?",
-        "choices": [
-          "16",
-          "21",
-          "18",
-          "17"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "It is illegal to sell tobacco products (for example, cigarettes, cigars, roll-up tobacco) to anyone under the age of 18.",
-        "topic": "Government & Law"
-      },
-      {
-        "text": "People living and working in towns after Black Death led to the development of what?",
-        "choices": [
-          "Slavery",
-          "Young Workforce",
-          "Powerful Clans",
-          "Strong Middle Class"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Following the Black Death, the smaller population meant there was less need to grow cereal crops. There were labour shortages and peasants began to demand higher wages. New social classes appeared, including owners of large areas of land (later called the gentry), and people left the countryside to live in the towns. In the towns, growing wealth led to the development of a strong middle class.",
-        "topic": "Norman Conquest & Middle Ages"
-      },
-      {
-        "text": "£10 £20 £50 £100 are the only banknotes currently allowed in the UK",
-        "choices": [
-          "True",
-          "False"
+          "About 40",
+          "About 20",
+          "About 5",
+          "About 50"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The currency in the UK is the pound sterling (symbol £). There are 100 pence in a pound. The denominations (values) of currency are - coins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2; notes: £5, £10, £20, £50.",
-        "topic": "Modern Society & Demographics"
-      },
-      {
-        "text": "When did the American Colonies declare their independence?",
-        "choices": [
-          "1776",
-          "1749",
-          "1733",
-          "1783"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "In 1776, 13 American colonies declared their independence, stating that people had a right to establish their own governments. The colonists eventually defeated the British army and Britain recognised the colonies' independence in 1783.",
-        "topic": "Global Power & Empire"
-      },
-      {
-        "text": "Which of the following statements does NOT apply to the United Nations?",
-        "choices": [
-          "It aims to prevent war",
-          "It was set up after the Second World War",
-          "The UN has five members in total",
-          "The UK is one of five permanent members of the UN Security Council"
-        ],
-        "multiple": false,
-        "correct": 2,
-        "explanation": "The UK is part of the United Nations (UN), an international organisation with more than 190 countries as members. The UN was set up after the Second World War and aims to prevent war and promote international peace and security. There are 15 members on the UN Security Council, which recommends action when there are international crises and threats to peace. The UK is one of five permanent members of the Security Council.",
-        "topic": "Britain & the World"
-      },
-      {
-        "text": "The Archbishop of Canterbury is the spiritual leader of the Church of England",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The spiritual leader of the Church of England is the Archbishop of Canterbury. The monarch has the right to select the Archbishop and other senior church officials, but usually the choice is made by the Prime Minister and a committee appointed by the Church. Several Church of England bishops sit in the House of Lords. The monarch is the head of state of the church.",
+        "explanation": "The Prime Minister appoints about 20 senior MPs to become ministers in charge of departments.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "The Speaker is elected by fellow MPs using the open ballot system",
+        "text": "The Scottish Parliament was formed in which year, alongside the Welsh Assembly?",
         "choices": [
-          "False",
-          "True"
+          "1999",
+          "1991",
+          "1989",
+          "1978"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "There has been a Welsh Assembly and a Scottish Parliament since 1999.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "It is illegal to sell tobacco products to anyone under what age?",
+        "choices": [
+          "16",
+          "17",
+          "18",
+          "21"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "It is illegal to sell tobacco products to anyone under the age of 18.",
+        "topic": "Government & Law"
+      },
+      {
+        "text": "After the Black Death caused labour shortages, growing wealth in towns led to the rise of what?",
+        "choices": [
+          "Widespread slavery",
+          "A single ruling guild",
+          "A strong middle class",
+          "Powerful clan chieftains"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "In the towns, growing wealth led to the development of a strong middle class following the Black Death.",
+        "topic": "Norman Conquest & Middle Ages"
+      },
+      {
+        "text": "Which of these are genuine current UK banknote denominations?",
+        "choices": [
+          "£5, £15 and £25",
+          "£10, £25 and £100",
+          "£5, £10, £20 and £50",
+          "£1, £2 and £5 only"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The currency notes in the UK are £5, £10, £20 and £50.",
+        "topic": "Modern Society & Demographics"
+      },
+      {
+        "text": "In which year did the American colonies declare their independence from Britain?",
+        "choices": [
+          "1749",
+          "1783",
+          "1733",
+          "1776"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "In 1776, 13 American colonies declared their independence.",
+        "topic": "Global Power & Empire"
+      },
+      {
+        "text": "How many permanent members does the UN Security Council have, of which the UK is one?",
+        "choices": [
+          "Ten",
+          "Five",
+          "Three",
+          "Fifteen"
+        ],
+        "multiple": false,
+        "correct": 1,
+        "explanation": "The UK is one of five permanent members of the UN Security Council.",
+        "topic": "Britain & the World"
+      },
+      {
+        "text": "Who holds the role of spiritual leader of the Church of England?",
+        "choices": [
+          "The monarch personally",
+          "The Speaker of the House of Commons",
+          "The Archbishop of Canterbury",
+          "The Pope"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "The spiritual leader of the Church of England is the Archbishop of Canterbury.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "How is the Speaker of the House of Commons chosen?",
+        "choices": [
+          "Elected by fellow MPs in a secret ballot",
+          "Appointed by the Prime Minister",
+          "Elected by public referendum",
+          "Appointed by the monarch"
         ],
         "multiple": false,
         "correct": 0,
@@ -1839,20 +1892,20 @@ export const mockExams = [
         "topic": "Parliament & Government"
       },
       {
-        "text": "What was the name of the movement which protested against the Roman Catholic church during Henry VIII's time?",
+        "text": "The Reformation, a movement against the authority of the Pope, took place during which monarch's era in England?",
         "choices": [
-          "Glorious Revolution",
-          "Rebellion of the Clans",
-          "Holy Wars",
-          "The Reformation"
+          "Henry VIII",
+          "Henry VII",
+          "Charles I",
+          "William the Conqueror"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "During Henry III's reign, the Reformation was happening across Europe. This was a movement against the authority of the Pope and the ideas and practices of the Roman Catholic Church.",
+        "correct": 0,
+        "explanation": "During Henry VIII's reign, the Reformation was happening across Europe, a movement against the authority of the Pope and the Roman Catholic Church.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "What is the money limit for the small claims procedure in England and Wales?",
+        "text": "What is the maximum value of a claim under the small claims procedure in England and Wales?",
         "choices": [
           "£10,000",
           "£3,000",
@@ -1861,20 +1914,20 @@ export const mockExams = [
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The small claims procedure is an informal way of helping people to settle minor disputes without spending a lot of time and money using a lawyer. This procedure is used for claims of less than £10,000 in England and Wales; £5,000 in Scotland and £5,000 in Northern Ireland (Changed from £3000).",
+        "explanation": "The small claims procedure is used for claims of less than £10,000 in England and Wales.",
         "topic": "Justice System"
       },
       {
-        "text": "What is the responsibility that you have as a UK citizen?",
+        "text": "Which of these is listed as a responsibility of UK residents and citizens?",
         "choices": [
           "Keeping an allotment",
-          "Look after yourself and your family",
-          "Going to the library",
-          "Going to the cinema"
+          "Looking after yourself and your family",
+          "Going to the cinema regularly",
+          "Joining a political party"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Flowing from the fundamental principles are responsibilities and freedoms which are shared by all those living in the UK and which we expect all residents to respect. If you wish to be a permanent resident or citizen of the UK, you should: respect and obey the law; respect the rights of others, including their right to their own opinions; treat others with fairness; look after yourself and your family; look after the area in which you live and the environment.",
+        "explanation": "If you wish to be a permanent resident or citizen of the UK, you should, among other things, look after yourself and your family.",
         "topic": "Government & Law"
       }
     ]
@@ -1884,12 +1937,12 @@ export const mockExams = [
     "title": "Practice Exam 7",
     "questions": [
       {
-        "text": "Which flower is associated with England?",
+        "text": "Which flower is traditionally associated with England?",
         "choices": [
-          "Rose",
-          "Shamrock",
-          "Thistle",
-          "Daffodil"
+          "The rose",
+          "The shamrock",
+          "The thistle",
+          "The daffodil"
         ],
         "multiple": false,
         "correct": 0,
@@ -1897,292 +1950,304 @@ export const mockExams = [
         "topic": "Symbols & Saints"
       },
       {
-        "text": "Who was the first Briton to win the Olympic gold medal in the 10,000 meters?",
+        "text": "Mo Farah made history in the 2012 Olympics by becoming the first Briton to win gold in which event?",
         "choices": [
-          "Mo Farah",
-          "Sir Chris Hoy",
-          "Bradley Wiggins",
-          "David Weir"
+          "The marathon",
+          "The 100 metres",
+          "The 10,000 metres",
+          "The 1500 metres"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Mo Farah was the first British runner to win the gold medal in the 10 km.",
+        "correct": 2,
+        "explanation": "Mo Farah is the first Briton to win the Olympic gold medal in the 10,000 metres.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "How many American colonies declared their independence in 1776?",
+        "text": "How many American colonies declared their independence from Britain in 1776?",
         "choices": [
-          "13",
           "17",
+          "13",
           "7",
           "5"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "In 1776, 13 American colonies declared their independence, stating that people had a right to establish their own governments. The colonists eventually defeated the British army and Britain recognised the colonies' independence in 1783.",
+        "correct": 1,
+        "explanation": "In 1776, 13 American colonies declared their independence.",
         "topic": "Global Power & Empire"
       },
       {
-        "text": "When is St Patrick's day?",
+        "text": "St Patrick's Day, celebrating the patron saint of Northern Ireland, falls on which date?",
         "choices": [
-          "17th of March",
-          "1st of March",
-          "23rd of April",
-          "30th of November"
+          "30 November",
+          "23 April",
+          "17 March",
+          "1 March"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint. Each saint has a special day: 1 March: St David's Day, Wales;17 March: St Patrick's Day, Northern Ireland; 23 April: St George's Day, England; 30 November: St Andrew's Day, Scotland.",
+        "correct": 2,
+        "explanation": "17 March: St Patrick's Day, Northern Ireland.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "What university did Isaac Newton attend?",
+        "text": "At which university did Isaac Newton first develop his interest in science?",
         "choices": [
-          "London State University",
-          "Warwick",
+          "London",
+          "Cambridge",
           "Oxford",
-          "Cambridge"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Born in Lincolnshire, eastern England, Isaac Newton first became interested in science when he studied at Cambridge University. He became an important figure in the field. His most famous published work was Philosophiae Naturalis Principia Mathematica (Mathematical Principles of Natural Philosophy), which showed how gravity applied to the whole universe.",
-        "topic": "Arts & Science"
-      },
-      {
-        "text": "National Insurance is needed if you wish to work in the UK",
-        "choices": [
-          "False",
-          "True"
+          "Warwick"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Almost everybody in the UK who is in paid work, including self-employed people, must pay National Insurance Contributions. The money raised from National Insurance Contributions is used to pay for state benefits and services such as the state retirement pension and the National Health Service (NHS).",
-        "topic": "Everyday Life"
+        "explanation": "Isaac Newton first became interested in science when he studied at Cambridge University.",
+        "topic": "Arts & Science"
       },
       {
-        "text": "What can be done to protect a person from being forced into a marriage, or to protect a person in a forced marriage?",
+        "text": "Is a National Insurance number required for someone who wishes to work in the UK?",
         "choices": [
-          "Ask the priest to verify the identities",
-          "Check the age of both people to make sure they are over 18",
-          "Check the age of both people to make sure they are over 25",
-          "Court orders can be obtained by a potential victim or someone acting for them"
+          "Only for self-employed people",
+          "No, it is entirely optional",
+          "Only for people over 40",
+          "Yes, almost everybody in paid work must pay National Insurance Contributions"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "them Forced Marriage Protection Orders were introduced in 2008 for England, Wales and Northern Ireland under the Forced Marriage (Civil Protection) Act 2007. Court orders can be obtained to protect a person from being forced into a marriage, or to protect a person in a forced marriage. Similar Protection Orders were introduced in Scotland in November 2011.",
+        "explanation": "Almost everybody in the UK who is in paid work, including self-employed people, must pay National Insurance Contributions.",
+        "topic": "Everyday Life"
+      },
+      {
+        "text": "Under the Forced Marriage (Civil Protection) Act 2007, what can a potential victim of forced marriage obtain?",
+        "choices": [
+          "An emergency passport",
+          "An automatic annulment",
+          "A council house transfer",
+          "A court order for protection"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Court orders can be obtained by a potential victim or someone acting for them to protect a person from being forced into a marriage.",
         "topic": "Legal System & Courts"
       },
       {
-        "text": "What can the Scottish Parliament do?",
+        "text": "The Scottish Parliament has the power to pass legislation on which matters?",
         "choices": [
-          "May pass legislation on anything not specifically reserved to the UK Parliament",
-          "May pass laws on anything in Scotland",
-          "May pass laws on general economic policy",
-          "May pass laws on foreign and defence affairs"
+          "Only agricultural matters",
+          "Foreign and defence affairs",
+          "Anything not specifically reserved to the UK Parliament",
+          "Only healthcare matters"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Parliament The Scottish Parliament can pass laws for Scotland on all matters which are not specifically reserved to the UK Parliament. The matters on which the Scottish Parliament can legislate include: civil and criminal law, health, education, planning and additional tax-raising powers.",
+        "correct": 2,
+        "explanation": "The Scottish Parliament can pass laws for Scotland on all matters which are not specifically reserved to the UK Parliament.",
         "topic": "Government & Law"
       },
       {
-        "text": "Who designed the new St Paul's?",
+        "text": "After the Great Fire of 1666 destroyed the old St Paul's Cathedral, who designed its replacement?",
         "choices": [
           "Sir Christopher Wren",
-          "Gertrude Jekyll",
           "Robert Adam",
+          "Gertrude Jekyll",
           "Sir Edwin Lutyens"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "In 1666, a great fire destroyed much of the city, including many churches and St Paul's Cathedral. London was rebuilt with a new St Paul's, which was designed by a famous architect, Sir Christopher Wren.",
+        "explanation": "London was rebuilt with a new St Paul's, designed by Sir Christopher Wren.",
         "topic": "Places of Interest"
       },
       {
-        "text": "Where are the more serious civil cases dealt with in Scotland?",
+        "text": "In Scotland, where are the more serious civil cases, such as large compensation claims, dealt with?",
         "choices": [
-          "Court of Session in Edinburgh",
-          "Sheriff Court",
-          "High Court",
-          "Peace Courts"
+          "The High Court",
+          "The Peace Court",
+          "The Sheriff Court",
+          "The Court of Session in Edinburgh"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "More serious civil cases - for example, when a large amount of compensation is being claimed - are dealt with in the High Court in England, Wales and Northern Ireland. In Scotland, they are dealt with in the Court of Session in Edinburgh.",
+        "correct": 3,
+        "explanation": "In Scotland, more serious civil cases are dealt with in the Court of Session in Edinburgh.",
         "topic": "Legal System & Courts"
       },
       {
-        "text": "St George is the national saint of Northern Ireland",
+        "text": "Which country's patron saint is St George?",
         "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint. Each saint has a special day: 1 March: St David's Day, Wales;17 March: St Patrick's Day, Northern Ireland; 23 April: St George's Day, England; 30 November: St Andrew's Day, Scotland.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "What is the name of the building where the Northern Irish Assembly meets?",
-        "choices": [
-          "Westminster",
-          "Stormont",
-          "Senedd",
-          "Holyrood"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "In Northern Ireland elected members, known as MLAs, meet in the Northern Ireland Assembly at Stormont, in Belfast.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "When was the Emancipation Act signed? It abolished slavery throughout the British Empire",
-        "choices": [
-          "1837",
-          "1807",
-          "1817",
-          "1833"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "Along with other abolitionists (people who supported the abolition of slavery), William Wilberforce succeeded in turning public opinion against the slave trade. In 1807, it became illegal to trade slaves in British ships or from British ports, and in 1833 the Emancipation Act abolished slavery throughout the British Empire.",
-        "topic": "Government & Law"
-      },
-      {
-        "text": "Magna Carta is Latin for what?",
-        "choices": [
-          "The act of government",
-          "The Bible law",
-          "The British Agreement",
-          "The Great Charter"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "In Latin Magna Carta means the Great Charter",
-        "topic": "Government & Law"
-      },
-      {
-        "text": "What were the Irish people who favoured complete independence from the UK known as?",
-        "choices": [
-          "Cavaliers",
-          "People of Ireland",
-          "Fenians",
-          "Roundheads"
+          "Wales",
+          "Scotland",
+          "England",
+          "Northern Ireland"
         ],
         "multiple": false,
         "correct": 2,
+        "explanation": "St George is the patron saint of England, not Northern Ireland.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "Elected members of the Northern Ireland Assembly meet in which building in Belfast?",
+        "choices": [
+          "Stormont",
+          "Senedd",
+          "Westminster",
+          "Holyrood"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "In Northern Ireland, elected members (MLAs) meet in the Northern Ireland Assembly at Stormont, in Belfast.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "In which year did the Emancipation Act abolish slavery throughout the British Empire?",
+        "choices": [
+          "1833",
+          "1817",
+          "1807",
+          "1837"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "In 1833 the Emancipation Act abolished slavery throughout the British Empire.",
+        "topic": "Government & Law"
+      },
+      {
+        "text": "The Latin phrase 'Magna Carta' translates directly into English as what?",
+        "choices": [
+          "The Great Charter",
+          "The Act of Government",
+          "The British Agreement",
+          "The Bible law"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "Magna Carta means 'the Great Charter' in Latin.",
+        "topic": "Government & Law"
+      },
+      {
+        "text": "Irish nationalists who wanted complete independence from the UK in the 19th century were known by which name?",
+        "choices": [
+          "The Fenians",
+          "The Chartists",
+          "The Cavaliers",
+          "The Roundheads"
+        ],
+        "multiple": false,
+        "correct": 0,
         "explanation": "The Irish Nationalist movement had grown strongly through the 19th century. Some, such as the Fenians, favoured complete independence.",
         "topic": "Global Power & Empire"
       },
       {
-        "text": "Which religion did the Huguenots follow?",
+        "text": "The Huguenots, who settled in Britain between 1680 and 1720 after fleeing persecution in France, followed which religion?",
         "choices": [
+          "Judaism",
           "Protestantism",
           "Catholicism",
-          "Buddhism",
-          "Russian Orthodox"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "Between 1680 and 1720 many refugees called Huguenots came from France. They were Protestants and had been persecuted for their religion. Many were educated and skilled and worked as scientists, in banking, or in weaving or other crafts.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "Robert Browning, William Blake and Lord Byron were all famous poets",
-        "choices": [
-          "False",
-          "True"
+          "Buddhism"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "The statement is true",
+        "explanation": "The Huguenots were Protestants who had been persecuted for their religion in France.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "Which of these poets is genuinely counted among famous British poets?",
+        "choices": [
+          "William Wilberforce",
+          "Sir Isaac Newton",
+          "Sir Christopher Wren",
+          "Lord Byron"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Poetry was very popular in the 19th century, with poets such as William Blake, John Keats, Lord Byron, Percy Shelley, Alfred Lord Tennyson, and Robert and Elizabeth Browning.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "Which event is celebrated on the 5th of November each year?",
+        "text": "Bonfire Night, held on 5 November, commemorates which historical event?",
         "choices": [
-          "The defeat of the Spanish Armada",
-          "A plot to blow up the Houses of Parliament in 1605",
           "The end of the First World War",
-          "The end of the Second World War"
+          "The signing of the Magna Carta",
+          "The defeat of the Spanish Armada",
+          "A failed plot to blow up the Houses of Parliament in 1605"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Bonfire Night, 5 November, is an occasion when people in Great Britain set off fireworks at home or in special displays. The origin of this celebration was an event in 1605, when a group of Catholics led by Guy Fawkes failed in their plan to kill the Protestant king with a bomb in the Houses of Parliament.",
+        "correct": 3,
+        "explanation": "Bonfire Night, 5 November, commemorates the 1605 Gunpowder Plot, when a group led by Guy Fawkes failed in their plan to kill the king with a bomb in the Houses of Parliament.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "The jury decides on the penalty if the defendant is found guilty",
+        "text": "If a jury finds a defendant guilty, who decides on the penalty?",
         "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "The jury has to listen to the evidence presented at the trial and then decide a verdict of 'guilty' or 'not guilty' based on what they have heard. In Scotland, a third verdict of 'not proven' is also possible. If the jury finds a defendant guilty, the judge decides on the penalty.",
-        "topic": "Justice System"
-      },
-      {
-        "text": "It is illegal for shops and businesses to not accept the banknotes of Northern Ireland and Scotland",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Northern Ireland and Scotland have their own banknotes, which are valid everywhere in the UK. However, shops and businesses do not have to accept them.",
-        "topic": "The 4 Nations"
-      },
-      {
-        "text": "The role and membership of the House of Lords has changed over the last 50 years",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The role and membership of the House of Lords has changed over the last 50 years.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "Which TWO religions celebrate Diwali?",
-        "choices": [
-          "Islam",
-          "Sikh",
-          "Buddhism",
-          "Hindu"
-        ],
-        "multiple": true,
-        "correct": [
-          1,
-          3
-        ],
-        "explanation": "Diwali normally falls in October or November and lasts for five days. It is often called the Festival of Lights. It is celebrated by Hindus and Sikhs. It celebrates the victory of good over evil and the gaining of knowledge. There are different stories about how the festival came about. There is a famous celebration of Diwali in Leicester.",
-        "topic": "Religion & Faith"
-      },
-      {
-        "text": "What is the capital of Wales?",
-        "choices": [
-          "Belfast",
-          "Edinburgh",
-          "Cardiff",
-          "London"
+          "The Crown Prosecution Service",
+          "A separate sentencing jury",
+          "The judge",
+          "The jury itself"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "Cardiff is the capital of Wales.",
+        "explanation": "If the jury finds a defendant guilty, the judge decides on the penalty.",
+        "topic": "Justice System"
+      },
+      {
+        "text": "Are shops and businesses in the rest of the UK legally required to accept Scottish and Northern Irish banknotes?",
+        "choices": [
+          "Yes, it is a legal requirement everywhere",
+          "Only in Scotland and Northern Ireland themselves",
+          "Only large retailers must accept them",
+          "No, they do not have to accept them even though the notes are valid"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Northern Ireland and Scotland have their own banknotes, valid everywhere in the UK, but shops and businesses do not have to accept them.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "Who is the heir to the throne?",
+        "text": "How has the role and membership of the House of Lords changed over roughly the last 50 years?",
         "choices": [
-          "Prince George",
-          "Prince William",
-          "Prince Harry",
-          "Prince Philip"
+          "It became fully elected",
+          "It has not changed at all",
+          "Significantly, moving away from an all-hereditary chamber",
+          "It was abolished and later reinstated"
         ],
         "multiple": false,
-        "correct": 1,
+        "correct": 2,
+        "explanation": "The role and membership of the House of Lords has changed over the last 50 years, including the loss of the automatic right of hereditary peers to sit since 1999.",
+        "topic": "Parliament & Government"
+      },
+      {
+        "text": "Which TWO religions celebrate Diwali, the Festival of Lights?",
+        "choices": [
+          "Islam",
+          "Buddhism",
+          "Sikhism",
+          "Hinduism"
+        ],
+        "multiple": true,
+        "correct": [
+          2,
+          3
+        ],
+        "explanation": "Diwali is celebrated by Hindus and Sikhs, and celebrates the victory of good over evil.",
+        "topic": "Religion & Faith"
+      },
+      {
+        "text": "Cardiff serves as the capital of which UK country?",
+        "choices": [
+          "Wales",
+          "England",
+          "Northern Ireland",
+          "Scotland"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "The capital of Wales is Cardiff.",
+        "topic": "The 4 Nations"
+      },
+      {
+        "text": "As the King's eldest son, who is the current heir to the throne?",
+        "choices": [
+          "Prince Philip",
+          "Prince Harry",
+          "Prince George",
+          "Prince William"
+        ],
+        "multiple": false,
+        "correct": 3,
         "explanation": "The King's eldest son, Prince William (the Prince of Wales), is the heir to the throne.",
         "topic": "The Monarchy"
       }
@@ -2193,318 +2258,324 @@ export const mockExams = [
     "title": "Practice Exam 8",
     "questions": [
       {
-        "text": "Which Two British film actors have recently won Oscars?",
+        "text": "Which TWO of these British actors are named in the handbook as recent Oscar winners?",
         "choices": [
-          "Jackie Stewart",
-          "Colin Firth",
           "Tilda Swinton",
-          "Leonardo DiCaprio"
+          "Colin Firth",
+          "Leonardo DiCaprio",
+          "Jackie Stewart"
         ],
         "multiple": true,
         "correct": [
-          1,
-          2
+          0,
+          1
         ],
         "explanation": "Recent British actors to have won Oscars include Colin Firth, Sir Anthony Hopkins, Dame Judi Dench, Kate Winslet and Tilda Swinton.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "What created the United Kingdom of Great Britain and Ireland?",
+        "text": "The United Kingdom of Great Britain and Ireland was created by which piece of legislation?",
         "choices": [
-          "The Great governments",
-          "The Act for the governments",
-          "The Great Union",
-          "The Act of Union"
+          "The Act of Union of 1800",
+          "The Bill of Rights of 1689",
+          "The Reform Act",
+          "The Act for the Government of Wales"
         ],
         "multiple": false,
-        "correct": 3,
+        "correct": 0,
         "explanation": "The Act of Union of 1800 created the United Kingdom of Great Britain and Ireland.",
         "topic": "Government & Law"
       },
       {
-        "text": "What is the money limit for the small claims procedure in England and Wales?",
+        "text": "What is the maximum claim value under the small claims procedure in England and Wales?",
         "choices": [
           "£5,000",
           "£4,000",
-          "£6,000",
-          "£10,000"
+          "£10,000",
+          "£6,000"
         ],
         "multiple": false,
-        "correct": 3,
+        "correct": 2,
         "explanation": "The small claims procedure is used for claims of less than £10,000 in England and Wales.",
         "topic": "Justice System"
       },
       {
-        "text": "When did the 'Battle of Agincourt' take place?",
+        "text": "In which year did the Battle of Agincourt, part of the Hundred Years War, take place?",
         "choices": [
           "1716",
           "1613",
-          "1415",
-          "1200"
+          "1200",
+          "1415"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "One of the most famous battles of the Hundred Years War was the Battle of Agincourt in 1415, where King Henry V's vastly outnumbered English army defeated the French. The English left France in the 1450s.",
+        "correct": 3,
+        "explanation": "One of the most famous battles of the Hundred Years War was the Battle of Agincourt in 1415.",
         "topic": "The Monarchy"
       },
       {
-        "text": "What is the Church of England usually known as in other countries?",
+        "text": "The Church of England is generally referred to by which name in other countries?",
         "choices": [
           "The State Church",
+          "The Reformed Church",
           "The Anglican Church",
-          "The Great Church",
-          "The Episcopal Church"
+          "The Great Church"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "The official Church of the state is the Church of England, called the Anglican Church in other countries and the Episcopal Church in Scotland and the United States.",
+        "correct": 2,
+        "explanation": "The official Church of the state is the Church of England, called the Anglican Church in other countries.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "When was the Scottish Parliament established?",
+        "text": "In which year was the Scottish Parliament established?",
         "choices": [
-          "1999",
           "1997",
+          "1998",
           "2000",
-          "1998"
+          "1999"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 3,
         "explanation": "There has been a Welsh Assembly and a Scottish Parliament since 1999.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "During Slave trade, where did slaves primarily come from?",
+        "text": "During the transatlantic slave trade, from which region were slaves primarily taken?",
         "choices": [
           "South Africa",
           "North Africa",
-          "East Africa",
-          "West Africa"
+          "West Africa",
+          "East Africa"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "Slaves came primarily from West Africa. Travelling on British ships in horrible conditions, they were taken to America and the Caribbean, where they were made to work on tobacco and sugar plantations.",
+        "correct": 2,
+        "explanation": "Slaves came primarily from West Africa, taken to America and the Caribbean to work on plantations.",
         "topic": "Enlightenment & Empire"
       },
       {
-        "text": "Who is the Patron St of Wales?",
+        "text": "Which patron saint is associated with Wales?",
         "choices": [
           "St Andrew",
+          "St David",
           "St Patrick",
-          "St George",
-          "St David"
+          "St George"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "England, Scotland, Wales and Northern Ireland each have a national saint, called a patron saint. Each saint has a special day: 1 March: St David's Day, Wales;17 March: St Patrick's Day, Northern Ireland; 23 April: St George's Day, England; 30 November: St Andrew's Day, Scotland.",
+        "correct": 1,
+        "explanation": "St David is the patron saint of Wales.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "What is the only major golf tournament held outside of the US?",
+        "text": "Which major golf tournament is the only one of its kind held outside the United States?",
         "choices": [
-          "The Wimbledon Championship",
-          "Royal Ascot",
           "The English Premier League",
-          "The Open Championship"
+          "Royal Ascot",
+          "The Open Championship",
+          "The Wimbledon Championship"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "The Open Championship is the only 'Major' golf tournament held outside the United States. It is hosted by a different golf course every year.",
+        "correct": 2,
+        "explanation": "The Open Championship is the only 'Major' golf tournament held outside the United States.",
         "topic": "Sports & Icons"
       },
       {
-        "text": "What is Richard Arkwright remembered for?",
+        "text": "Richard Arkwright, who began his career as a barber, is chiefly remembered for what?",
         "choices": [
-          "Creating a carding machine",
-          "Efficiently running factories",
-          "Cutting hair",
+          "Discovering penicillin",
+          "Running his textile factories efficiently and profitably",
+          "Inventing the hovercraft",
           "Improving steam power"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Born in 1732, Arkwright originally trained and worked as a barber. He was able to dye hair and make wigs. When wigs became less popular, he started to work in textiles. He improved the original carding machine. Arkwright is particularly remembered for the efficient and profitable way that he ran his factories.",
+        "explanation": "Arkwright is particularly remembered for the efficient and profitable way that he ran his factories, after improving the carding machine.",
         "topic": "Enlightenment & Empire"
       },
       {
-        "text": "What is meant by 'common law'?",
+        "text": "In the English legal system, 'common law' develops mainly through what process?",
         "choices": [
-          "Written down",
-          "Codified",
-          "Following previous decisions",
-          "Sentence is decided by the jury"
+          "Direct royal decree",
+          "Referendums on individual cases",
+          "Codified written statutes only",
+          "Following precedent set by previous court decisions"
         ],
         "multiple": false,
-        "correct": 2,
-        "explanation": "In England, judges developed 'common law' by a process of precedence (that is, following previous decisions) and tradition. In Scotland, the legal system developed slightly differently and laws were 'codified' (that is, written down).",
+        "correct": 3,
+        "explanation": "In England, judges developed 'common law' by a process of precedent (following previous decisions) and tradition.",
         "topic": "Justice System"
       },
       {
-        "text": "To be or not to be' is a famous Shakespeare line from which play or poem?",
+        "text": "Shakespeare's famous line 'To be or not to be' comes from which play?",
         "choices": [
           "Henry V",
-          "Hamlet",
-          "As you like it",
-          "Romeo and Juliet"
+          "Romeo and Juliet",
+          "As You Like It",
+          "Hamlet"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Lines from Shakespeare's plays and poems which are often still quoted include: Once more unto the breach (Henry V); To be or not to be (Hamlet); A rose by any other name (Romeo and Juliet); All the world's a stage (As You Like It); The darling buds of May (Sonnet 18 'Shall I Compare Thee To a Summer's Day).",
+        "correct": 3,
+        "explanation": "'To be or not to be' is a line from Hamlet.",
         "topic": "Symbols & Saints"
       },
       {
-        "text": "What county does Stonehenge stand in?",
+        "text": "Stonehenge stands in which English county?",
         "choices": [
           "Wiltshire",
-          "Dorset",
-          "Lothians",
-          "Lincolnshire"
+          "Kent",
+          "Lincolnshire",
+          "Dorset"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "Stonehenge still stands in what is now the English county of Wiltshire. Stonehenge was probably a special gathering place for seasonal ceremonies.",
+        "explanation": "Stonehenge still stands in what is now the English county of Wiltshire.",
         "topic": "Places of Interest"
       },
       {
-        "text": "Where does the Grand National takes place?",
+        "text": "The famous Grand National horse race takes place near which city?",
         "choices": [
-          "Near Suffolk",
-          "Near London",
-          "Near Manchester",
-          "Near Liverpool"
+          "Liverpool",
+          "Manchester",
+          "London",
+          "Suffolk"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "There are racecourses all over the UK. Famous horse-racing events include: Royal Ascot, a five-day race meeting in Berkshire attended by members of the Royal Family; the Grand National at Aintree near Liverpool; and the Scottish Grand National at Ayr. There is a National Horseracing Museum in Newmarket, Suffolk.",
+        "correct": 0,
+        "explanation": "The Grand National takes place at Aintree near Liverpool.",
         "topic": "The Monarchy"
       },
       {
-        "text": "When is Halloween (an ancient festival) celebrated?",
+        "text": "Halloween, an ancient festival with pagan roots, is celebrated on which date?",
         "choices": [
-          "31st November",
-          "31st October",
-          "30th October",
-          "30th November"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "Halloween, 31 October, is an ancient festival and has roots in the pagan festival to mark the beginning of winter. Young people will often dress up in frightening costumes to play 'trick or treat'. People give them treats to stop them playing tricks on them. A lot of people carve lanterns out of pumpkins and put a candle inside.",
-        "topic": "Customs & Traditions"
-      },
-      {
-        "text": "What does the money raised from National Insurance Contributions pay for? (Choose TWO)",
-        "choices": [
-          "Child benefits",
-          "NHS",
-          "The state retirement pension",
-          "Job allowances"
-        ],
-        "multiple": true,
-        "correct": [
-          1,
-          2
-        ],
-        "explanation": "The money raised from National Insurance Contributions is used to pay for state benefits and services such as the state retirement pension and the National Health Service (NHS).",
-        "topic": "Everyday Life"
-      },
-      {
-        "text": "Who is considered ineligible to do jury service?",
-        "choices": [
-          "Judges",
-          "Non-Christians",
-          "Police",
-          "Anyone with a criminal conviction"
+          "30 October",
+          "30 November",
+          "31 November",
+          "31 October"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "Everyone who is summoned to do jury service must do it unless they are not eligible (for example, because they have a criminal conviction) or they provide a good reason to be excused, such as ill health.",
-        "topic": "Justice System"
+        "explanation": "Halloween, 31 October, is an ancient festival with roots in the pagan festival marking the start of winter.",
+        "topic": "Customs & Traditions"
       },
       {
-        "text": "What are TWO core values of a civil servant?",
+        "text": "Which TWO of the following are funded by National Insurance Contributions?",
         "choices": [
-          "Sense of humour",
-          "Integrity",
-          "Must belong to a political party",
-          "Impartiality"
+          "Job allowances",
+          "The state retirement pension",
+          "Child benefits",
+          "The National Health Service"
         ],
         "multiple": true,
         "correct": [
           1,
           3
         ],
-        "explanation": "Civil servants are expected to carry out their role with dedication and a commitment to the civil service and its core values. These are: integrity, honesty, objectivity and impartiality",
-        "topic": "Government & Law"
+        "explanation": "Money raised from National Insurance Contributions pays for state benefits and services such as the state retirement pension and the NHS.",
+        "topic": "Everyday Life"
       },
       {
-        "text": "Members of the public are allowed to attend Youth Courts hearings",
+        "text": "Which of these would make someone ineligible for jury service?",
         "choices": [
-          "True",
-          "False"
+          "Being self-employed",
+          "Having a criminal conviction",
+          "Being a homeowner",
+          "Being over the age of 30"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Members of the public are not allowed in Youth Courts, and the name or photographs of the accused young person cannot be published in newspapers or used by the media.",
+        "explanation": "Everyone summoned for jury service must do it unless they are not eligible, for example because they have a criminal conviction.",
+        "topic": "Justice System"
+      },
+      {
+        "text": "Which TWO qualities are described as core values expected of civil servants?",
+        "choices": [
+          "Party political loyalty",
+          "Sense of humour",
+          "Impartiality",
+          "Integrity"
+        ],
+        "multiple": true,
+        "correct": [
+          2,
+          3
+        ],
+        "explanation": "Civil servants' core values are integrity, honesty, objectivity and impartiality.",
+        "topic": "Government & Law"
+      },
+      {
+        "text": "Are members of the public permitted to attend hearings at a Youth Court?",
+        "choices": [
+          "Yes, always",
+          "Only with police approval",
+          "No, members of the public are not allowed in",
+          "Only for serious offences"
+        ],
+        "multiple": false,
+        "correct": 2,
+        "explanation": "Members of the public are not allowed in Youth Courts, and details of the accused young person cannot be published.",
         "topic": "Legal System & Courts"
       },
       {
-        "text": "Who had a great influence on the English language?",
+        "text": "Which playwright is credited with having a great influence on the English language, coining many words still in use?",
         "choices": [
-          "David Lean",
-          "Wilfred Owen",
           "Oliver Cromwell",
-          "William Shakespeare"
+          "William Shakespeare",
+          "David Lean",
+          "Wilfred Owen"
         ],
         "multiple": false,
-        "correct": 3,
+        "correct": 1,
         "explanation": "Shakespeare had a great influence on the English language and invented many words that are still common today.",
         "topic": "Arts & Science"
       },
       {
-        "text": "Great Britain' and 'the United Kingdom' have the same meaning",
+        "text": "Do the terms 'Great Britain' and 'the United Kingdom' mean exactly the same thing?",
         "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The official name of the country is the United Kingdom of Great Britain and Northern Ireland. 'Great Britain' refers only to England, Scotland and Wales, not to Northern Ireland.",
-        "topic": "The 4 Nations"
-      },
-      {
-        "text": "The Welsh Dragon doesn't appear on the Union Flag because Wales was already united with England in 1606",
-        "choices": [
-          "True",
-          "False"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The Welsh dragon does not appear on the Union Flag because, when the first Union Flag was created in 1606 from the flags of Scotland and England, the Principality of Wales was already united with England.",
-        "topic": "Symbols & Saints"
-      },
-      {
-        "text": "Which Armed Force was used in the Battle of Britain?",
-        "choices": [
-          "Royal Navy",
-          "Home Guards",
-          "Army",
-          "Royal Air Force"
+          "Yes, they are interchangeable",
+          "Yes, both include the Republic of Ireland",
+          "No, the UK excludes Scotland",
+          "No, Great Britain excludes Northern Ireland"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "The Germans waged an air campaign against Britain, but the British resisted with their fighter planes and eventually won the crucial aerial battle against the Germans, called 'the Battle of Britain', in the summer of 1940. The most important planes used by the Royal Air Force in the Battle of Britain were the Spitfire and the Hurricane - which were designed and built in Britain.",
-        "topic": "The 20th Century"
+        "explanation": "'Great Britain' refers only to England, Scotland and Wales, not to Northern Ireland, so it is not identical to 'the United Kingdom'.",
+        "topic": "The 4 Nations"
       },
       {
-        "text": "Which is a famous area in London for theatres?",
+        "text": "Why does the Welsh dragon not appear on the Union Flag?",
         "choices": [
-          "The City",
-          "East End",
-          "West End",
-          "South End"
+          "Because Wales rejected inclusion in the design",
+          "Because Wales joined the union after the flag's design",
+          "Because the dragon symbol was banned",
+          "Because Wales was already united with England when the flag was created in 1606"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The Welsh dragon does not appear on the Union Flag because, when the first Union Flag was created in 1606, Wales was already united with England.",
+        "topic": "Symbols & Saints"
+      },
+      {
+        "text": "Which branch of the armed forces played the key role in the Battle of Britain?",
+        "choices": [
+          "The Home Guard",
+          "The Army",
+          "The Royal Air Force",
+          "The Royal Navy"
         ],
         "multiple": false,
         "correct": 2,
-        "explanation": "There are theaters in most towns and cities throughout the UK, ranging from the large to the small. They are an important part of local communities and often show both professional and amateur productions. London's West End, also known as 'Theatreland', is particularly well known. The Mousetrap, a murder-mystery play by Dame Agatha Christie, has been running in the West End since 1952 and has had the longest initial run of any show in history.",
+        "explanation": "The most important planes used by the Royal Air Force in the Battle of Britain were the Spitfire and the Hurricane.",
+        "topic": "The 20th Century"
+      },
+      {
+        "text": "London's West End is particularly well known as a hub for what?",
+        "choices": [
+          "Theatres",
+          "Financial services",
+          "Textile manufacturing",
+          "Shipbuilding"
+        ],
+        "multiple": false,
+        "correct": 0,
+        "explanation": "London's West End, also known as 'Theatreland', is particularly well known for its theatres.",
         "topic": "Arts, Literature & Culture"
       }
     ]
@@ -2514,313 +2585,319 @@ export const mockExams = [
     "title": "Practice Exam 9",
     "questions": [
       {
-        "text": "Where does the Prime Minister reside?",
+        "text": "Where is the official residence of the UK Prime Minister?",
         "choices": [
-          "10 Downing Street",
-          "76 Charlotte Street",
+          "Buckingham Palace",
           "1 Devonshire Terrace",
-          "The Buckingham palace"
-        ],
-        "multiple": false,
-        "correct": 0,
-        "explanation": "The official home of the Prime Minister is 10 Downing Street, in central London, near the Houses of Parliament.",
-        "topic": "Parliament & Government"
-      },
-      {
-        "text": "What is the 'King James' Bible?",
-        "choices": [
-          "The Protestant Version",
-          "The Correct Version",
-          "The First English Bible",
-          "A new translation into English"
+          "76 Charlotte Street",
+          "10 Downing Street"
         ],
         "multiple": false,
         "correct": 3,
-        "explanation": "One achievement of King James' reign was a new translation of the Bible into English. This translation is known as the 'King James Version' or the 'Authorised Version'. It was not the first English Bible but is a version which continues to be used in many Protestant churches today.",
-        "topic": "The Monarchy"
+        "explanation": "The official home of the Prime Minister is 10 Downing Street, in central London.",
+        "topic": "Parliament & Government"
       },
       {
-        "text": "How many member states does the Commonwealth have?",
+        "text": "The King James Bible, produced during James I's reign, was significant as what kind of work?",
         "choices": [
-          "56",
-          "48",
-          "28",
-          "77"
+          "A new translation of the Bible into English",
+          "A revision of the Book of Common Prayer only",
+          "The first Bible ever printed",
+          "A Latin translation for scholars"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The Queen/King is the ceremonial head of the Commonwealth, which currently has 56 member states. Membership is voluntary.",
+        "explanation": "One achievement of King James' reign was a new translation of the Bible into English, known as the King James Version.",
         "topic": "The Monarchy"
       },
       {
-        "text": "What are the MPs who don't represent a political party called?",
+        "text": "MPs who do not belong to any of the main political parties are referred to as what?",
         "choices": [
           "Independents",
-          "Civil MP",
-          "Neutrals",
-          "Sole MP"
+          "Civil MPs",
+          "Sole MPs",
+          "Neutrals"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "There are a few MPs who do not represent any of the main political parties. They are called 'independents' and usually represent an issue important to their constituency.",
+        "explanation": "MPs who do not represent any of the main political parties are called 'independents'.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Beefeaters, who tell visitors about the building's history are associated with which of these?",
+        "text": "The Yeoman Warders, popularly known as Beefeaters, give tours at which famous landmark?",
         "choices": [
-          "The Tower of London",
-          "Unesco",
+          "Big Ben",
           "Edinburgh Castle",
-          "Big Ben"
+          "The Tower of London",
+          "Stormont"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The Tower of London was first built by William the Conqueror after he became king in 1066. Tours are given by the Yeoman Warders, also known as Beefeaters, who tell visitors about the building's history. People can also see the Crown Jewels there.",
+        "correct": 2,
+        "explanation": "Tours of the Tower of London are given by the Yeoman Warders, also known as Beefeaters.",
         "topic": "The Monarchy"
       },
       {
-        "text": "Who in 2002 was voted the greatest Briton of all time?",
+        "text": "In a 2002 public poll, who was voted the greatest Briton of all time?",
         "choices": [
-          "Clement Attlee",
-          "Margaret Thatcher",
+          "Winston Churchill",
           "Sir Robert Walpole",
-          "Winston Churchill"
+          "Margaret Thatcher",
+          "Clement Attlee"
         ],
         "multiple": false,
-        "correct": 3,
+        "correct": 0,
         "explanation": "In 2002, Winston Churchill was voted the greatest Briton of all time by the public.",
         "topic": "20th Century & Modern Britain"
       },
       {
-        "text": "What were the people who supported the King known as in 1642?",
+        "text": "During the 1642 Civil War, what were supporters of the king known as?",
         "choices": [
-          "Roundheads",
           "Quakers",
-          "Chartists",
-          "Cavaliers"
+          "Roundheads",
+          "Cavaliers",
+          "Chartists"
         ],
         "multiple": false,
-        "correct": 3,
-        "explanation": "During the English Civil War (1642) the country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
+        "correct": 2,
+        "explanation": "The country split into those who supported the king (the Cavaliers) and those who supported Parliament (the Roundheads).",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Protestant ideas gradually gained strength in England, Wales and Scotland during what century?",
+        "text": "During which century did Protestant ideas gain strength in England, Wales and Scotland?",
         "choices": [
-          "16th",
-          "17th",
-          "15th",
-          "14th"
+          "The 17th century",
+          "The 14th century",
+          "The 15th century",
+          "The 16th century"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 3,
         "explanation": "Protestant ideas gradually gained strength in England, Wales and Scotland during the 16th century.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "How long is the longest straight distance on the mainland?",
+        "text": "Which cross-country distance connects John O'Groats to Land's End, the longest straight distance on the mainland?",
         "choices": [
-          "845 miles",
-          "870 miles",
-          "1006 miles",
-          "896 miles"
+          "About 870 miles",
+          "About 1,006 miles",
+          "About 896 miles",
+          "About 845 miles"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "The longest distance on the mainland is from John O'Groats on the north coast of Scotland to Land's End in the south-west corner of England. It is about 870 miles (approximately 1,400 kilometres).",
+        "correct": 0,
+        "explanation": "The longest distance on the mainland is from John O'Groats to Land's End, about 870 miles.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "What were James II's supporters known as?",
+        "text": "Supporters who remained loyal to James II after he was deposed became known as what?",
         "choices": [
           "Quakers",
-          "Jacobites",
           "Cavaliers",
+          "Jacobites",
           "Roundheads"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Some continued to believe that James was the rightful king, particularly in Scotland. Some joined him in exile in France; others were secret supporters. James' supporters became known as Jacobites.",
+        "correct": 2,
+        "explanation": "James' supporters became known as Jacobites.",
         "topic": "The Monarchy"
       },
       {
-        "text": "In Northern Ireland some people speak Irish Gaelic",
+        "text": "Is Irish Gaelic spoken by some people in Northern Ireland?",
         "choices": [
-          "False",
-          "True"
-        ],
-        "multiple": false,
-        "correct": 1,
-        "explanation": "In Wales, many people speak Welsh - a completely different language from English - and it is taught in schools and universities. In Scotland, Gaelic (again, a different language) is spoken in some parts of the Highlands and Islands, and in Northern Ireland some people speak Irish Gaelic.",
-        "topic": "The 4 Nations"
-      },
-      {
-        "text": "What should you do when you move into a new house or apartment?",
-        "choices": [
-          "Do nothing",
-          "Warn the people who live near you not to talk to you",
-          "Tell the people who live near you not to make noise",
-          "Introduce yourself to the people who live near you so they can help you"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "When you move into a new house or apartment, introduce yourself to the people who live near you. Getting to know your neighbours can help you to become part of the community and make friends.",
-        "topic": "British Values & Principles (Detailed)"
-      },
-      {
-        "text": "What percentage of the population has a parent or a grandparent born outside of the UK due to post-war immigration?",
-        "choices": [
-          "16%",
-          "12%",
-          "10%",
-          "14%"
+          "No, Gaelic is exclusive to Scotland",
+          "Yes, but only in official government use",
+          "Yes, some people speak Irish Gaelic there",
+          "No, only Welsh is spoken there"
         ],
         "multiple": false,
         "correct": 2,
+        "explanation": "In Northern Ireland some people speak Irish Gaelic.",
+        "topic": "The 4 Nations"
+      },
+      {
+        "text": "What is a recommended first step when you move into a new house or flat, according to the handbook?",
+        "choices": [
+          "Register with a new doctor before unpacking",
+          "Install home security systems",
+          "Contact the local council immediately",
+          "Introduce yourself to your neighbours"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "When you move into a new house or apartment, introduce yourself to the people who live near you; this can help you become part of the community.",
+        "topic": "British Values & Principles (Detailed)"
+      },
+      {
+        "text": "Roughly what proportion of the UK population has a parent or grandparent born abroad due to post-war immigration?",
+        "choices": [
+          "Nearly 10%",
+          "About 16%",
+          "About 12%",
+          "About 14%"
+        ],
+        "multiple": false,
+        "correct": 0,
         "explanation": "Post-war immigration means that nearly 10% of the population has a parent or grandparent born outside the UK.",
         "topic": "The 4 Nations"
       },
       {
-        "text": "Which of these TWO is correct about Halloween?",
+        "text": "Which TWO of the following are true statements about Halloween?",
         "choices": [
-          "It is celebrated on the 31 October",
           "It is not celebrated in Scotland",
-          "It is an ancient festival and has roots in the pagan festival to mark the beginning of winter",
-          "It is when lovers exchange cards and gifts"
+          "It is when lovers exchange cards",
+          "It has roots in an ancient pagan festival marking the start of winter",
+          "It falls on 31 October"
         ],
         "multiple": true,
         "correct": [
-          0,
-          2
+          2,
+          3
         ],
-        "explanation": "beginning of winter Halloween, 31 October, is an ancient festival and has roots in the pagan festival to mark the beginning of winter. Young people will often dress up in frightening costumes to play 'trick or treat'. People give them treats to stop them playing tricks on them. A lot of people carve lanterns out of pumpkins and put a candle inside.",
+        "explanation": "Halloween, 31 October, is an ancient festival with roots in the pagan festival marking the beginning of winter.",
         "topic": "Customs & Traditions"
       },
       {
-        "text": "The devolved administrations each have their own civil service.",
+        "text": "Do the devolved administrations in Scotland, Wales and Northern Ireland have their own civil service?",
         "choices": [
-          "False",
-          "True"
+          "No, they share the UK civil service",
+          "Only Scotland has one",
+          "Only Northern Ireland has one",
+          "Yes, each has its own civil service"
         ],
         "multiple": false,
-        "correct": 1,
+        "correct": 3,
         "explanation": "The devolved administrations each have their own civil service.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Which patron Saint has a white cross on a blue ground?",
+        "text": "Which patron saint's cross is a diagonal white cross on a blue ground?",
         "choices": [
           "St Andrew",
-          "St David",
+          "St Patrick",
           "St George",
-          "St Patrick"
+          "St David"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The Union Flag consists of three crosses: The cross of St George, patron saint of England, is a red cross on a white ground; The cross of St Andrew, patron saint of Scotland, is a diagonal white cross on a blue ground; The cross of St Patrick, patron saint of Ireland, is a diagonal red cross on a white ground.",
+        "explanation": "The cross of St Andrew, patron saint of Scotland, is a diagonal white cross on a blue ground.",
         "topic": "Religion & Faith"
       },
       {
-        "text": "Who was the first Danish king in England?",
+        "text": "Who was the first Danish king to rule England?",
         "choices": [
-          "Cnut",
-          "Edward",
           "Harold",
+          "Edward",
+          "Cnut",
           "William"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Anglo-Saxon kings continued to rule what is now England, except for a short period when there were Danish kings. The first of these was Cnut, also called Canute.",
+        "correct": 2,
+        "explanation": "There was a short period when there were Danish kings in England, the first of these being Cnut, also called Canute.",
         "topic": "The Monarchy"
       },
       {
-        "text": "What is the name of the song sung by people in the UK and other countries when celebrating the New Year?",
+        "text": "Which song do people in the UK traditionally sing at midnight on New Year's Eve?",
         "choices": [
-          "Auld Lang Syne",
           "Sense and Sensibility",
-          "The Heart of the Matter",
-          "Scoop"
+          "Auld Lang Syne",
+          "Scoop",
+          "The Heart of the Matter"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 1,
         "explanation": "One of the songs sung by people in the UK at New Year is Auld Lang Syne.",
         "topic": "Traditions & Holidays"
       },
       {
-        "text": "Who can stand for office as a Local Councillor?",
+        "text": "Besides British citizens, which other groups can also stand for office as a local councillor?",
         "choices": [
-          "British, Irish and Eligible Commonwealth citizens",
-          "British citizens of the UK only",
-          "All residents of the UK",
-          "Foreign citizens only"
+          "Irish citizens and eligible Commonwealth citizens",
+          "Any resident of the UK regardless of nationality",
+          "Foreign nationals only, not British citizens",
+          "Only citizens of other EU countries"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "British citizens can stand for Office as a local councillor, a member of Parliament (or the devolved equivalents). This is an opportunity to become even more involved in the political life of the UK. You may also be able to stand for Office if you are an Irish citizen, or an eligible Commonwealth citizen.",
+        "explanation": "You may also be able to stand for office if you are an Irish citizen, or an eligible Commonwealth citizen, in addition to British citizens.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Which famous poet's work was inspired by Nature?",
+        "text": "Which poet's work is particularly noted for being inspired by nature?",
         "choices": [
-          "Sir Roger Bannister",
           "William Wordsworth",
-          "Damon Hill",
-          "Charles Dicken"
+          "Charles Dickens",
+          "Sir Roger Bannister",
+          "Damon Hill"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "Other poets, including William Wordsworth, were inspired by nature. Sir Walter Scott wrote poems inspired by Scotland and the traditional stories and songs from the area on the borders of Scotland and England. He also wrote novels, many of which were set in Scotland.",
+        "correct": 0,
+        "explanation": "Poets including William Wordsworth were inspired by nature.",
         "topic": "Customs & Traditions"
       },
       {
-        "text": "How often do PM's Questions take place in the parliament?",
+        "text": "How frequently does Prime Minister's Questions take place while Parliament is sitting?",
         "choices": [
-          "Every Week",
-          "Every Two Weeks",
-          "Every Working Day",
-          "Every Month"
+          "Every week",
+          "Every working day",
+          "Every two weeks",
+          "Every month"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The leader of the opposition leads his or her party in pointing out what they see as the government's failures and weaknesses. One important opportunity to do this is at Prime Minister's Questions, which takes place every week while Parliament is sitting.",
+        "explanation": "Prime Minister's Questions takes place every week while Parliament is sitting.",
         "topic": "Parliament & Government"
       },
       {
-        "text": "Which one of these countries in the UK requires you to complete your own registration form to get entitled to vote?",
+        "text": "Which part of the UK uses an 'individual registration' system requiring each voter to complete their own registration form?",
         "choices": [
-          "Wales",
           "Northern Ireland",
+          "England",
           "Scotland",
-          "England"
+          "Wales"
         ],
         "multiple": false,
-        "correct": 1,
-        "explanation": "In Northern Ireland a different system operates. This is called 'individual registration' and all those entitled to vote must complete their own registration form. Once registered, people stay on the register provided their personal details do not change.",
+        "correct": 0,
+        "explanation": "In Northern Ireland, 'individual registration' means all those entitled to vote must complete their own registration form.",
         "topic": "Elections & Voting"
       },
       {
-        "text": "Where is the UK geographically located with respect to Europe?",
+        "text": "Geographically, where is the UK located in relation to the rest of Europe?",
         "choices": [
-          "North-East",
-          "South-West",
-          "South-East",
-          "North-West"
-        ],
-        "multiple": false,
-        "correct": 3,
-        "explanation": "The UK is located in the North-West of Europe.",
-        "topic": "Early Britain & Prehistory"
-      },
-      {
-        "text": "Towns, cities and rural areas in the UK are governed by civil servants who are appointed by the Government?",
-        "choices": [
-          "True",
-          "False"
+          "South-east",
+          "North-west",
+          "South-west",
+          "North-east"
         ],
         "multiple": false,
         "correct": 1,
-        "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'. Some areas have both district and county councils, which have different functions. Most large towns and cities have a single local authority.",
+        "explanation": "The UK is located in the north-west of Europe.",
+        "topic": "Early Britain & Prehistory"
+      },
+      {
+        "text": "How are towns, cities and rural areas in the UK governed?",
+        "choices": [
+          "By civil servants appointed by central government",
+          "By regional monarchs",
+          "By hereditary local lords",
+          "By democratically elected local councils"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "Towns, cities and rural areas in the UK are governed by democratically elected councils, often called 'local authorities'.",
         "topic": "Legal System & Courts"
+      },
+      {
+        "text": "Which capital city is described in the handbook as having its own devolved Parliament and separate legal and education systems?",
+        "choices": [
+          "Belfast",
+          "Cardiff",
+          "London",
+          "Edinburgh"
+        ],
+        "multiple": false,
+        "correct": 3,
+        "explanation": "The capital of Scotland is Edinburgh. Scotland has its own legal and education systems, and it also has a devolved Parliament.",
+        "topic": "The 4 Nations"
       }
     ]
   },
@@ -2829,103 +2906,103 @@ export const mockExams = [
     "title": "Practice Exam 10",
     "questions": [
       {
-        "text": "In 1996, two British scientists led a team which was the first to succeed in cloning a mammal. What was this animal?",
+        "text": "In 1996, British scientists successfully cloned which animal for the first time?",
         "choices": [
-          "Dolly the sheep",
-          "Molly the cow",
           "Bramble the dog",
-          "Cotton the rabbit"
+          "Dolly the sheep",
+          "Cotton the rabbit",
+          "Molly the cow"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "In 1996, two British scientists, Sir Ian Wilmot and Keith Campbell, led a team which was the first to succeed in cloning a mammal, Dolly the sheep.",
+        "correct": 1,
+        "explanation": "In 1996, two British scientists led a team which was the first to succeed in cloning a mammal, Dolly the sheep.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "Where was the world's first 'test-tube baby' born in 1978?",
+        "text": "In which English town was the world's first 'test-tube baby' born in 1978?",
         "choices": [
-          "Oldham, Lancashire",
+          "Manchester",
+          "Oldham",
           "Cambridge",
-          "Edinburgh",
           "Bristol"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "IVF (in-vitro fertilisation) therapy was pioneered in Britain by Sir Robert Edwards and Patrick Steptoe. The world's first 'test-tube baby' was born in Oldham, Lancashire in 1978.",
+        "correct": 1,
+        "explanation": "The world's first 'test-tube baby' was born in Oldham, Lancashire in 1978.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "Who is the co-inventor of the MRI (magnetic resonance imaging) scanner?",
+        "text": "Sir Peter Mansfield is credited as a co-inventor of which medical imaging technology?",
         "choices": [
-          "Sir Peter Mansfield",
-          "Sir Frank Whittle",
-          "Sir Christopher Cockerell",
-          "Sir Tim Berners-Lee"
+          "The X-ray machine",
+          "The CT scanner",
+          "The ultrasound scanner",
+          "The MRI scanner"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Sir Peter Mansfield, a British scientist, is the co-inventor of the MRI (magnetic resonance imaging) scanner, which enables doctors to obtain exact and non-invasive images of internal organs.",
+        "correct": 3,
+        "explanation": "Sir Peter Mansfield is the co-inventor of the MRI (magnetic resonance imaging) scanner.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "Who invented the hovercraft in the 1950s?",
+        "text": "Who invented the hovercraft during the 1950s?",
         "choices": [
-          "Sir Christopher Cockerell",
           "Sir Frank Whittle",
+          "Sir Christopher Cockerell",
           "James Goodfellow",
           "Alan Turing"
         ],
         "multiple": false,
-        "correct": 0,
+        "correct": 1,
         "explanation": "Sir Christopher Cockerell, a British inventor, invented the hovercraft in the 1950s.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "Who invented the cash-dispensing ATM, first used by Barclays Bank in 1967?",
+        "text": "James Goodfellow's invention of the cash-dispensing ATM was first put to use by which bank in 1967?",
         "choices": [
-          "James Goodfellow",
-          "Sir Robert Edwards",
-          "John MacLeod",
-          "Sir Ian Wilmot"
+          "NatWest",
+          "HSBC",
+          "Barclays Bank",
+          "Lloyds Bank"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "In the 1960s, James Goodfellow invented the cash-dispensing ATM (automatic teller machine). The first of these was put into use by Barclays Bank in Enfield, north London in 1967.",
+        "correct": 2,
+        "explanation": "The first cash-dispensing ATM was put into use by Barclays Bank in Enfield, north London in 1967.",
         "topic": "British Inventions & Discoveries"
       },
       {
-        "text": "Which government minister is responsible for the economy?",
+        "text": "Which government minister is responsible for managing the UK economy?",
         "choices": [
           "The Chancellor of the Exchequer",
-          "The Home Secretary",
           "The Foreign Secretary",
-          "The Speaker"
+          "The Speaker",
+          "The Home Secretary"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "The Prime Minister appoints about 20 senior MPs to become ministers in charge of departments. The Chancellor of the Exchequer is responsible for the economy.",
+        "explanation": "The Chancellor of the Exchequer is responsible for the economy.",
         "topic": "Government & Law"
       },
       {
-        "text": "Is female genital mutilation (FGM) legal in the UK?",
+        "text": "Is female genital mutilation (FGM) legal to practise in the UK?",
         "choices": [
-          "No, it is a criminal offence",
-          "Yes, if the family consents",
+          "It depends on the region",
+          "Yes, with family consent",
           "Yes, but only for adults",
-          "It depends on the region"
+          "No, it is a criminal offence"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Female genital mutilation (FGM), also known as cutting or female circumcision, is illegal in the UK. Practising FGM or taking a girl or woman abroad for FGM is a criminal offence.",
+        "correct": 3,
+        "explanation": "Female genital mutilation (FGM) is illegal in the UK; practising it or taking someone abroad for it is a criminal offence.",
         "topic": "Government & Law"
       },
       {
-        "text": "How many members does the Scottish Parliament (MSPs) have?",
+        "text": "How many members does the Scottish Parliament (MSPs) currently have?",
         "choices": [
           "129",
+          "146",
           "108",
-          "60",
-          "146"
+          "60"
         ],
         "multiple": false,
         "correct": 0,
@@ -2933,217 +3010,217 @@ export const mockExams = [
         "topic": "Parliament & Government"
       },
       {
-        "text": "How many elected members does the Northern Ireland Assembly have?",
+        "text": "The Northern Ireland Assembly's elected members are known by which term?",
         "choices": [
-          "108",
-          "129",
-          "60",
-          "90"
+          "Councillors",
+          "MSPs",
+          "MLAs",
+          "MPs"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The Northern Ireland Assembly has 108 elected members, known as MLAs (members of the Legislative Assembly), elected with a form of proportional representation.",
+        "correct": 2,
+        "explanation": "Elected members of the Northern Ireland Assembly are known as MLAs (members of the Legislative Assembly).",
         "topic": "Parliament & Government"
       },
       {
-        "text": "What is the minimum age to hold a driving licence to drive a car or motorcycle in the UK?",
+        "text": "What is the minimum age to hold a licence to drive a car or motorcycle in the UK?",
         "choices": [
+          "21",
           "17",
-          "16",
           "18",
-          "21"
+          "16"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "In the UK, you must be at least 17 years old to drive a car or motor cycle and you must have a driving licence to drive on public roads.",
+        "correct": 1,
+        "explanation": "In the UK, you must be at least 17 years old to drive a car or motor cycle.",
         "topic": "Taxation & Driving"
       },
       {
-        "text": "Are members of the public allowed to attend hearings in a Youth Court?",
+        "text": "Are members of the public generally permitted to attend Youth Court hearings?",
         "choices": [
           "No",
-          "Yes, always",
           "Only with police permission",
-          "Only for serious cases"
+          "Only for serious cases",
+          "Yes, always"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "Members of the public are not allowed in Youth Courts, and the name or photographs of the accused young person cannot be published in newspapers or used by the media.",
+        "explanation": "Members of the public are not allowed in Youth Courts.",
         "topic": "Legal System & Courts"
       },
       {
-        "text": "Which group of 19th century artists painted detailed pictures on religious or literary themes in bright colours, including Holman Hunt and Dante Gabriel Rossetti?",
+        "text": "The Pre-Raphaelites, including Holman Hunt and Dante Gabriel Rossetti, were known for what style of painting?",
         "choices": [
-          "The Pre-Raphaelites",
-          "The Impressionists",
-          "The Romantics",
-          "The Georgians"
+          "Black and white photography",
+          "Minimalist landscapes",
+          "Abstract bronze sculpture",
+          "Detailed pictures on religious or literary themes in bright colours"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The Pre-Raphaelites were an important group of artists in the second half of the 19th century. They painted detailed pictures on religious or literary themes in bright colours. The group included Holman Hunt, Dante Gabriel Rossetti and Sir John Millais.",
+        "correct": 3,
+        "explanation": "The Pre-Raphaelites painted detailed pictures on religious or literary themes in bright colours.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "German-born composer George Frederick Handel wrote the 'Water Music' for which king?",
+        "text": "George Frederick Handel composed the 'Water Music' for which king?",
         "choices": [
-          "King George I",
-          "King George II",
+          "King Charles II",
           "King James I",
-          "King Charles II"
+          "King George I",
+          "King George II"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The German-born composer George Frederick Handel spent many years in the UK and became a British citizen in 1727. He wrote the Water Music for King George I and Music for the Royal Fireworks for his son, George II.",
+        "correct": 2,
+        "explanation": "Handel wrote the Water Music for King George I.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "The Good Friday Agreement (also called the Belfast Agreement) was signed in which year?",
+        "text": "The Good Friday Agreement, also known as the Belfast Agreement, was signed in which year?",
         "choices": [
-          "1998",
-          "1994",
+          "1972",
           "2007",
-          "1972"
+          "1998",
+          "1994"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "In Northern Ireland, the Blair government was able to build on the peace process, resulting in the Good Friday Agreement signed in 1998.",
+        "correct": 2,
+        "explanation": "The Good Friday Agreement was signed in 1998.",
         "topic": "20th Century & Modern Britain"
       },
       {
-        "text": "What Indian art did Sake Dean Mahomet introduce to Britain, alongside opening the first curry house?",
+        "text": "Alongside opening the first curry house in Britain, what practice did Sake Dean Mahomet introduce?",
         "choices": [
-          "Shampooing (head massage)",
-          "Yoga",
+          "Henna painting",
+          "Shampooing, a form of Indian head massage",
           "Ayurvedic medicine",
-          "Henna painting"
+          "Yoga"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Mahomet and his wife also introduced 'shampooing', the Indian art of head massage, to Britain, and later opened the first commercial 'shampooing' vapour masseur bath in England, in Brighton.",
+        "correct": 1,
+        "explanation": "Mahomet introduced 'shampooing', the Indian art of head massage, to Britain.",
         "topic": "Enlightenment & Empire"
       },
       {
-        "text": "In which year was the first British colony founded on the North American continent, at Jamestown, Virginia?",
+        "text": "In which year was the first British colony in North America founded at Jamestown, Virginia?",
         "choices": [
+          "1649",
           "1607",
           "1620",
-          "1588",
-          "1649"
+          "1588"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The foundation of the first British colonies on the North American continent took place at Jamestown, Virginia in 1607, in Newfoundland in 1610, and at Plymouth Colony in Massachusetts in 1620.",
+        "correct": 1,
+        "explanation": "The first British colony on the North American continent was founded at Jamestown, Virginia in 1607.",
         "topic": "Tudors & Stuarts"
       },
       {
-        "text": "Under the 'first past the post' voting system used in UK General Elections, how is the winning candidate in a constituency decided?",
+        "text": "Under the 'first past the post' system used in UK General Elections, how is a constituency's winning candidate determined?",
         "choices": [
-          "The candidate who gets the most votes is elected",
-          "The candidate needs more than 50% of votes",
-          "Votes are transferred until one candidate has a majority",
-          "Seats are allocated by proportional representation"
+          "The candidate with the most votes wins",
+          "A candidate needs over 50% of the vote",
+          "Votes transfer between candidates until one has a majority",
+          "Seats are allocated proportionally"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "MPs are elected through a system called 'first past the post'. In each constituency, the candidate who gets the most votes is elected.",
+        "explanation": "Under 'first past the post', the candidate who gets the most votes in a constituency is elected.",
         "topic": "Elections & Voting"
       },
       {
-        "text": "Who coordinates policy across London alongside the 33 local authorities?",
+        "text": "Alongside the 33 local authorities, who coordinates policy across Greater London?",
         "choices": [
-          "The Mayor of London and the Greater London Authority",
           "The Home Secretary",
-          "The Lord Mayor of the City of London only",
-          "The Speaker of the House of Commons"
+          "The Speaker of the House of Commons",
+          "The Mayor of London and the Greater London Authority",
+          "The Lord Mayor of the City of London only"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "London has 33 local authorities, with the Greater London Authority and the Mayor of London coordinating policies across the capital.",
+        "correct": 2,
+        "explanation": "London has 33 local authorities, with the Greater London Authority and the Mayor of London coordinating policy across the capital.",
         "topic": "Local Government"
       },
       {
-        "text": "If an MP dies or resigns, what is the fresh election in their constituency called?",
+        "text": "If an MP dies or resigns, what is the resulting fresh election in their constituency called?",
         "choices": [
-          "A by-election",
           "A General Election",
-          "A referendum",
-          "A run-off"
+          "A by-election",
+          "A run-off",
+          "A referendum"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "MPs are elected at a General Election, which is held at least every five years. If an MP dies or resigns, there will be a fresh election, called a by-election, in his or her constituency.",
+        "correct": 1,
+        "explanation": "If an MP dies or resigns, there will be a fresh election, called a by-election, in his or her constituency.",
         "topic": "Elections & Voting"
       },
       {
-        "text": "Which TWO of these are examples of civil law cases?",
+        "text": "Which TWO of the following are examples of civil law disputes?",
         "choices": [
-          "Disputes between landlords and tenants",
           "Selling drugs such as cannabis",
           "Disputes about faulty goods or services",
-          "Carrying a weapon"
+          "Carrying a weapon",
+          "Disputes between landlords and tenants"
         ],
         "multiple": true,
         "correct": [
-          0,
-          2
+          1,
+          3
         ],
-        "explanation": "Civil law is used to settle disputes between individuals or groups. Examples include housing law (disputes between landlords and tenants) and consumer rights (disputes about faulty goods or services).",
+        "explanation": "Civil law covers disputes such as those between landlords and tenants, and disputes about faulty goods or services.",
         "topic": "Justice System"
       },
       {
-        "text": "Which TWO of these are principles included in the European Convention on Human Rights?",
+        "text": "Which TWO of these are principles found in the European Convention on Human Rights?",
         "choices": [
-          "Right to a fair trial",
+          "Right to a state pension",
           "Right to free healthcare",
-          "Prohibition of torture",
-          "Right to a state pension"
+          "Right to a fair trial",
+          "Prohibition of torture"
         ],
         "multiple": true,
         "correct": [
-          0,
-          2
+          2,
+          3
         ],
-        "explanation": "Some of the principles included in the European Convention on Human Rights are: right to life, prohibition of torture, prohibition of slavery and forced labour, right to liberty and security, right to a fair trial, freedom of thought, conscience and religion, freedom of expression.",
+        "explanation": "Principles in the European Convention on Human Rights include the right to a fair trial and the prohibition of torture.",
         "topic": "Human Rights & Equal Opportunities"
       },
       {
-        "text": "Which artist is best known for large bronze abstract sculptures?",
+        "text": "Henry Moore, an English sculptor, is best known for which kind of work?",
         "choices": [
-          "Henry Moore",
-          "Thomas Gainsborough",
-          "John Constable",
-          "Joseph Turner"
+          "Portrait photography",
+          "Watercolour landscapes",
+          "Large bronze abstract sculptures",
+          "Gothic architecture"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "Henry Moore (1898-1986) was an English sculptor and artist. He is best known for his large bronze abstract sculptures.",
+        "correct": 2,
+        "explanation": "Henry Moore was an English sculptor best known for his large bronze abstract sculptures.",
         "topic": "Arts, Literature & Culture"
       },
       {
-        "text": "What is the National Eisteddfod of Wales?",
+        "text": "The National Eisteddfod of Wales is best described as what?",
         "choices": [
+          "A Welsh harvest festival",
           "An annual cultural festival of music, dance and art, largely in Welsh",
           "The Welsh national football competition",
-          "A Welsh harvest festival",
-          "The Welsh Parliament's opening ceremony"
+          "The opening ceremony of the Senedd"
         ],
         "multiple": false,
-        "correct": 0,
-        "explanation": "The National Eisteddfod of Wales is an annual cultural festival which includes music, dance, art and original performances largely in Welsh. It includes a number of important competitions for Welsh poetry.",
+        "correct": 1,
+        "explanation": "The National Eisteddfod of Wales is an annual cultural festival which includes music, dance, art and performances largely in Welsh.",
         "topic": "Customs & Traditions"
       },
       {
-        "text": "What was the Great Depression that began in 1929?",
+        "text": "What characterised the Great Depression that began in 1929?",
         "choices": [
-          "A period of worldwide economic downturn causing mass unemployment",
+          "Worldwide economic downturn causing mass unemployment",
+          "A drought affecting UK farming",
           "A period of religious conflict",
-          "A war between Britain and Germany",
-          "A period of drought affecting farming"
+          "A war between Britain and Germany"
         ],
         "multiple": false,
         "correct": 0,
-        "explanation": "In 1929, the world entered the 'Great Depression' and some parts of the UK suffered mass unemployment. Traditional heavy industries such as shipbuilding were badly affected.",
+        "explanation": "In 1929, the world entered the Great Depression, and some parts of the UK suffered mass unemployment.",
         "topic": "The 20th Century"
       }
     ]
