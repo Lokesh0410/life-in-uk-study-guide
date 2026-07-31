@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postinstall": "npx puppeteer browsers install chrome",
+    "postinstall": "npx puppeteer browsers install chrome || true",
     "postbuild": "node scripts/prerender.mjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
