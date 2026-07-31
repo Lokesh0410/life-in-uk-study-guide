@@ -34,8 +34,8 @@ const longResidenceILR = {
     ],
 
     introduction: `
-The Long Residence route allows eligible people who have lived lawfully in the UK
-for a continuous period to apply for Indefinite Leave to Remain (ILR).
+The [Long Residence route](https://www.gov.uk/long-residence) allows eligible people who have lived lawfully in the UK
+for a continuous period to apply for [Indefinite Leave to Remain (ILR)](https://www.gov.uk/indefinite-leave-to-remain).
 
 This route is different from visa-specific settlement routes because it is based
 on a person's overall lawful residence history in the UK.
@@ -96,7 +96,7 @@ Applicants should review their complete immigration history before applying.
         {
             heading: "Life in the UK Test",
             content: `
-Applicants normally need to pass the Life in the UK Test unless exempt.
+Applicants normally need to pass the [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test) unless exempt.
 
 The test covers:
 
@@ -123,10 +123,10 @@ Accepted evidence depends on individual circumstances.
             content: `
 The application process normally involves:
 
-1. Completing an online application
-2. Providing supporting evidence
-3. Attending a biometric appointment if required
-4. Waiting for a decision
+- Completing an online application
+- Providing supporting evidence
+- Attending a biometric appointment if required
+- Waiting for a decision
 `
         }
     ],

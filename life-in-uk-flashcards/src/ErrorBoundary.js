@@ -25,7 +25,7 @@ export default class ErrorBoundary extends React.Component {
                         <div className="text-6xl mb-4">😅</div>
                         <h2 className="text-2xl font-bold text-slate-800 mb-2">Something went wrong</h2>
                         <p className="text-slate-500 mb-6">
-                            Don't worry, it's not you — it's us. Please try refreshing the page.
+                            Don't worry, it's not you, it's us. Please try refreshing the page.
                         </p>
                         <button
                             onClick={() => window.location.reload()}

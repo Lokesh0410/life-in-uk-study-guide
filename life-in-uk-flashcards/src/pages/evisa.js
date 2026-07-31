@@ -36,7 +36,7 @@ const evisa = {
     ],
 
     introduction: `
-An eVisa is a digital record of a person's immigration status in the UK.
+An [eVisa](https://www.gov.uk/evisa) is a digital record of a person's immigration status in the UK.
 
 The UK Government is moving towards a digital immigration system where people
 can prove their status online instead of relying on physical documents.
@@ -52,7 +52,7 @@ An eVisa provides digital evidence of:
 - conditions of permission
 - rights in the UK
 
-It is linked to a person's UKVI account.
+It is linked to a person's [UKVI account](https://www.gov.uk/ukvi-account).
 `
         },
 
@@ -108,9 +108,11 @@ A share code is a temporary code generated from a person's UKVI account that let
 (an employer, landlord, or other checker) view their immigration status online, without needing
 to see the physical eVisa or UKVI account itself.
 
-To generate a share code, sign in to the "View and prove your immigration status" service at
-view-immigration-status.service.gov.uk using your UKVI account details, then create a code for
-the purpose you need (for example, a right to work check or right to rent check).
+To generate a share code:
+
+- Sign in to the "[View and prove your immigration status](https://www.gov.uk/view-prove-immigration-status)" service using your UKVI account details.
+- Create a code for the purpose you need (for example, a right to work check or right to rent check).
+- Share the code with the employer, landlord or other checker who needs it.
 
 A share code lasts for 90 days from when it is created, and can be used as many times as needed
 before it expires. Once it expires, a new share code must be generated. The person checking the

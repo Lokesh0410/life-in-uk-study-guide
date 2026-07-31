@@ -19,6 +19,7 @@
         "npm:canvas-confetti@^1.9.4",
         "npm:jspdf-autotable@^5.0.8",
         "npm:jspdf@^4.2.1",
+        "npm:netlify-plugin-cache@^1.0.3",
         "npm:pdf-parse@^2.4.5",
         "npm:pdfjs-dist@^6.1.200",
         "npm:postcss@^8.5.9",

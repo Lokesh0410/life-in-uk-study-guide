@@ -76,7 +76,7 @@ const ExitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
 
 export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium, onResultsUpdate }) {
     useDocumentMeta({
-        title: "Life in the UK Test Practice — 3 Free Mock Exams + 45 Full Tests",
+        title: "Life in the UK Test Practice: 3 Free Mock Exams + 45 Full Tests",
         description: "Practice the Life in the UK Test with 3 free mock exams and 45 full-length timed practice tests, instant scoring, and performance tracking.",
         path: "/mock-exams",
     });

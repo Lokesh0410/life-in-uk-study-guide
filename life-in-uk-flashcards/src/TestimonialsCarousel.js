@@ -71,7 +71,7 @@ export default function TestimonialsCarousel() {
           "{testimonials[currentIndex].text}"
         </p>
         <p className="text-xs font-bold text-slate-800 dark:text-slate-200 text-center">
-          — {testimonials[currentIndex].name}, {testimonials[currentIndex].location}
+          {testimonials[currentIndex].name}, {testimonials[currentIndex].location}
         </p>
       </div>
       <div className="flex justify-center gap-1.5 mt-4">

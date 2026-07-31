@@ -4,24 +4,24 @@ import useDocumentMeta from '../useDocumentMeta';
 
 const TOOLS = [
     {
-        to: '/study-guide/devolved-nations',
-        emoji: '🏴',
-        title: 'Devolved Parliaments & Legal Systems',
-        desc: 'What Westminster controls versus what Edinburgh, Cardiff and Belfast control: Scotland, Wales and Northern Ireland devolution at a glance.',
-        available: true,
-    },
-    {
-        to: '/study-guide/court-hierarchy',
+        to: '/study-guide/human-rights',
         emoji: '⚖️',
-        title: 'Court Hierarchy',
-        desc: "Magistrates' Courts, Crown Courts, and the Supreme Court: how the justice system is structured and how cases move through it.",
+        title: 'Human Rights & Citizenship',
+        desc: 'The Human Rights Act, equal opportunities, and the responsibilities that come with being a citizen: filterable fact cards.',
         available: true,
     },
     {
-        to: '/study-guide/elections-cheat-sheet',
-        emoji: '🗳️',
-        title: 'Elections & Voting Cheat Sheet',
-        desc: 'First-past-the-post explained, voting age, standing for election, and the House of Commons vs House of Lords: the tricky numbers in one place.',
+        to: '/study-guide/taxation-and-driving',
+        emoji: '🚗',
+        title: 'Taxation & Driving',
+        desc: 'Income tax, National Insurance, and the rules for getting and keeping a UK driving licence.',
+        available: true,
+    },
+    {
+        to: '/study-guide/britain-in-the-world',
+        emoji: '🌍',
+        title: 'Britain in the World',
+        desc: 'The Commonwealth, the Council of Europe, the United Nations and NATO: the UK’s role on the international stage.',
         available: true,
     },
 ];
@@ -59,15 +59,15 @@ const breadcrumbSchema = {
     itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
         { "@type": "ListItem", position: 2, name: "Study Guide", item: `${SITE_URL}/study-guide` },
-        { "@type": "ListItem", position: 3, name: "Government and Law", item: `${SITE_URL}/study-guide/government-and-law` },
+        { "@type": "ListItem", position: 3, name: "Modern Britain and Society", item: `${SITE_URL}/study-guide/modern-britain` },
     ],
 };
 
-export default function GovernmentAndLaw() {
+export default function ModernBritain() {
     useDocumentMeta({
-        title: "Government and Law Study Guide: Life in the UK Test 2026",
-        description: "Master the Government, Parliament, and Law chapter of the official Life in the UK Test handbook, covering UK democracy and the justice system.",
-        path: "/study-guide/government-and-law",
+        title: "Modern Britain and Society Study Guide: Life in the UK Test 2026",
+        description: "Master the Fundamental Principles and International Institutions chapters of the official Life in the UK Test handbook, covering rights, responsibilities and the UK's global role.",
+        path: "/study-guide/modern-britain",
         jsonLd: breadcrumbSchema,
     });
 
@@ -78,20 +78,20 @@ export default function GovernmentAndLaw() {
                     ← Back to Study Guide
                 </Link>
                 <h1 className="text-3xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-                    Government and Law Study Guide: Life in the UK Test 2026
+                    Modern Britain and Society Study Guide: Life in the UK Test 2026
                 </h1>
                 <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    Master the complete Government, Parliament, and Law chapter of the official Life in the UK Test handbook.
-                    This guide covers the structure of UK democracy, the justice system, and your role as a British citizen.
+                    Master the Fundamental Principles, Community and International Institutions chapters of the official Life in the UK Test handbook.
+                    This guide covers human rights, equal opportunities, the responsibilities of being a citizen, and the UK's role in the wider world.
                 </p>
 
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3">Key Government Topics Covered</h2>
+                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3">Key Topics Covered</h2>
                 <ul className="list-disc pl-5 text-slate-700 dark:text-slate-300 space-y-2 mb-6">
-                    <li><strong>The British Constitution:</strong> Understand that the UK constitution is unwritten and based on common law and conventions.</li>
-                    <li><strong>The Monarchy:</strong> Learn about the role of the King as Head of State, and how the UK operates as a constitutional monarchy.</li>
-                    <li><strong>Parliament:</strong> Study the roles of the House of Commons, the House of Lords, and how laws are debated and passed.</li>
-                    <li><strong>The Government:</strong> Discover how the Prime Minister, Cabinet, and Opposition parties lead the nation.</li>
-                    <li><strong>The Justice System:</strong> Memorize the differences between civil and criminal courts, and police/magistrate structures.</li>
+                    <li><strong>Human Rights:</strong> The European Convention on Human Rights and the Human Rights Act 1998.</li>
+                    <li><strong>Equal Opportunities:</strong> UK anti-discrimination law and equality between men and women.</li>
+                    <li><strong>Citizen Responsibilities:</strong> Shared values, jury service, and getting involved in your local community.</li>
+                    <li><strong>Taxation & Driving:</strong> Income tax, National Insurance, and UK driving licence rules.</li>
+                    <li><strong>Britain in the World:</strong> The Commonwealth, the Council of Europe, the United Nations, and NATO.</li>
                 </ul>
 
                 <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3">Visual Study Tools</h2>
@@ -102,7 +102,7 @@ export default function GovernmentAndLaw() {
                 <div className="bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-900 rounded-xl p-6 mb-8">
                     <h3 className="font-bold text-indigo-950 dark:text-indigo-200 mb-2">Did you know?</h3>
                     <p className="text-sm text-indigo-900 dark:text-indigo-300">
-                        Government & Law questions make up a huge part of the real exam. Make sure you know details like the minimum voting age (18), the maximum time between general elections (5 years), and the unwritten nature of the British Constitution.
+                        The Human Rights Act 1998 incorporated the European Convention on Human Rights into UK law. The UK was one of the first countries to sign the Convention, back in 1950.
                     </p>
                 </div>
 

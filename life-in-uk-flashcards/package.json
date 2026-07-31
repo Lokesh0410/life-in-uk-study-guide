@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",
+    "netlify-plugin-cache": "^1.0.3",
     "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^6.1.200",
     "postcss": "^8.5.9",

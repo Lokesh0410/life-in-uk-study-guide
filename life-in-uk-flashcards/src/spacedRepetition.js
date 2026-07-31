@@ -58,15 +58,10 @@ export function weightQuestionsBySpacedRepetition(questions) {
     return weighted;
 }
 
-export function getWeakTopics(limit = 3) {
+// Full list of missed questions, most-missed first, for a dedicated "retest my mistakes" mode.
+export function getMissedQuestionTexts() {
     const missed = getMissedQuestionsMap();
-    const topicCounts = {};
-    Object.values(missed).forEach(({ topic, missCount }) => {
-        if (!topic) return;
-        topicCounts[topic] = (topicCounts[topic] || 0) + missCount;
-    });
-    return Object.entries(topicCounts)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, limit)
-        .map(([topic, count]) => ({ topic, missCount: count }));
+    return Object.entries(missed)
+        .sort((a, b) => b[1].missCount - a[1].missCount)
+        .map(([text]) => text);
 }

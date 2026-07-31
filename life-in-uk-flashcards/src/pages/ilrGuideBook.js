@@ -35,7 +35,7 @@ const ilrGuide = {
     ],
 
     introduction: `
-Indefinite Leave to Remain (ILR), also known as settlement, allows eligible people
+[Indefinite Leave to Remain](https://www.gov.uk/indefinite-leave-to-remain) (ILR), also known as settlement, allows eligible people
 to live in the UK without a time limit.
 
 ILR is an important milestone for many people who plan to make the UK their
@@ -114,7 +114,7 @@ Rules at the time of application.
         {
             heading: "Life in the UK Test requirement",
             content: `
-Many ILR applicants must pass the Life in the UK Test.
+Many ILR applicants must pass the [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test).
 
 The test checks knowledge of:
 
@@ -131,7 +131,7 @@ preparation materials.
         {
             heading: "English language requirement",
             content: `
-Many ILR applicants must prove their knowledge of English unless they qualify for
+Many ILR applicants must prove their [knowledge of English](https://www.gov.uk/english-language) unless they qualify for
 an exemption.
 
 Depending on individual circumstances, English may be demonstrated through:
@@ -183,7 +183,7 @@ Applicants should follow the document checklist provided during the application.
             content: `
 After ILR is granted, a person can continue living in the UK without a time limit.
 
-Many ILR holders later choose to apply for British citizenship if they meet the
+Many ILR holders later choose to apply for [British citizenship](https://www.gov.uk/apply-citizenship-indefinite-leave-to-remain) if they meet the
 naturalisation requirements.
 
 Immigration status is now increasingly managed through digital records known as

@@ -93,31 +93,52 @@ const MUST_KNOW_DATES = [
     { year: "1605", event: "Gunpowder Plot" },
     { year: "1642-51", event: "Civil War" },
     { year: "1666", event: "Great Fire" },
+    { year: "1679", event: "Habeas Corpus Act" },
     { year: "1688-89", event: "Glorious Rev & Bill of Rights" },
     { year: "1707", event: "Act of Union (GB)" },
+    { year: "1801", event: "Act of Union with Ireland" },
     { year: "1805", event: "Trafalgar" },
     { year: "1807", event: "Slave Trade Abolished" },
     { year: "1815", event: "Waterloo" },
-    { year: "1832", event: "Reform Act" },
+    { year: "1832", event: "First Reform Act" },
+    { year: "1833", event: "Emancipation Act (empire-wide)" },
+    { year: "1846", event: "Repeal of Corn Laws" },
+    { year: "1867", event: "Second Reform Act" },
     { year: "1914-18", event: "WWI" },
-    { year: "1928", event: "Equal Votes" },
+    { year: "1918", event: "Representation of the People Act" },
+    { year: "1928", event: "Equal Franchise Act" },
     { year: "1940", event: "Battle of Britain" },
     { year: "1948", event: "NHS founded" },
+    { year: "1949", event: "Irish Free State becomes republic" },
+    { year: "1957", event: "EEC formed" },
+    { year: "1969", event: "Voting age lowered to 18" },
+    { year: "1975", event: "First EU referendum" },
     { year: "1998", event: "Good Friday Agreement" },
+    { year: "1999", event: "Scottish Parliament & Welsh Assembly" },
 ];
 
 const MONARCHS = [
-    { name: "William I (Conqueror)", reign: "1066-1087", fact: "Norman Conquest, Domesday Book" },
-    { name: "Henry II", reign: "1154-1189", fact: "First Plantagenet, common law" },
-    { name: "John", reign: "1199-1216", fact: "Magna Carta (1215)" },
-    { name: "Edward I", reign: "1272-1307", fact: "Conquered Wales, Model Parliament" },
-    { name: "Henry VIII", reign: "1509-1547", fact: "Church of England, 6 wives" },
-    { name: "Elizabeth I", reign: "1558-1603", fact: "Golden Age, Spanish Armada" },
-    { name: "Charles I", reign: "1625-1649", fact: "Executed after Civil War" },
-    { name: "Charles II", reign: "1660-1685", fact: "The Restoration" },
-    { name: "Victoria", reign: "1837-1901", fact: "Largest empire, longest reign" },
-    { name: "Elizabeth II", reign: "1952-2022", fact: "Longest-reigning British monarch" },
-    { name: "Charles III", reign: "2022–", fact: "Current monarch" },
+    { name: "William I (Conqueror)", house: "Norman", reign: "1066-1087", fact: "Norman Conquest, Domesday Book" },
+    { name: "Henry II", house: "Plantagenet", reign: "1154-1189", fact: "First Plantagenet, common law" },
+    { name: "John", house: "Plantagenet", reign: "1199-1216", fact: "Magna Carta (1215)" },
+    { name: "Edward I", house: "Plantagenet", reign: "1272-1307", fact: "Conquered Wales, Model Parliament" },
+    { name: "Edward III", house: "Plantagenet", reign: "1327-1377", fact: "Start of the Hundred Years' War with France" },
+    { name: "Wars of the Roses", house: "Lancaster/York", reign: "1455-1485", fact: "Lancaster (red rose) vs York (white rose), ends at Bosworth Field" },
+    { name: "Henry VII", house: "Tudor", reign: "1485-1509", fact: "First Tudor king, defeated Richard III at Bosworth" },
+    { name: "Henry VIII", house: "Tudor", reign: "1509-1547", fact: "Church of England, 6 wives" },
+    { name: "Elizabeth I", house: "Tudor", reign: "1558-1603", fact: "Golden Age, Spanish Armada" },
+    { name: "James I", house: "Stuart", reign: "1603-1625", fact: "Union of the Crowns (England & Scotland)" },
+    { name: "Charles I", house: "Stuart", reign: "1625-1649", fact: "Executed after Civil War" },
+    { name: "Oliver Cromwell", house: "Commonwealth", reign: "1649-1660", fact: "Lord Protector; Britain without a monarch" },
+    { name: "Charles II", house: "Stuart", reign: "1660-1685", fact: "The Restoration" },
+    { name: "James II", house: "Stuart", reign: "1685-1688", fact: "Catholic king; conflict with Parliament" },
+    { name: "William III & Mary II", house: "Stuart", reign: "1689-1702", fact: "Glorious Revolution; Bill of Rights (1689)" },
+    { name: "George I", house: "Hanover", reign: "1714-1727", fact: "First Hanoverian king; first PM Robert Walpole" },
+    { name: "George II", house: "Hanover", reign: "1727-1760", fact: "Defeated Jacobites at Culloden (1746)" },
+    { name: "Victoria", house: "Hanover", reign: "1837-1901", fact: "Largest empire, 2nd-longest reign" },
+    { name: "George VI", house: "Windsor", reign: "1936-1952", fact: "Reigned through WWII, after Edward VIII's abdication" },
+    { name: "Elizabeth II", house: "Windsor", reign: "1952-2022", fact: "Longest-reigning British monarch" },
+    { name: "Charles III", house: "Windsor", reign: "2022–", fact: "Current monarch" },
 ];
 
 const SAINTS = [
@@ -135,16 +156,101 @@ const NATION_STRIPS = [
 ];
 
 const INVENTIONS = [
+    { name: "Royal Society 🔭", detail: "Isaac Newton, early member (1660s)" },
+    { name: "Carding Machine ⚙️", detail: "Richard Arkwright (18th c.)" },
+    { name: "Steam Power 🚂", detail: "James Watt (18th c.)" },
+    { name: "Bessemer Process 🏭", detail: "Mass steel production (19th c.)" },
+    { name: "Railway Engine 🚆", detail: "George & Robert Stephenson (19th c.)" },
+    { name: "Engineering Feats 🌉", detail: "Isambard Kingdom Brunel (1838-59)" },
     { name: "Television 📺", detail: "John Logie Baird (1920s)" },
     { name: "Radar 📡", detail: "Robert Watson-Watt (1935)" },
     { name: "Jet Engine ✈️", detail: "Frank Whittle (1930s)" },
+    { name: "Turing Machine 💻", detail: "Alan Turing (1930s)" },
     { name: "World Wide Web 🌐", detail: "Tim Berners-Lee (1990)" },
     { name: "Penicillin 💊", detail: "Alexander Fleming (1928)" },
+    { name: "Insulin 🧪", detail: "John MacLeod (1940s)" },
     { name: "DNA Structure 🧬", detail: "Crick & Watson (1953)" },
     { name: "ATM 🏧", detail: "James Goodfellow (1967)" },
     { name: "Hovercraft 🚤", detail: "Christopher Cockerell (1950s)" },
     { name: "IVF 👶", detail: "Edwards & Steptoe (1978)" },
     { name: "MRI Scanner 🏥", detail: "Peter Mansfield (1970s)" },
+];
+
+const PEOPLE_STYLES = {
+    "Scientists & Inventors": { light: "bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300", border: "border-emerald-200 dark:border-emerald-900" },
+    "Political Leaders": { light: "bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300", border: "border-indigo-200 dark:border-indigo-900" },
+    "Artists & Writers": { light: "bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300", border: "border-rose-200 dark:border-rose-900" },
+    "Reformers & Trailblazers": { light: "bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300", border: "border-amber-200 dark:border-amber-900" },
+};
+
+const PEOPLE = [
+    // Scientists & Inventors
+    { name: "Sir Isaac Newton", category: "Scientists & Inventors", fact: "Physicist/mathematician; early Royal Society member; Principia (1687)" },
+    { name: "Sir Edmund Halley", category: "Scientists & Inventors", fact: "Predicted the return of Halley's Comet" },
+    { name: "James Watt", category: "Scientists & Inventors", fact: "Steam power, drove the Industrial Revolution" },
+    { name: "Isambard Kingdom Brunel", category: "Scientists & Inventors", fact: "Engineer: tunnels, bridges, Great Western Railway" },
+    { name: "George & Robert Stephenson", category: "Scientists & Inventors", fact: "Pioneered the railway engine" },
+    { name: "Ernest Rutherford", category: "Scientists & Inventors", fact: "First to 'split the atom'; Manhattan Project" },
+    { name: "Alexander Fleming", category: "Scientists & Inventors", fact: "Discovered penicillin (1928); Nobel Prize 1945" },
+    { name: "Sir Robert Watson-Watt", category: "Scientists & Inventors", fact: "Developed radar; first test 1935" },
+    { name: "Alan Turing", category: "Scientists & Inventors", fact: "Invented the theoretical Turing machine (1930s)" },
+    { name: "Sir Frank Whittle", category: "Scientists & Inventors", fact: "Developed the jet engine (1930s)" },
+    { name: "Sir Tim Berners-Lee", category: "Scientists & Inventors", fact: "Invented the World Wide Web (1990)" },
+    { name: "Adam Smith", category: "Scientists & Inventors", fact: "Enlightenment thinker, economics" },
+    { name: "David Hume", category: "Scientists & Inventors", fact: "Enlightenment philosopher, human nature" },
+    // Political Leaders
+    { name: "Sir Robert Walpole", category: "Political Leaders", fact: "First Prime Minister (1721-1742)" },
+    { name: "Admiral Nelson", category: "Political Leaders", fact: "Commanded fleet at Trafalgar (1805), died in battle" },
+    { name: "The Duke of Wellington", category: "Political Leaders", fact: "'Iron Duke'; defeated Napoleon at Waterloo (1815)" },
+    { name: "Winston Churchill", category: "Political Leaders", fact: "PM from May 1940; led wartime resistance to Nazis" },
+    { name: "Clement Attlee", category: "Political Leaders", fact: "Labour PM 1945-51; nationalised industries, created NHS" },
+    { name: "William Beveridge", category: "Political Leaders", fact: "1942 Beveridge Report, foundation of welfare state" },
+    { name: "Richard Austen Butler", category: "Political Leaders", fact: "Education Act 1944 as Education Minister" },
+    { name: "Margaret Thatcher", category: "Political Leaders", fact: "First woman PM (1979-90); longest-serving 20th c. PM" },
+    // Artists & Writers
+    { name: "William Shakespeare", category: "Artists & Writers", fact: "Playwright: Hamlet, Macbeth, Romeo and Juliet" },
+    { name: "Geoffrey Chaucer", category: "Artists & Writers", fact: "The Canterbury Tales" },
+    { name: "Robert Burns", category: "Artists & Writers", fact: "Scottish poet 'The Bard'; wrote Auld Lang Syne" },
+    { name: "Sir Christopher Wren", category: "Artists & Writers", fact: "Architect: new St Paul's Cathedral after 1666 fire" },
+    { name: "Thomas Gainsborough", category: "Artists & Writers", fact: "Portrait painter" },
+    { name: "Joseph Turner", category: "Artists & Writers", fact: "Landscape painter; Turner Prize named after him" },
+    { name: "John Constable", category: "Artists & Writers", fact: "Landscape painter, Dedham Vale" },
+    { name: "Jane Austen", category: "Artists & Writers", fact: "Pride and Prejudice, Sense and Sensibility" },
+    { name: "Charles Dickens", category: "Artists & Writers", fact: "Oliver Twist, Great Expectations" },
+    { name: "Sir Arthur Conan Doyle", category: "Artists & Writers", fact: "Sherlock Holmes stories" },
+    { name: "J K Rowling", category: "Artists & Writers", fact: "Harry Potter series" },
+    { name: "John Milton", category: "Artists & Writers", fact: "Paradise Lost" },
+    { name: "William Wordsworth", category: "Artists & Writers", fact: "Poet inspired by nature" },
+    { name: "Sir Walter Scott", category: "Artists & Writers", fact: "Poems & novels inspired by Scotland" },
+    { name: "Lord Byron", category: "Artists & Writers", fact: "'She Walks in Beauty'" },
+    { name: "Dylan Thomas", category: "Artists & Writers", fact: "Welsh poet; Under Milk Wood" },
+    { name: "Roald Dahl", category: "Artists & Writers", fact: "Children's author, RAF veteran" },
+    { name: "George Frederick Handel", category: "Artists & Writers", fact: "Water Music, Messiah" },
+    { name: "Gustav Holst", category: "Artists & Writers", fact: "The Planets suite" },
+    { name: "Sir Edward Elgar", category: "Artists & Writers", fact: "Pomp and Circumstance Marches" },
+    { name: "Benjamin Britten", category: "Artists & Writers", fact: "Operas: Peter Grimes, Billy Budd" },
+    { name: "Dame Agatha Christie", category: "Artists & Writers", fact: "The Mousetrap; detective novels" },
+    // Reformers & Trailblazers
+    { name: "Boudicca", category: "Reformers & Trailblazers", fact: "Queen of the Iceni; led revolt against Romans" },
+    { name: "William Wilberforce", category: "Reformers & Trailblazers", fact: "Led campaign to end the slave trade" },
+    { name: "Florence Nightingale", category: "Reformers & Trailblazers", fact: "Founder of modern nursing; Crimean War (1854)" },
+    { name: "Emmeline Pankhurst", category: "Reformers & Trailblazers", fact: "Founded WSPU (1903); 'suffragettes'" },
+    { name: "Mary Peters", category: "Reformers & Trailblazers", fact: "Olympic gold, pentathlon, 1972 Munich" },
+];
+
+const ELECTIONS_FACTS = [
+    { label: "Voting system", value: "First past the post: most votes in a constituency wins" },
+    { label: "Minimum voting age", value: "18 (set in 1969, reduced from 21)" },
+    { label: "Age to stand for election (MP)", value: "18 or over" },
+    { label: "General elections held", value: "At least every 5 years (max between elections)" },
+    { label: "Polling hours", value: "7.00 am – 10.00 pm" },
+    { label: "Houses of Parliament", value: "House of Commons (elected, 650 MPs) & House of Lords (unelected)" },
+    { label: "Why Commons is more important", value: "Members are democratically elected; PM & most Cabinet are MPs" },
+    { label: "Lords membership since 1958", value: "PM can nominate 'life peers' for their own lifetime" },
+    { label: "Hereditary peers since 1999", value: "Lost automatic right to sit; elect a few to represent them" },
+    { label: "Who chairs Commons debates", value: "The Speaker: neutral, chosen by MPs in secret ballot" },
+    { label: "Electoral register", value: "Register via local council; updated each Sept/Oct" },
+    { label: "Barred from standing", value: "Armed forces, civil servants, certain criminals" },
 ];
 
 const TEST_INFO = [
@@ -202,7 +308,7 @@ const sectionHeading = "text-xl font-bold text-[#1e3a5f] dark:text-slate-100 bor
 
 export default function CheatSheet() {
     useDocumentMeta({
-        title: "Premium Cheat Sheet — Life in the UK Test Coach",
+        title: "Premium Cheat Sheet: Life in the UK Test Coach",
         description: "Quick reference guide: British history timeline, government structure, key dates & monarchs, patron saints, British values, inventions, and study guide overview for the Life in the UK test.",
         path: "/cheat-sheet",
     });
@@ -292,6 +398,7 @@ export default function CheatSheet() {
                                     <thead>
                                         <tr>
                                             <th className="bg-[#1e3a5f] dark:bg-slate-800 text-white px-2 py-1.5 text-left font-semibold">Monarch</th>
+                                            <th className="bg-[#1e3a5f] dark:bg-slate-800 text-white px-2 py-1.5 text-left font-semibold">House</th>
                                             <th className="bg-[#1e3a5f] dark:bg-slate-800 text-white px-2 py-1.5 text-left font-semibold">Reign</th>
                                             <th className="bg-[#1e3a5f] dark:bg-slate-800 text-white px-2 py-1.5 text-left font-semibold">Key Fact</th>
                                         </tr>
@@ -302,7 +409,8 @@ export default function CheatSheet() {
                                                 <td className="px-2 py-1 border-b border-slate-200 dark:border-slate-700">
                                                     <strong className="text-slate-800 dark:text-slate-100">{m.name}</strong>
                                                 </td>
-                                                <td className="px-2 py-1 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">{m.reign}</td>
+                                                <td className="px-2 py-1 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 whitespace-nowrap">{m.house}</td>
+                                                <td className="px-2 py-1 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 whitespace-nowrap">{m.reign}</td>
                                                 <td className="px-2 py-1 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">{m.fact}</td>
                                             </tr>
                                         ))}
@@ -382,6 +490,41 @@ export default function CheatSheet() {
                             <div key={i} className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-900 rounded-lg p-2 text-center">
                                 <div className="font-bold text-xs text-slate-800 dark:text-slate-100">{inv.name}</div>
                                 <div className="text-[10px] text-slate-600 dark:text-slate-400">{inv.detail}</div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* WHO'S WHO — PEOPLE */}
+                <section className="mb-6">
+                    <h2 className={sectionHeading}>🧑‍🎓 Who's Who: Key Figures</h2>
+                    <div className="space-y-4">
+                        {Object.keys(PEOPLE_STYLES).map((cat) => (
+                            <div key={cat}>
+                                <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full mb-2 ${PEOPLE_STYLES[cat].light}`}>
+                                    {cat}
+                                </span>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    {PEOPLE.filter((p) => p.category === cat).map((p, i) => (
+                                        <div key={i} className={`rounded-lg p-2 border-l-4 ${PEOPLE_STYLES[cat].border} bg-slate-50 dark:bg-slate-800/60`}>
+                                            <div className="text-xs font-bold text-slate-800 dark:text-slate-100">{p.name}</div>
+                                            <div className="text-[11px] text-slate-600 dark:text-slate-400">{p.fact}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* ELECTIONS & VOTING */}
+                <section className="mb-6">
+                    <h2 className={sectionHeading}>🗳️ Elections & Voting</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {ELECTIONS_FACTS.map((f, i) => (
+                            <div key={i} className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 border-l-4 border-indigo-500 dark:border-indigo-600">
+                                <div className="font-bold text-xs text-slate-800 dark:text-slate-100">{f.label}</div>
+                                <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">{f.value}</div>
                             </div>
                         ))}
                     </div>

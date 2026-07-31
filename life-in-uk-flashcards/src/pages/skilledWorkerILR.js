@@ -34,7 +34,7 @@ const skilledWorkerILR = {
     ],
 
     introduction: `
-The Skilled Worker visa is one of the main employment routes that can lead to
+The [Skilled Worker visa](https://www.gov.uk/skilled-worker-visa) is one of the main employment routes that can lead to
 Indefinite Leave to Remain (ILR) in the UK.
 
 Eligible Skilled Worker visa holders may apply for settlement once they complete
@@ -81,7 +81,7 @@ Applicants generally need to meet requirements including:
 - continuous residence requirements
 - employment requirements
 - salary requirements
-- English language requirements
+- [English language requirements](https://www.gov.uk/english-language)
 - Life in the UK Test requirement
 - suitability requirements
 `
@@ -139,7 +139,7 @@ Applicants should check the latest GOV.UK guidance before applying.
         {
             heading: "Life in the UK Test",
             content: `
-Most Skilled Worker ILR applicants need to pass the Life in the UK Test.
+Most Skilled Worker ILR applicants need to pass the [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test).
 
 The test covers British:
 

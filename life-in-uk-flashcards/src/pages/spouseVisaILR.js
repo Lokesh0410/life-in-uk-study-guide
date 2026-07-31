@@ -37,8 +37,8 @@ const spouseVisaILR = {
 The spouse visa route allows eligible partners of British citizens or people
 settled in the UK to live together in the UK.
 
-People on the family visa route may be able to apply for Indefinite Leave to
-Remain (ILR) after meeting the relevant requirements.
+People on the family visa route may be able to apply for [Indefinite Leave to
+Remain](https://www.gov.uk/indefinite-leave-to-remain-family) (ILR) after meeting the relevant requirements.
 
 The requirements depend on the specific family visa route and the applicant's
 circumstances.
@@ -115,7 +115,7 @@ Applicants should review:
         {
             heading: "English language requirement",
             content: `
-Applicants normally need to meet the English language requirement unless they
+Applicants normally need to meet the [English language requirement](https://www.gov.uk/english-language) unless they
 qualify for an exemption.
 
 Accepted evidence depends on individual circumstances.
@@ -125,7 +125,7 @@ Accepted evidence depends on individual circumstances.
         {
             heading: "Life in the UK Test",
             content: `
-Most applicants need to pass the Life in the UK Test before applying for ILR.
+Most applicants need to pass the [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test) before applying for ILR.
 
 The test covers British:
 

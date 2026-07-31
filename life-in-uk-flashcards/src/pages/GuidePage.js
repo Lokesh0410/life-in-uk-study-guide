@@ -10,6 +10,76 @@ import { safeGetItem, safeSetItem } from "../safeStorage";
 
 const CHECKLIST_STORAGE_KEY = "lifeInUkGuideChecklists";
 
+// Guide content is plain text with light markdown (**bold** and "- " list
+// items) rather than HTML, so it can be authored as simple strings in data
+// files. This turns that into real JSX instead of rendering literal
+// asterisks/dashes.
+function renderInlineMarkdown(text, keyPrefix) {
+    const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+    return parts.map((part, i) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+            return <strong key={`${keyPrefix}-${i}`}>{part.slice(2, -2)}</strong>;
+        }
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+            const [, label, url] = linkMatch;
+            const isExternal = /^https?:\/\//.test(url);
+            return (
+                <a
+                    key={`${keyPrefix}-${i}`}
+                    href={url}
+                    className="text-indigo-600 hover:text-indigo-800 underline"
+                    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                    {label}
+                </a>
+            );
+        }
+        return part;
+    });
+}
+
+function renderGuideContent(content) {
+    const lines = content.split("\n");
+    const blocks = [];
+    let currentList = null;
+
+    lines.forEach((line) => {
+        const trimmed = line.trim();
+        const listMatch = trimmed.match(/^-\s+(.*)$/);
+
+        if (listMatch) {
+            if (!currentList) {
+                currentList = [];
+                blocks.push({ type: "list", items: currentList });
+            }
+            currentList.push(listMatch[1]);
+        } else {
+            currentList = null;
+            if (trimmed.length > 0) {
+                blocks.push({ type: "paragraph", text: trimmed });
+            }
+        }
+    });
+
+    return blocks.map((block, i) => {
+        if (block.type === "list") {
+            return (
+                <ul key={i} className="list-disc pl-5 space-y-1.5 mb-3">
+                    {block.items.map((item, j) => (
+                        <li key={j}>{renderInlineMarkdown(item, `${i}-${j}`)}</li>
+                    ))}
+                </ul>
+            );
+        }
+        return (
+            <p key={i} className="mb-3 last:mb-0">
+                {renderInlineMarkdown(block.text, `${i}`)}
+            </p>
+        );
+    });
+}
+
 export default function GuidePage({ guide }) {
     useDocumentMeta({
         title: guide?.seo?.metaTitle,
@@ -138,9 +208,9 @@ export default function GuidePage({ guide }) {
             {/* Introduction */}
             {guide.introduction && (
                 <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl p-5 mb-8">
-                    <p className="text-slate-700 leading-relaxed whitespace-pre-line">
-                        {guide.introduction}
-                    </p>
+                    <div className="text-slate-700 leading-relaxed">
+                        {renderGuideContent(guide.introduction)}
+                    </div>
                 </div>
             )}
 
@@ -154,9 +224,18 @@ export default function GuidePage({ guide }) {
                             </span>
                             {section.heading}
                         </h2>
-                        <div className="text-slate-600 leading-relaxed whitespace-pre-line">
-                            {section.content}
+                        <div className="text-slate-600 leading-relaxed">
+                            {renderGuideContent(section.content)}
                         </div>
+                        {section.solicitorCta && (
+                            <button
+                                type="button"
+                                onClick={() => setShowSolicitorForm(true)}
+                                className="mt-4 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition shadow-sm"
+                            >
+                                Talk to an Immigration Solicitor →
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>

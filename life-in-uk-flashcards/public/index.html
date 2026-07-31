@@ -4,14 +4,20 @@
 <head>
   <meta charset="utf-8" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EPD3WWGF0"></script>
+  <!-- Google tag (gtag.js) — only loaded on the live production domain, so
+       localhost/dev/preview builds never pollute production analytics. -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    if (location.hostname === 'lifeinukcoach.co.uk' || location.hostname === 'www.lifeinukcoach.co.uk') {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0EPD3WWGF0';
+      document.head.appendChild(gaScript);
 
-    gtag('config', 'G-0EPD3WWGF0');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-0EPD3WWGF0');
+    }
   </script>
 
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -26,7 +32,7 @@
   <link rel="canonical" href="https://lifeinukcoach.co.uk/" />
 
   <!-- Open Graph (for social sharing previews) -->
-  <meta property="og:title" content="Life in the UK Mock Test — Free Practice & 5-Day Pass Path" />
+  <meta property="og:title" content="Life in the UK Mock Test: Free Practice & 5-Day Pass Path" />
   <meta property="og:description"
     content="220+ free flashcards, 3 free mock exams, and a 5-day guaranteed pass path for British Citizenship and ILR 2026." />
   <meta property="og:type" content="website" />
@@ -36,7 +42,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Life in the UK Mock Test — Free Practice & 5-Day Pass Path" />
+  <meta name="twitter:title" content="Life in the UK Mock Test: Free Practice & 5-Day Pass Path" />
   <meta name="twitter:description"
     content="220+ free flashcards, 3 free mock exams, and a 5-day guaranteed pass path for British Citizenship and ILR 2026." />
 
@@ -136,7 +142,7 @@
     -->
   <div id="seo-static-content" aria-hidden="true"
     style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
-    <h1>Life in the UK Mock Test 2026 — Free Practice Questions &amp; Flashcards</h1>
+    <h1>Life in the UK Mock Test 2026: Free Practice Questions &amp; Flashcards</h1>
     <p>Prepare for the Life in the UK citizenship test with 220+ free interactive flashcards, 3 free mock exams, and
       45 full-length mock exams plus a personalised 5-day guaranteed pass path for Premium members. Trusted by people
       applying for British Citizenship and Indefinite Leave to Remain (ILR) in 2026.</p>
@@ -214,7 +220,7 @@
       </tbody>
     </table>
 
-    <h2>Premium Mock Exam Package — £7.99 One-Time</h2>
+    <h2>Premium Mock Exam Package: £7.99 One-Time</h2>
     <p>Unlock all 45 mock exams, a personalised performance dashboard, and a downloadable offline cheat sheet. Our 5-day
       guaranteed pass path gives you a daily study plan tailored to your weak areas.</p>
     <p>Pass Guarantee: If you complete all 45 mock tests and still fail the official exam, we will issue a full refund

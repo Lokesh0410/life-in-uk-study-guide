@@ -149,12 +149,18 @@ export const generateCheatSheet = (doc, sections, autoTable) => {
         ['1215', 'Magna Carta', '1314', 'Bannockburn'],
         ['1534', 'Church of England', '1588', 'Spanish Armada'],
         ['1605', 'Gunpowder Plot', '1642-51', 'Civil War'],
-        ['1666', 'Great Fire of London', '1688-89', 'Glorious Rev & Bill of Rights'],
-        ['1707', 'Act of Union (GB)', '1805', 'Trafalgar'],
+        ['1666', 'Great Fire of London', '1679', 'Habeas Corpus Act'],
+        ['1688-89', 'Glorious Rev & Bill of Rights', '1707', 'Act of Union (GB)'],
+        ['1801', 'Act of Union with Ireland', '1805', 'Trafalgar'],
         ['1807', 'Slave Trade Abolished', '1815', 'Waterloo'],
-        ['1832', 'Reform Act', '1914-18', 'WWI'],
-        ['1928', 'Equal Votes', '1940', 'Battle of Britain'],
-        ['1948', 'NHS founded', '1998', 'Good Friday Agreement'],
+        ['1832', 'First Reform Act', '1833', 'Emancipation Act (empire-wide)'],
+        ['1846', 'Repeal of Corn Laws', '1867', 'Second Reform Act'],
+        ['1914-18', 'WWI', '1918', 'Representation of the People Act'],
+        ['1928', 'Equal Franchise Act', '1940', 'Battle of Britain'],
+        ['1948', 'NHS founded', '1949', 'Irish Free State becomes republic'],
+        ['1957', 'EEC formed', '1969', 'Voting age lowered to 18'],
+        ['1975', 'First EU referendum', '1998', 'Good Friday Agreement'],
+        ['1999', 'Scottish Parliament & Welsh Assembly', '', ''],
     ];
     autoTable(doc, {
         startY: y,
@@ -169,30 +175,40 @@ export const generateCheatSheet = (doc, sections, autoTable) => {
     y = doc.lastAutoTable.finalY + 10;
 
     // Monarchs table
-    y = bodyText('Key Monarchs', y, 11);
+    y = bodyText('Key Monarchs & Royal Houses', y, 11);
     doc.setFont(undefined, 'bold');
     y += 2;
     const monarchs = [
-        ['William I (Conqueror)', '1066-1087', 'Norman Conquest, Domesday Book'],
-        ['Henry II', '1154-1189', 'First Plantagenet, common law foundation'],
-        ['John', '1199-1216', 'Magna Carta signed 1215'],
-        ['Edward I', '1272-1307', 'Conquered Wales, Model Parliament'],
-        ['Henry VIII', '1509-1547', 'Church of England, 6 wives'],
-        ['Elizabeth I', '1558-1603', 'Golden Age, Spanish Armada defeat'],
-        ['Charles I', '1625-1649', 'Executed after Civil War'],
-        ['Charles II', '1660-1685', 'The Restoration'],
-        ['Victoria', '1837-1901', 'Largest empire, longest reign'],
-        ['Elizabeth II', '1952-2022', 'Longest-reigning British monarch'],
-        ['Charles III', '2022-', 'Current monarch'],
+        ['William I (Conqueror)', 'Norman', '1066-1087', 'Norman Conquest, Domesday Book'],
+        ['Henry II', 'Plantagenet', '1154-1189', 'First Plantagenet, common law foundation'],
+        ['John', 'Plantagenet', '1199-1216', 'Magna Carta signed 1215'],
+        ['Edward I', 'Plantagenet', '1272-1307', 'Conquered Wales, Model Parliament'],
+        ['Edward III', 'Plantagenet', '1327-1377', "Start of Hundred Years' War with France"],
+        ['Wars of the Roses', 'Lancaster/York', '1455-1485', 'Lancaster (red rose) vs York (white rose)'],
+        ['Henry VII', 'Tudor', '1485-1509', 'First Tudor king, defeated Richard III at Bosworth'],
+        ['Henry VIII', 'Tudor', '1509-1547', 'Church of England, 6 wives'],
+        ['Elizabeth I', 'Tudor', '1558-1603', 'Golden Age, Spanish Armada defeat'],
+        ['James I', 'Stuart', '1603-1625', 'Union of the Crowns (England & Scotland)'],
+        ['Charles I', 'Stuart', '1625-1649', 'Executed after Civil War'],
+        ['Oliver Cromwell', 'Commonwealth', '1649-1660', 'Lord Protector; Britain without a monarch'],
+        ['Charles II', 'Stuart', '1660-1685', 'The Restoration'],
+        ['James II', 'Stuart', '1685-1688', 'Catholic king; conflict with Parliament'],
+        ['William III & Mary II', 'Stuart', '1689-1702', 'Glorious Revolution; Bill of Rights (1689)'],
+        ['George I', 'Hanover', '1714-1727', 'First Hanoverian king; first PM Robert Walpole'],
+        ['George II', 'Hanover', '1727-1760', 'Defeated Jacobites at Culloden (1746)'],
+        ['Victoria', 'Hanover', '1837-1901', 'Largest empire, 2nd-longest reign'],
+        ['George VI', 'Windsor', '1936-1952', 'Reigned through WWII, after Edward VIII abdication'],
+        ['Elizabeth II', 'Windsor', '1952-2022', 'Longest-reigning British monarch'],
+        ['Charles III', 'Windsor', '2022-', 'Current monarch'],
     ];
     autoTable(doc, {
         startY: y,
-        head: [['Monarch', 'Reign', 'Key Fact']],
+        head: [['Monarch', 'House', 'Reign', 'Key Fact']],
         body: monarchs.map(r => r.map(cleanPDF)),
         theme: 'grid',
         headStyles: { fillColor: [63, 81, 181], fontSize: 8 },
         styles: { fontSize: 7, cellPadding: 2 },
-        columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 25 }, 2: { cellWidth: 'auto' } },
+        columnStyles: { 0: { cellWidth: 38 }, 1: { cellWidth: 24 }, 2: { cellWidth: 20 }, 3: { cellWidth: 'auto' } },
         margin: { left: margin, right: margin },
     });
     y = doc.lastAutoTable.finalY + 10;
@@ -267,11 +283,19 @@ export const generateCheatSheet = (doc, sections, autoTable) => {
     // --- 6. British Inventions & Discoveries ---
     y = sectionTitle('British Inventions & Discoveries', y);
     const inventions = [
+        ['Royal Society', 'Isaac Newton (early member)', '1660s'],
+        ['Carding machine / spinning mills', 'Richard Arkwright', '18th c.'],
+        ['Steam power', 'James Watt', '18th c.'],
+        ['Bessemer process (mass steel)', '-', '19th c.'],
+        ['Railway engine', 'George & Robert Stephenson', '19th c.'],
+        ['Engineering feats (railways, ships)', 'Isambard Kingdom Brunel', '1838-59'],
         ['Television', 'John Logie Baird', '1920s'],
         ['Radar', 'Robert Watson-Watt', '1935'],
         ['Jet Engine', 'Frank Whittle', '1930s'],
+        ['Turing machine', 'Alan Turing', '1930s'],
         ['World Wide Web', 'Tim Berners-Lee', '1990'],
         ['Penicillin', 'Alexander Fleming', '1928'],
+        ['Insulin (co-discoverer)', 'John MacLeod', '1940s'],
         ['DNA Structure', 'Crick & Watson', '1953'],
         ['ATM', 'James Goodfellow', '1967'],
         ['Hovercraft', 'C. Cockerell', '1950s'],
@@ -316,28 +340,99 @@ export const generateCheatSheet = (doc, sections, autoTable) => {
     });
     y = doc.lastAutoTable.finalY + 10;
 
-    // --- 8. Famous British People ---
-    y = sectionTitle('Famous British People', y);
-    const famousPeople = [
-        ['WRITERS', 'Shakespeare, Dickens, Austen, Chaucer, JK Rowling, Agatha Christie'],
-        ['SCIENTISTS', 'Newton, Darwin, Fleming (penicillin), Turing, Hawking'],
-        ['ARTISTS', 'Turner, Constable, Hockney, Banksy'],
-        ['MUSICIANS', 'Beatles, Rolling Stones, Elgar, Handel, Britten'],
-        ['LEADERS', 'Churchill, Thatcher, Attlee, Cromwell, Wilberforce'],
-        ['EXPLORERS', 'Drake, Cook, Shackleton, Francis Chichester'],
-        ['SPORT', 'Bobby Moore, Roger Bannister, Mo Farah, Andy Murray'],
+    // --- 8. Who's Who - Key Figures (grouped by category, from handbook) ---
+    doc.addPage(); y = 20;
+    y = sectionTitle("Who's Who - Key Figures", y);
+    const peopleGroups = [
+        {
+            title: 'Scientists & Inventors',
+            color: [16, 101, 52],
+            rows: [
+                ['Sir Isaac Newton', 'Physicist/mathematician; early Royal Society member; Principia (1687)'],
+                ['Sir Edmund Halley', "Predicted the return of Halley's Comet"],
+                ['James Watt', 'Steam power, drove the Industrial Revolution'],
+                ['Isambard Kingdom Brunel', 'Engineer: tunnels, bridges, Great Western Railway'],
+                ['George & Robert Stephenson', 'Pioneered the railway engine'],
+                ['Ernest Rutherford', "First to 'split the atom'; Manhattan Project"],
+                ['Alexander Fleming', 'Discovered penicillin (1928); Nobel Prize 1945'],
+                ['Sir Robert Watson-Watt', 'Developed radar; first test 1935'],
+                ['Alan Turing', 'Invented the theoretical Turing machine (1930s)'],
+                ['Sir Frank Whittle', 'Developed the jet engine (1930s)'],
+                ['Sir Tim Berners-Lee', 'Invented the World Wide Web (1990)'],
+                ['Adam Smith', 'Enlightenment thinker, economics'],
+                ['David Hume', 'Enlightenment philosopher, human nature'],
+            ],
+        },
+        {
+            title: 'Political Leaders',
+            color: [63, 81, 181],
+            rows: [
+                ['Sir Robert Walpole', 'First Prime Minister (1721-1742)'],
+                ['Admiral Nelson', 'Commanded fleet at Trafalgar (1805), died in battle'],
+                ['The Duke of Wellington', "'Iron Duke'; defeated Napoleon at Waterloo (1815)"],
+                ['Winston Churchill', 'PM from May 1940; led wartime resistance to Nazis'],
+                ['Clement Attlee', 'Labour PM 1945-51; nationalised industries, created NHS'],
+                ['William Beveridge', '1942 Beveridge Report, foundation of welfare state'],
+                ['Richard Austen Butler', 'Education Act 1944 as Education Minister'],
+                ['Margaret Thatcher', 'First woman PM (1979-90); longest-serving 20th c. PM'],
+            ],
+        },
+        {
+            title: 'Artists & Writers',
+            color: [128, 0, 128],
+            rows: [
+                ['William Shakespeare', 'Playwright: Hamlet, Macbeth, Romeo and Juliet'],
+                ['Geoffrey Chaucer', 'The Canterbury Tales'],
+                ['Robert Burns', "Scottish poet 'The Bard'; wrote Auld Lang Syne"],
+                ['Sir Christopher Wren', "Architect: new St Paul's Cathedral after 1666 fire"],
+                ['Thomas Gainsborough', 'Portrait painter'],
+                ['Joseph Turner', 'Landscape painter; Turner Prize named after him'],
+                ['John Constable', 'Landscape painter, Dedham Vale'],
+                ['Jane Austen', 'Pride and Prejudice, Sense and Sensibility'],
+                ['Charles Dickens', 'Oliver Twist, Great Expectations'],
+                ['Sir Arthur Conan Doyle', 'Sherlock Holmes stories'],
+                ['J K Rowling', 'Harry Potter series'],
+                ['John Milton', 'Paradise Lost'],
+                ['William Wordsworth', 'Poet inspired by nature'],
+                ['Sir Walter Scott', 'Poems & novels inspired by Scotland'],
+                ['Lord Byron', "'She Walks in Beauty'"],
+                ['Dylan Thomas', 'Welsh poet; Under Milk Wood'],
+                ['Roald Dahl', 'Children\'s author, RAF veteran'],
+                ['George Frederick Handel', 'Water Music, Messiah'],
+                ['Gustav Holst', 'The Planets suite'],
+                ['Sir Edward Elgar', 'Pomp and Circumstance Marches'],
+                ['Benjamin Britten', 'Operas: Peter Grimes, Billy Budd'],
+                ['Dame Agatha Christie', 'The Mousetrap; detective novels'],
+            ],
+        },
+        {
+            title: 'Reformers & Trailblazers',
+            color: [204, 128, 0],
+            rows: [
+                ['Boudicca', 'Queen of the Iceni; led revolt against Romans'],
+                ['William Wilberforce', 'Led campaign to end the slave trade'],
+                ['Florence Nightingale', 'Founder of modern nursing; Crimean War (1854)'],
+                ['Emmeline Pankhurst', "Founded WSPU (1903); 'suffragettes'"],
+                ['Mary Peters', 'Olympic gold, pentathlon, 1972 Munich'],
+            ],
+        },
     ];
-    autoTable(doc, {
-        startY: y,
-        head: [['Category', 'Notable Names']],
-        body: famousPeople.map(r => r.map(cleanPDF)),
-        theme: 'grid',
-        headStyles: { fillColor: [128, 0, 128], fontSize: 8 },
-        styles: { fontSize: 7, cellPadding: 2 },
-        columnStyles: { 0: { cellWidth: 30, fontStyle: 'bold' }, 1: { cellWidth: 'auto' } },
-        margin: { left: margin, right: margin },
+    peopleGroups.forEach((group) => {
+        if (y > 250) { doc.addPage(); y = 20; }
+        y = bodyText(group.title, y, 10);
+        y += 1;
+        autoTable(doc, {
+            startY: y,
+            head: [['Name', 'Achievement']],
+            body: group.rows.map(r => r.map(cleanPDF)),
+            theme: 'grid',
+            headStyles: { fillColor: group.color, fontSize: 8 },
+            styles: { fontSize: 7, cellPadding: 2 },
+            columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 'auto' } },
+            margin: { left: margin, right: margin },
+        });
+        y = doc.lastAutoTable.finalY + 8;
     });
-    y = doc.lastAutoTable.finalY + 10;
 
     // --- 9. UK Holidays & Festivals ---
     y = sectionTitle('UK Holidays & Festivals', y);
@@ -388,6 +483,35 @@ export const generateCheatSheet = (doc, sections, autoTable) => {
         headStyles: { fillColor: [0, 100, 0], fontSize: 8 },
         styles: { fontSize: 7, cellPadding: 2 },
         columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 'auto' } },
+        margin: { left: margin, right: margin },
+    });
+    y = doc.lastAutoTable.finalY + 10;
+
+    // --- 10b. Elections & Voting ---
+    if (y > 220) { doc.addPage(); y = 20; }
+    y = sectionTitle('Elections & Voting', y);
+    const elections = [
+        ['Voting system', 'First past the post - most votes in a constituency wins'],
+        ['Minimum voting age', '18 (set in 1969, reduced from 21)'],
+        ['Age to stand for election (MP)', '18 or over'],
+        ['General elections held', 'At least every 5 years (max between elections)'],
+        ['Polling hours', '7.00 am - 10.00 pm'],
+        ['Houses of Parliament', 'House of Commons (elected, 650 MPs) & House of Lords (unelected)'],
+        ['Why Commons is more important', 'Members are democratically elected; PM & most Cabinet are MPs'],
+        ['Lords membership since 1958', "PM can nominate 'life peers' for their own lifetime"],
+        ['Hereditary peers since 1999', 'Lost automatic right to sit; elect a few to represent them'],
+        ['Who chairs Commons debates', 'The Speaker - neutral, chosen by MPs in secret ballot'],
+        ['Electoral register', 'Register via local council; updated each Sept/Oct'],
+        ['Barred from standing', 'Armed forces, civil servants, certain criminals'],
+    ];
+    autoTable(doc, {
+        startY: y,
+        head: [['Fact', 'Detail']],
+        body: elections.map(r => r.map(cleanPDF)),
+        theme: 'grid',
+        headStyles: { fillColor: [63, 81, 181], fontSize: 8 },
+        styles: { fontSize: 7, cellPadding: 2 },
+        columnStyles: { 0: { cellWidth: 55 }, 1: { cellWidth: 'auto' } },
         margin: { left: margin, right: margin },
     });
     y = doc.lastAutoTable.finalY + 10;

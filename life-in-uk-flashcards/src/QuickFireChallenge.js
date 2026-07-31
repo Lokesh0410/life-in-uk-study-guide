@@ -1,14 +1,60 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { mockExams } from './mockExamsData';
-import { weightQuestionsBySpacedRepetition, updateMissedQuestions, markQuestionRecovered, getWeakTopics } from './spacedRepetition';
+import { weightQuestionsBySpacedRepetition, updateMissedQuestions, markQuestionRecovered, getMissedQuestionTexts } from './spacedRepetition';
 import { getBestStreaks, recordStreakResult } from './quickFireStats';
 
 const TOTAL_TIME = 60;
 const AUTO_ADVANCE_DELAY = 3000; // 3 seconds to read explanation
 const MIXED = 'Mixed';
-const WEAK_SPOTS = 'My Weak Spots';
+const MY_MISTAKES = 'Retest My Mistakes';
 
-const QuickFireChallenge = ({ onClose }) => {
+// Emoji per raw topic tag (src/mockExamsData.js), so the Quick Fire topic
+// dropdown reads consistently regardless of which topics rank in the top 5.
+const TOPIC_EMOJI = {
+    '20th Century & Modern Britain': '🏙️',
+    'Anglo-Saxons & Vikings': '⚔️',
+    'Arts & Science': '🎨',
+    'Arts, Literature & Culture': '🎭',
+    'Britain & the World': '🌐',
+    'British Inventions & Discoveries': '💡',
+    'British Values & Principles (Detailed)': '🤝',
+    'British Values': '🤝',
+    'Community & Citizenship': '🏘️',
+    'Customs & Traditions': '🎉',
+    'Early Britain & Prehistory': '🏺',
+    'Early History': '🏺',
+    'Elections & Voting': '🗳️',
+    'Enlightenment & Empire': '📚',
+    'Everyday Life': '🏡',
+    'Food & Leisure': '🍽️',
+    'Global Power & Empire': '🌍',
+    'Government & Law': '⚖️',
+    'Human Rights & Equal Opportunities': '✊',
+    'Justice System': '⚖️',
+    'Key Dates & Quick Facts': '📅',
+    'Legal System & Courts': '⚖️',
+    'Literature & Writers': '✍️',
+    'Local Government': '🏛️',
+    'Middle Ages & Rights': '🏰',
+    'Migration & Citizenship': '🛂',
+    'Modern Society & Demographics': '👥',
+    'Norman Conquest & Middle Ages': '🏰',
+    'Parliament & Government': '🏛️',
+    'Places of Interest': '📍',
+    'Religion & Faith': '⛪',
+    'Roman Britain': '🛡️',
+    'Sports & Icons': '🏅',
+    'Symbols & Saints': '🏴',
+    'Taxation & Driving': '🚗',
+    'The 20th Century': '🏙️',
+    'The 4 Nations': '🇬🇧',
+    'The Monarchy': '👑',
+    'Traditions & Holidays': '🎉',
+    'Tudors & Stuarts (Detailed)': '👒',
+    'Tudors & Stuarts': '👒',
+};
+
+const QuickFireChallenge = ({ onClose, isPremium, onUnlockPremium }) => {
     const [phase, setPhase] = useState('intro'); // 'intro' | 'playing' | 'finished'
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,6 +68,7 @@ const QuickFireChallenge = ({ onClose }) => {
     const [history, setHistory] = useState([]); // { question, chosen, correct, isCorrect }
     const [selectedTopic, setSelectedTopic] = useState(MIXED);
     const [bestStreaks, setBestStreaks] = useState(() => getBestStreaks());
+    const [poolEmptyWarning, setPoolEmptyWarning] = useState(false);
     const timerRef = useRef(null);
     const advanceRef = useRef(null);
 
@@ -49,11 +96,9 @@ const QuickFireChallenge = ({ onClose }) => {
         return counts;
     }, [allQuestions]);
 
-    const TOP_TOPICS_COUNT = 10;
+    const TOP_TOPICS_COUNT = 5;
 
-    // Weak topics are derived from the user's actual missed-question history
-    // (spacedRepetition.js), so this option only appears once they have some.
-    const weakTopics = useMemo(() => getWeakTopics(3), []);
+    const missedTexts = useMemo(() => getMissedQuestionTexts(), []);
 
     const topics = useMemo(() => {
         const topByVolume = Object.entries(topicCounts)
@@ -61,18 +106,18 @@ const QuickFireChallenge = ({ onClose }) => {
             .slice(0, TOP_TOPICS_COUNT)
             .map(([topic]) => topic);
         const options = [MIXED, ...topByVolume];
-        if (weakTopics.length > 0) options.splice(1, 0, WEAK_SPOTS);
+        if (missedTexts.length > 0) options.splice(1, 0, MY_MISTAKES);
         return options;
-    }, [topicCounts, weakTopics]);
+    }, [topicCounts, missedTexts]);
 
     const MIN_POOL_SIZE = 20;
 
     // Shuffle and pick questions, filtered by topic if one is selected
     const prepareQuestions = useCallback((topic) => {
         let pool;
-        if (topic === WEAK_SPOTS) {
-            const weakTopicNames = new Set(getWeakTopics(3).map(t => t.topic));
-            pool = allQuestions.filter(q => weakTopicNames.has(q.topic));
+        if (topic === MY_MISTAKES) {
+            const missedTextSet = new Set(getMissedQuestionTexts());
+            pool = allQuestions.filter(q => missedTextSet.has(q.text));
         } else if (topic && topic !== MIXED) {
             pool = allQuestions.filter(q => q.topic === topic);
         } else {
@@ -94,7 +139,16 @@ const QuickFireChallenge = ({ onClose }) => {
     }, [allQuestions]);
 
     const startGame = () => {
+        if (selectedTopic === MY_MISTAKES && !isPremium) {
+            onUnlockPremium && onUnlockPremium();
+            return;
+        }
         const shuffled = prepareQuestions(selectedTopic);
+        if (shuffled.length === 0) {
+            setPoolEmptyWarning(true);
+            return;
+        }
+        setPoolEmptyWarning(false);
         setQuestions(shuffled);
         setCurrentIndex(0);
         setScore(0);
@@ -296,7 +350,7 @@ const QuickFireChallenge = ({ onClose }) => {
                     <p className="text-slate-600 dark:text-slate-300 mb-6">60 seconds of rapid-fire questions. Answer as many as you can!</p>
                     <div className="bg-indigo-50 dark:bg-indigo-950 rounded-xl p-4 mb-6 text-left text-sm text-slate-700 dark:text-slate-300 space-y-2">
                         <p>⏱️ <strong>60 seconds</strong> on the clock</p>
-                        <p>⚡ Answer fast — questions auto-advance after 3s (single choice)</p>
+                        <p>⚡ Answer fast: questions auto-advance after 3s (single choice)</p>
                         <p>🔥 Build streaks for bonus points</p>
                         <p>🎯 Choose a topic below, or go mixed</p>
                         <p>🔙 You can go back to review previous questions</p>
@@ -307,15 +361,25 @@ const QuickFireChallenge = ({ onClose }) => {
                         <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Topic</label>
                         <select
                             value={selectedTopic}
-                            onChange={(e) => setSelectedTopic(e.target.value)}
+                            onChange={(e) => { setSelectedTopic(e.target.value); setPoolEmptyWarning(false); }}
                             className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         >
                             {topics.map(topic => (
                                 <option key={topic} value={topic}>
-                                    {topic === MIXED ? '🎲 Mixed (all topics)' : topic === WEAK_SPOTS ? '🎯 My Weak Spots' : topic}
+                                    {topic === MIXED ? '🎲 Mixed (all topics)' : topic === MY_MISTAKES ? `🔒 Retest My Mistakes${isPremium ? '' : ' (Premium)'}` : `${TOPIC_EMOJI[topic] || '📖'} ${topic}`}
                                 </option>
                             ))}
                         </select>
+                        {selectedTopic === MY_MISTAKES && !isPremium && (
+                            <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                                🔒 Premium feature: retest only the {missedTexts.length} question{missedTexts.length === 1 ? '' : 's'} you've gotten wrong before. Unlock to start.
+                            </p>
+                        )}
+                        {poolEmptyWarning && (
+                            <p className="text-xs text-red-600 dark:text-red-400 mt-2">
+                                ⚠️ No matching questions found for this selection right now. Try Mixed instead, or answer a few more questions first so we have mistakes to retest.
+                            </p>
+                        )}
                         {(bestStreaks.overall > 0 || (selectedTopic !== MIXED && bestStreaks.byTopic[selectedTopic])) && (
                             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                                 🏆 Best streak {selectedTopic === MIXED ? 'overall' : `in ${selectedTopic}`}: <strong>{selectedTopic === MIXED ? bestStreaks.overall : (bestStreaks.byTopic[selectedTopic] || 0)}</strong>
@@ -327,7 +391,7 @@ const QuickFireChallenge = ({ onClose }) => {
                         onClick={startGame}
                         className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all shadow-md"
                     >
-                        🚀 Start Challenge!
+                        {selectedTopic === MY_MISTAKES && !isPremium ? '🔓 Unlock Premium to Start' : '🚀 Start Challenge!'}
                     </button>
                     <button onClick={onClose} className="mt-3 text-sm text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition">Cancel</button>
                 </div>
@@ -408,7 +472,8 @@ const QuickFireChallenge = ({ onClose }) => {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
                 <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-8 shadow-2xl text-center">
-                    <p className="text-xl text-slate-900 dark:text-slate-100">Loading questions...</p>
+                    <p className="text-xl text-slate-900 dark:text-slate-100 mb-4">No questions available for this round.</p>
+                    <button onClick={onClose} className="w-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition">Close</button>
                 </div>
             </div>
         );

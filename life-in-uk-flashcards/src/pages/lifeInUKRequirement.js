@@ -34,7 +34,7 @@ const lifeInUKRequirement = {
     ],
 
     introduction: `
-The Life in the UK Test is a requirement for many people applying for
+The [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test) is a requirement for many people applying for
 Indefinite Leave to Remain or British citizenship.
 
 The test checks knowledge of life in the United Kingdom, including history,
@@ -96,40 +96,39 @@ Practice questions can help learners become familiar with the format.
         {
             heading: "Booking the test",
             content: `
-You must book the Life in the UK Test online, at least 3 days in advance, through the only
+You must [book the Life in the UK Test online](https://www.gov.uk/life-in-the-uk-test/book-life-in-uk-test), at least 3 days in advance, through the only
 official government booking service.
 
-The test currently costs £50 (always check GOV.UK for the current fee, as prices can change).
+Key booking facts:
 
-There are over 30 test centres across the UK, and you choose which one to use when you book.
-
-To book, you need an email address, a debit or credit card, and an accepted form of ID. If you
-have an eVisa, you can use a share code to book instead of a physical document — see our
-eVisa guide for how to generate one. The name on your booking must exactly match the name on
-your ID.
-
-You do not need to take the test if you are under 18, are 65 or over, have already passed it
-before, or have a long-term physical or mental condition supported by an exemption form or
-doctor's letter.
+- The test currently costs £50 (always check GOV.UK for the current fee, as prices can change).
+- There are over 30 test centres across the UK, and you choose which one to use when you book.
+- To book, you need an email address, a debit or credit card, and an accepted form of ID.
+- If you have an eVisa, you can use a share code to book instead of a physical document, see our
+  eVisa guide for how to generate one.
+- The name on your booking must exactly match the name on your ID.
+- You do not need to take the test if you are under 18, are 65 or over, have already passed it
+  before, or have a long-term physical or mental condition supported by an exemption form or
+  doctor's letter.
 `
         },
 
         {
             heading: "What happens at the test",
             content: `
-You have 45 minutes to answer 24 questions based on the official Life in the UK handbook. You
-cannot bring children or other family members into the test centre.
+On the day, here is what to expect:
 
-You must bring the same original ID you used to book (not a copy or screenshot), and your photo
-will be taken on the day to confirm your identity. You will not be able to take the test, and
-will not get a refund, if you bring the wrong ID or refuse to have your photo taken.
-
-If you pass, you'll receive a unique reference number, which you need for your citizenship or
-settlement application. If you fail, you can rebook as many times as you need, paying the fee
-each time.
-
-If you cancel or rearrange at least 3 days (72 hours) before your test, you get a refund. Cancelling
-or rearranging within 3 days does not qualify for a refund.
+- You have 45 minutes to answer 24 questions based on the official [Life in the UK handbook](https://www.gov.uk/life-in-the-uk-test/what-happens-test).
+- You cannot bring children or other family members into the test centre.
+- You must bring the same original ID you used to book (not a copy or screenshot), and your photo
+  will be taken on the day to confirm your identity.
+- You will not be able to take the test, and will not get a refund, if you bring the wrong ID or
+  refuse to have your photo taken.
+- If you pass, you'll receive a unique reference number, which you need for your citizenship or
+  settlement application.
+- If you fail, you can rebook as many times as you need, paying the fee each time.
+- If you cancel or rearrange at least 3 days (72 hours) before your test, you get a refund.
+  Cancelling or rearranging within 3 days does not qualify for a refund.
 `
         }
     ],

@@ -34,8 +34,9 @@ const dualCitizenship = {
     ],
 
     introduction: `
-Dual citizenship (also known as dual nationality) is allowed in the UK. This means
-you can be a British citizen and also a citizen of one or more other countries.
+[Dual citizenship](https://www.gov.uk/dual-citizenship) (also known as dual
+nationality) is allowed in the UK. This means you can be a British citizen and
+also a citizen of one or more other countries.
 
 You do not need to apply for dual citizenship. You can apply for foreign citizenship
 and keep your British citizenship.
@@ -90,7 +91,7 @@ As a dual national, you can travel to the UK using either:
 - a certificate of entitlement
 
 If you're not a British citizen, you will need permission to travel to the UK, for
-example an electronic travel authorisation (ETA).
+example an [electronic travel authorisation (ETA)](https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta).
 
 **Travelling with an expired UK passport:** your carrier (for example, your airline)
 may allow you to travel if you have both an expired UK passport (issued in 1989 or
@@ -111,7 +112,7 @@ account if your passport or ID card has changed.
             heading: "Dual citizenship, marriage and children",
             content: `
 You do not automatically become a British citizen when you marry a British person.
-You need to apply as the spouse of a British citizen.
+You need to [apply as the spouse of a British citizen](https://www.gov.uk/settle-in-the-uk).
 
 In some countries, a married person automatically takes their partner's
 nationality, and children may automatically have a parent's nationality even if
@@ -132,12 +133,12 @@ find out about its rules on dual nationality.
         {
             question: "Does the UK allow dual citizenship?",
             answer:
-                "Yes. Dual citizenship (dual nationality) is allowed in the UK — you can be a British citizen and a citizen of other countries at the same time."
+                "Yes. Dual citizenship (dual nationality) is allowed in the UK: you can be a British citizen and a citizen of other countries at the same time."
         },
         {
             question: "Do I need to apply for dual citizenship?",
             answer:
-                "No. You do not need to apply for dual citizenship separately — you can apply for foreign citizenship and keep your British citizenship."
+                "No. You do not need to apply for dual citizenship separately: you can apply for foreign citizenship and keep your British citizenship."
         },
         {
             question: "Will I lose my British citizenship if I get another nationality?",
@@ -152,7 +153,7 @@ find out about its rules on dual nationality.
         {
             question: "Do I become British automatically if I marry a British citizen?",
             answer:
-                "No. You need to apply as the spouse of a British citizen — marriage does not automatically grant British citizenship."
+                "No. You need to apply as the spouse of a British citizen: marriage does not automatically grant British citizenship."
         }
     ],
 

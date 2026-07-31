@@ -32,8 +32,24 @@ function setCanonical(href) {
     tag.setAttribute("href", href);
 }
 
-// Updates title, meta description, canonical, and Open Graph/Twitter tags for the current route.
-export default function useDocumentMeta({ title, description, path }) {
+const JSON_LD_ID = "route-json-ld";
+
+function setJsonLd(jsonLd) {
+    const existing = document.getElementById(JSON_LD_ID);
+    if (existing) existing.remove();
+    if (!jsonLd) return;
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = JSON_LD_ID;
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+}
+
+// Updates title, meta description, canonical, Open Graph/Twitter tags, and
+// JSON-LD structured data for the current route. `jsonLd` accepts a single
+// schema.org object or an array of them (e.g. an Article plus a BreadcrumbList).
+export default function useDocumentMeta({ title, description, path, jsonLd }) {
     useEffect(() => {
         if (!title) return;
         const canonicalUrl = `${SITE_URL}${path || ""}`;
@@ -48,5 +64,9 @@ export default function useDocumentMeta({ title, description, path }) {
 
         setMetaByName("twitter:title", title);
         if (description) setMetaByName("twitter:description", description);
-    }, [title, description, path]);
+
+        setJsonLd(jsonLd);
+
+        return () => setJsonLd(null);
+    }, [title, description, path, jsonLd]);
 }

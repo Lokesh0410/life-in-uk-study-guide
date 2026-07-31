@@ -9,6 +9,18 @@ command = "npm run build"
 publish = "build"
 functions = "netlify/functions"
 
+  [build.environment]
+  # Pin Puppeteer's Chrome download to a project-relative path so
+  # netlify-plugin-cache can persist it across builds (avoids re-downloading
+  # ~150MB+ of Chrome on every single build).
+  PUPPETEER_CACHE_DIR = "/opt/build-cache/puppeteer"
+
+[[plugins]]
+package = "netlify-plugin-cache"
+
+  [plugins.inputs]
+  paths = ["/opt/build-cache/puppeteer"]
+
 [[redirects]]
 from = "/*"
 to = "/index.html"

@@ -67,14 +67,14 @@ const TestDatePicker = () => {
             return {
                 emoji: '🔥',
                 title: 'Your test is very soon!',
-                message: `Only ${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} to go! Focus on quick revision — review your weak flashcards and take a mock exam to check your readiness.`
+                message: `Only ${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} to go! Focus on quick revision: review your weak flashcards and take a mock exam to check your readiness.`
             };
         }
         if (daysLeft <= 30) {
             return {
                 emoji: '🎯',
                 title: 'Perfect timing!',
-                message: `You have ${daysLeft} days — that's enough time for our structured 7-day study plan. On average, it takes 2 to 3 weeks to prepare thoroughly.`
+                message: `You have ${daysLeft} days, that's enough time for our structured 7-day study plan. On average, it takes 2 to 3 weeks to prepare thoroughly.`
             };
         }
         if (daysLeft <= 365) {

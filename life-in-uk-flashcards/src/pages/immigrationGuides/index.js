@@ -14,6 +14,7 @@ import evisa from "../evisa";
 import citizenshipCeremony from "../citizenshipCeremony";
 import britishPassport from "../britishPassport";
 import dualCitizenship from "../dualCitizenship";
+import skilledWorkerRedundancy from "../skilledWorkerRedundancy";
 
 // All guides in a single array
 const allGuides = [
@@ -30,6 +31,7 @@ const allGuides = [
     citizenshipCeremony,
     britishPassport,
     dualCitizenship,
+    skilledWorkerRedundancy,
 ];
 
 // Lookup by slug for route matching

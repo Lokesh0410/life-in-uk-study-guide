@@ -18,8 +18,8 @@ const citizenshipCeremony = {
     },
 
     introduction: `
-A citizenship ceremony is the final stage for many successful British citizenship
-applications.
+A [citizenship ceremony](https://www.gov.uk/citizenship-ceremonies) is the final
+stage for many successful British citizenship applications.
 
 Applicants become British citizens after completing the ceremony process and
 receiving their certificate of citizenship.
@@ -32,15 +32,15 @@ receiving their certificate of citizenship.
 You must attend a citizenship ceremony within 3 months of receiving your invitation
 from the Home Office.
 
-Your local authority organises your citizenship ceremony, and you book it with
-them. Ceremonies are usually done in groups, but you can ask for a private ceremony
-if you prefer — your local authority can tell you if there's an extra cost for this.
+Booking your ceremony involves a few key points:
 
-You must take your invitation with you to the ceremony, and you're usually allowed
-to take 2 guests.
-
-If you become a British citizen under the Windrush scheme, you can choose whether
-to attend a ceremony, and you will not have to pay the fee.
+- Your local authority organises your citizenship ceremony, and you book it with them
+- Ceremonies are usually done in groups, but you can ask for a private ceremony if
+  you prefer, your local authority can tell you if there's an extra cost for this
+- You must take your invitation with you to the ceremony, and you're usually
+  allowed to take 2 guests
+- If you become a British citizen under the Windrush scheme, you can choose
+  whether to attend a ceremony, and you will not have to pay the fee
 `
         },
 
@@ -50,7 +50,7 @@ to attend a ceremony, and you will not have to pay the fee.
 The cost of your ceremony is included in your citizenship application fee, so you
 do not pay separately for a standard group ceremony.
 
-You might need to pay more for a private ceremony — check the cost with your local
+You might need to pay more for a private ceremony, check the cost with your local
 authority.
 `
         },
@@ -93,8 +93,8 @@ of the event.
 After completing the ceremony, applicants receive a certificate of British
 citizenship.
 
-This certificate is important evidence of citizenship and is needed for a first
-British passport application.
+This certificate is important evidence of citizenship and is needed for a
+[first British passport application](https://www.gov.uk/apply-first-adult-passport).
 `
         },
 
@@ -105,7 +105,7 @@ You will not need to attend a citizenship ceremony if you're registering to beco
 a British overseas territories citizen, British overseas citizen, or British
 subject.
 
-You'll still need to make an oath or affirmation of allegiance — you'll be sent
+You'll still need to make an oath or affirmation of allegiance, you'll be sent
 details of how to do this.
 `
         },
@@ -146,7 +146,7 @@ passport.
         {
             question: "How much does a citizenship ceremony cost?",
             answer:
-                "The cost is included in your citizenship application fee. A private ceremony may cost extra — check with your local authority."
+                "The cost is included in your citizenship application fee. A private ceremony may cost extra, check with your local authority."
         },
         {
             question: "Can I bring guests to my citizenship ceremony?",
@@ -156,7 +156,7 @@ passport.
         {
             question: "Can I have my citizenship ceremony abroad?",
             answer:
-                "In some cases, yes — ask the embassy or consulate where you live. But if you applied for citizenship while in the UK, you cannot have your ceremony abroad."
+                "In some cases, yes: ask the embassy or consulate where you live. But if you applied for citizenship while in the UK, you cannot have your ceremony abroad."
         }
     ],
 

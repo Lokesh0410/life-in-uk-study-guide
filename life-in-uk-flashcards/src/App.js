@@ -1,30 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import './App.css';
 import FlashCard from "./FlashCard";
-import MockExam from "./MockExam";
 import { sections } from "./studyGuideData";
 import PremiumModal from "./PremiumModal";
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import LazyCardWrapper from "./LazyCardWrapper";
 import Pricing from "./pages/Pricing";
+import StudyGuideIndex from "./pages/StudyGuideIndex";
 import BritishHistory from "./pages/BritishHistory";
+import CultureAndTraditions from "./pages/CultureAndTraditions";
+import PatronSaintsAndSymbols from "./pages/PatronSaintsAndSymbols";
+import FestivalsAndCelebrations from "./pages/FestivalsAndCelebrations";
+import SportsAndTraditions from "./pages/SportsAndTraditions";
+import ModernBritain from "./pages/ModernBritain";
+import HumanRightsAndCitizenship from "./pages/HumanRightsAndCitizenship";
+import TaxationAndDriving from "./pages/TaxationAndDriving";
+import BritainInTheWorld from "./pages/BritainInTheWorld";
+import MonarchsTimeline from "./pages/MonarchsTimeline";
+import PeopleMatrix from "./pages/PeopleMatrix";
+import InventionsTimeline from "./pages/InventionsTimeline";
+import KeyDatesTimeline from "./pages/KeyDatesTimeline";
 import GovernmentAndLaw from "./pages/GovernmentAndLaw";
+import ElectionsCheatSheet from "./pages/ElectionsCheatSheet";
+import DevolvedNations from "./pages/DevolvedNations";
+import CourtHierarchy from "./pages/CourtHierarchy";
 import ILRGuide from "./pages/ILRGuide";
 import GuidePage from "./pages/GuidePage";
 import CheatSheet from "./pages/CheatSheet";
+import FreeCheatSheet from "./pages/FreeCheatSheet";
 import { guideBySlug } from "./pages/immigrationGuides/index";
-import QuickFireChallenge from "./QuickFireChallenge";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
 import ErrorBoundary from "./ErrorBoundary";
 import { useDarkMode } from "./useDarkMode";
 import useDocumentMeta from "./useDocumentMeta";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"; // Import react-router-dom components
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigationType } from "react-router-dom"; // Import react-router-dom components
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import confetti from "canvas-confetti";
 import { safeGetItem, safeSetItem } from "./safeStorage";
 import { generateCheatSheet } from "./utils/generateCheatSheet";
+
+// Code-split: both pull in mockExamsData.js (14k+ lines), so keep them
+// out of the main bundle — most visitors (SEO/guide-page traffic) never touch either.
+const MockExam = lazy(() => import("./MockExam"));
+const QuickFireChallenge = lazy(() => import("./QuickFireChallenge"));
 
 const PREMIUM_KEY = 'lifeInUkPremium';
 
@@ -70,7 +90,7 @@ const PrivacyModal = ({ isOpen, onClose }) => {
           <h4 className="font-semibold text-gray-800 dark:text-slate-200">What we collect</h4>
           <ul className="list-disc pl-5 space-y-1">
             <li><strong>Payment information:</strong> When you purchase Premium, your payment is processed securely by <strong>Stripe</strong>. We do not store your card details. Stripe stores your email address to process the transaction.</li>
-            <li><strong>Local data:</strong> Your exam results and premium status are stored in your browser's localStorage only — we do not store this on any server.</li>
+            <li><strong>Local data:</strong> Your exam results and premium status are stored in your browser's localStorage only. We do not store this on any server.</li>
             <li><strong>Contact form:</strong> If you contact us via the in-app form, your name, email, and message are sent to us via Formspree.</li>
           </ul>
           <h4 className="font-semibold text-gray-800 dark:text-slate-200">How we use it</h4>
@@ -199,7 +219,7 @@ function CheatSheetPage({ isPremium, onUnlockPremium, onDownloadPdf }) {
         <div className="text-6xl mb-4">🔒</div>
         <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Premium Cheat Sheet is locked</h2>
         <p className="text-slate-500 dark:text-slate-400 mb-6">
-          Unlock the full visual quick-reference guide — timeline, government structure, key dates, monarchs, patron saints, British values, and more — plus a downloadable PDF version.
+          Unlock the full visual quick-reference guide: timeline, government structure, key dates, monarchs, patron saints, British values, and more, plus a downloadable PDF version.
         </p>
         <button
           onClick={onUnlockPremium}
@@ -226,12 +246,27 @@ function CheatSheetPage({ isPremium, onUnlockPremium, onDownloadPdf }) {
   );
 }
 
-// Scroll to top on every route change, and restore homepage meta when back on "/"
+// Remembers each page's scroll position across navigations (Link clicks and
+// browser back/forward alike), so returning to a page you've visited before
+// restores where you were instead of always snapping to the top.
+const scrollPositions = new Map();
+
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const saved = scrollPositions.get(pathname);
+    if (saved !== undefined) {
+      window.scrollTo(0, saved);
+    } else if (navigationType !== "POP") {
+      window.scrollTo(0, 0);
+    }
+
+    return () => {
+      scrollPositions.set(pathname, window.scrollY);
+    };
+  }, [pathname, navigationType]);
 
   useDocumentMeta({
     title: pathname === "/" ? "Life in the UK Mock Test 2026 | Free Practice Questions & Flashcards" : undefined,
@@ -242,9 +277,60 @@ function ScrollToTop() {
   return null;
 }
 
+function PromoBanner({ isPremium, onUnlockPremium }) {
+  const { pathname } = useLocation();
+
+  if (isPremium) return null;
+
+  if (pathname === "/") {
+    return (
+      <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950 border border-indigo-100 dark:border-indigo-900 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
+        <p className="text-[11px] text-indigo-600 dark:text-indigo-400 font-semibold mb-2">
+          📊 The national first-time pass rate is around 70–75%: preparation makes the difference.
+        </p>
+        <p className="text-sm text-slate-700 dark:text-slate-200 font-medium mb-1">
+          🚀 Want to pass in 5 days?
+        </p>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
+          Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
+        </p>
+        <button
+          onClick={onUnlockPremium}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
+        >
+          Get 5-Day Guaranteed Path (£7.99)
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 flex justify-center">
+      <button
+        onClick={onUnlockPremium}
+        className="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-900 text-indigo-700 dark:text-indigo-300 text-[11px] font-semibold px-3 py-1.5 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900 transition shadow-sm"
+      >
+        🚀 Get 5-Day Guaranteed Path (£7.99)
+      </button>
+    </div>
+  );
+}
+
+// Nav pill/tab whose active state is derived from the current route rather
+// than the legacy `view` state var, so it stays in sync for every page
+// (including ones like Study Guide that don't call setView).
+function NavPill({ to, activeClass, inactiveClass, onClick, children }) {
+  const { pathname } = useLocation();
+  const isActive = to === "/" ? pathname === "/" : pathname.startsWith(to);
+  return (
+    <Link to={to} onClick={onClick} className={isActive ? activeClass : inactiveClass}>
+      {children}
+    </Link>
+  );
+}
+
 export default function App() {
   const { isDark, toggleTheme } = useDarkMode();
-  const [view, setView] = useState("flashcards"); // "flashcards" or "mockExam"
   const [isPremium, setIsPremium] = useState(() => safeGetItem(PREMIUM_KEY) === "true");
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showPremiumSuccess, setShowPremiumSuccess] = useState(false);
@@ -443,7 +529,7 @@ export default function App() {
         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-4 md:p-8 pb-20 md:pb-8 font-sans transition-colors">
 
           <div className="max-w-6xl mx-auto">
-            <header className="text-center mb-12">
+            <header className="text-center mb-6">
               <div className="flex justify-end mb-2">
                 <button
                   onClick={toggleTheme}
@@ -453,50 +539,46 @@ export default function App() {
                   {isDark ? "☀️" : "🌙"}
                 </button>
               </div>
-              <h1 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-2">✅ Life in the UK Mock Test — Pass First Time!</h1>
+              <h1 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-2">✅ Pass First Time with Your AI Coach</h1>
               <p className="text-slate-700 dark:text-slate-300 font-medium">
-                Access 45 realistic mock exams, instant feedback, and a structured study approach.
+                45 mock exams that adapt to your weak spots, so every minute of practice counts.
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                The ultimate online platform for your British Citizenship and ILR 2026 preparation.
+                The only adaptive prep platform for British Citizenship and ILR 2026.
               </p>
               <div className="mt-4 flex justify-center">
                 <TestDatePicker />
               </div>
               {/* Desktop nav: pill row (hidden on mobile, replaced by bottom tab bar) */}
               <nav className="hidden md:flex mt-4 flex-wrap justify-center gap-4">
-                <Link
+                <NavPill
                   to="/"
-                  className={`px-4 py-2 rounded-full font-medium transition text-base ${view === "flashcards" ? "bg-indigo-600 text-white" : "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
-                    }`}
-                  onClick={() => setView("flashcards")}
+                  activeClass="px-4 py-2 rounded-full font-medium transition text-base bg-indigo-600 text-white"
+                  inactiveClass="px-4 py-2 rounded-full font-medium transition text-base bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
                 >
                   📚 Flashcards
-                </Link>
-                <Link
+                </NavPill>
+                <NavPill
                   to="/mock-exams"
-                  className={`px-4 py-2 rounded-full font-medium transition text-base ${view === "mockExam" ? "bg-indigo-600 text-white" : "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
-                    }`}
-                  onClick={() => setView("mockExam")}
+                  activeClass="px-4 py-2 rounded-full font-medium transition text-base bg-indigo-600 text-white"
+                  inactiveClass="px-4 py-2 rounded-full font-medium transition text-base bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
                 >
                   📝 Mock Exams
-                </Link>
-                <Link
+                </NavPill>
+                <NavPill
+                  to="/study-guide"
+                  activeClass="px-4 py-2 rounded-full font-medium transition text-base bg-indigo-600 text-white"
+                  inactiveClass="px-4 py-2 rounded-full font-medium transition text-base bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
+                >
+                  📚 Study Guide
+                </NavPill>
+                <NavPill
                   to="/ilr-guide"
-                  className={`px-4 py-2 rounded-full font-medium transition text-base ${view === "ilrGuide" ? "bg-indigo-600 text-white" : "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
-                    }`}
-                  onClick={() => setView("ilrGuide")}
+                  activeClass="px-4 py-2 rounded-full font-medium transition text-base bg-indigo-600 text-white"
+                  inactiveClass="px-4 py-2 rounded-full font-medium transition text-base bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
                 >
                   🇬🇧 ILR Guide
-                </Link>
-                <Link
-                  to="/pricing"
-                  className={`px-4 py-2 rounded-full font-medium transition text-base ${view === "pricing" ? "bg-indigo-600 text-white" : "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-indigo-300 dark:border-slate-700"
-                    }`}
-                  onClick={() => setView("pricing")}
-                >
-                  ⭐ Pricing
-                </Link>
+                </NavPill>
                 <button
                   onClick={() => setShowQuickFire(true)}
                   className="px-4 py-2 rounded-full font-medium transition text-base bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 hover:shadow-lg shadow-sm font-bold"
@@ -523,6 +605,13 @@ export default function App() {
                         >
                           {isPremium ? "📖 View Cheat Sheet" : "✨ Unlock Cheat Sheet"}
                         </Link>
+                        <Link
+                          to="/pricing"
+                          onClick={() => setShowMoreMenu(false)}
+                          className="flex items-center gap-2 w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-700 dark:hover:text-indigo-400 transition"
+                        >
+                          ⭐ Pricing
+                        </Link>
                       </div>
                     </>
                   )}
@@ -531,30 +620,30 @@ export default function App() {
 
               {/* Mobile nav: fixed bottom tab bar */}
               <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-stretch justify-around shadow-[0_-2px_8px_rgba(0,0,0,0.06)]" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
-                <Link
+                <NavPill
                   to="/"
-                  onClick={() => setView("flashcards")}
-                  className={`flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition ${view === "flashcards" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-500 dark:text-slate-400"}`}
+                  activeClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-indigo-600 dark:text-indigo-400"
+                  inactiveClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-slate-500 dark:text-slate-400"
                 >
                   <span className="text-lg leading-none">📚</span>
                   Cards
-                </Link>
-                <Link
+                </NavPill>
+                <NavPill
                   to="/mock-exams"
-                  onClick={() => setView("mockExam")}
-                  className={`flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition ${view === "mockExam" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-500 dark:text-slate-400"}`}
+                  activeClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-indigo-600 dark:text-indigo-400"
+                  inactiveClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-slate-500 dark:text-slate-400"
                 >
                   <span className="text-lg leading-none">📝</span>
                   Exams
-                </Link>
-                <Link
-                  to="/ilr-guide"
-                  onClick={() => setView("ilrGuide")}
-                  className={`flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition ${view === "ilrGuide" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-500 dark:text-slate-400"}`}
+                </NavPill>
+                <NavPill
+                  to="/study-guide"
+                  activeClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-indigo-600 dark:text-indigo-400"
+                  inactiveClass="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition text-slate-500 dark:text-slate-400"
                 >
-                  <span className="text-lg leading-none">🇬🇧</span>
-                  ILR
-                </Link>
+                  <span className="text-lg leading-none">📚</span>
+                  Guide
+                </NavPill>
                 <button
                   onClick={() => setShowQuickFire(true)}
                   className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-bold text-amber-600 dark:text-amber-400 transition"
@@ -578,11 +667,11 @@ export default function App() {
                   <div className="absolute bottom-0 left-0 right-0 bg-white dark:bg-slate-900 rounded-t-2xl shadow-2xl p-4 pb-8 space-y-1">
                     <div className="w-10 h-1 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-3" />
                     <Link
-                      to="/pricing"
-                      onClick={() => { setView("pricing"); setShowMobileMoreSheet(false); }}
+                      to="/ilr-guide"
+                      onClick={() => setShowMobileMoreSheet(false)}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 transition"
                     >
-                      ⭐ Pricing
+                      🇬🇧 ILR Guide
                     </Link>
                     <Link
                       to="/cheat-sheet"
@@ -591,6 +680,13 @@ export default function App() {
                     >
                       {isPremium ? "📖 View Cheat Sheet" : "✨ Unlock Cheat Sheet"}
                     </Link>
+                    <Link
+                      to="/pricing"
+                      onClick={() => setShowMobileMoreSheet(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800 transition"
+                    >
+                      ⭐ Pricing
+                    </Link>
                     <div className="px-4 py-3">
                       <TestDatePicker />
                     </div>
@@ -598,22 +694,7 @@ export default function App() {
                 </div>
               )}
 
-              {!isPremium && (
-                <div className="mt-6 inline-block bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950 border border-indigo-100 dark:border-indigo-900 rounded-xl p-4 max-w-lg mx-auto shadow-sm w-full">
-                  <p className="text-sm text-slate-700 dark:text-slate-200 font-medium mb-1">
-                    🚀 Want to pass in 5 days?
-                  </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
-                    Get our personalized 5-day guaranteed pass path, unlocks all 45 mock exams, and downloads detailed cheat sheets.
-                  </p>
-                  <button
-                    onClick={() => setShowPremiumModal(true)}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm"
-                  >
-                    Get 5-Day Guaranteed Path (£7.99)
-                  </button>
-                </div>
-              )}
+              <PromoBanner isPremium={isPremium} onUnlockPremium={() => setShowPremiumModal(true)} />
             </header>
 
             <Routes>
@@ -710,13 +791,14 @@ export default function App() {
                 </>
               )} />
               <Route path="/mock-exams" element={(
-                <MockExam
-                  onBack={() => setView("flashcards")}
-                  isPremium={isPremium}
-                  setIsPremium={setIsPremium}
-                  onUnlockPremium={() => setShowPremiumModal(true)}
-                  onResultsUpdate={(results) => setMockResults(results)}
-                />
+                <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-400 dark:text-slate-500">Loading mock exams...</div>}>
+                  <MockExam
+                    isPremium={isPremium}
+                    setIsPremium={setIsPremium}
+                    onUnlockPremium={() => setShowPremiumModal(true)}
+                    onResultsUpdate={(results) => setMockResults(results)}
+                  />
+                </Suspense>
               )} />
               <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
               <Route path="/cheat-sheet" element={(
@@ -726,8 +808,25 @@ export default function App() {
                   onDownloadPdf={handleDownloadCheatSheet}
                 />
               )} />
+              <Route path="/free-cheat-sheet" element={<FreeCheatSheet />} />
+              <Route path="/study-guide" element={<StudyGuideIndex />} />
               <Route path="/study-guide/british-history" element={<BritishHistory />} />
+              <Route path="/study-guide/monarchs-timeline" element={<MonarchsTimeline />} />
+              <Route path="/study-guide/people-matrix" element={<PeopleMatrix />} />
+              <Route path="/study-guide/inventions-timeline" element={<InventionsTimeline />} />
+              <Route path="/study-guide/key-dates" element={<KeyDatesTimeline />} />
               <Route path="/study-guide/government-and-law" element={<GovernmentAndLaw />} />
+              <Route path="/study-guide/elections-cheat-sheet" element={<ElectionsCheatSheet />} />
+              <Route path="/study-guide/devolved-nations" element={<DevolvedNations />} />
+              <Route path="/study-guide/court-hierarchy" element={<CourtHierarchy />} />
+              <Route path="/study-guide/culture-and-traditions" element={<CultureAndTraditions />} />
+              <Route path="/study-guide/patron-saints" element={<PatronSaintsAndSymbols />} />
+              <Route path="/study-guide/festivals-and-celebrations" element={<FestivalsAndCelebrations />} />
+              <Route path="/study-guide/sports-and-traditions" element={<SportsAndTraditions />} />
+              <Route path="/study-guide/modern-britain" element={<ModernBritain />} />
+              <Route path="/study-guide/human-rights" element={<HumanRightsAndCitizenship />} />
+              <Route path="/study-guide/taxation-and-driving" element={<TaxationAndDriving />} />
+              <Route path="/study-guide/britain-in-the-world" element={<BritainInTheWorld />} />
               <Route path="/ilr-guide" element={<ILRGuide />} />
               {/* Dynamic immigration guide routes */}
               <Route path="/british-citizenship-guide" element={<GuidePage guide={guideBySlug["british-citizenship-guide"]} />} />
@@ -742,6 +841,7 @@ export default function App() {
               <Route path="/citizenship-ceremony" element={<GuidePage guide={guideBySlug["citizenship-ceremony"]} />} />
               <Route path="/british-passport-application" element={<GuidePage guide={guideBySlug["british-passport-application"]} />} />
               <Route path="/dual-citizenship" element={<GuidePage guide={guideBySlug["dual-citizenship"]} />} />
+              <Route path="/skilled-worker-redundancy" element={<GuidePage guide={guideBySlug["skilled-worker-redundancy"]} />} />
               {/* 404 catch-all route */}
               <Route path="*" element={(
                 <div className="text-center py-20">
@@ -815,7 +915,13 @@ export default function App() {
           <CookieBanner />
 
           {showQuickFire && (
-            <QuickFireChallenge onClose={() => setShowQuickFire(false)} />
+            <Suspense fallback={null}>
+              <QuickFireChallenge
+                onClose={() => setShowQuickFire(false)}
+                isPremium={isPremium}
+                onUnlockPremium={() => setShowPremiumModal(true)}
+              />
+            </Suspense>
           )}
         </div>
       </ErrorBoundary>

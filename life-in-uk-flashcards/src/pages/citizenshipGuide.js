@@ -38,7 +38,7 @@ const citizenshipGuide = {
 British citizenship is the process through which eligible people can become
 citizens of the United Kingdom.
 
-Many people who have settled in the UK first obtain Indefinite Leave to Remain
+Many people who have settled in the UK first obtain [Indefinite Leave to Remain](https://www.gov.uk/indefinite-leave-to-remain)
 (ILR) or another form of permanent status before applying for citizenship.
 
 The most common route for adults is naturalisation.
@@ -114,7 +114,7 @@ when required.
         {
             heading: "Life in the UK Test",
             content: `
-Most applicants need to pass the Life in the UK Test.
+Most applicants need to pass the [Life in the UK Test](https://www.gov.uk/life-in-the-uk-test).
 
 The test covers topics including:
 
@@ -175,7 +175,7 @@ citizenship.
         {
             heading: "Applying for a British passport",
             content: `
-After becoming a British citizen, applicants can apply for a British passport.
+After becoming a British citizen, applicants can [apply for a British passport](https://www.gov.uk/apply-renew-passport).
 
 The citizenship certificate is an important document used during the passport
 application process.
