@@ -7,9 +7,9 @@ const ilrGuide = {
 
     seo: {
         metaTitle:
-            "Indefinite Leave to Remain (ILR) UK Guide: Requirements & Process",
+            "Indefinite Leave to Remain (ILR) UK Guide",
         metaDescription:
-            "Learn about UK Indefinite Leave to Remain (ILR), including eligibility, qualifying routes, residence requirements, Life in the UK Test, English requirements and the application process.",
+            "UK Indefinite Leave to Remain (ILR): eligibility, qualifying routes, residence requirements, the Life in the UK Test, English requirements and applying.",
         keywords: [
             "ILR UK",
             "Indefinite Leave to Remain",

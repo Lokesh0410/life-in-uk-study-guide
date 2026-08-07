@@ -9,7 +9,7 @@ const ukvcas = {
         metaTitle:
             "UKVCAS Appointment Guide UK: Biometrics, Documents & Process",
         metaDescription:
-            "What actually happens at a UKVCAS/TLScontact biometric appointment, what to bring, service point types and fees, and how to book, reschedule or fix common problems.",
+            "What happens at a UKVCAS/TLScontact biometric appointment: what to bring, service point types and fees, and how to book, reschedule or fix problems.",
         keywords: [
             "UKVCAS appointment",
             "UK visa biometrics appointment",
@@ -104,6 +104,26 @@ UKVCAS/TLScontact account to book one.
         },
 
         {
+            heading: "What is a biometric appointment (biographical appointment)?",
+            content: `
+"Biometric appointment" and "biographical appointment" both refer to the
+same UKVCAS visit: the in-person session where TLScontact captures your
+fingerprints and a digital photograph and links them electronically to your
+application. GOV.UK and TLScontact use "biometric appointment"; you may see
+"biographical appointment" used informally elsewhere, but there is no
+separate appointment type by that name.
+
+Per TLScontact's own guidance, biometric enrolment involves a digital scan
+of all 10 fingerprints and a photograph, taken either at a self-service
+kiosk or in a booth with a trained agent. Your face must be clearly visible
+(no hair over your eyes, no items obscuring your face or neck, glasses may
+need to be removed), and fingertips should be free of cuts, decorations or
+temporary injuries. Children under 5 need a photo only, no fingerprints.
+Everyone attending, including babies, must be physically present.
+`
+        },
+
+        {
             heading: "Service point types and fees",
             content: `
 Not all UKVCAS/TLScontact service points are the same, and how much (if
@@ -126,15 +146,42 @@ what extra services you choose:
 - **Assisted document scanning**: if you don't upload all your supporting
   documents online yourself and instead want staff at a core service point
   to scan paper documents for you, this is typically a separate paid
-  add-on service, commonly cited in the low tens of pounds (roughly
-  £40–£60 depending on the service point), rather than being included free.
+  add-on service, commonly cited in the low tens of pounds depending on the
+  service point, rather than being included free.
 
-HONEST CAVEAT: exact current fees change and vary by service point and
-service tier, and GOV.UK does not publish one single fixed price list on
-its main UKVCAS page. The specific price you're quoted will appear when
-you book your appointment through your account. Treat any fee figure you
-see (including the ranges above) as indicative, not a quote, and always
-check the amount shown at the time of booking before you pay.
+This is separate from your Home Office application fee itself. GOV.UK's
+published fee table (Home Office immigration and nationality fees, updated
+8 April 2026) confirms, for example, indefinite leave to remain (main
+applicant and dependants) at £3,226, and the Life in the UK Test at £50,
+both unchanged in that update except ILR which rose from £3,029.
+
+HONEST CAVEAT: exact current UKVCAS/TLScontact service fees change and vary
+by service point and service tier, and GOV.UK does not publish one single
+fixed price list on its main UKVCAS page. The specific price you're quoted
+will appear when you book your appointment through your account. Treat any
+fee figure you see (including the ranges above) as indicative, not a
+quote, and always check the amount shown at the time of booking before you
+pay. For the Home Office application fee itself, check the current
+[GOV.UK fee table](https://www.gov.uk/government/publications/visa-regulations-revised-table/home-office-immigration-and-nationality-fees-8-april-2026)
+directly, since fees are revised periodically.
+`
+        },
+
+        {
+            heading: "Identity verification at check-in",
+            content: `
+Per TLScontact's own guidance, you should arrive at least 15 minutes before
+your scheduled appointment time. You'll typically pass through a security
+checkpoint (avoid bringing sharp or prohibited items), then go to a welcome
+desk where staff check your printed appointment confirmation, including its
+QR code, against your current passport or travel document. TLScontact
+states the average appointment processing time is around 30 minutes per
+applicant, though this varies by service point and how busy it is.
+
+Your appointment cannot proceed without your current passport or travel
+document, unless the Home Office has given prior authorisation; if you
+don't have it, contact the Home Office for guidance before booking or
+attending.
 `
         },
 
@@ -168,6 +215,75 @@ attend with valid photo ID.
         },
 
         {
+            heading: "Document scanning: self-upload vs the assisted service",
+            content: `
+You have two ways to get your supporting documents into your application:
+
+- **Self-upload (free)**: upload documents yourself through your
+  UKVCAS/TLScontact account before your appointment. Per TLScontact's
+  guidance, accepted formats are jpg, jpeg, png and pdf, with a maximum
+  file size of 7.25MB per file. If uploads fail, TLScontact suggests
+  checking your file format/size, clearing your browser cache and cookies,
+  or trying incognito mode before contacting their support.
+- **Assisted service (paid)**: if you select this option, or upgrade to it
+  on the day, a TLScontact representative scans and uploads your paper
+  documents for you at the service point. There's no need to self-upload in
+  advance if you've chosen this route, but you must bring all relevant
+  supporting documents with you to the appointment.
+
+Once you submit your online self-upload, the function typically locks, so
+double-check everything is included before finalising it.
+`
+        },
+
+        {
+            heading: "Setting up your UKVCAS/TLScontact account",
+            content: `
+You cannot register for a UKVCAS/TLScontact account ahead of time. Per
+TLScontact's own process, you must first complete your visa, extension, ILR
+or citizenship application on GOV.UK and pay the Home Office fee. This
+generates your Unique Application Number (UAN), which you then use to
+register and activate your TLScontact account.
+
+If you don't receive your account activation email within 24 hours,
+TLScontact's guidance is to contact their Feedback & Complaints team via
+their "Contact us" page, rather than trying to re-register. Once your
+account is active, you enter your postcode or city to see nearby service
+points, then select a date, time and any added-value services before
+confirming and paying for anything you've selected.
+`
+        },
+
+        {
+            heading: "Rescheduling and cancelling your appointment",
+            content: `
+These rules come directly from TLScontact's published help centre, so they
+supersede any general or older guidance:
+
+- **Rescheduling**: log into your TLScontact account and select "Change"
+  next to your appointment. You can reschedule up to **24 hours before**
+  your scheduled appointment time, and a **maximum of three times**. If you
+  need to change again after using your three reschedules, or you're inside
+  the 24-hour window, contact TLScontact directly via their "Contact us"
+  web form.
+- **Cancelling**: log into your account and select "Cancel appointment."
+  Check TLScontact's Terms and Conditions first, since refund conditions
+  for any paid added-value services depend on their cancellation policy.
+- **Missing your appointment**: if you miss it, log back into your account
+  and select "Change" to book a new appointment, or "Reschedule to other
+  locations" if you'd prefer a different service point.
+- **Changing service point location**: from your appointment summary page,
+  select "Reschedule to other locations" to move to a different UKVCAS
+  service point.
+
+HONEST CAVEAT: neither GOV.UK nor TLScontact publish a fixed missed-
+appointment fee on their help pages; if a charge applies to your booking it
+will be shown in your account or your service point's terms, so don't rely
+on a figure quoted elsewhere, including this page.
+`
+        },
+
+        {
             heading: "What to actually bring",
             content: `
 Based on GOV.UK's stated requirements, bring:
@@ -196,7 +312,7 @@ copies of exactly what you submitted, in case a query comes up later.
         },
 
         {
-            heading: "How to book, and how to reschedule",
+            heading: "How to book your appointment",
             content: `
 You don't book a UKVCAS/TLScontact appointment as a standalone step. It
 happens as part of your online visa, extension, ILR or citizenship
@@ -208,15 +324,9 @@ book an available appointment slot at a service point of your choice.
 Appointment availability varies by location, time of year, and service
 tier, since enhanced and premium slots are often available sooner than free
 core-service slots simply because there are more of them and they're paid.
-
-HONEST CAVEAT: we can't give you exact current booking lead times or a
-guaranteed rescheduling policy here, because availability changes
-constantly and depends on your specific application type and location.
-If you need to reschedule, do it through your UKVCAS/TLScontact account
-rather than simply not attending. The specific rules on how many times
-you can reschedule and any associated fee are set by the current provider
-and shown in your account, so check there directly rather than relying on
-older guidance that may reference the previous Sopra Steria system.
+For rescheduling or cancelling once booked, see the dedicated section
+above, which reflects TLScontact's current published policy rather than
+older guidance that may still reference the previous Sopra Steria system.
 `
         }
     ],
@@ -235,6 +345,16 @@ older guidance that may reference the previous Sopra Steria system.
 
     faqs: [
         {
+            question: "What's the difference between a biographical appointment and a biometric appointment?",
+            answer:
+                "None: they're the same thing. GOV.UK and TLScontact call it a 'biometric appointment' (fingerprints and photograph); 'biographical appointment' is an informal term some applicants use for the same visit. There isn't a separate appointment type under that name."
+        },
+        {
+            question: "How do I set up my UKVCAS/TLScontact account?",
+            answer:
+                "You can't register in advance. First complete and pay for your visa, extension, ILR or citizenship application on GOV.UK; this generates your Unique Application Number (UAN). You then use the UAN to register and activate your TLScontact account, after which you can search service points and book. If your activation email doesn't arrive within 24 hours, TLScontact's guidance is to contact their Feedback & Complaints team rather than re-registering."
+        },
+        {
             question: "Is UKVCAS still run by Sopra Steria?",
             answer:
                 "No. Sopra Steria was replaced as the UK's UKVCAS provider by TLScontact on 15 October 2024. If you're reading older guidance that refers to Sopra Steria appointments or portals, treat it as outdated: the current provider, portal and service points are TLScontact's."
@@ -247,7 +367,7 @@ older guidance that may reference the previous Sopra Steria system.
         {
             question: "What happens if I miss my UKVCAS appointment?",
             answer:
-                "Don't simply not show up. Go into your UKVCAS/TLScontact account and reschedule as soon as you know you can't attend. We can't confirm an exact rescheduling fee or policy here because it's set by the current provider and can change; check your account or GOV.UK for the current rules that apply to your booking."
+                "Per TLScontact's help centre, log back into your account and select 'Change' to book a new appointment, or 'Reschedule to other locations' if you'd prefer a different service point. You can reschedule up to 3 times, and changes must be made at least 24 hours before your scheduled time; after that, or once you've used your 3 changes, contact TLScontact directly via their 'Contact us' form."
         },
         {
             question: "Can someone else attend my appointment for me?",
@@ -257,7 +377,7 @@ older guidance that may reference the previous Sopra Steria system.
         {
             question: "How long does a UKVCAS appointment take?",
             answer:
-                "GOV.UK does not publish a fixed duration, and it varies by service point, how busy it is, and whether you're using assisted document scanning. Premium and priority appointments are generally designed to be faster than the free core service. Build in extra time rather than assuming a specific length."
+                "TLScontact states an average appointment processing time of around 30 minutes per applicant, though this varies by service point, how busy it is, and whether you're using assisted document scanning. Arrive at least 15 minutes before your scheduled time, as advised by TLScontact."
         },
         {
             question: "What if my supporting documents aren't ready in time for my appointment?",
@@ -295,6 +415,14 @@ older guidance that may reference the previous Sopra Steria system.
         {
             title: "TLScontact - UKVCAS appointment booking portal",
             url: "https://vcas.tlscontact.com/country/gb/"
+        },
+        {
+            title: "TLScontact - Help Centre (booking, rescheduling, biometrics FAQs)",
+            url: "https://vcas.tlscontact.com/country/gb/vac/gbLON2vcas/help-centre"
+        },
+        {
+            title: "GOV.UK - Home Office immigration and nationality fees, 8 April 2026",
+            url: "https://www.gov.uk/government/publications/visa-regulations-revised-table/home-office-immigration-and-nationality-fees-8-april-2026"
         }
     ],
 
@@ -302,7 +430,7 @@ older guidance that may reference the previous Sopra Steria system.
         contentType: "guide",
         category: "Immigration Guides",
         author: "Life in UK Coach",
-        lastUpdated: "2026-07-31"
+        lastUpdated: "2026-08-06"
     }
 };
 

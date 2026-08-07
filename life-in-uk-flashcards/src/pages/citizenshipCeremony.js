@@ -7,7 +7,7 @@ const citizenshipCeremony = {
 
     seo: {
         metaTitle:
-            "British Citizenship Ceremony UK: Process, Oath and Certificate",
+            "British Citizenship Ceremony UK: Oath & Certificate",
         metaDescription:
             "Learn what happens at a British citizenship ceremony, including oath, pledge, certificate collection and steps before applying for a passport.",
         keywords: [

@@ -7,9 +7,9 @@ const citizenshipGuide = {
 
     seo: {
         metaTitle:
-            "British Citizenship Guide UK: Naturalisation Requirements After ILR",
+            "British Citizenship Guide UK: Naturalisation After ILR",
         metaDescription:
-            "Learn how to apply for British citizenship through naturalisation, including residency requirements, ILR, Life in the UK Test, English requirements and the citizenship ceremony.",
+            "How to apply for British citizenship through naturalisation: residency requirements, ILR, the Life in the UK Test, English requirements and the ceremony.",
         keywords: [
             "British citizenship",
             "UK naturalisation",

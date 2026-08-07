@@ -1,34 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 # lifeinukcoach.co.uk - All content is copyrighted educational material
 
-# Allow standard search engines for SEO (Google, Bing, etc.)
+# Allow standard search engines and AI crawlers for SEO/AI-search visibility
 User-agent: *
 Allow: /
 Disallow: /premium-cheat-sheet.html
-
-# Block AI training crawlers and scraper bots (content is proprietary)
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Meta-ExternalAgent
-Disallow: /
 
 Sitemap: https://lifeinukcoach.co.uk/sitemap.xml

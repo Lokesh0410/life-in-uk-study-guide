@@ -9,7 +9,7 @@ const spouseVisaILR = {
         metaTitle:
             "Spouse Visa ILR UK Guide: Requirements, Process & Checklist",
         metaDescription:
-            "Learn how spouse visa holders can apply for ILR in the UK, including relationship requirements, residence rules, English requirements, Life in the UK Test and documents.",
+            "How spouse visa holders apply for ILR in the UK: relationship requirements, residence rules, English requirements, the Life in the UK Test and documents.",
         keywords: [
             "spouse visa ILR",
             "partner visa settlement UK",

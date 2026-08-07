@@ -7,9 +7,9 @@ const evisa = {
 
     seo: {
         metaTitle:
-            "UK eVisa & Share Code Explained 2026: How to Prove Your Status",
+            "UK eVisa & Share Code Explained 2026",
         metaDescription:
-            "Understand the UK eVisa system and share codes: how to generate a share code, how long it lasts, and how to prove your immigration status to employers and landlords.",
+            "The UK eVisa system and share codes: how to generate one, how long it lasts, and how to prove your immigration status to employers and landlords.",
         keywords: [
             "UK eVisa",
             "share code",

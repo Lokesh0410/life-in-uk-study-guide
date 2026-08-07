@@ -7,9 +7,9 @@ const englishRequirement = {
 
     seo: {
         metaTitle:
-            "English Requirement for ILR & Citizenship UK: Accepted Evidence",
+            "English Requirement for ILR & Citizenship UK",
         metaDescription:
-            "Understand the UK English language requirement for ILR and British citizenship applications, including approved SELT tests, CEFR levels, degree evidence and exemptions.",
+            "The UK English language requirement for ILR and citizenship applications: approved SELT tests, CEFR levels, degree evidence and exemptions.",
         keywords: [
             "English requirement ILR",
             "English requirement citizenship UK",

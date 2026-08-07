@@ -7,9 +7,9 @@ const britishPassport = {
 
     seo: {
         metaTitle:
-            "British Passport Application & Eligibility: First Passport Guide",
+            "British Passport Application: First Passport Guide",
         metaDescription:
-            "Learn how to apply for your first British passport after citizenship: fees, countersignatory rules, documents needed, processing times, and when a passport can be refused.",
+            "How to apply for your first British passport after citizenship: fees, countersignatory rules, documents needed, processing times, and refusal reasons.",
         keywords: [
             "British passport after citizenship",
             "first UK passport",

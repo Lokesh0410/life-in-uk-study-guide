@@ -4,7 +4,7 @@ import useDocumentMeta from '../useDocumentMeta';
 
 const Pricing = ({ onUnlockPremium, isPremium }) => {
     useDocumentMeta({
-        title: "Pricing: Life in the UK Test Coach 2026 | £7.99 One-Time",
+        title: "Pricing [Updated 2026] | Life in the UK Test Coach £7.99",
         description: "Unlock all 45 Life in the UK Test mock exams, performance analytics, and a 5-day guaranteed pass path for a one-time £7.99 payment.",
         path: "/pricing",
     });
@@ -15,8 +15,11 @@ const Pricing = ({ onUnlockPremium, isPremium }) => {
                 <h2 className="text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
                     Unlock Your Full Potential
                 </h2>
-                <p className="text-xl text-slate-600 dark:text-slate-300 mb-4">
+                <p className="text-xl text-slate-600 dark:text-slate-300 mb-2">
                     Choose the plan that's right for your Life in the UK test preparation.
+                </p>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mb-4 flex items-center justify-center gap-1">
+                    <span>✓</span> Content reviewed: August 2026
                 </p>
 
                 {!isPremium && (

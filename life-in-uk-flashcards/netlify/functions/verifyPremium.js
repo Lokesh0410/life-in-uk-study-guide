@@ -93,6 +93,7 @@ exports.handler = async (event) => {
     try {
         // Search for Stripe customers with this email
         const customers = await stripe.customers.list({ email: email.trim().toLowerCase(), limit: 5 });
+        console.log(`verifyPremium lookup: query="${email.trim().toLowerCase()}" found=${customers.data.length}`);
 
         if (!customers.data.length) {
             return {

@@ -81,10 +81,9 @@ const articleSchema = {
     description: "A visual, colour-coded timeline of the key dates and Acts of Parliament covered in the Life in the UK Test: Magna Carta, Acts of Union, Reform Acts, the NHS, devolution and Brexit.",
     about: "Key dates and Acts of Parliament in UK constitutional and social history",
     mentions: keyDates.map(t => ({
-        "@type": "Event",
+        "@type": "Thing",
         name: t.title,
-        startDate: t.year,
-        description: t.era,
+        description: `${t.year} — ${t.era}`,
     })),
 };
 

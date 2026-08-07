@@ -7,9 +7,9 @@ const longResidenceILR = {
 
     seo: {
         metaTitle:
-            "10 Year Long Residence ILR UK Guide: Requirements & Application",
+            "10 Year Long Residence ILR UK: Requirements & Process",
         metaDescription:
-            "Learn about the UK 10 year Long Residence route to ILR, including lawful residence, continuous residence, Life in the UK Test, English requirements and application steps.",
+            "The UK 10 year Long Residence route to ILR: lawful residence, continuous residence, the Life in the UK Test, English requirements and application steps.",
         keywords: [
             "10 year ILR UK",
             "Long Residence ILR",

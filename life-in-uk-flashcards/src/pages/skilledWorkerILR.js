@@ -9,7 +9,7 @@ const skilledWorkerILR = {
         metaTitle:
             "Skilled Worker Visa ILR Guide UK: Requirements After 5 Years",
         metaDescription:
-            "Understand Skilled Worker visa settlement requirements, including qualifying period, continuous residence, salary rules, Life in the UK Test and English requirements.",
+            "Skilled Worker visa settlement requirements: qualifying period, continuous residence, salary rules, the Life in the UK Test and English requirements.",
         keywords: [
             "Skilled Worker ILR",
             "Skilled Worker visa settlement",

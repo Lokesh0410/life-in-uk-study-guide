@@ -28,6 +28,9 @@ import ILRGuide from "./pages/ILRGuide";
 import GuidePage from "./pages/GuidePage";
 import CheatSheet from "./pages/CheatSheet";
 import FreeCheatSheet from "./pages/FreeCheatSheet";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Disclaimer from "./pages/Disclaimer";
 import { guideBySlug } from "./pages/immigrationGuides/index";
 import TestDatePicker from "./TestDatePicker";
 import ProgressGraph from "./ProgressGraph";
@@ -196,7 +199,7 @@ const CookieBanner = () => {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md bg-slate-900 text-white p-4 rounded-xl shadow-2xl z-50 border border-slate-800 flex flex-col gap-3">
+    <div className="fixed bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md bg-slate-900 text-white p-4 rounded-xl shadow-2xl z-50 border border-slate-800 flex flex-col gap-3" style={{ marginBottom: 'env(safe-area-inset-bottom)' }}>
       <p className="text-xs leading-relaxed text-slate-300">
         🍪 We use essential browser local storage to save your flashcard learning status, completed mock exam history, and premium license activation. No tracking cookies are used.
       </p>
@@ -269,8 +272,8 @@ function ScrollToTop() {
   }, [pathname, navigationType]);
 
   useDocumentMeta({
-    title: pathname === "/" ? "Life in the UK Mock Test 2026 | Free Practice Questions & Flashcards" : undefined,
-    description: pathname === "/" ? "Life in the UK Mock Test with 220+ free flashcards and 3 free mock exams. Practice real test questions, track your progress, and get a 5-day guaranteed pass path for British Citizenship and ILR 2026." : undefined,
+    title: pathname === "/" ? "Life in the UK Mock Test [Updated 2026] | Free Flashcards" : undefined,
+    description: pathname === "/" ? "Life in the UK Mock Test with 220+ free flashcards and 3 free mock exams, updated for 2026. Track progress and get a 5-day guaranteed pass path." : undefined,
     path: pathname === "/" ? "/" : undefined,
   });
 
@@ -415,6 +418,7 @@ export default function App() {
           if (data.isPremium) {
             safeSetItem(PREMIUM_KEY, 'true');
             setIsPremium(true);
+            if (window.gtag) window.gtag('event', 'purchase', { transaction_id: sessionId, value: 7.99, currency: 'GBP' });
             triggerConfetti();
             setTimeout(triggerConfetti, 600);
             setShowPremiumSuccess(true);
@@ -433,6 +437,7 @@ export default function App() {
   const handleSubscribe = async () => {
     if (isCheckoutLoading) return;
     setIsCheckoutLoading(true);
+    if (window.gtag) window.gtag('event', 'begin_checkout', { value: 7.99, currency: 'GBP' });
     try {
       const response = await fetch('/.netlify/functions/createCheckout', {
         method: 'POST',
@@ -490,6 +495,7 @@ export default function App() {
         setIsPremium(true);
         setRedeemError('');
         setShowPremiumModal(false);
+        if (window.gtag) window.gtag('event', 'purchase', { transaction_id: `redeem_${trimmedCode}`, value: 0, currency: 'GBP' });
         triggerConfetti();
         setTimeout(triggerConfetti, 600);
         setShowPremiumSuccess(true);
@@ -543,8 +549,14 @@ export default function App() {
               <p className="text-slate-700 dark:text-slate-300 font-medium">
                 45 mock exams that adapt to your weak spots, so every minute of practice counts.
               </p>
+              <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-2">
+                📊 1,080 practice questions across 45 full mock exams
+              </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 The only adaptive prep platform for British Citizenship and ILR 2026.
+              </p>
+              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 flex items-center justify-center gap-1">
+                <span>✓</span> Content reviewed: August 2026
               </p>
               <div className="mt-4 flex justify-center">
                 <TestDatePicker />
@@ -801,6 +813,9 @@ export default function App() {
                 </Suspense>
               )} />
               <Route path="/pricing" element={<Pricing onUnlockPremium={() => setShowPremiumModal(true)} isPremium={isPremium} />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
               <Route path="/cheat-sheet" element={(
                 <CheatSheetPage
                   isPremium={isPremium}

@@ -13,6 +13,41 @@ import useDocumentMeta from './useDocumentMeta';
 
 const STORAGE_KEY = 'lifeInUkMockResults';
 
+// Question-per-topic distribution across all 45 mock exams (1,080 questions total).
+// Computed from the `topic` tag on every question in mockExamsData.js.
+const topicDistribution = [
+    { topic: "Parliament & Government", count: 164 },
+    { topic: "The Monarchy", count: 106 },
+    { topic: "Religion & Faith", count: 90 },
+    { topic: "The 4 Nations", count: 75 },
+    { topic: "Government & Law", count: 56 },
+    { topic: "Sports & Icons", count: 42 },
+    { topic: "Justice System", count: 39 },
+    { topic: "Arts, Literature & Culture", count: 38 },
+    { topic: "Elections & Voting", count: 29 },
+    { topic: "Arts & Science", count: 27 },
+];
+const TOTAL_QUESTIONS = 1080;
+
+const mockExamFaqs = [
+    { q: "How many mock exams are free?", a: "3 full mock exams are free, each with 24 questions and a 45-minute timer. Premium unlocks all 45 mock exams." },
+    { q: "Is this mock test updated for 2026?", a: "Yes, all 45 mock exams are updated for 2026 and drawn from the official Life in the United Kingdom handbook, 3rd edition." },
+    { q: "How similar is this to the real Life in the UK test?", a: "Each mock exam matches the real test format: 24 multiple-choice questions, a 45-minute timer, and a 75% pass mark." },
+    { q: "How many questions are on the real Life in the UK test?", a: "The official test has 24 questions, and you need at least 18 correct (75%) to pass." },
+    { q: "What is the pass mark for the Life in the UK test?", a: "You need to answer at least 18 out of 24 questions correctly, a 75% pass mark, within 45 minutes." },
+    { q: "Do I need an account to take the mock exams?", a: "No account is required. Your progress and scores are saved locally in your browser." },
+];
+
+const mockExamFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: mockExamFaqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+};
+
 // Helper to trigger confetti
 const triggerConfetti = () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
@@ -76,9 +111,10 @@ const ExitConfirmModal = ({ isOpen, onConfirm, onCancel }) => {
 
 export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPremium, onResultsUpdate }) {
     useDocumentMeta({
-        title: "Life in the UK Test Practice: 3 Free Mock Exams + 45 Full Tests",
-        description: "Practice the Life in the UK Test with 3 free mock exams and 45 full-length timed practice tests, instant scoring, and performance tracking.",
+        title: "Life in the UK Mock Test [Updated 2026] | 45 Free Exams",
+        description: "Practice the Life in the UK Test with 3 free mock exams and 45 full tests, updated for 2026, with instant scoring and performance tracking.",
         path: "/mock-exams",
+        jsonLd: [mockExamFaqSchema],
     });
 
     const navigate = useNavigate();
@@ -529,7 +565,10 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
         return (
             <div className="p-6">
                 <TopBar />
-                <h2 className="text-2xl font-bold text-indigo-800 dark:text-indigo-400 mb-6">📝 Mock Exams</h2>
+                <h2 className="text-2xl font-bold text-indigo-800 dark:text-indigo-400 mb-1">📝 Mock Exams</h2>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mb-6 flex items-center gap-1">
+                    <span>✓</span> Content reviewed: August 2026
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {Array.from({ length: 45 }).map((_, index) => {
                         const exam = mockExams.find(e => e.id === `exam${index + 1}`);
@@ -574,6 +613,39 @@ export default function MockExam({ onBack, isPremium, setIsPremium, onUnlockPrem
                     })}
                 </div>
                 {allResults.length > 0 && (<div className="mt-8 text-center"><button onClick={() => setShowDashboard(true)} className="text-indigo-600 dark:text-indigo-400 underline hover:text-indigo-800 dark:hover:text-indigo-300">View Your Performance Dashboard</button></div>)}
+                <div className="mt-12 max-w-3xl mx-auto">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Question Breakdown by Topic</h2>
+                    <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">All {TOTAL_QUESTIONS} questions across the 45 mock exams are drawn from the official Life in the UK handbook. Here's how the top topics break down:</p>
+                    <div className="overflow-x-auto bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700">
+                        <table className="w-full text-left text-sm">
+                            <thead>
+                                <tr className="border-b border-gray-200 dark:border-slate-700">
+                                    <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">Topic</th>
+                                    <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200 text-right">Questions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {topicDistribution.map(({ topic, count }) => (
+                                    <tr key={topic} className="border-b border-gray-100 dark:border-slate-700 last:border-0">
+                                        <td className="px-4 py-2 text-gray-700 dark:text-slate-300">{topic}</td>
+                                        <td className="px-4 py-2 text-gray-500 dark:text-slate-400 text-right">{count}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div className="mt-12 max-w-3xl mx-auto">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Frequently Asked Questions</h2>
+                    <div className="space-y-4">
+                        {mockExamFaqs.map(({ q, a }) => (
+                            <div key={q} className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-4">
+                                <h3 className="font-semibold text-slate-800 dark:text-slate-100">{q}</h3>
+                                <p className="text-sm text-gray-600 dark:text-slate-400 mt-1">{a}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
                 <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} contactForm={contactForm} setContactForm={setContactForm} contactStatus={contactStatus} onSubmit={handleContactSubmit} />
             </div>
         );

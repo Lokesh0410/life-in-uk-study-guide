@@ -9,7 +9,7 @@ const globalTalentILR = {
         metaTitle:
             "Global Talent Visa ILR UK Guide: Settlement Requirements",
         metaDescription:
-            "Learn how Global Talent visa holders can qualify for ILR, including the 3-year and 5-year qualifying periods, endorsing bodies, absences, English rules and Life in the UK Test.",
+            "How Global Talent visa holders qualify for ILR: the 3-year and 5-year periods, endorsing bodies, absences, English rules and the Life in the UK Test.",
         keywords: [
             "Global Talent ILR",
             "Global Talent visa settlement",
